@@ -1,5 +1,5 @@
 const disqus = `
-    <div id="disqus_thread" class="max-w-md mx-auto px-8 py-12"></div>
+    <div id="disqus_thread" class="max-w-md mx-auto px-6 py-12"></div>
     <script type="text/javascript">
 	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 	var disqus_shortname = 'ambercatbyrahmanda'; // required: replace example with your forum shortname
