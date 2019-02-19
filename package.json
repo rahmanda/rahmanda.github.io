@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ambercat": "github:rahmanda/ambercat#master"
+    "ambercat": "^0.1.0-beta.1"
   }
 }
