@@ -4188,8 +4188,8 @@ html {
   max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   padding-bottom: 2rem;
 }
 
@@ -4266,16 +4266,16 @@ p code, ol code, ul code {
 pre {
   background-color: #22292f;
   color: #dae1e7;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   overflow-y: auto;
-  font-size: .875rem;
+  font-size: .75rem;
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
-  margin-left: -2rem;
-  margin-right: -2rem;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
 }
 
 @media (min-width: 576px) {
@@ -5067,4 +5067,4 @@ a:not(.anchorjs-link) {
 }
 
 
-/*# sourceMappingURL=client.build.bcf49eda2efc4f8ad679.css.map*/
+/*# sourceMappingURL=client.build.76b83d33dbde1fe6be10.css.map*/
