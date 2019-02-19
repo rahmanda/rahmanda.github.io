@@ -5,7 +5,7 @@ module.exports = {
   buildPrefix: 'client.build',
   tmpDir: 'tmp',
   postDir: 'src/posts',
-  numOfRecentPosts: 5,
+  numOfRecentPosts: 10,
   tailwindConfig: 'src/tailwind.js',
   staticFilesDir: 'public',
   staticPages: [
