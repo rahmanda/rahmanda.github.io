@@ -1,14 +1,10 @@
 {
-  "name": "blog-v2",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "name": "@rahmanda/blog",
+  "version": "2.0.0",
+  "description": "Rahmanda's personal blog",
+  "author": "Rahmanda Wibowo <rahmandawibowo@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "ambercat": "^0.1.0-beta.1"
+    "ambercat": "^0.2.0"
   }
 }

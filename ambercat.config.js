@@ -12,6 +12,12 @@ module.exports = {
     { filename: 'index', title: 'Ambercat' },
     { filename: '404', title: '404' },
   ],
+  assetInjector(assetType, pageType) {
+    if (assetType === 'js' && pageType === 'post') {
+      return require('./disqus');
+    }
+    return '';
+  },
   configureWebpack(config, isServer) {
     return {};
   },
