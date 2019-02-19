@@ -2,7 +2,7 @@
 title: Unchaining Django - Part 1
 ---
 
-Pada tulisan kali ini, saya akan berbagi ilmu mengenai Django, yaitu *framework* web berbasis Python. Saya berasumsi bahwa kamu semua telah menginstall Django via virtualenv sebelumnya. Bagi kamu yang belum menginstall Django, silakan ikuti tutorial instalasi Django [disini](http://ambercat.rahmanda.net/django/instalasi-django/) terlebih dahulu sebelum mengikuti tutorial ini.  
+Pada tulisan kali ini, saya akan berbagi ilmu mengenai Django, yaitu *framework* web berbasis Python. Saya berasumsi bahwa kamu semua telah menginstall Django via virtualenv sebelumnya. Bagi kamu yang belum menginstall Django, silakan ikuti tutorial instalasi Django [disini](/instalasi-django.html) terlebih dahulu sebelum mengikuti tutorial ini.  
 
 Melalui serial tutorial ini, kita akan membuat sebuah aplikasi *polling* sederhana yang memiliki fitur :  
 1. Melihat *polling* dan memberikan *vote* pada *polling* tersebut.  
@@ -14,7 +14,7 @@ Yang dibahas pada tutorial ini adalah:
 2. Membuat `apps` pada projek Django.  
 
 ## Membuat projek baru
-Buka terminal/command line kamu, `cd` ke direktori virtualenv yang pernah kamu buat saat mengikuti [tutorial instalasi](http://ambercat.rahmanda.net/django/instalasi-django/). Setelah itu jalankan perintah berikut:  
+Buka terminal/command line kamu, `cd` ke direktori virtualenv yang pernah kamu buat saat mengikuti [tutorial instalasi](/instalasi-django.html). Setelah itu jalankan perintah berikut:  
 
 ```
 $ python .\Scripts\django-admin.py startproject mysite

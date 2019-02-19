@@ -11,7 +11,7 @@
   <body>
     <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-8 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a></nav> <main role="main"><section class="post"><h1>Instalasi Homestead Laravel</h1> <!----> <div class="text-sm mb-8 text-grey-darker"><time datetime="2015-02-18">
         18 February 2015
-      </time> <span class="mx-1">•</span> <span title="6 min read">6 min read</span></div> <article><p>Pada <a href="http://ambercat.rahmanda.net/collections/2015/02/16/homestead-pengembangan-laravel.html">artikel sebelumnya</a> saya sudah pernah menjelaskan beberapa keuntungan menggunakan Homestead untuk pengembangan <em>website</em> Laravel. Pada artikel ini saya akan menjelaskan langkah-langkah instalasi Homestead. Sebelum menginstal Homestead, ada beberapa hal yang perlu disiapkan terlebih dahulu. Unduh :  </p>
+      </time> <span class="mx-1">•</span> <span title="6 min read">6 min read</span></div> <article><p>Pada <a href="/homestead-pengembangan-laravel.html">artikel sebelumnya</a> saya sudah pernah menjelaskan beberapa keuntungan menggunakan Homestead untuk pengembangan <em>website</em> Laravel. Pada artikel ini saya akan menjelaskan langkah-langkah instalasi Homestead. Sebelum menginstal Homestead, ada beberapa hal yang perlu disiapkan terlebih dahulu. Unduh :  </p>
 <ul>
 <li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>  </li>
 <li><a href="https://www.vagrantup.com/downloads.html">Vagrant</a></li>
@@ -27,7 +27,7 @@
 <p>Sebenarnya, Homestead adalah paket box untuk Vagrant. Sehingga yang akan kita lakukan sekarang adalah menambah box Homestead pada Vagrant dengan menjalankan perintah:  </p>
 <pre><code>vagrant box add laravel/homestead</code></pre><p>Perintah di atas akan mengunduh <em>file</em> box Homestead secara otomatis dari <em>cloud service</em> Vagrant. Ukuran <em>file</em> box adalah sekitar 1 GB sehingga proses instalasi dan pengundunhan mungkin akan memakan waktu yang cukup lama. Apabila koneksi internet kamu kurang baik, abaikan perintah sebelumnya atau hentikan proses pengunduhan dengan mengetik <code>ctrl + c</code>. Untuk mengatasinya, kamu dapat mengunduh box Homestead secara manual dari <a href="https://vagrantcloud.com/laravel/boxes/homestead/versions/0.2.2/providers/virtualbox.box">https://vagrantcloud.com/laravel/boxes/homestead/versions/0.2.2/providers/virtualbox.box</a>. </p>
 <blockquote>
-<p>Pada saat saya menulis artikel ini, versi Homestead yang terbaru adalah 0.2.2. Anda dapat mengecek versi terbaru Homestead di <a href="https://vagrantcloud.com/laravel/boxes/homestead/versions/0.2.2/">sini</a> %}  </p>
+<p>Pada saat saya menulis artikel ini, versi Homestead yang terbaru adalah 0.2.2. Anda dapat mengecek versi terbaru Homestead di <a href="https://vagrantcloud.com/laravel/boxes/homestead/versions/0.2.2/">sini</a>  </p>
 </blockquote>
 <p>Setelah box terunduh, ganti direktori terminal ke direktori tempat menyimpan unduhan, lalu jalankan perintah berikut:  </p>
 <pre><code>vagrant box add laravel/homestead homestead-0-2-2.box</code></pre><blockquote>
@@ -84,9 +84,11 @@ keys:
 <p>Beri nama domain sesuai dengan nama situs yang kamu masukkan pada konfigurasi <code>site</code> Homestead.yaml pada <em>file</em> <code>hosts</code> komputer kamu. Untuk sistem operasi Linux dan Mac, <em>file</em> <code>hosts</code> dapat ditemukan pada direktori <code>/etc/hosts</code>. Sedangkan untuk Windows, <em>file</em> <code>hosts</code> terdapat pada direktori <code>C:\Windows\System32\drivers\etc\hosts</code>. Buka <em>file</em> <code>hosts</code> pada aplikasi edit teks, lalu tambahkan baris berikut ini:  </p>
 <pre><code>192.168.10.10  {nama aplikasi atau situs -- sama dengan pengaturan sites map di Homestead.yaml}.app</code></pre><p>Pastikan alamat IP-nya sama dengan konfigurasi Homestead.yaml kamu. Ganti direktori kamu sekarang ke direktori Homestead, lalu jalankan perintah dibawah ini:  </p>
 <pre><code>vagrant up</code></pre><p>Perintah di atas akan menjalankan box Homestead. Setelah perintah tersebut selesai dijalankan, kamu dapat membuka situs kamu di browser dengan url. </p>
-<pre><code>http:<span class="hljs-comment">//{nama aplikasi atau situs}.app</span></code></pre><blockquote>
-<p>Pada beberapa kasus, kamu mungkin tidak dapat melakukan koneksi ke homestead setelah menjalankan <code>vagrant up</code> karena terlalu banyak terjadi <em>ssh connection timeout</em>. Hal ini dapat diatasi dengan beberapa cara: 1. Periksa apakah komputer kamu telah menyalakan <em>virtualization technology</em> pada bios. Anda dapat mengikuti <a href="http://www.sysprobs.com/disable-enable-virtualization-technology-bios">artikel ini</a> untuk mengeset pengaturannya; 2. Apabila komputer kamu tidak mendukung <em>virtualization technology</em>, ikuti langkah-langkah pada jawaban di <a href="http://stackoverflow.com/questions/24823456/vagrant-laravel-homestead-doesnt-boot-up-windows-7">stackoverflow ini</a>.</p>
-</blockquote>
+<pre><code>http:<span class="hljs-comment">//{nama aplikasi atau situs}.app</span></code></pre><p>Pada beberapa kasus, kamu mungkin tidak dapat melakukan koneksi ke homestead setelah menjalankan <code>vagrant up</code> karena terlalu banyak terjadi <em>ssh connection timeout</em>. Hal ini dapat diatasi dengan beberapa cara: </p>
+<ol>
+<li>Periksa apakah komputer kamu telah menyalakan <em>virtualization technology</em> pada bios. Anda dapat mengikuti <a href="http://www.sysprobs.com/disable-enable-virtualization-technology-bios">artikel ini</a> untuk mengeset pengaturannya; </li>
+<li>Apabila komputer kamu tidak mendukung <em>virtualization technology</em>, ikuti langkah-langkah pada jawaban di <a href="http://stackoverflow.com/questions/24823456/vagrant-laravel-homestead-doesnt-boot-up-windows-7">stackoverflow ini</a>.</li>
+</ol>
 <h2 id="mematikan-homestead">Mematikan Homestead</h2>
 <p>Apabila kamu telah menyelesaikan projek kamu, kamu dapat mematikan Homestead dengan menjalankan perintah berikut :  </p>
 <pre><code>vagrant suspend</code></pre><p>Pada praktiknya, kamu harus menjalankan perintah tersebut sebelum kamu mematikan komputer. Anda dapat menjalankan Homestead kembali dengan perintah <code>vagrant up</code>.  </p>

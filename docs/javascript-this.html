@@ -58,7 +58,7 @@ multiplyWith.apply(someObject, [<span class="hljs-number">10</span>, <span class
 <blockquote>
 <p>Terdapat perbedaan antara <code>call</code> dan <code>apply</code> saat memasukkan parameter. Fungsi <code>call</code> menerima parameter secara eksplisit, sedangkan <code>apply</code> menerima parameter dalam bentuk <em>array</em>.</p>
 </blockquote>
-<p>Pada artikel <a href="http://ambercat.rahmanda.net/code/2016/12/31/closure-javascript.html">sebelumnya</a> saya sempat menjelaskan tentang <em>module pattern</em>. Dengan menggunakan <code>this</code> di dalam <em>method</em>, kita dapat memanggil <em>method</em> atau properti objek pada modul yang sama seperti yang diperlihatkan oleh contoh berikut.  </p>
+<p>Pada artikel <a href="/closure-javascript.html">sebelumnya</a> saya sempat menjelaskan tentang <em>module pattern</em>. Dengan menggunakan <code>this</code> di dalam <em>method</em>, kita dapat memanggil <em>method</em> atau properti objek pada modul yang sama seperti yang diperlihatkan oleh contoh berikut.  </p>
 <pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Cat</span>(<span class="hljs-params">type</span>) </span>{
     <span class="hljs-keyword">return</span> {
         <span class="hljs-attr">walking</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{

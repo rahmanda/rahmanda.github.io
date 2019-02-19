@@ -69,7 +69,7 @@ multiplyWith.apply(someObject, [10, 2]); // [40, 60, 100, 160, 260]
 
 > Terdapat perbedaan antara `call` dan `apply` saat memasukkan parameter. Fungsi `call` menerima parameter secara eksplisit, sedangkan `apply` menerima parameter dalam bentuk _array_.
 
-Pada artikel [sebelumnya](http://ambercat.rahmanda.net/code/2016/12/31/closure-javascript.html) saya sempat menjelaskan tentang _module pattern_. Dengan menggunakan `this` di dalam _method_, kita dapat memanggil _method_ atau properti objek pada modul yang sama seperti yang diperlihatkan oleh contoh berikut.  
+Pada artikel [sebelumnya](/closure-javascript.html) saya sempat menjelaskan tentang _module pattern_. Dengan menggunakan `this` di dalam _method_, kita dapat memanggil _method_ atau properti objek pada modul yang sama seperti yang diperlihatkan oleh contoh berikut.  
 
 ``` js
 function Cat(type) {

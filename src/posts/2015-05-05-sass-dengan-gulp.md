@@ -2,7 +2,7 @@
 title: Berkenalan dengan Sass + Gulp
 ---  
 
-Sass adalah *tools* yang biasa digunakan oleh para *front-end developer* masa kini untuk membuat CSS yang mudah untuk dikembangkan, dirawat serta dimodifikasi. Dalam istilah teknisnya, Sass tergolong kedalam *preprocessor CSS* (baca: [mengapa kita butuh *preprocessor* CSS](http://ambercat.rahmanda.net/design/2015/03/26/mengapa-kita-butuh-preprocessor-css.html)). Dengan Sass, kita dapat menggunakan beberapa fungsi yang memudahkan kita untuk membuat CSS.  
+Sass adalah *tools* yang biasa digunakan oleh para *front-end developer* masa kini untuk membuat CSS yang mudah untuk dikembangkan, dirawat serta dimodifikasi. Dalam istilah teknisnya, Sass tergolong kedalam *preprocessor CSS* (baca: [mengapa kita butuh *preprocessor* CSS](/mengapa-kita-butuh-preprocessor-css.html)). Dengan Sass, kita dapat menggunakan beberapa fungsi yang memudahkan kita untuk membuat CSS.  
 
 Program Sass pada awalnya ditulis dalam bahasa Ruby, sehingga untuk menggunakannya kita harus menginstal Ruby pada komputer kita. Namun saat ini kita dapat menggunakan Sass tanpa harus menginstal Ruby. Pada artikel ini, saya akan menjelaskan bagaimana cara menggunakan Sass dengan Gulp. Gulp sendiri adalah program *task runner* yang berbasis NodeJS. Pada Gulp terdapat *plugin* untuk Sass (gulp-sass) yang kinerjanya jauh lebih cepat dibandingkan dengan Sass yang dijalankan dengan Ruby. 
 

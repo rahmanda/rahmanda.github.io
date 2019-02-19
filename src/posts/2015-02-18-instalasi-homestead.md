@@ -2,7 +2,7 @@
 title: Instalasi Homestead Laravel
 ---
 
-Pada [artikel sebelumnya](http://ambercat.rahmanda.net/collections/2015/02/16/homestead-pengembangan-laravel.html) saya sudah pernah menjelaskan beberapa keuntungan menggunakan Homestead untuk pengembangan *website* Laravel. Pada artikel ini saya akan menjelaskan langkah-langkah instalasi Homestead. Sebelum menginstal Homestead, ada beberapa hal yang perlu disiapkan terlebih dahulu. Unduh :  
+Pada [artikel sebelumnya](/homestead-pengembangan-laravel.html) saya sudah pernah menjelaskan beberapa keuntungan menggunakan Homestead untuk pengembangan *website* Laravel. Pada artikel ini saya akan menjelaskan langkah-langkah instalasi Homestead. Sebelum menginstal Homestead, ada beberapa hal yang perlu disiapkan terlebih dahulu. Unduh :  
 
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)  
 - [Vagrant](https://www.vagrantup.com/downloads.html)
@@ -30,7 +30,7 @@ vagrant box add laravel/homestead
 
 Perintah di atas akan mengunduh *file* box Homestead secara otomatis dari *cloud service* Vagrant. Ukuran *file* box adalah sekitar 1 GB sehingga proses instalasi dan pengundunhan mungkin akan memakan waktu yang cukup lama. Apabila koneksi internet kamu kurang baik, abaikan perintah sebelumnya atau hentikan proses pengunduhan dengan mengetik `ctrl + c`. Untuk mengatasinya, kamu dapat mengunduh box Homestead secara manual dari [https://vagrantcloud.com/laravel/boxes/homestead/versions/0.2.2/providers/virtualbox.box](https://vagrantcloud.com/laravel/boxes/homestead/versions/0.2.2/providers/virtualbox.box). 
 
-> Pada saat saya menulis artikel ini, versi Homestead yang terbaru adalah 0.2.2. Anda dapat mengecek versi terbaru Homestead di [sini](https://vagrantcloud.com/laravel/boxes/homestead/versions/0.2.2/) %}  
+> Pada saat saya menulis artikel ini, versi Homestead yang terbaru adalah 0.2.2. Anda dapat mengecek versi terbaru Homestead di [sini](https://vagrantcloud.com/laravel/boxes/homestead/versions/0.2.2/)  
 
 Setelah box terunduh, ganti direktori terminal ke direktori tempat menyimpan unduhan, lalu jalankan perintah berikut:  
 
@@ -148,7 +148,10 @@ Perintah di atas akan menjalankan box Homestead. Setelah perintah tersebut seles
 http://{nama aplikasi atau situs}.app
 ```
 
-> Pada beberapa kasus, kamu mungkin tidak dapat melakukan koneksi ke homestead setelah menjalankan `vagrant up` karena terlalu banyak terjadi *ssh connection timeout*. Hal ini dapat diatasi dengan beberapa cara: 1. Periksa apakah komputer kamu telah menyalakan *virtualization technology* pada bios. Anda dapat mengikuti [artikel ini](http://www.sysprobs.com/disable-enable-virtualization-technology-bios) untuk mengeset pengaturannya; 2. Apabila komputer kamu tidak mendukung *virtualization technology*, ikuti langkah-langkah pada jawaban di [stackoverflow ini](http://stackoverflow.com/questions/24823456/vagrant-laravel-homestead-doesnt-boot-up-windows-7).
+Pada beberapa kasus, kamu mungkin tidak dapat melakukan koneksi ke homestead setelah menjalankan `vagrant up` karena terlalu banyak terjadi *ssh connection timeout*. Hal ini dapat diatasi dengan beberapa cara: 
+
+1. Periksa apakah komputer kamu telah menyalakan *virtualization technology* pada bios. Anda dapat mengikuti [artikel ini](http://www.sysprobs.com/disable-enable-virtualization-technology-bios) untuk mengeset pengaturannya; 
+2. Apabila komputer kamu tidak mendukung *virtualization technology*, ikuti langkah-langkah pada jawaban di [stackoverflow ini](http://stackoverflow.com/questions/24823456/vagrant-laravel-homestead-doesnt-boot-up-windows-7).
 
 ## Mematikan Homestead  
 

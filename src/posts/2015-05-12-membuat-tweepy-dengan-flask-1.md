@@ -17,7 +17,7 @@ Aplikasi Tweepy adalah aplikasi yang mirip dengan Twitter. Fitur-fitur yang akan
 - Melihat *timeline*  
 - Mem-*follow* pengguna lain  
 
-> Apabila kamu belum familiar dengan pemograman Python, silakan baca artikel [Berkenalan dengan Python](http://ambercat.rahmanda.net/code/2015/02/21/berkenalan-dengan-python.html) sebelum kamu mengikuti tutorial ini.
+Apabila kamu belum familiar dengan pemograman Python, silakan baca artikel [Berkenalan dengan Python](/berkenalan-dengan-python.html) sebelum kamu mengikuti tutorial ini.
 
 ## Persiapan
 
@@ -389,7 +389,7 @@ Tweepy
 {% endblock %}
 ```  
 
-###timeline.html  
+### timeline.html  
 
 ``` html
 <!-- timeline.html-->

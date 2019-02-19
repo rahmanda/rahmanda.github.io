@@ -2,7 +2,7 @@
 title: Membuat Tweepy dengan Flask - Episode 3
 ---  
 
-Pada tutorial Flask episode terakhir ini kita akan menambahkan fungsi pencarian sederhana dengan memanfaatkan _query_ `LIKE` terhadap `username`. Apabila kamu baru mengikuti tutorial ini, kamu bisa ikuti dulu tutorial [episode 1](http://ambercat.rahmanda.net/code/2015/05/12/membuat-tweepy-dengan-flask-1.html) dan [episode 2](http://ambercat.rahmanda.net/code/2015/11/22/membuat-tweepy-dengan-flask-2.html) terlebih dahulu.  
+Pada tutorial Flask episode terakhir ini kita akan menambahkan fungsi pencarian sederhana dengan memanfaatkan _query_ `LIKE` terhadap `username`. Apabila kamu baru mengikuti tutorial ini, kamu bisa ikuti dulu tutorial [episode 1](/membuat-tweepy-dengan-flask-1.html) dan [episode 2](/membuat-tweepy-dengan-flask-2.html) terlebih dahulu.  
 
 ## Menambahkan Route untuk Pencarian  
 

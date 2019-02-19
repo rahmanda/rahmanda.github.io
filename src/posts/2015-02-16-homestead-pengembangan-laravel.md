@@ -45,4 +45,4 @@ Saya sangat menyarankan kamu untuk mulai menggunakan Homestead apabila kamu ingi
 
 *Update*  
 
-Tutorial instalasi Homestead dapat dilihat di [sini](http://ambercat.rahmanda.net/collections/2015/02/18/instalasi-homestead.html).
+Tutorial instalasi Homestead dapat dilihat di [sini](/instalasi-homestead.html).
