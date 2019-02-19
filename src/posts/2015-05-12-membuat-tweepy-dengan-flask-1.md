@@ -299,17 +299,17 @@ Sebelumnya, buat *file* `layout.html` pada folder `templates` sebagai basis dari
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{% raw %}{% block title %} Welcome {% endblock %} - Tweepy</title>
+    <title>{% block title %} Welcome {% endblock %} - Tweepy</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
     <!-- blok body dapat kita manfaatkan untuk meng-inject kode html yang kita simpan pada file lain -->
-    {% raw %}{% block body %}{% endblock %}
+    {% block body %}{% endblock %}
   </body>
 </html>
 ```  
 
-Pada beberapa bagian dari kode html di atas ini, terlihat sintaks `{% raw %}{% %}` yang merupakan sintaks *templating* dari Jinja2. Jinja2 ini adalah librari yang sudah terdapat pada Flask.  
+Pada beberapa bagian dari kode html di atas ini, terlihat sintaks `{% %}` yang merupakan sintaks *templating* dari Jinja2. Jinja2 ini adalah librari yang sudah terdapat pada Flask.  
 
 Selanjutnya buat *file* `login.html` pada folder `templates`. Tulis kode di bawah ini pada `login.html`:  
 
@@ -331,9 +331,9 @@ Selanjutnya buat *file* `login.html` pada folder `templates`. Tulis kode di bawa
 {% endblock %}
 ```  
 
-Pada baris pertama, kita melakukan `extend` untuk memanfaatkan *file* `layout.html` yang telah kita buat sebelumnya. Dengan begitu, `login.html` juga memiliki kode yang terdapat pada `layout.html`. Saat server web Tweepy men-*generate* file html untuk *request* url `/login`, kode yang dituliskan di dalam `{% raw %}{% block body %}` pada `login.html` secara otomatis disesuaikan letaknya sesuai dengan deklarasi `{% raw %}{% block body %}` pada `layout.html`. Selain itu apa yang kita tulis pada `{% raw %}{% block title %}` di `login.html` juga secara otomatis disesuaikan letaknya sesuai dengan deklarasi `{% raw %}{% block title %}` pada `layout.html`.  
+Pada baris pertama, kita melakukan `extend` untuk memanfaatkan *file* `layout.html` yang telah kita buat sebelumnya. Dengan begitu, `login.html` juga memiliki kode yang terdapat pada `layout.html`. Saat server web Tweepy men-*generate* file html untuk *request* url `/login`, kode yang dituliskan di dalam `{% block body %}` pada `login.html` secara otomatis disesuaikan letaknya sesuai dengan deklarasi `{% block body %}` pada `layout.html`. Selain itu apa yang kita tulis pada `{% block title %}` di `login.html` juga secara otomatis disesuaikan letaknya sesuai dengan deklarasi `{% block title %}` pada `layout.html`.  
 
-Ada beberapa fungsi *template* lain yang kita gunakan pada `login.html`. Kita menggunakan fungsi `if` untuk mengecek apakah terdapat data `error` yang kita kirim lewat fungsi `render_template` pada *routing* `login.html`. Apabila ada, maka tag yang terdapat pada blok `{% raw %}{% if %}` akan di-*generate* oleh server. String `error` dapat kita cetak dengan mengapitnya di dalam *double braces* (`{% raw %}{{}}`).  
+Ada beberapa fungsi *template* lain yang kita gunakan pada `login.html`. Kita menggunakan fungsi `if` untuk mengecek apakah terdapat data `error` yang kita kirim lewat fungsi `render_template` pada *routing* `login.html`. Apabila ada, maka tag yang terdapat pada blok `{% if %}` akan di-*generate* oleh server. String `error` dapat kita cetak dengan mengapitnya di dalam *double braces* (`{{}}`).  
 
 Selanjutnya kita buat *template* yang lain untuk `home.html` dan `timeline.html`.  
 
