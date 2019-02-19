@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Instalasi Homestead Laravel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    
+<link href="/client.build.bcf49eda2efc4f8ad679.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-8 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a></nav> <main role="main"><section class="post"><h1>Instalasi Homestead Laravel</h1> <!----> <div class="text-sm mb-8 text-grey-darker"><time datetime="2015-02-18">
+        18 February 2015
+      </time> <span class="mx-1">•</span> <span title="6 min read">6 min read</span></div> <article><p>Pada <a href="http://ambercat.rahmanda.net/collections/2015/02/16/homestead-pengembangan-laravel.html">artikel sebelumnya</a> saya sudah pernah menjelaskan beberapa keuntungan menggunakan Homestead untuk pengembangan <em>website</em> Laravel. Pada artikel ini saya akan menjelaskan langkah-langkah instalasi Homestead. Sebelum menginstal Homestead, ada beberapa hal yang perlu disiapkan terlebih dahulu. Unduh :  </p>
+<ul>
+<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>  </li>
+<li><a href="https://www.vagrantup.com/downloads.html">Vagrant</a></li>
+<li><a href="http://git-scm.com/downloads">Git</a>  </li>
+</ul>
+<p>sesuai dengan sistem operasi yang kamu gunakan. Setelah semuanya selesai diunduh, lakukan instalasi secara berurutan untuk Virtualbox, Vagrant dan Git. Apabila kamu baru pertama kali menginstal Git untuk sistem operasi Windows, pastikan kamu mencentang pilihan &#39;Add Path to..&#39; saat instalasi. </p>
+<blockquote>
+<p>Saya menggunakan Ubuntu pada tutorial ini. Untuk pengguna Windows, beberapa perintah instalasi yang terkait dengan <code>bash</code> dan <code>ssh</code> dapat dijalankan pada Git Bash. Untuk pengaturan yang terkait dengan direktori dapat menyesuaikan dengan jenis OS yang digunakan. </p>
+</blockquote>
+<p>Pastikan kamu dapat menjalankan perintah ini di terminal kamu.  </p>
+<pre><code>vagrant -v</code></pre><p>Instalasi Vagrant biasanya akan secara otomatis menambahkan PATH pada sistem kamu. Apabila perintah tersebut tidak dikenali atau <em>error</em>, kamu mungkin perlu me-<em>restart</em> komputer kamu lalu coba jalankan kembali perintah tersebut (biasanya hal demikian terjadi pada Windows). </p>
+<h2 id="menambahkan-box-homestead-pada-vagrant">Menambahkan box Homestead pada Vagrant</h2>
+<p>Sebenarnya, Homestead adalah paket box untuk Vagrant. Sehingga yang akan kita lakukan sekarang adalah menambah box Homestead pada Vagrant dengan menjalankan perintah:  </p>
+<pre><code>vagrant box add laravel/homestead</code></pre><p>Perintah di atas akan mengunduh <em>file</em> box Homestead secara otomatis dari <em>cloud service</em> Vagrant. Ukuran <em>file</em> box adalah sekitar 1 GB sehingga proses instalasi dan pengundunhan mungkin akan memakan waktu yang cukup lama. Apabila koneksi internet kamu kurang baik, abaikan perintah sebelumnya atau hentikan proses pengunduhan dengan mengetik <code>ctrl + c</code>. Untuk mengatasinya, kamu dapat mengunduh box Homestead secara manual dari <a href="https://vagrantcloud.com/laravel/boxes/homestead/versions/0.2.2/providers/virtualbox.box">https://vagrantcloud.com/laravel/boxes/homestead/versions/0.2.2/providers/virtualbox.box</a>. </p>
+<blockquote>
+<p>Pada saat saya menulis artikel ini, versi Homestead yang terbaru adalah 0.2.2. Anda dapat mengecek versi terbaru Homestead di <a href="https://vagrantcloud.com/laravel/boxes/homestead/versions/0.2.2/">sini</a> %}  </p>
+</blockquote>
+<p>Setelah box terunduh, ganti direktori terminal ke direktori tempat menyimpan unduhan, lalu jalankan perintah berikut:  </p>
+<pre><code>vagrant box add laravel/homestead homestead-0-2-2.box</code></pre><blockquote>
+<p>Beberapa perintah atau pengaturan yang kamu lihat setelah ini ada yang dituliskan dengan kurung kurawal <code>{ }</code>. Tujuannya adalah ingin menkamui bahwa pengaturan tersebut dapat kamu ganti sesuai keinginan, dengan terlebih dahulu membaca keterangan yang ada di dalamnya. </p>
+</blockquote>
+<h2 id="menginstal-homestead-cli">Menginstal Homestead CLI</h2>
+<p>Lakukan <code>cd</code> ke direktori tempat kamu ingin menaruh semua projek Laravel, lalu jalankan perintah berikut: </p>
+<pre><code>git clone https:<span class="hljs-comment">//github.com/laravel/homestead.git Homestead</span></code></pre><p>Setelah unduhan selesai, masuk ke direktori Homestead lalu jalankan perintah <code>bash init.sh</code> untuk menginsialisasi <em>file</em> konfigurasi <code>Homestead.yaml</code>. <em>File</em> <code>Homestead.yaml</code> akan tersimpan pada direktori <code>~/.homestead</code>.  </p>
+<blockquote>
+<p>Letak direktori <code>.homestead</code> akan berbeda tergantung dengan sistem operasi yang kamu gunakan. Untuk windows kamu dapat menemukan direktori tersebut di <em>drive</em> <code>C:\</code>.</p>
+</blockquote>
+<h2 id="konfigurasi-spesifikasi-komputer-virtual">Konfigurasi spesifikasi komputer virtual</h2>
+<p>Homestead.yaml yang telah dihasilkan sebelumnya merupakan <em>file</em> konfigurasi untuk Homestead kamu. Sekarang buka <em>file</em> Homestead.yaml pada aplikasi <em>text editor</em> kamu. Pada baris awal Homestead.yaml akan terlihat pengaturan seperti dibawah ini:  </p>
+<pre><code><span class="hljs-selector-tag">---</span>
+<span class="hljs-selector-tag">ip</span>: "192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.10</span>"
+<span class="hljs-selector-tag">memory</span>: 2048
+<span class="hljs-selector-tag">cpus</span>: 1</code></pre><p>Konfigurasi pada bagian ini sudah sangat jelas. Untuk <code>ip</code> kamu bisa menggantikannya dengan alamat ip komputer kamu, untuk <code>memory</code> kamu bisa menggantikannya dengan kapasitas ram komputer, sedangkan untuk <code>cpus</code> kamu bisa menggantikannya dengan jumlah <em>core</em> pada processor komputer kamu. Namun pada tutorial ini, kamu dapat mengabaikan konfigurasi tersebut dengan nilai <em>default</em>.  </p>
+<h2 id="membuat-ssh-key">Membuat SSH key</h2>
+<p>Untuk dapat terhubung ke Homestead, kita perlu membuat SSH key. Anda bisa membuatnya dengan menjalankan perintah ini di terminal:  </p>
+<pre><code>ssh-keygen -t rsa -C <span class="hljs-string">"{nama user}@homestead"</span></code></pre><p>Apabila terminal meminta kamu untuk memasukkan alamat direktori atau <em>password</em>, kamu dapat langsung menekan tombol &#39;enter&#39; pada <em>keyboard</em>.  </p>
+<pre><code>user@PC:~$ ssh-keygen -t rsa -C user@homestead
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/user/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/user/.ssh/id_rsa.
+Your public key has been saved in /home/user/.ssh/id_rsa.pub.
+The key fingerprint is:
+a7:49:79:1c:cb:fa:d0:de:f6:c3:3e:4f:ef:7e:ae:60 user@homestead
+The key&#39;s randomart image is:
++--[ RSA 2048]----+
+|                 |
+|                 |
+|          .      |
+|         + o     |
+|        S *      |
+|       . B       |
+|        = . E.  .|
+|         + o..+.o|
+|          o..o+OB|
++-----------------+</code></pre><p>Apabila kamu menggunakan Windows, kamu dapat menjalankan perintah tersebut pada Git Bash. Setelah SSH key selesai dibuat, masukkan alamat direktori tempat menyimpan <em>file</em> SSH key pada pengaturan di bawah ini:  </p>
+<pre><code>authorize: ~<span class="hljs-regexp">/.ssh/i</span>d_rsa.pub 
+
+keys:
+    - ~<span class="hljs-regexp">/.ssh/i</span>d_rsa </code></pre><h2 id="mapping-folder-projek-homestead"><em>Mapping</em> folder projek Homestead</h2>
+<p>Agar projek Laravel pada direktori lokal kamu bisa dijalankan pada Homestead, kamu harus memetakan direktori projek kamu. Asumsinya adalah semua projek Laravel kamu terletak pada satu direktori yang sama. Pada pengaturan berikut:   </p>
+<pre><code>folders:
+    - map: ~/{lokasi kamu menyimpan kumpulan projek laravel}
+      to: /home/vagrant/projects</code></pre><p>Pengaturan <code>to</code> menunjukkan direktori projek pada Homestead. Untuk tutorial ini kamu tidak perlu mengganti pengaturan <code>to</code>. Yang perlu dipahami adalah direktori yang alamatnya kamu set ke <code>to</code> nanti akan tersinkron secara otomatis dengan direktori yang alamatnya dideklarasikan di <code>map</code>.  </p>
+<p>Setelah itu kamu harus mengganti konfigurasi pada bagian <code>sites</code>:  </p>
+<pre><code>sites:
+    - map: {nama aplikasi atau situs}.app
+      to: <span class="hljs-regexp">/home/</span>vagrant/projects/{nama folder projek}/public</code></pre><h2 id="menjalankan-homestead">Menjalankan Homestead</h2>
+<p>Beri nama domain sesuai dengan nama situs yang kamu masukkan pada konfigurasi <code>site</code> Homestead.yaml pada <em>file</em> <code>hosts</code> komputer kamu. Untuk sistem operasi Linux dan Mac, <em>file</em> <code>hosts</code> dapat ditemukan pada direktori <code>/etc/hosts</code>. Sedangkan untuk Windows, <em>file</em> <code>hosts</code> terdapat pada direktori <code>C:\Windows\System32\drivers\etc\hosts</code>. Buka <em>file</em> <code>hosts</code> pada aplikasi edit teks, lalu tambahkan baris berikut ini:  </p>
+<pre><code>192.168.10.10  {nama aplikasi atau situs -- sama dengan pengaturan sites map di Homestead.yaml}.app</code></pre><p>Pastikan alamat IP-nya sama dengan konfigurasi Homestead.yaml kamu. Ganti direktori kamu sekarang ke direktori Homestead, lalu jalankan perintah dibawah ini:  </p>
+<pre><code>vagrant up</code></pre><p>Perintah di atas akan menjalankan box Homestead. Setelah perintah tersebut selesai dijalankan, kamu dapat membuka situs kamu di browser dengan url. </p>
+<pre><code>http:<span class="hljs-comment">//{nama aplikasi atau situs}.app</span></code></pre><blockquote>
+<p>Pada beberapa kasus, kamu mungkin tidak dapat melakukan koneksi ke homestead setelah menjalankan <code>vagrant up</code> karena terlalu banyak terjadi <em>ssh connection timeout</em>. Hal ini dapat diatasi dengan beberapa cara: 1. Periksa apakah komputer kamu telah menyalakan <em>virtualization technology</em> pada bios. Anda dapat mengikuti <a href="http://www.sysprobs.com/disable-enable-virtualization-technology-bios">artikel ini</a> untuk mengeset pengaturannya; 2. Apabila komputer kamu tidak mendukung <em>virtualization technology</em>, ikuti langkah-langkah pada jawaban di <a href="http://stackoverflow.com/questions/24823456/vagrant-laravel-homestead-doesnt-boot-up-windows-7">stackoverflow ini</a>.</p>
+</blockquote>
+<h2 id="mematikan-homestead">Mematikan Homestead</h2>
+<p>Apabila kamu telah menyelesaikan projek kamu, kamu dapat mematikan Homestead dengan menjalankan perintah berikut :  </p>
+<pre><code>vagrant suspend</code></pre><p>Pada praktiknya, kamu harus menjalankan perintah tersebut sebelum kamu mematikan komputer. Anda dapat menjalankan Homestead kembali dengan perintah <code>vagrant up</code>.  </p>
+<h2 id="penutup">Penutup</h2>
+<p>Dengan mengikuti langkah-langkah tersebut, kamu dapat menggunakan Homestead sebagai server virtual untuk <em>website</em> Laravel. Tentunya masih banyak lagi fitur-fitur Homestead yang dapat dieksplorasi secara mandiri. Apabila kamu memiliki pertanyaan atau kesulitan dalam menginstal Homestead, silakan tinggalkan komentar pada kolom yang tersedia.</p>
+</article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/homestead-pengembangan-laravel.html">← Homestead - Lingkungan Pengembangan Laravel</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/berkenalan-dengan-python.html">Berkenalan dengan Python →</a></div></footer></main></div>
+    
+<script src="/client.build.ea0a2031f2680983b234.js" type="text/javascript"></script>
+  </body>
+</html>

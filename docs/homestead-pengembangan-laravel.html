@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Homestead - Lingkungan Pengembangan Laravel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    
+<link href="/client.build.bcf49eda2efc4f8ad679.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-8 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a></nav> <main role="main"><section class="post"><h1>Homestead - Lingkungan Pengembangan Laravel</h1> <!----> <div class="text-sm mb-8 text-grey-darker"><time datetime="2015-02-16">
+        16 February 2015
+      </time> <span class="mx-1">•</span> <span title="3 min read">3 min read</span></div> <article><p>Sekarang ini <em>web framework</em> <a href="http://laravel.com">Laravel</a> sangat populer di kalangan pengembang web di Indonesia. Banyak yang berpendapat bahwa Laravel sangat mudah untuk digunakan, mudah untuk dipelajari dan skalabilitasnya sangat baik. Tidak berhenti sampai di situ, Laravel juga menyediakan paket lingkungan pengembangan <em>website</em> lokal (<a href="http://laravel.com/docs/4.2/homestead">Homestead</a>). Homestead mirip dengan XAMPP/LAMP namun berbasis <a href="https://www.vagrantup.com">Vagrant</a> dan <a href="https://www.virtualbox.org">VirtualBox</a>. </p>
+<h2 id="mengapa-kita-perlu-homestead">Mengapa Kita Perlu Homestead?</h2>
+<p>Meskipun sangat bagus, masih banyak juga yang berpendapat bahwa instalasi Homestead lebih rumit dibandingkan dengan XAMPP/LAMP. Mengapa kita perlu menggunakan Homestead toh dengan XAMPP/LAMP juga sudah cukup untuk mengembangkan web Laravel secara lokal? Di bawah ini saya uraikan beberapa alasan mengapa kita perlu Homestead.  </p>
+<h3 id="1-homestead-sangat-mencerminkan-pengembangan-website-pada-server-yang-sesungguhnya">1. Homestead sangat mencerminkan pengembangan <em>website</em> pada server yang sesungguhnya.</h3>
+<p>Bagi yang biasa membuat <em>website</em> dengan XAMPP biasanya akan sulit apabila ingin melakukan pengaturan pada server karena tidak terbiasa untuk mengembangkan <em>website</em> di server. Selain itu, performa <em>website</em> akan bias karena tergantung dengan performa komputer yang kita miliki. Apa yang sudah kita buat di lokal dengan XAMPP/LAMP belum tentu akan berjalan lancar di server. Dengan Homestead, kita seolah-olah mengembangkan <em>website</em> pada server. Kita akan lebih familiar dengan lingkungan server karena praktik pengembangan <em>website</em> menggunakan Homestead mirip dengan pengembangan <em>website</em> di server. Karena lingkungannya sangat mirip dengan server, kecil kemungkinan <em>website</em> yang kita buat tidak berjalan dengan baik di server, apalagi jika spesifikasi server kita lebih baik daripada spesifikasi virtualbox Homestead.  </p>
+<h3 id="2-homestead-lebih-lengkap">2. Homestead lebih lengkap.</h3>
+<p>Paket XAMPP/LAMP biasanya hanya terdiri dari Apache, MySQL, PHP dan Perl. Coba kita bandingkan dengan <em>software-software</em> yang ditawarkan oleh Homestead:  </p>
+<ul>
+<li>Ubuntu 14.04</li>
+<li>PHP 5.6</li>
+<li>HHVM</li>
+<li>Nginx</li>
+<li>MySQL</li>
+<li>Posgres</li>
+<li>Node.JS (Bower, Grunt dan Gulp)</li>
+<li>Redis</li>
+<li>Memcached</li>
+<li>Beanstalkd</li>
+<li>Laravel Envoy</li>
+<li>Fabric + HipChat Extension  </li>
+</ul>
+<p>Selain dari <em>software</em> dasar pengembangan <em>website</em> PHP, ada <em>software</em> tambahan penunjang performa <em>website</em> seperti <em>caching</em> (Redis, Memcached) dan <em>queue</em> (Beanstalkd). Mungkin beberapa dari <em>software</em> pada daftar di atas belum akan kita gunakan, tetapi apabila suatu saat kita membutuhkan <em>software-software</em> tersebut, kita tidak akan direpotkan lagi dengan instalasi yang rumit.  </p>
+<h3 id="3-bekerja-dalam-tim-menjadi-lebih-mudah">3. Bekerja dalam tim menjadi lebih mudah.</h3>
+<p>Tidak ada lagi saling <em>ngomel</em> antar anggota tim karena <em>website</em> tidak berjalan pada komputer salah satu atau lebih anggota. Dengan menggunakan Homestead, spesifikasi <em>software</em> atau versi yang digunakan akan seragam (tentu saja berlaku pada versi Homestead yang sama). Selain itu, Homestead dapat dijalankan pada hampir semua OS sehingga kita tidak perlu melakukan penyeragaman sistem operasi. Seorang desainer web tidak perlu lagi pusing berurusan dengan pengaturan yang aneh-aneh karena programmer dapat dengan mudah menyamakan pengaturan Homestead.  </p>
+<h3 id="4-komputer-kita-akan-lebih-bersih">4. Komputer kita akan lebih bersih.</h3>
+<p>Sebenarnya poin ini mungkin lebih subjektif. Saya lebih suka menggunakan Homestead dibandingkan XAMPP/LAMP karena komputer kita akan bersih dari fail-fail instalasi Apache, PHP, MySQL dkk. Selain itu karena saya adalah <em>front-end</em> programmer juga, saya tidak perlu lagi menginstal Node.JS beserta tambahan-tambahannya yang akan mengotori (?) komputer saya karena sudah tersedia di Homestead. Yang tertinggal di komputer kita hanya instalasi VirtualBox saja. </p>
+<hr>
+<p>Saya sangat menyarankan kamu untuk mulai menggunakan Homestead apabila kamu ingin serius mengembangkan <em>website</em> dengan Laravel, baik perorangan maupun dalam tim. Dengan Homestead, kita akan lebih fokus dan lebih produktif dalam mengembangkan <em>website</em> tanpa dipusingkan dengan pengaturan-pengaturan yang <em>njelimet</em>. Untuk kedepannya saya juga akan memberikan tutorial instalasi Homestead. Semoga artikel ini dapat membantu!. </p>
+<p><em>Update</em>  </p>
+<p>Tutorial instalasi Homestead dapat dilihat di <a href="http://ambercat.rahmanda.net/collections/2015/02/18/instalasi-homestead.html">sini</a>.</p>
+</article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/ensiklopedia-projek-kuliah.html">← Ensiklopedia Projek Kuliah Ilkomerz</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/instalasi-homestead.html">Instalasi Homestead Laravel →</a></div></footer></main></div>
+    
+<script src="/client.build.ea0a2031f2680983b234.js" type="text/javascript"></script>
+  </body>
+</html>

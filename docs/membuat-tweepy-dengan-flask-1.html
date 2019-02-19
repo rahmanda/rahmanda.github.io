@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Membuat Tweepy dengan Flask - Episode 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    
+<link href="/client.build.bcf49eda2efc4f8ad679.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-8 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a></nav> <main role="main"><section class="post"><h1>Membuat Tweepy dengan Flask - Episode 1</h1> <!----> <div class="text-sm mb-8 text-grey-darker"><time datetime="2015-05-12">
+        12 May 2015
+      </time> <span class="mx-1">•</span> <span title="13 min read">13 min read</span></div> <article><p>Mungkin kamu telah mengenal beberapa <em>web framework</em> berbasis Python seperti <a href="https://djangoproject.com">Django</a>. Hal ini tidak mengherankan karena <em>framework</em> tersebut sangat populer dan sudah banyak situs-situs besar yang dibuat dengan menggunakan <em>framework</em> tersebut. Namun untuk membuat projek kecil-kecilan dengan Django mungkin agak kurang sesuai karena banyak fitur Django yang sebenarnya tidak kita butuhkan. Selain itu mungkin juga projek kecil kita tidak dapat selesai dengan waktu yang singkat. Bagaimana dengan Flask?  </p>
+<p><strong>Flask</strong> adalah <em>microframework</em> yang dipelopori oleh <a href="https://github.com/mitsuhiko">Armin Ronacher</a>. Bila dibandingkan dengan Django, Flask jauh lebih ringan dan cepat karena Flask dibuat dengan ide menyederhanakan inti <em>framework</em>-nya seminimal mungkin. Dengan <em>tagline</em> *&quot;web development, one drop at a time&quot;*, Flask dapat membantu kita membuat situs dengan sangat cepat meskipun dengan librari yang sederhana.  </p>
+<p>Pada Flask, kita tidak akan menemukan konsep-konsep besar seperti MVC. Namun Flask masih menyediakan fungsi-fungsi dasar seperti <em>routing</em>, <em>rendering</em>, <em>templating</em>, <em>sessions</em>, <em>error handling</em> dan <em>logging</em>. Untuk mengenal lebih dalam mengenai Flask, pada artikel kali ini kita akan membuat aplikasi <em>website</em> sederhana yang akan melibatkan beberapa fitur-fitur dasar pada Flask.  </p>
+<h2 id="tweepy">Tweepy</h2>
+<p>Aplikasi Tweepy adalah aplikasi yang mirip dengan Twitter. Fitur-fitur yang akan kita implementasikan pada Tweepy adalah:  </p>
+<ul>
+<li><em>Register</em>  </li>
+<li><em>Login</em> + <em>Logout</em>  </li>
+<li>Menambahkan tweet  </li>
+<li>Melihat <em>timeline</em>  </li>
+<li>Mem-<em>follow</em> pengguna lain  </li>
+</ul>
+<blockquote>
+<p>Apabila kamu belum familiar dengan pemograman Python, silakan baca artikel <a href="http://ambercat.rahmanda.net/code/2015/02/21/berkenalan-dengan-python.html">Berkenalan dengan Python</a> sebelum kamu mengikuti tutorial ini.</p>
+</blockquote>
+<h2 id="persiapan">Persiapan</h2>
+<p>Lakukan instalasi Flask dengan menjalankan perintah berikut:  </p>
+<pre><code>pip install flask</code></pre><p>Untuk mengecek apakah Flask telah terinstal dengan baik, kamu dapat menjalankan perintah ini:  </p>
+<pre><code>pip freeze | grep Flask </code></pre><p>Setelah itu buatlah folder dengan nama <code>tweepy</code> untuk menyimpan <em>file-file</em> projek Tweepy.</p>
+<h2 id="membuat-struktur-projek">Membuat struktur projek</h2>
+<p>Buat folder <code>static</code> dan <code>templates</code> di dalam folder <code>tweepy</code>. Folder <code>static</code> digunakan untuk menyimpan <em>file-file</em> gambar dan css, sedangkan folder <code>templates</code> digunakan untuk menyimpan <em>file-file</em> html. Setelah itu, buat <em>file</em> <code>schema.sql</code> dan <code>tweepy.py</code> satu level dengan folder <code>static</code> dan <code>templates</code>. Struktur projek kamu akan terlihat seperti di bawah ini:</p>
+<pre><code><span class="hljs-selector-tag">tweepy</span>\
+<span class="hljs-selector-tag">---</span> <span class="hljs-selector-tag">static</span>\
+<span class="hljs-selector-tag">---</span> <span class="hljs-selector-tag">templates</span>\
+<span class="hljs-selector-tag">---</span> <span class="hljs-selector-tag">schema</span><span class="hljs-selector-class">.sql</span>
+<span class="hljs-selector-tag">---</span> <span class="hljs-selector-tag">tweepy</span><span class="hljs-selector-class">.py</span></code></pre><h2 id="membuat-skema-database">Membuat skema <em>database</em></h2>
+<p>Karena aplikasi <em>website</em>-nya sederhana, kita cukup menggunakan <code>sqlite3</code> sebagai <em>database</em>. Untuk menulis skema <em>database</em>-nya, editlah <em>file</em> <code>schema.sql</code> pada aplikasi <em>text editor</em> favorit kamu. Kita akan membuat tiga tabel, yaitu tabel <code>users</code> untuk menyimpan data pengguna, tabel <code>followers</code> untuk menyimpan data <em>followers</em> dan tabel <code>tweet</code> untuk menyimpan tweet-tweet. Salin kode di bawah ini pada <code>schema.sql</code>:</p>
+<pre><code>drop table <span class="hljs-keyword">if</span> exists users;
+create table users (
+  id integer primary key autoincrement,
+  username text not <span class="hljs-literal">null</span>,
+  fullname text not <span class="hljs-literal">null</span>,
+  password text not <span class="hljs-literal">null</span>
+);
+
+drop table <span class="hljs-keyword">if</span> exists followers;
+create table followers (
+  user_id integer,
+  follower_id integer
+);
+
+drop table <span class="hljs-keyword">if</span> exists tweets;
+create table tweets (
+  id integer primary key autoincrement,
+  user_id integer not <span class="hljs-literal">null</span>,
+  tweet text not <span class="hljs-literal">null</span>,
+  pub_date integer
+);</code></pre><h2 id="impor-librari-librari-yang-dibutuhkan">Impor librari-librari yang dibutuhkan</h2>
+<p>Buka <em>file</em> <code>tweepy.py</code> pada aplikasi <code>text editor</code>, lalu tulis kode di bawah ini:  </p>
+<pre><code><span class="hljs-keyword">import</span> sqlite3
+<span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, request, session, g, redirect, url_for, \
+  abort, render_template, flash
+<span class="hljs-keyword">from</span> contextlib <span class="hljs-keyword">import</span> closing</code></pre><p>Potongan kode di atas berfungsi untuk mengimpor librari-librari yang dibutuhkan pada aplikasi kita. Pada baris pertama, kita mengimpor <code>sqlite3</code> untuk manajemen <em>database</em>. Pada baris kedua, kita mengimpor fitur-fitur utama dari <code>Flask</code> yang nantinya akan kita gunakan untuk membuat aplikasi Tweepy.  </p>
+<h2 id="menulis-konfigurasi">Menulis konfigurasi</h2>
+<p>Pada baris kode selanjutnya, salin kode di bawah ini:  </p>
+<pre><code># konfigurasi umum
+DATABASE = &#39;/tmp/tweepy.db&#39;
+DEBUG = True
+SECRET_KEY = &#39;abcdefghijklmnopqrstuvwxyz0123456789&#39;
+PER_PAGE = 30</code></pre><p>Ada empat konfigurasi yang kita perlukan, yaitu <code>DATABASE</code>, <code>DEBUG</code>, <code>SECRET_KEY</code>, dan <code>PER_PAGE</code>. <code>DATABASE</code> diisikan dengan alamat direktori tempat menyimpan <em>file</em> <code>sqlite</code>. Variabel <code>DEBUG</code> diset dengan nilai <code>True</code> supaya kita dapat lebih mudah mempelajari <em>error</em> yang mungkin terjadi pada aplikasi kita. Variabel <code>PER_PAGE</code> diisi dengan nilai yang menunjukkan jumlah tweet maksimum yang kita ambil dari database.  </p>
+<blockquote>
+<p>Untuk pengguna Windows, set <code>DATABASE</code> dengan alamat direktori absolut, misalkan <code>C:/</code>.</p>
+</blockquote>
+<h2 id="membuat-objek-flask">Membuat objek Flask</h2>
+<p>Untuk menggunakan <em>framework</em> Flask, kita harus membuat objek Flask dengan menuliskan kode di bawah ini:  </p>
+<pre><code># Deklarasi aplikasi Flask
+app = Flask(__name__)
+app.config.from_object(__name__)</code></pre><p>Pada baris pertama, kita memasukkan objek Flask ke dalam variabel <code>app</code>, sedangkan pada baris kedua kita menginisialisasi konfigurasi yang sudah kita tulis sebelumnya.  </p>
+<blockquote>
+<p>Semua variabel yang dituliskan dalam bentuk kapital akan dianggap sebagai variabel konfigurasi oleh Flask.  </p>
+</blockquote>
+<h2 id="membuat-fungsi-untuk-terhubung-ke-database">Membuat fungsi untuk terhubung ke <em>database</em></h2>
+<p>Setiap kali kita ingin melakukan kueri ke <em>database</em>, sebelumnya kita harus membuka koneksi terlebih dahulu dengan <em>database</em>. Oleh karena itu kita perlu membuat fungsi yang dapat kita gunakan untuk melakukan koneksi <em>database</em>. Kita dapat membuatnya seperti pada kode berikut ini:  </p>
+<pre><code># fungsi koneksi database
+def connect_db():
+  db = sqlite3.connect(app.config[&#39;DATABASE&#39;])
+  db.row_factory = sqlite3.Row
+  return db</code></pre><p>Pada baris pertama dari fungsi ini, kita melakukan koneksi <em>database</em> dengan memanggil fungsi <code>sqlite3.connect()</code> dan memasukkan parameter berupa konfigurasi sesuai dengan yang kita tulis sebelumnya. Keluaran dari fungsi <code>sqlite3.connect()</code> kita masukkan ke dalam variabel lokal <code>db</code>. Pada baris kedua, kita mengeset koneksi database agar hasil kueri lebih mudah untuk ditransformasi menjadi array <em>hashmap</em>.  </p>
+<h2 id="membuat-fungsi-inisialisasi-database">Membuat fungsi inisialisasi <em>database</em></h2>
+<p>Kita belum memiliki tabel apapun pada <em>database</em> kita. Untuk menginisialisasinya, buat fungsi seperti yang terlihat pada kode di bawah ini:  </p>
+<pre><code># fungsi inisialisasi tabel pada database
+def init_db():
+  with closing(connect_db()) as db:
+    with app.open_resource(&#39;schema.sql&#39;, mode=&#39;r&#39;) as f:
+      db.cursor().executescript(f.read())
+    db.commit()</code></pre><p>Setelah itu simpan <em>file</em> tweepy.py dan lakukan inisialisasi <em>database</em> dengan menjalankan perintah seperti di bawah ini pada terminal.  </p>
+<pre><code>$ python
+Python <span class="hljs-number">2.7</span><span class="hljs-number">.6</span> (<span class="hljs-keyword">default</span>, Mar <span class="hljs-number">22</span> <span class="hljs-number">2014</span>, <span class="hljs-number">22</span>:<span class="hljs-number">59</span>:<span class="hljs-number">56</span>) 
+[GCC <span class="hljs-number">4.8</span><span class="hljs-number">.2</span>] on linux2
+Type <span class="hljs-string">"help"</span>, <span class="hljs-string">"copyright"</span>, <span class="hljs-string">"credits"</span> or <span class="hljs-string">"license"</span> <span class="hljs-keyword">for</span> more information.
+&gt;&gt;&gt; <span class="hljs-keyword">from</span> tweepy <span class="hljs-keyword">import</span> init_db
+&gt;&gt;&gt; init_db()</code></pre><p>Perintah di atas menghasilkan <em>file</em> <code>tweepy.db</code> pada alamaat direktori yang kamu tulis di variabel <code>DATABASE</code>.</p>
+<h2 id="membuat-fungsi-kueri-database">Membuat fungsi kueri <em>database</em></h2>
+<p>Untuk melakukan kueri pada <em>database</em>, buat fungsi seperti kode berikut ini:  </p>
+<pre><code># fungsi untuk melakukan query
+def query_db(query, args=(), one=False):
+  db = connect_db()
+  cur = db.execute(query, args)
+  rv = cur.fetchall()
+  db.close()
+  return (rv[0] if rv else None) if one else rv</code></pre><p>Pada fungsi <code>query_db()</code>, kita membuat 3 parameter, yaitu <code>query</code> sebagai string kuerinya, <code>args</code> untuk menyimpan array argumen yang digunakan pada fungsi <code>db.execute()</code>, dan <code>one</code> dengan nilai default <code>False</code> untuk mengeset apakah array kueri yang dikembalikan hanya satu atau seluruhnya.  </p>
+<h2 id="membuat-routing">Membuat <em>routing</em></h2>
+<p>Sekarang saatnya membuat <em>routing</em> pada aplikasi kita. Tulis (atau salin) kode di bawah ini:  </p>
+<pre><code># routing
+@app.route(&#39;/&#39;)
+def home():
+  if &#39;user_id&#39; in session:
+    return redirect(url_for(&#39;timeline&#39;))
+  return render_template(&#39;home.html&#39;)
+
+@app.route(&#39;/timeline&#39;)
+def timeline():
+  if &#39;user_id&#39; not in session:
+    return redirect(url_for(&#39;public_timeline&#39;))
+  return render_template(&#39;timeline.html&#39;, tweets=query_db(&#39;&#39;&#39;
+    select tweets.*, users.* from tweets, users
+    where tweets.user_id = users.id and users.id = ?
+    order by tweets.pub_date desc limit ?&#39;&#39;&#39;, 
+    [session[&#39;user_id&#39;], app.config[&#39;PER_PAGE&#39;]]), test=query_db(&#39;&#39;&#39;
+    select * from users where username = &#39;ambercat&#39;
+    &#39;&#39;&#39;))
+
+@app.route(&#39;/public_timeline&#39;)
+def public_timeline():
+  return render_template(&#39;timeline.html&#39;, tweets=query_db(&#39;&#39;&#39;
+    select tweets.*, users.* from tweets, users
+    where tweets.user_id = users.id order by tweets.pub_date desc limit ?&#39;&#39;&#39;,
+    [app.config[&#39;PER_PAGE&#39;]]))
+
+@app.route(&#39;/add_tweet&#39;, methods=[&#39;POST&#39;])
+def add_tweet():
+  if &#39;user_id&#39; not in session:
+    abort(401)
+  if request.form[&#39;tweet&#39;]:
+    db = connect_db()
+    db.execute(&#39;&#39;&#39;insert into tweets (user_id, tweet, pub_date)
+      values (?, ?, ?)&#39;&#39;&#39;, (session[&#39;user_id&#39;], request.form[&#39;tweet&#39;],
+                            int(time.time())))
+    db.commit()
+    db.close()
+    flash(&#39;Your tweet has been added&#39;)
+  return redirect(url_for(&#39;timeline&#39;))
+
+@app.route(&#39;/login&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;])
+def login():
+  if &#39;user_id&#39; in session:
+    return redirect(url_for(&#39;timeline&#39;))
+  error = None
+  if request.method == &#39;POST&#39;:
+    user = query_db(&#39;&#39;&#39;select * from users where username = ?&#39;&#39;&#39;,
+      [request.form[&#39;username&#39;]], one=True)
+    if user is None:
+      error = &#39;Invalid username&#39;
+    elif not check_password_hash(user[3], request.form[&#39;password&#39;]):
+      error = &#39;Invalid password&#39;
+    else :
+      flash(&#39;You were successfully logged in&#39;)
+      session[&#39;user_id&#39;] = user[0]
+      session[&#39;username&#39;] = user[1]
+      return redirect(url_for(&#39;timeline&#39;))
+  return render_template(&#39;login.html&#39;, error=error)
+
+@app.route(&#39;/register&#39;, methods=[&#39;POST&#39;])
+def register():
+  if &#39;user_id&#39; in session:
+    return redirect(url_for(&#39;timeline&#39;))
+  error = None
+  if request.method == &#39;POST&#39;:
+    if not request.form[&#39;username&#39;]:
+      error = &#39;Please enter your username&#39;
+    elif not request.form[&#39;fullname&#39;]:
+      error = &#39;Please enter your fullname&#39;
+    elif not request.form[&#39;password&#39;]:
+      error = &#39;Please enter your password&#39;
+    elif request.form[&#39;password&#39;] != request.form[&#39;password2&#39;]:
+      error = &#39;The two password that you entered didn\&#39;t match&#39;
+    elif get_user_id(request.form[&#39;username&#39;]) is not None:
+      error = &#39;The username is already taken&#39;
+    else:
+      db = connect_db()
+      db.execute(&#39;&#39;&#39;insert into users (
+        username, fullname, password) values (?, ?, ?)&#39;&#39;&#39;,
+        (request.form[&#39;username&#39;], request.form[&#39;fullname&#39;],
+         generate_password_hash(request.form[&#39;password&#39;])))
+      db.commit()
+      db.close()
+      flash(&#39;You were successfully registered&#39;)
+      return redirect(url_for(&#39;login&#39;))
+
+@app.route(&#39;/logout&#39;)
+def logout():
+  session.pop(&#39;user_id&#39;, None)
+  flash(&#39;You were successfully logged out&#39;)
+  return redirect(url_for(&#39;public_timeline&#39;))</code></pre><p>Pada dasarnya semua fungsi <em>routing</em> diawali dengan fungsi <code>@app.route()</code> satu baris sebelum deklarasi fungsinya. Selain itu semua fungsi <em>routing</em> dapat diakses secara publik melalui alamat url yang kita tulis sebagai <em>input</em> pada <code>@app.route()</code>.  </p>
+<p>Untuk melakukan pengalihan alamat url, kita menggunakan fungsi <code>redirect()</code> dengan parameter berupa string alamat url yang dituju. Supaya kita tidak perlu mengingat satu-satu alamat url-nya, kita gunakan fungsi <code>url_for()</code>. Fungsi tersebut dapat mengembalikan string alamat url sesuai dengan nama fungsi yang kita masukkan sebagai parameter.  </p>
+<p>Untuk <em>routing</em> yang mengembalikan html, kita menggunakan fungsi <code>render_template()</code>. Ada beberapa paramater untuk fungsi tersebut. Parameter pertama berupa nama template html yang kita simpan pada folder <code>templates</code>. Sedangkan parameter kedua berupa data yang ingin kita kirim ke tampilan html / <em>view</em>.  </p>
+<p>Pada <em>routing</em> <code>/register</code>, kita melakukan cukup banyak validasi form, salah satu di antaranya adalah mengecek apakah <em>username</em> yang diinputkan belum ada pada <em>database</em>. Pengecekan <em>username</em> dilakukan dengan menggunakan fungsi <code>get_user_id()</code>. Kita dapat membuat fungsi tersebut seperti potongan kode berikut ini:  </p>
+<pre><code>def get_user_id(username):
+  rv = query_db(<span class="hljs-string">'select id from users where username = ?'</span>,
+                [username], one=True)
+  <span class="hljs-keyword">return</span> rv[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> rv <span class="hljs-keyword">else</span> None</code></pre><p>dan tulis fungsi tersebut di bawah fungsi <code>query_db()</code>.  </p>
+<p>Dan yang paling penting, untuk menyimpan nilai pada <code>session</code> kita gunakan array <code>session[]</code> yang telah disediakan oleh librari Flask. Untuk menghapus <code>session</code>, kita gunakan fungsi <code>session.pop()</code> dengan <em>input</em> berupa nama <code>session</code> yang ingin kita hapus.  </p>
+<h2 id="membuat-templates">Membuat <em>templates</em></h2>
+<p>Meskipun pada beberapa fungsi <em>routing</em> kita sudah menggunakan fungsi <code>render_template()</code>, kita belum membuat <em>template</em> sama sekali. Kita juga sempat menuliskan nama-nama <em>file</em> template seperti <code>home.html</code>, <code>login.html</code> dan <code>timeline.html</code> pada kode. Pada bagian ini, kita akan membuat <em>template-template</em> tersebut.  </p>
+<p>Sebelumnya, buat <em>file</em> <code>layout.html</code> pada folder <code>templates</code> sebagai basis dari <em>template</em> kita. Tulis kode di bawah ini pada <code>layout.html</code>:  </p>
+<pre><code class="language-html"><span class="hljs-meta">&lt;!doctype html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{% raw %}{% block title %} Welcome {% endblock %} - Tweepy<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ url_for('static', filename='style.css') }}"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- blok body dapat kita manfaatkan untuk meng-inject kode html yang kita simpan pada file lain --&gt;</span>
+    {% raw %}{% block body %}{% endblock %}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<p>Pada beberapa bagian dari kode html di atas ini, terlihat sintaks <code>{% raw %}{% %}</code> yang merupakan sintaks <em>templating</em> dari Jinja2. Jinja2 ini adalah librari yang sudah terdapat pada Flask.  </p>
+<p>Selanjutnya buat <em>file</em> <code>login.html</code> pada folder <code>templates</code>. Tulis kode di bawah ini pada <code>login.html</code>:  </p>
+<pre><code class="language-html">{% extends "layout.html" %}
+{% block title %}Sign In{% endblock %}
+{% block body %}
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Sign In<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  {% if error %}<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"error"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Error:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> {{ error }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>{% endif %}
+  <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">""</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>Username:
+      <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"30"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"{{ request.form.username }}"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>Password:
+      <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"actions"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Sign In"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+{% endblock %}</code></pre>
+<p>Pada baris pertama, kita melakukan <code>extend</code> untuk memanfaatkan <em>file</em> <code>layout.html</code> yang telah kita buat sebelumnya. Dengan begitu, <code>login.html</code> juga memiliki kode yang terdapat pada <code>layout.html</code>. Saat server web Tweepy men-<em>generate</em> file html untuk <em>request</em> url <code>/login</code>, kode yang dituliskan di dalam <code>{% raw %}{% block body %}</code> pada <code>login.html</code> secara otomatis disesuaikan letaknya sesuai dengan deklarasi <code>{% raw %}{% block body %}</code> pada <code>layout.html</code>. Selain itu apa yang kita tulis pada <code>{% raw %}{% block title %}</code> di <code>login.html</code> juga secara otomatis disesuaikan letaknya sesuai dengan deklarasi <code>{% raw %}{% block title %}</code> pada <code>layout.html</code>.  </p>
+<p>Ada beberapa fungsi <em>template</em> lain yang kita gunakan pada <code>login.html</code>. Kita menggunakan fungsi <code>if</code> untuk mengecek apakah terdapat data <code>error</code> yang kita kirim lewat fungsi <code>render_template</code> pada <em>routing</em> <code>login.html</code>. Apabila ada, maka tag yang terdapat pada blok <code>{% raw %}{% if %}</code> akan di-<em>generate</em> oleh server. String <code>error</code> dapat kita cetak dengan mengapitnya di dalam <em>double braces</em> (<code>{% raw %}{{}}</code>).  </p>
+<p>Selanjutnya kita buat <em>template</em> yang lain untuk <code>home.html</code> dan <code>timeline.html</code>.  </p>
+<h3 id="homehtml">home.html</h3>
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- home.html --&gt;</span>
+{% extends "layout.html" %}
+{% block title %}
+Tweepy
+{% endblock %}
+{% block body %}
+<span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"main-nav"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"lists"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"brand"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span>&gt;</span>Tweepy<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content home"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"signup-form"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"signup-box"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"box-title"</span>&gt;</span>Belum punya akun? Ayo daftar, gratis!<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"signup"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"{{ url_for('register') }}"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"section-username"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"username"</span>&gt;</span>Username<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Username anda, digunakan pada saat sign in"</span> /&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"section-fullname"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"fullname"</span>&gt;</span>Fullname<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"fullname"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Nama lengkap anda"</span> /&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"section-password"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"password"</span>&gt;</span>Password<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Password anda"</span> /&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"section-password2"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"password2"</span>&gt;</span>Password<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password2"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Masukkan ulang password anda"</span> /&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"btn-signup"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-signup"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"sign up"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"about-site"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"about-site-box"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"box-title"</span>&gt;</span>Website ini hanya untuk demo tutorial saja.<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Database akan dibersihkan setiap harinya untuk mengurangi beban memori.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Anda dapat mengikuti tutorial pembuatan website ini di <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://ambercat.rahmanda.net"</span>&gt;</span>ambercat.rahmanda.net<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+{% endblock %}</code></pre>
+<p>###timeline.html  </p>
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- timeline.html--&gt;</span>
+{% extends "layout.html" %}
+{% block title %}
+  {% if request.endpoint == 'public_timeline' %}
+    Public Timeline
+  {% else %}
+    My Timeline
+  {% endif %}
+{% endblock %}
+{% block body %}
+<span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"main-nav"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"lists"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"brand"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span>&gt;</span>Tweepy<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"actions"</span>&gt;</span>
+      {% if session.user_id %}
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-signout"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ url_for('logout') }}"</span>&gt;</span>sign out<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"username"</span>&gt;</span>{{ session.username }}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        {% else %}
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-signin"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ url_for('login') }}"</span>&gt;</span>sign in<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        {% endif %}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"search"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"get"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">""</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"input-search"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Cari teman"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"content"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tweet-box"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"{{ url_for('add_tweet') }}"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"tweet"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Apa yang anda pikirkan saat ini?"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Tweet"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-tweet"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"timeline"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span>&gt;</span>Timeline<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    {% for tweet in tweets %}
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tweet-item"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"user"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fullname"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>{{ tweet.username }}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"username"</span>&gt;</span>@{{ tweet.username }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tweet"</span>&gt;</span>{{ tweet.tweet }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pub_date"</span>&gt;</span>{{ tweet.pub_date }}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    {% endfor %}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+{% endblock %}</code></pre>
+<p>Kita bisa menggunakan fungsi Flask dan data yang dimasukkan lewat fungsi <code>render_template</code> di dalam tanda double braces<code>{{}}</code>. Misalnya fungsi <code>url_for()</code> untuk mendapatkan alamat url dengan memasukkan string nama fungsi <code>routing</code>. Bisa juga memanggil variabel session. Yang perlu diperhatikan adalah semua data (array) yang dilewatkan melalui fungsi <code>render_template</code> bisa ambil pada <em>template</em> yang bersangkutan. Misalkan pada fungsi <code>public_timeline()</code> di <code>tweepy.py</code>, kita melewatkan hasil kueri ke variabel <code>tweets</code>. Pada <code>timeline.html</code>, kita dapat mengakses variabel <code>tweets</code> dan melakukan <code>looping</code> terhadap variabel tersebut.  </p>
+<h2 id="static-file"><em>Static file</em></h2>
+<p>Sebelumnya saya pernah menjelaskan bahwa <em>file-file</em> css dimasukkan pada folder <code>static</code>. Unduh <em>file</em> css di <a href="http://1drv.ms/1IyG79P">sini</a>, lalu masukkan ke folder <code>static</code>. </p>
+<h2 id="menjalankan-web-tweepy">Menjalankan web Tweepy</h2>
+<p>Untuk menjalankan web Tweepy, kita cukup menjalankan perintah <code>python tweepy.py</code> di terminal. Apabila tidak ada error, kamu bisa buka browser dan coba masukkan url <code>http://localhost:5000</code>. Kita mengeset <code>@app.route(&#39;/&#39;)</code> pada fungsi <code>home()</code>. Di dalam fungsi <code>home()</code>, kita me-<em>render</em> <code>home.html</code> sehingga yang tampil adalah kode yang kita masukkan di <code>home.html</code>. Halaman <em>loginnya</em> ada di <code>http://localhost:5000/login</code>. Setelah login, kita bisa membuat tweet dan akan muncul pada <em>timeline</em> kita. </p>
+<h2 id="selanjutnya">Selanjutnya?</h2>
+<p>Pada artikel selanjutnya kita akan mengimplementasikan fitur-fitur yang belum dibuat seperti <em>follow-follow</em>-an dan melihat <em>timeline</em> dari akun lain. Apabila kamu punya pertanyaan seputar tutorial ini, jangan sungkan bertanya melalui kolom komentar yang tersedia. Semoga artikel ini bermanfaat!</p>
+</article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/sass-dengan-gulp.html">← Berkenalan dengan Sass + Gulp</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/blade-templates-laravel.html">Blade - Mengenal Template Engine Laravel 4 →</a></div></footer></main></div>
+    
+<script src="/client.build.ea0a2031f2680983b234.js" type="text/javascript"></script>
+  </body>
+</html>

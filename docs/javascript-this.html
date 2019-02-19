@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Javascript This</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    
+<link href="/client.build.bcf49eda2efc4f8ad679.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-8 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a></nav> <main role="main"><section class="post"><h1>Javascript This</h1> <!----> <div class="text-sm mb-8 text-grey-darker"><time datetime="2017-01-07">
+        7 January 2017
+      </time> <span class="mx-1">•</span> <span title="3 min read">3 min read</span></div> <article><p>Operator <code>this</code> sering kali digunakan apabila kamu mengimplementasikan suatu <em>class</em> atau <em>object</em> pada bahasa pemograman <em>object oriented</em>. Javascript tidak memiliki paradigma <em>object oriented</em>, namun Javascript mendukung penggunaan operator <code>this</code>. Tetapi karena ini Javascript, (tentu saja) cara kerja <code>this</code> akan sedikit berbeda dengan bahasa pemograman pada umumnya....  </p>
+<p>Pada keadaan normal, pemanggilan operator <code>this</code> akan mengembalikan objek <strong>global</strong>. Perhatikan contoh berikut:  </p>
+<pre><code class="language-js"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span> === <span class="hljs-built_in">window</span>); <span class="hljs-comment">// output 'true'</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callingGlobal</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span> === <span class="hljs-built_in">window</span>);
+}
+callingGlobal(); <span class="hljs-comment">// output 'true' (?)</span></code></pre>
+<p>Seperti pada contoh di atas, kita bisa mengakses objek global via operator <code>this</code> meskipun di dalam <em>scope function</em>. Namun apabila kita mengeset <code>use strict</code> di awal deklarasi fungsi, operator <code>this</code> tidak lagi mereferensikan objek global karena konteksnya (dipaksa) berada di dalam <em>scope</em> yang berbeda.  </p>
+<pre><code class="language-js"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span> == <span class="hljs-built_in">window</span>); <span class="hljs-comment">// output 'true'</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callingGlobal</span>(<span class="hljs-params"></span>) </span>{
+<span class="hljs-meta">    'use strict'</span>;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span> == <span class="hljs-built_in">window</span>);
+}
+callingGlobal(); <span class="hljs-comment">// output undefined</span></code></pre>
+<p>Beberapa fungsi bawaan Javascript mengeset <code>this</code> menjadi objek tertentu seperti pada fungsi <code>addEventListener</code>.  </p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeBodyBackground</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-keyword">var</span> letters = <span class="hljs-string">'0123456789ABCDEF'</span>;
+    <span class="hljs-keyword">var</span> color = <span class="hljs-string">'#'</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">6</span>; i++ ) {
+        color += letters[<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">16</span>)];
+    }
+    <span class="hljs-keyword">this</span>.style.backgroundColor = color;
+}
+<span class="hljs-keyword">var</span> $body = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>];
+$body.addEventListener(<span class="hljs-string">'click'</span>, changeBodyBackground, <span class="hljs-literal">false</span>); <span class="hljs-comment">// body berubah warna background apabila di klik</span></code></pre>
+<p>Pada contoh di atas, operator <code>this</code> secara default mereferensikan objek DOM dari elemen <code>body</code> yang telah dipasang <em>event handler</em>. Namun kita juga bisa mengubah operator <code>this</code> agar mereferensikan objek yang kita definisikan sendiri. Misalkan kita ingin agar saat elemen <code>body</code> diklik, hanya warna <em>background</em> dari elemen <code>h1</code> yang berubah (dengan asumsi hanya ada satu <code>h1</code> pada halaman).  </p>
+<pre><code class="language-js"><span class="hljs-comment">// fungsi changeBodyBackground sama dengan contoh sebelumnya</span>
+<span class="hljs-keyword">var</span> $body = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>];
+<span class="hljs-keyword">var</span> $h1 = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'h1'</span>)[<span class="hljs-number">0</span>];
+$body.addEventListener(<span class="hljs-string">'click'</span>, changeBodyBackground.bind($h1), <span class="hljs-literal">false</span>); <span class="hljs-comment">// h1 berubah warna background apabila di klik</span></code></pre>
+<p>Dengan menggunakan fungsi <code>bind</code>, kita bisa mengeset nilai <code>this</code> sesuai dengan objek yang kita masukkan sebagai parameter. Selain <code>bind</code>, kita juga bisa menggunakan fungsi <code>call</code> dan <code>apply</code>. Perbedaannya adalah saat <code>call</code> dan <code>apply</code> digunakan pada suatu fungsi, fungsi tersebut akan langsung dijalankan.  </p>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> someObject = {
+    <span class="hljs-attr">arr</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">13</span>]
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">multiplyWith</span>(<span class="hljs-params">x, y</span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.arr.length; i++ ) {
+        <span class="hljs-keyword">this</span>.arr[i] = <span class="hljs-keyword">this</span>.arr[i] * x * y;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.arr;
+}
+
+multiplyWith.call(someObject, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// [40, 60, 100, 160, 260]</span>
+multiplyWith.apply(someObject, [<span class="hljs-number">10</span>, <span class="hljs-number">2</span>]); <span class="hljs-comment">// [40, 60, 100, 160, 260]</span></code></pre>
+<blockquote>
+<p>Terdapat perbedaan antara <code>call</code> dan <code>apply</code> saat memasukkan parameter. Fungsi <code>call</code> menerima parameter secara eksplisit, sedangkan <code>apply</code> menerima parameter dalam bentuk <em>array</em>.</p>
+</blockquote>
+<p>Pada artikel <a href="http://ambercat.rahmanda.net/code/2016/12/31/closure-javascript.html">sebelumnya</a> saya sempat menjelaskan tentang <em>module pattern</em>. Dengan menggunakan <code>this</code> di dalam <em>method</em>, kita dapat memanggil <em>method</em> atau properti objek pada modul yang sama seperti yang diperlihatkan oleh contoh berikut.  </p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Cat</span>(<span class="hljs-params">type</span>) </span>{
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">walking</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> type + <span class="hljs-string">' is walking'</span>);
+        },
+        <span class="hljs-attr">walkingWhileEating</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.walking() + <span class="hljs-string">'while eating..'</span>;
+        }
+    };
+}
+
+<span class="hljs-keyword">var</span> siamese = Cat(<span class="hljs-string">'siamese'</span>);
+siamese.walkingWhileEating(); <span class="hljs-comment">// siamese is walking while eating</span></code></pre>
+<hr>
+<p>Berurusan dengan operator <code>this</code> memang agak <em>tricky</em>, terutama saat dipakai diluar <em>module pattern</em>. Pastikan kode javascript kamu selalu diberi <code>use strict</code> agar kode kamu konsisten dan terhindar dari memodifikasi objek global.</p>
+</article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/closure-javascript.html">← Memahami Closure di Javascript</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/instalasi-laravel-valet-di-ubuntu.html">Instalasi Laravel Valet di Ubuntu →</a></div></footer></main></div>
+    
+<script src="/client.build.ea0a2031f2680983b234.js" type="text/javascript"></script>
+  </body>
+</html>

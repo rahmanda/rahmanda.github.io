@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Berkenalan dengan Python</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    
+<link href="/client.build.bcf49eda2efc4f8ad679.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-8 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a></nav> <main role="main"><section class="post"><h1>Berkenalan dengan Python</h1> <!----> <div class="text-sm mb-8 text-grey-darker"><time datetime="2015-02-21">
+        21 February 2015
+      </time> <span class="mx-1">•</span> <span title="12 min read">12 min read</span></div> <article><p><a href="https://www.python.org/">Python</a> adalah bahasa pemograman tingkat tinggi yang dapat digunakan secara luas di berbagai bidang. Python diciptakan pertama kali oleh Guido van Rossum pada tahun 1991. Sintaksnya dan fungsi pada Python dipengaruhi oleh beberapa bahasa seperti C, C++, Lisp, Perl dan Java. Oleh karena itu, kita dapat menemui konsep pemograman <em>procedural</em>, <em>functional</em> dan <em>object-oriented</em> di Python. Python relatif mudah dipelajari bila dibandingkan dengan C++, Java dan PHP karena sintaks Python lebih singkat, lebih jelas dan mudah dipahami oleh <em>programmer</em> pemula.  </p>
+<p>Meskipun di Indonesia Python tidak sepopuler PHP dan Java, Python sangat patut untuk dipelajari karena banyak pilihan librari Python yang bisa kita gunakan yang biasanya tidak dapat kita temui di bahasa lain. Misalnya <code>numpy</code> dan <code>scipy</code>, alternatif untuk komputasi <em>scientific</em>, <code>scikit-learn</code> untuk implementasi <em>machine learning</em> (klasifikasi, regresi, klustering, ekstraksi fitur dll) dan masih banyak lagi. Pada artikel ini saya akan menjelaskan dasar-dasar dari pemograman Python.  </p>
+<blockquote>
+<p>Untuk mengikuti pelajaran ini, kamu harus mengunduh Python di <a href="https://www.python.org/downloads/release/python-279/">sini</a> terlebih dahulu. Untuk pengguna Linux atau MacOSX, kamu tidak perlu menginstal Python karena sudah tersedia secara <em>default</em>. Versi Python yang digunakan adalah versi 2.7.x.</p>
+</blockquote>
+<p>Buka terminal kamu, lalu ketik perintah <code>python</code> untuk membuka <em>console</em> Python.</p>
+<h2 id="variabel">Variabel</h2>
+<p>Variabel di Python tidak menyertakan tipe data secara eksplisit, berbeda dengan C++ atau Java. Semua tipe data sama cara memasukkan nilainya ke dalam variabel.</p>
+<pre><code>&gt;&gt;&gt; integer = <span class="hljs-number">1</span>
+&gt;&gt;&gt; float = <span class="hljs-number">2.5</span>
+&gt;&gt;&gt; string = <span class="hljs-string">"aku adalah string"</span>
+&gt;&gt;&gt; boolean = False
+&gt;&gt;&gt; integer
+<span class="hljs-number">1</span>
+&gt;&gt;&gt; float
+<span class="hljs-number">2.5</span>
+&gt;&gt;&gt; string
+<span class="hljs-string">"aku adalah string"</span>
+&gt;&gt;&gt; boolean
+False  </code></pre><p>String dapat diapit dengan tkamu kutip tunggal <code>&#39; &#39;</code> atau tkamu kutip gkamu <code>&quot; &quot;</code>. Kita juga bisa mendeklarasikan string <em>multiline</em> dengan mengapit string dalam tkamu kutip tunggal atau gkamu sebanyak tiga kali (<code>&#39;&#39;&#39; &#39;&#39;&#39;</code> atau <code>&quot;&quot;&quot; &quot;&quot;&quot;</code>).  </p>
+<pre><code>&gt;&gt;&gt; multiline = '''
+... Aku seorang kapiten
+... Mempunyai pedang panjang
+... Kalau berjalan prok-prok-prok
+... Aku seorang kapiten
+... '''
+...
+&gt;&gt;&gt; multiline
+'\nAku seorang kapiten\nmempunyai pedang panjang\nkalau berjalan prok-prok-prok\nAku seorang kapiten\n'</code></pre><h2 id="struktur-data">Struktur Data</h2>
+<h3 id="list">List</h3>
+<p>Pada Python, kita tidak dapat menemui konsep <code>array</code>. Sebagai gantinya, python menyediakan struktur data <code>list</code>. Inisialisasi untuk <code>list</code> sama seperti variabel biasa.  </p>
+<pre><code>&gt;&gt;&gt; list = [1, 2, 3, 4]
+&gt;&gt;&gt; list
+[1, 2, 3, 4]
+&gt;&gt;&gt; list = [1.5, 2.4, 0.5]
+&gt;&gt;&gt; list
+[1.5, 2.4, 0.5]</code></pre><p>Kita juga dapat membuat deret integer pada <code>list</code> secara otomatis dengan fungsi <code>range</code>.  </p>
+<pre><code>&gt;&gt;&gt; list = range(5)
+&gt;&gt;&gt; list
+[0, 1, 2, 3, 4]
+&gt;&gt;&gt; list = range(0,5)
+&gt;&gt;&gt; list
+[0, 1, 2, 3, 4]
+&gt;&gt;&gt; list = range(0,10,2)
+[0, 2, 4, 6, 8]</code></pre><p>Berbeda dengan C++ dan Java, pada <code>list</code> kita dapat menampung elemen yang berbeda tipe data dalam satu variabel.  </p>
+<pre><code>&gt;&gt;&gt; list = [<span class="hljs-number">1</span>, <span class="hljs-string">'dua'</span>, <span class="hljs-number">3.0</span>]
+&gt;&gt;&gt; list
+[<span class="hljs-number">1</span>, <span class="hljs-string">'dua'</span>, <span class="hljs-number">3.0</span>]</code></pre><p>Cara akses elemen pada <code>list</code> sama seperti pada <code>array</code>, yaitu dengan menyertakan indeks elemen. Indeks dimulai dari nilai 0. </p>
+<pre><code>&gt;&gt;&gt; list[<span class="hljs-number">0</span>]
+<span class="hljs-number">1</span>
+&gt;&gt;&gt; list[<span class="hljs-number">1</span>]
+<span class="hljs-string">'dua'</span>  </code></pre><p>List juga bisa mengandung <code>list</code>-<code>list</code> yang lain. Hal ini dikenal sebagai <em>multidimensional list</em>.  </p>
+<pre><code>&gt;&gt;&gt; list = [<span class="hljs-number">1</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3.0</span>], [<span class="hljs-number">1.5</span>, <span class="hljs-string">'dua'</span>]]</code></pre><p>Kita dapat menambahkan atau mengurangi elemen pada <code>list</code> yang sudah dibuat sebelumnya dengan menggunakan fungsi <code>append()</code>, <code>insert()</code> dan <code>remove()</code>.  </p>
+<pre><code>&gt;&gt;&gt; list = [0, 1]
+&gt;&gt;&gt; list
+[0, 1]
+&gt;&gt;&gt; list.append(2) # menambahkan elemen pada akhir list
+&gt;&gt;&gt; list
+[0, 1, 2]
+&gt;&gt;&gt; list.insert(1, 'aku ditengah') # menambahkan elemen pada indeks 1
+&gt;&gt;&gt; list
+[0, 'aku ditengah', 1, 2]
+&gt;&gt;&gt; list.remove('aku ditengah') # menghapus elemen yang nilainya 'aku ditengah'
+&gt;&gt;&gt; list
+[0, 1, 2]</code></pre><p>Untuk mengambil elemen pertama dari suatu list, kita dapat menggunakan <code>pop</code>.  </p>
+<pre><code>&gt;&gt;&gt; list = [0, 1]
+&gt;&gt;&gt; list.pop()
+0</code></pre><h3 id="dictionary">Dictionary</h3>
+<p>Selain <code>list</code>, Python memiliki struktur data <code>dictionary</code>.  Mirip seperti konsep <code>hash</code>, tiap elemen pada <code>dictionary</code> memiliki alias atau key.  </p>
+<pre><code>&gt;&gt;&gt; dict = {<span class="hljs-string">'satu'</span>: <span class="hljs-number">1</span>, <span class="hljs-string">'dua'</span>: <span class="hljs-number">2</span>, <span class="hljs-string">'tiga'</span>: <span class="hljs-number">3</span>}</code></pre><p>Berbeda dengan <code>list</code>, cara akses nilai pada <code>dictionary</code> adalah dengan menyertakan nama key-nya.  </p>
+<pre><code>&gt;&gt;&gt; dict[<span class="hljs-string">'satu'</span>]
+<span class="hljs-number">1</span>
+&gt;&gt;&gt; dict[<span class="hljs-string">'dua'</span>]
+<span class="hljs-number">2</span></code></pre><p>Elemen pada <code>dictionary</code> dapat terdiri dari tipe data yang berbeda-beda, bahkan nama key juga tidak harus selalu string. Kita juga bisa memasukkan <code>list</code> sebagai elemen pada <code>dictionary</code>. </p>
+<pre><code>&gt;&gt;&gt; dict = {<span class="hljs-string">'satu'</span>: <span class="hljs-number">1.0</span>, <span class="hljs-string">'dua'</span>: [<span class="hljs-number">1</span>, <span class="hljs-string">'dua'</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]], <span class="hljs-number">3</span>: <span class="hljs-string">'tiga'</span>}  
+&gt;&gt;&gt; dict[<span class="hljs-number">3</span>]
+<span class="hljs-string">'tiga'</span>
+&gt;&gt;&gt; dict[<span class="hljs-string">'dua'</span>]
+[<span class="hljs-number">1</span>, <span class="hljs-string">'dua'</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]]
+&gt;&gt;&gt; dict[<span class="hljs-string">'dua'</span>][<span class="hljs-number">1</span>]
+[<span class="hljs-string">'dua'</span>]
+&gt;&gt;&gt; dict[<span class="hljs-string">'dua'</span>][<span class="hljs-number">2</span>]
+[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+&gt;&gt;&gt; dict[<span class="hljs-string">'dua'</span>][<span class="hljs-number">2</span>][<span class="hljs-number">1</span>]
+[<span class="hljs-number">2</span>]</code></pre><p><code>List</code> dan <code>dictionary</code> adalah struktur data yang paling sering digunakan pada Python, namun struktur data pada Python tidak hanya terbatas pada itu saja. Untuk mempelajari struktur data lebih lanjut, kamu dapat membaca artikel <a href="http://code.tutsplus.com/articles/advanced-python-data-structures--net-32748">ini</a>.     </p>
+<h2 id="ifelifelse">If...elif...else...</h2>
+<p>Fungsi <code>if</code> pada Python lebih sederhana penulisannya dibandingkan C++ atau Java. Untuk mengapit pernyataan di dalam if tidak menggunakan kurung kurawal. Penulisan pernyataan yang masuk pada fungsi if lebih menjorok ke dalam (menggunakan <em>whitespace</em>). </p>
+<pre><code>&gt;&gt;&gt; <span class="hljs-keyword">var</span> = <span class="hljs-number">1</span>
+&gt;&gt;&gt; <span class="hljs-keyword">if</span> <span class="hljs-keyword">var</span> &lt; <span class="hljs-number">2</span>:
+...     var = <span class="hljs-keyword">var</span> + <span class="hljs-number">1</span>  
+... elif <span class="hljs-keyword">var</span> &lt; <span class="hljs-number">3</span>:
+...     var = <span class="hljs-keyword">var</span> + <span class="hljs-number">2</span>
+... else:
+...     var = <span class="hljs-number">0</span>
+...
+&gt;&gt;&gt; <span class="hljs-keyword">var</span>
+<span class="hljs-number">2</span></code></pre><blockquote>
+<p>Selain <em>case-sensitive</em>, Python sangat memperhatikan <em>whitespace</em> untuk memisahkan pernyataan dengan deklarasi fungsi. Oleh karena itu kamu harus selalu konsisten dalam memilih <em>whitespace</em> (pilih salah satu antara spasi atau tab). Pastikan juga semua indentasi pada fungsi memiliki jumlah <em>whitespace</em> yang sama.  </p>
+</blockquote>
+<h2 id="for">For</h2>
+<p>Fungsi <code>for</code> sedikit berbeda dengan C++ atau Java, karena kita tidak menginisialisasi kondisi berhenti iterasi. Di Python, <code>for</code> akan menjalankan pernyataan di dalamnya sebanyak elemen pada <code>list</code> dan akan berhenti setelah nilai indeks elemen melebihi nilai indeks maksimal pada <code>list</code>.  </p>
+<pre><code>&gt;&gt;&gt; list = [<span class="hljs-string">'maine coon'</span>, <span class="hljs-string">'munchkin'</span>, <span class="hljs-string">'siamese'</span>]
+&gt;&gt;&gt; <span class="hljs-keyword">var</span> = <span class="hljs-number">0</span>
+&gt;&gt;&gt; <span class="hljs-keyword">for</span> el <span class="hljs-keyword">in</span> list:
+...     var = <span class="hljs-keyword">var</span> + <span class="hljs-number">1</span>
+...
+&gt;&gt;&gt; <span class="hljs-keyword">var</span>
+<span class="hljs-number">2</span></code></pre><p>Agar kita bisa menginisialisasi jumlah perulangan, kita bisa menggunakan <code>range</code>.</p>
+<pre><code>&gt;&gt;&gt; <span class="hljs-keyword">var</span> = <span class="hljs-number">0</span>
+&gt;&gt;&gt; <span class="hljs-keyword">for</span> el <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>):
+...     var = <span class="hljs-keyword">var</span> + <span class="hljs-number">1</span>
+...
+&gt;&gt;&gt; <span class="hljs-keyword">var</span>
+<span class="hljs-number">9</span></code></pre><p>Untuk menghentikan atau melanjutkan iterasi pada suatu kondisi tertentu, kita dapat menggunakan <code>break</code> dan <code>continue</code>.  </p>
+<pre><code>&gt;&gt;&gt; <span class="hljs-keyword">var</span> = <span class="hljs-number">0</span>
+&gt;&gt;&gt; <span class="hljs-keyword">for</span> el <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>):
+...     if <span class="hljs-keyword">var</span> &gt; <span class="hljs-number">5</span>:
+...         break
+...     elif <span class="hljs-keyword">var</span> == <span class="hljs-number">3</span>:
+...         continue
+...     var = <span class="hljs-keyword">var</span> + <span class="hljs-number">1</span>
+...
+&gt;&gt;&gt; <span class="hljs-keyword">var</span>
+<span class="hljs-number">3</span></code></pre><h2 id="while">While</h2>
+<p>Fungsi <code>while</code> akan terus secara iteratif menjalankan pernyataan di dalamnya selama kondisi pada <code>while</code> belum terpenuhi.   </p>
+<pre><code>&gt;&gt;&gt; <span class="hljs-keyword">var</span> = <span class="hljs-number">10</span>
+&gt;&gt;&gt; <span class="hljs-keyword">while</span> <span class="hljs-keyword">var</span> &gt; <span class="hljs-number">0</span>:
+...     var = <span class="hljs-keyword">var</span> - <span class="hljs-number">1</span>
+...
+&gt;&gt;&gt; <span class="hljs-keyword">var</span>
+<span class="hljs-number">0</span></code></pre><h2 id="print">Print</h2>
+<p>Fungsi <code>print</code> digunakan untuk mencetak string pada terminal. </p>
+<pre><code>&gt;&gt;&gt; print <span class="hljs-string">'Halo dunia!'</span>
+Halo dunia!</code></pre><p>Kita juga bisa mencetak string <em>multiline</em> dengan menggunakan fungsi yang sama. </p>
+<pre><code>&gt;&gt;&gt; print '''
+... Aku seorang kapiten
+... Mempunyai pedang panjang
+... Kalau berjalan prok-prok-prok
+... Aku seorang kapiten
+... '''
+
+Aku seorang kapiten
+Mempunyai pedang panjang
+Kalau berjalan prok-prok-prok
+Aku seorang kapiten
+</code></pre><p>Menyambungkan 2 atau lebih string dapat dilakukan dengan menggunakan operator <code>+</code>.</p>
+<pre><code>&gt;&gt;&gt; print <span class="hljs-string">'Halo '</span> + <span class="hljs-string">'dunia!'</span>
+Halo dunia!</code></pre><p>Untuk menambahkan keluaran yang bukan string, kita dapat menambahkan koma.  </p>
+<pre><code>&gt;&gt;&gt; print <span class="hljs-string">'Kucing yang kami pelihara di rumah berjenis: '</span>, [<span class="hljs-string">'main coon'</span>, <span class="hljs-string">'siamese'</span>, <span class="hljs-string">'munchkin'</span>]
+Kucing yang kami pelihara di rumah berjenis: [<span class="hljs-string">'main coon'</span>, <span class="hljs-string">'siamese'</span>, <span class="hljs-string">'munchkin'</span>]</code></pre><p>Selain itu, kita juga bisa memasukkan variabel di tengah-tengah string (<em>formatting</em>) dengan menggunakan tkamu kurung kurawal <code>{}</code>.</p>
+<pre><code>&gt;&gt;&gt; x = <span class="hljs-number">1</span>
+&gt;&gt;&gt; y = <span class="hljs-number">2</span>
+&gt;&gt;&gt; print <span class="hljs-string">'{} + {} = {}'</span>.format(x, y, x + y)
+<span class="hljs-number">1</span> + <span class="hljs-number">2</span> = <span class="hljs-number">3</span></code></pre><p>Mengubah urutan output dapat dilakukan dengan memberikan indeks di dalam kurung kurawal.</p>
+<pre><code>&gt;&gt;&gt; print <span class="hljs-string">'{1} + {0} = {2}'</span>.format(x, y, x + y)
+<span class="hljs-number">2</span> + <span class="hljs-number">1</span> = <span class="hljs-number">3</span> </code></pre><p>Indeks dapat diganti dengan key seperti pada <code>dictionary</code>.</p>
+<pre><code>&gt;&gt;&gt; print <span class="hljs-string">'{0} + {1} = {hasil}'</span>.format(x, y, hasil = x + y)
+<span class="hljs-number">1</span> + <span class="hljs-number">2</span> = <span class="hljs-number">3</span> </code></pre><p>Bagi kamu yang familiar dengan format output yang mendeklarasikan tipe data secara eksplisit seperti pada C, kamu juga bisa melakukan hal yang mirip di Python seperti dibawah ini:  </p>
+<pre><code>&gt;&gt;&gt; print <span class="hljs-string">'%d + %d = %d'</span> % (x, y, x + y)
+<span class="hljs-number">1</span> + <span class="hljs-number">2</span> = <span class="hljs-number">3</span></code></pre><h2 id="membaca-dan-menulis-file">Membaca dan Menulis <em>File</em></h2>
+<p>Untuk menulis teks pada <em>file</em>, kita dapat menggunakan <code>write()</code> dengan terlebih dahulu membuat <em>file</em> pada direktori. </p>
+<pre><code>&gt;&gt;&gt; f = open(<span class="hljs-string">'contoh_file.txt'</span>, <span class="hljs-string">'w'</span>)
+&gt;&gt;&gt; <span class="hljs-keyword">for</span> el <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,<span class="hljs-number">11</span>):
+...     f.write(<span class="hljs-string">'Ini adalah baris teks {} pada file.\n'</span>.format(el))
+...
+&gt;&gt;&gt; f.close()</code></pre><p>Untuk membaca keseluruhan teks pada <em>file</em>, kita dapat menggunakan <code>read()</code>.  </p>
+<pre><code>&gt;&gt;&gt; f = open(<span class="hljs-string">'contoh_file.txt'</span>, <span class="hljs-string">'r'</span>)
+&gt;&gt;&gt; f.read()
+<span class="hljs-string">'Ini adalah baris teks 1 pada file.\nIni adalah baris teks 2 pada file.\nIni adalah baris teks 3 pada file.\nIni adalah baris teks 4 pada file.\nIni adalah baris teks 5 pada file.\nIni adalah baris teks 6 pada file.\nIni adalah baris teks 7 pada file.\nIni adalah baris teks 8 pada file.\nIni adalah baris teks 9 pada file.\nIni adalah baris teks 10 pada file.\n'</span>
+&gt;&gt;&gt; f.close()</code></pre><p>Untuk membaca satu baris teks pada <em>file</em>, kita dapat menggunakan <code>readline()</code>.</p>
+<pre><code>&gt;&gt;&gt; f = open(<span class="hljs-string">'contoh_file.txt'</span>, <span class="hljs-string">'r'</span>)
+&gt;&gt;&gt; f.readline()
+<span class="hljs-string">'Ini adalah baris teks 1 pada file.\n'</span>
+&gt;&gt;&gt; f.close()</code></pre><p>Untuk membaca satu per satu baris teks pada <em>file</em>, kita dapat menggunakan <code>for</code>.  </p>
+<pre><code>&gt;&gt;&gt; f = open(<span class="hljs-string">'contoh_file.txt'</span>, <span class="hljs-string">'r'</span>)
+&gt;&gt;&gt; <span class="hljs-keyword">for</span> teks <span class="hljs-keyword">in</span> f:
+...     print teks
+...
+Ini adalah baris teks <span class="hljs-number">1</span> pada file.
+
+Ini adalah baris teks <span class="hljs-number">2</span> pada file.
+
+Ini adalah baris teks <span class="hljs-number">3</span> pada file.
+
+Ini adalah baris teks <span class="hljs-number">4</span> pada file.
+
+Ini adalah baris teks <span class="hljs-number">5</span> pada file.
+
+Ini adalah baris teks <span class="hljs-number">6</span> pada file.
+
+Ini adalah baris teks <span class="hljs-number">7</span> pada file.
+
+Ini adalah baris teks <span class="hljs-number">8</span> pada file.
+
+Ini adalah baris teks <span class="hljs-number">9</span> pada file.
+
+Ini adalah baris teks <span class="hljs-number">10</span> pada file.
+</code></pre><p>Apabila kita lihat secara teliti, ada perbedaan cara antara membuka <em>file</em> untuk menulis dan membaca. Parameter kedua yang dimasukkan pada fungsi <code>open()</code> adalah mode pembacaan <em>file</em>. Di bawah ini adalah daftar mode yang dapat digunakan pada fungsi <code>open()</code>.  </p>
+<ol>
+<li>&#39;r&#39; - hanya untuk membaca <em>file</em> (<em>read</em>)  </li>
+<li>&#39;w&#39; - hanya untuk menulis <em>file</em> (<em>write</em>)  </li>
+<li>&#39;a&#39; - untuk menambahkan teks pada akhir teks di dalam <em>file</em> (<em>append</em>)  </li>
+<li>&#39;r+&#39; - untuk membaca dan menulis <em>file</em> </li>
+</ol>
+<blockquote>
+<p>Selalu gunakan fungsi <code>close()</code> setelah kamu membuka <em>file</em> untuk menghindari terjadinya <a href="http://en.wikipedia.org/wiki/Memory_leak"><em>memory leak</em></a> </p>
+</blockquote>
+<h2 id="fungsi">Fungsi</h2>
+<p>Deklarasi fungsi pada Python dimulai dengan <code>def</code> dan diikuti dengan nama fungsi. Sama seperti deklarasi variabel, kita tidak perlu menambahkan tipe data secara eksplisit pada fungsi. Untuk fungsi yang mengembalikan nilai dapat menggunakan <code>return</code>.  </p>
+<pre><code>&gt;&gt;&gt; def sambung_string(str1, str2):
+...     sambungan = str1 + <span class="hljs-string">' dan '</span> + str2
+...     return sambungan  </code></pre><p>Untuk memanggil fungsi, tulis nama fungsi setelah itu masukkan nilai parameter fungsinya jika ada.  </p>
+<pre><code>&gt;&gt;&gt; hasil = sambung_string(<span class="hljs-string">'aku'</span>, <span class="hljs-string">'kamu'</span>)
+&gt;&gt;&gt; print hasil
+aku dan kamu</code></pre><p>Kita juga bisa membuat nilai <em>default</em> pada parameter sehingga kita punya opsi untuk menimpa nilai <em>default</em> tersebut atau tidak.  </p>
+<pre><code>&gt;&gt;&gt; def sambung_string(str1, str2=<span class="hljs-string">'kamu'</span>):
+...     sambungan = str1 + <span class="hljs-string">' dan '</span> + str2
+...     return sambungan 
+...
+&gt;&gt;&gt; hasil = sambung_string(<span class="hljs-string">'aku'</span>)
+&gt;&gt;&gt; print hasil
+aku dan kamu
+&gt;&gt;&gt; hasil_lain = sambung_string(<span class="hljs-string">'aku'</span>, <span class="hljs-string">'dia'</span>)
+&gt;&gt;&gt; print hasil_lain
+aku dan dia</code></pre><blockquote>
+<p>Semua parameter pada Python adalah <em>passed by reference</em>  </p>
+</blockquote>
+<p>Parameter pada Python selalu <em>passed by reference</em>. Sehingga apabila di dalam fungsi ada operasi yang melibatkan variabel dengan nama yang sama dengan variabel di luar fungsi, maka nilai pada variabel di luar fungsi akan ikut berubah. Contoh:</p>
+<pre><code>&gt;&gt;&gt; def tambah_elemen(elemen):
+...     list.append(elemen)
+...     print <span class="hljs-string">'Output di dalam fungsi'</span>, list
+...
+&gt;&gt;&gt; list = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]
+&gt;&gt;&gt; tambah_elemen(<span class="hljs-number">3</span>)
+Output di dalam fungsi [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+&gt;&gt;&gt; print <span class="hljs-string">'Output di luar fungsi'</span>, list
+Output di luar fungsi [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]</code></pre><h2 id="object-oriented"><em>Object Oriented</em></h2>
+<p>Kita dapat mengimplementasikan konsep <em>object oriented</em> pada Python. Insialisasi kelas pada Python dapat dilihat pada contoh di bawah ini.  </p>
+<pre><code>&gt;&gt;&gt; class Kucing:
+...     def __init__(self): # dobel underscore
+...         self.jenis = 'domestik'
+...         self.bulu = 'kuning'
+...         self.buntut = 'pendek'
+...         self.nama = 'Ambercat'
+...     def deskripsi(self):
+...         print 'Hai namaku {}. Aku adalah kucing berjenis {}. Warna buluku {} dan buntutku {}.\n'.format(self.nama, self.jenis, self.bulu, self.buntut)
+...</code></pre><p>Pada contoh, kelas Kucing juga memiliki dua <em>method</em>, yaitu <code>__init__()</code> dan <code>deskripsi()</code>. <em>Method</em> <code>__init__()</code> adalah <em>constructor</em> yang akan selalu dipanggil setiap objek Kucing dibuat. Dalam contoh ini, <code>__init__()</code> akan membuat empat atribut, yaitu jenis, bulu, buntut dan nama. </p>
+<blockquote>
+<p>Setiap kamu ingin membuat <em>method</em>, kamu harus selalu memasukkan parameter <code>self</code> pada deklarasi <em>method</em>. </p>
+</blockquote>
+<p>Cara membuat objek dari kelas Kucing dapat dilihat pada contoh di bawah ini.  </p>
+<pre><code>&gt;&gt;&gt; meong = Kucing()</code></pre><p>Cara untuk memanggil <em>method</em> pada objek adalah sebagai berikut.  </p>
+<pre><code>&gt;&gt;&gt; <span class="hljs-selector-tag">meong</span><span class="hljs-selector-class">.deskripsi</span>()
+<span class="hljs-selector-tag">Hai</span> <span class="hljs-selector-tag">namaku</span> <span class="hljs-selector-tag">Ambercat</span>. <span class="hljs-selector-tag">Aku</span> <span class="hljs-selector-tag">adalah</span> <span class="hljs-selector-tag">kucing</span> <span class="hljs-selector-tag">berjenis</span> <span class="hljs-selector-tag">domestik</span>. <span class="hljs-selector-tag">Warna</span> <span class="hljs-selector-tag">buluku</span> <span class="hljs-selector-tag">kuning</span> <span class="hljs-selector-tag">dan</span> <span class="hljs-selector-tag">buntutku</span> <span class="hljs-selector-tag">pendek</span>.
+</code></pre><p>Supaya kita dapat mengeset nilai atribut jenis, bulu, buntut dan nama, kita dapat memodifikasi kelas Kucing menjadi seperti di bawah ini.  </p>
+<pre><code>&gt;&gt;&gt; class Kucing:
+...     def __init__(self, jenis='domestik', bulu='kuning', buntut='pendek', nama='Ambercat'): # dobel underscore
+...         self.jenis = jenis
+...         self.bulu = bulu
+...         self.buntut = buntut
+...         self.nama = nama
+...     def deskripsi(self):
+...         print 'Hai namaku {}. Aku adalah kucing berjenis {}. Warna buluku {} dan buntutku {}.\n'.format(self.nama, self.jenis, self.bulu, self.buntut)
+... </code></pre><p>Untuk mengganti beberapa nilai atribut pada inisialisasi objek, kita dapat menggunakan cara berikut.  </p>
+<pre><code>&gt;&gt;&gt; meong = Kucing(bulu=<span class="hljs-string">'putih'</span>, buntut=<span class="hljs-string">'panjang'</span>)
+&gt;&gt;&gt; meong.deskripsi()
+Hai namaku Ambercat. Aku adalah kucing berjenis domestik. Warna buluku putih dan buntutku panjang.
+</code></pre><h2 id="penutup">Penutup</h2>
+<p>Artikel ini belum mencakup seluruh fungsi dan konsep pada Python. Untuk mempelajari lebih lanjut mengenai Python, kamu dapat mengunjungi dokumentasi Python di <a href="https://docs.python.org/2/tutorial/index.html">sini</a>.  </p>
+<pre><code>print <span class="hljs-string">'Selamat belajar!'</span></code></pre></article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/instalasi-homestead.html">← Instalasi Homestead Laravel</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/mengapa-kita-butuh-preprocessor-css.html">Mengapa Kita Butuh Preprocessor CSS? →</a></div></footer></main></div>
+    
+<script src="/client.build.ea0a2031f2680983b234.js" type="text/javascript"></script>
+  </body>
+</html>
