@@ -1760,7 +1760,7 @@ table {
 }
 
 .leading-loose {
-  line-height: 2;
+  line-height: 1.75;
 }
 
 .m-0 {
@@ -4179,7 +4179,7 @@ table {
 }
 
 html {
-  line-height: 1.5;
+  line-height: 1.75;
   font-size: 1.125rem;
   font-family: Source Sans Pro, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -4194,17 +4194,17 @@ html {
 }
 
 h1 {
-  margin-top: 4rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
-  font-size: 3rem;
+  font-size: 1.875rem;
   color: #5661b3;
   line-height: 1.25;
 }
 
 h2 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  font-size: 1.875rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
   color: #22292f;
   line-height: 1.25;
 }
@@ -4212,7 +4212,7 @@ h2 {
 h3 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #22292f;
   line-height: 1.25;
 }
@@ -4222,7 +4222,7 @@ h5,
 h6 {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   color: #22292f;
   line-height: 1.25;
 }
@@ -4238,14 +4238,16 @@ hr {
 }
 
 blockquote {
-  text-align: center;
-  color: #22292f;
+  border-style: solid;
+  border-left-width: 8px;
   padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1.25rem;
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+  padding-right: 1.5rem;
+  border-color: #3d4852;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   font-weight: 600;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
 }
 
 p {
@@ -4256,10 +4258,7 @@ p {
 p code, ol code, ul code {
     font-size: .75rem;
     background-color: #dae1e7;
-    padding-left: .5rem;
-    padding-right: .5rem;
-    padding-top: .25rem;
-    padding-bottom: .25rem;
+    padding: .25rem;
     border-radius: .25rem;
   }
 
@@ -4272,8 +4271,8 @@ pre {
   padding-bottom: 1rem;
   overflow-y: auto;
   font-size: .75rem;
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   margin-left: -1.5rem;
   margin-right: -1.5rem;
 }
@@ -4287,22 +4286,22 @@ pre {
 ol,
 ul {
   color: #3d4852;
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 table {
   color: #3d4852;
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  margin-left: -2rem;
-  margin-right: -2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
 }
 
 table th,
   table td {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     padding-top: .5rem;
     padding-bottom: .5rem;
   }
@@ -5067,4 +5066,4 @@ a:not(.anchorjs-link) {
 }
 
 
-/*# sourceMappingURL=client.build.76b83d33dbde1fe6be10.css.map*/
+/*# sourceMappingURL=client.build.944f8bbe3cc1c2d06a22.css.map*/
