@@ -9,7 +9,7 @@ module.exports = {
   tailwindConfig: 'src/tailwind.js',
   staticFilesDir: 'public',
   staticPages: [
-    { filename: 'index', title: 'Ambercat' },
+    { filename: 'index', title: 'Ambercat', description: 'A blog by Rahmanda Wibowo' },
     { filename: '404', title: '404' },
   ],
   assetInjector(assetType, pageType) {
