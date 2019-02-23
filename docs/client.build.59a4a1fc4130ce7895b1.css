@@ -85,8 +85,7 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -469,24 +468,6 @@ img {
   height: auto;
 }
 
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-  color: inherit;
-  opacity: .5;
-}
-
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
-  color: inherit;
-  opacity: .5;
-}
-
-input::-ms-input-placeholder,
-textarea::-ms-input-placeholder {
-  color: inherit;
-  opacity: .5;
-}
-
 input::placeholder,
 textarea::placeholder {
   color: inherit;
@@ -524,9 +505,7 @@ table {
 }
 
 .appearance-none {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
 }
 
 .bg-fixed {
@@ -1556,7 +1535,7 @@ table {
 }
 
 .font-sans {
-  font-family: Source Sans Pro, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Source Sans Pro, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 .font-serif {
@@ -3320,7 +3299,6 @@ table {
 }
 
 .sticky {
-  position: -webkit-sticky;
   position: sticky;
 }
 
@@ -3875,17 +3853,11 @@ table {
 }
 
 .select-none {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .select-text {
-  -webkit-user-select: text;
-     -moz-user-select: text;
-      -ms-user-select: text;
-          user-select: text;
+  user-select: text;
 }
 
 .align-baseline {
@@ -4181,7 +4153,7 @@ table {
 html {
   line-height: 1.75;
   font-size: 1.125rem;
-  font-family: Source Sans Pro, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Source Sans Pro, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 .post {
@@ -4326,6 +4298,7 @@ a:not(.anchorjs-link) {
   color: #22292f;
   position: relative;
   text-decoration: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), color-stop(70%, rgba(101, 125, 225, .4)));
   background-image: linear-gradient(180deg, transparent 70%, rgba(101, 125, 225, .4) 0);
 }
 
@@ -5066,4 +5039,4 @@ a:not(.anchorjs-link) {
 }
 
 
-/*# sourceMappingURL=client.build.944f8bbe3cc1c2d06a22.css.map*/
+/*# sourceMappingURL=client.build.59a4a1fc4130ce7895b1.css.map*/
