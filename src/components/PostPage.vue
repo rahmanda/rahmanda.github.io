@@ -3,7 +3,7 @@
     <section class="post">
       <h1>{{ postData.title }}</h1>
       <p v-if="postData.summary"
-         class="text-xl font-semibold text-grey-dark">
+         class="text-xl font-semibold text-grey-dark mb-8">
         {{ postData.summary }}
       </p>
       <div class="text-sm mb-8 text-grey-darker">
