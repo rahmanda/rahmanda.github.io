@@ -1,4 +1,12 @@
 module.exports = {
+  language: 'id',
+  direction: 'ltr',
+  translations: {
+    en: {
+      name: 'English',
+      direction: 'ltr',
+    },
+  },
   serverPort: 3000,
   themeDir: 'src',
   buildDir: 'docs',
