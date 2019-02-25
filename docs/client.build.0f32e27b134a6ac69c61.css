@@ -4306,6 +4306,10 @@ a:not(.anchorjs-link) {
   color: #6574cd;
 }
 
+.rtl {
+  direction: rtl;
+}
+
 @media (min-width: 576px) {
   .sm\:rounded-none {
     border-radius: 0;
@@ -5039,4 +5043,4 @@ a:not(.anchorjs-link) {
 }
 
 
-/*# sourceMappingURL=client.build.59a4a1fc4130ce7895b1.css.map*/
+/*# sourceMappingURL=client.build.0f32e27b134a6ac69c61.css.map*/
