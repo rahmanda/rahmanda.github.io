@@ -3,24 +3,6 @@
         :dir="postData.direction"
         :class="{ 'rtl': postData.direction === 'rtl' }">
     <section class="post">
-       <div v-if="postData.translations || postData.originalPostPath"
-          class="text-sm mt-8 text-grey-darker">
-        <span v-if="postData.translations">
-          Translate to:
-          <a v-for="(translation, key) in postData.translations"
-             :key="key"
-             :href="translation.path"
-             class="mx-1">
-            {{ translation.name }}
-          </a>
-        </span>
-        <span v-if="postData.originalPostPath">
-          This is a translated version. Read
-          <a :href="postData.originalPostPath">
-            original post
-          </a>
-        </span>
-      </div>     
       <h1>{{ postData.title }}</h1>
       <p v-if="postData.summary"
          class="text-xl font-semibold text-grey-dark mb-8">
@@ -33,6 +15,27 @@
         <span class="mx-1">•</span>
         <span :title="postData.readingTime.text">{{ postData.readingTime.text }}</span>
       </div>
+      <div v-if="postData.translations || postData.originalPostPath"
+          class="text-sm my-6 text-grey-darker">
+        <span v-if="postData.translations">
+          Translate to:
+          <a v-for="(translation, key) in postData.translations"
+             :key="key"
+             :href="translation.path"
+             class="mx-1">
+            {{ translation.name }}
+          </a>
+        </span>
+        <span v-if="postData.originalPostPath">
+          <a :href="postData.originalPostPath">
+            Read original post (ID)
+          </a>
+	  <span class="mx-1">•</span>
+	  <a :href="`/${data.language}`">
+	    View all posts ({{ data.language.toUpperCase() }})
+	  </a>
+        </span>
+      </div>     
       <article v-html="postContent"/>
     </section>
     <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8">
