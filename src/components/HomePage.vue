@@ -21,6 +21,7 @@
         <p v-if="post.data.summary"
            class="text-base text-grey-darker mt-2">{{ post.data.summary }}</p>
       </div>
+      <a href="/archive.html" class="text-sm my-14">Lihat Selengkapnya →</a>
     </div>
   </div>
 </template>
