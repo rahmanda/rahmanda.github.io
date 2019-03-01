@@ -156,6 +156,11 @@ table {
   }
 }
 
+mark {
+  @apply text-black;
+  background-color: #ffeecb;
+}
+
 @screen md {
   pre {
     @apply rounded-lg;
@@ -174,4 +179,11 @@ a:not(.anchorjs-link) {
 
 .rtl {
   direction: rtl;
+}
+
+.highlighted-line {
+  background-color: #111518;
+  display: block;
+  margin: 0 -1.575rem;
+  padding: 0 1.575rem;
 }

@@ -5,6 +5,7 @@
   "author": "Rahmanda Wibowo <rahmandawibowo@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "ambercat": "0.x"
+    "ambercat": "0.x",
+    "markdown-it-highlight-lines": "^1.0.2"
   }
 }

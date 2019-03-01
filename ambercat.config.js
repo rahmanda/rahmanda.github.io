@@ -32,6 +32,7 @@ module.exports = {
       numOfPosts: 'all',
     },
   ],
+  markdownPlugins: [require('markdown-it-highlight-lines')],
   assetInjector(assetType, pageType) {
     if (assetType === 'js' && pageType === 'post') {
       return require('./disqus');
