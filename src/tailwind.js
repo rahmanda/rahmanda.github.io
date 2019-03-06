@@ -210,6 +210,7 @@ module.exports = {
       'sans-serif',
     ],
     'serif': [
+      'Lora',
       'Constantia',
       'Lucida Bright',
       'Lucidabright',
@@ -928,7 +929,7 @@ module.exports = {
     tableLayout: [],
     textAlign: ['responsive'],
     textColors: ['hover', 'focus'],
-    textSizes: [],
+    textSizes: ['responsive'],
     textStyle: ['hover', 'focus'],
     tracking: [],
     userSelect: [],

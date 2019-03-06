@@ -4,11 +4,7 @@
         :class="{ 'rtl': postData.direction === 'rtl' }">
     <section class="post">
       <h1>{{ postData.title }}</h1>
-      <p v-if="postData.summary"
-         class="text-xl font-semibold text-grey-dark mb-8">
-        {{ postData.summary }}
-      </p>
-      <div class="text-sm mb-8 text-grey-darker">
+      <div class="text-sm text-grey-darker font-sans">
         <time :datetime="postData.date">
           {{ postData.date | date(postData.language) }}
         </time>
@@ -16,7 +12,7 @@
         <span :title="postData.readingTime.text">{{ postData.readingTime.text }}</span>
       </div>
       <div v-if="postData.translations || postData.originalPostPath"
-          class="text-sm my-6 text-grey-darker">
+          class="text-sm mt-6 text-grey-darker font-sans">
         <span v-if="postData.translations">
           Translate to:
           <a v-for="(translation, key) in postData.translations"
@@ -36,7 +32,7 @@
 	  </a>
         </span>
       </div>     
-      <article v-html="postContent"/>
+      <article class="mt-8" v-html="postContent"/>
     </section>
     <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8">
       <div v-if="postData.olderPost"

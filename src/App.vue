@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="bg-indigo h-1"/>
-    <nav class="max-w-md mx-auto py-2 px-6 text-base whitespace-nowrap overflow-y-auto">
+    <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto">
       <a class="mr-4" href="/">Home</a>
       <a class="mr-4" href="/archive.html">Archive</a>
       <a class="mr-4" href="https://id.linkedin.com/in/rahmandawibowo">About</a>

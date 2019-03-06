@@ -1,11 +1,11 @@
 <template>
   <main role="main" class="text-lg text-grey-darkest">
-    <div class="max-w-md mx-auto px-6">
+    <div class="max-w-md mx-auto px-5">
       <h1>{{ data.title }}</h1>
       <p v-if="data.description"
          class="text-xl font-semibold text-grey-dark">{{ data.description }}</p>
     </div>
-    <div class="max-w-md mx-auto px-6 py-6">
+    <div class="max-w-md mx-auto px-5 py-6">
       <div v-for="post in data.posts"
            class="mb-10">
         <div class="text-sm text-grey-darker">

@@ -8,6 +8,7 @@ module.exports = {
     },
   },
   serverPort: 3000,
+  syntaxLanguages: ['html', 'javascript', 'css'],
   themeDir: 'src',
   buildDir: 'docs',
   buildPrefix: 'client.build',
