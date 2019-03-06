@@ -4,69 +4,72 @@
     <title>Membuat Tweepy dengan Flask - Episode 2</title>
     <meta charset="UTF-8">
     
-<meta name="description" content="Pada tutorial Flask episode kali ini kita akan menambahkan beberapa fungsi baru seperti lihat profil dan follow akun lain. Pertama-tama ada beberapa hal yang harus kita edit dari kode pada episode sebelumnya.  
+<meta name="description" content="Pada tutorial Flask episode kali ini kita akan menambahkan beberapa fungsi baru seperti lihat profil dan follow akun lain. Pertama-tama ada beberapa hal yang harus kita edit dari kode pada episode sebelumnya.
 Edit Kodingan
-Karena kita ingin menambahkan fitur follow, timeline kita harus bisa menamp ...">
+Karena kita ingin menambahkan fitur follow, timeline kita harus bisa menampil ...">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet"> 
     
-<link href="/client.build.0f32e27b134a6ac69c61.css" rel="stylesheet">
+<link href="/client.build.e372e0a1206344591231.css" rel="stylesheet">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-6 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Membuat Tweepy dengan Flask - Episode 2</h1> <!----> <div class="text-sm mb-8 text-grey-darker"><time datetime="2015-11-22">
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Membuat Tweepy dengan Flask - Episode 2</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2015-11-22">
           22 November 2015
-        </time> <span class="mx-1">•</span> <span title="4 min read">4 min read</span></div> <!----> <article><p>Pada tutorial Flask episode kali ini kita akan menambahkan beberapa fungsi baru seperti lihat profil dan <em>follow</em> akun lain. Pertama-tama ada beberapa hal yang harus kita edit dari kode pada episode sebelumnya.  </p>
-<h2 id="edit-kodingan">Edit Kodingan</h2>
-<p>Karena kita ingin menambahkan fitur <em>follow</em>, <em>timeline</em> kita harus bisa menampilkan juga <em>tweet-tweet</em> dari akun yang kita <em>follow</em>. Edit fungsi <em>route</em> <code>timeline</code> dan <code>register</code> pada <code>tweepy.py</code> seperti dibawah ini:  </p>
-<pre><code>@app.route(&#39;/timeline/&#39;)
+        </time> <span class="mx-1">•</span> <span title="4 min read">4 min read</span></div> <!----> <article class="mt-8"><p>Pada tutorial Flask episode kali ini kita akan menambahkan beberapa fungsi baru seperti lihat profil dan <em>follow</em> akun lain. Pertama-tama ada beberapa hal yang harus kita edit dari kode pada episode sebelumnya.</p>
+<h2>Edit Kodingan</h2>
+<p>Karena kita ingin menambahkan fitur <em>follow</em>, <em>timeline</em> kita harus bisa menampilkan juga <em>tweet-tweet</em> dari akun yang kita <em>follow</em>. Edit fungsi <em>route</em> <code>timeline</code> dan <code>register</code> pada <code>tweepy.py</code> seperti dibawah ini:</p>
+<pre><code>@app.route('/timeline/')
 def timeline():
-  if &#39;user_id&#39; not in session:
-    return redirect(url_for(&#39;public_timeline&#39;))
+  if 'user_id' not in session:
+    return redirect(url_for('public_timeline'))
 
-  return render_template(&#39;timeline.html&#39;, tweets=query_db(&#39;&#39;&#39;
+  return render_template('timeline.html', tweets=query_db('''
     select tweets.*, users.* from users
     inner join tweets on (tweets.user_id=users.id)
     where users.id in (select user_id from followers where follower_id=?)
-    order by tweets.pub_date desc limit ?&#39;&#39;&#39;,
-    [session[&#39;user_id&#39;], app.config[&#39;PER_PAGE&#39;]]), test=query_db(&#39;&#39;&#39;
-    select * from users where username = &#39;ambercat&#39;
-    &#39;&#39;&#39;))
+    order by tweets.pub_date desc limit ?''',
+    [session['user_id'], app.config['PER_PAGE']]), test=query_db('''
+    select * from users where username = 'ambercat'
+    '''))
 
 ...
 ...
 
-@app.route(&#39;/register&#39;, methods=[&#39;POST&#39;])
+@app.route('/register', methods=['POST'])
 def register():
-  if &#39;user_id&#39; in session:
-    return redirect(url_for(&#39;timeline&#39;))
+  if 'user_id' in session:
+    return redirect(url_for('timeline'))
   error = None
-  if request.method == &#39;POST&#39;:
-    if not request.form[&#39;username&#39;]:
-      error = &#39;Please enter your username&#39;
-    elif not request.form[&#39;fullname&#39;]:
-      error = &#39;Please enter your fullname&#39;
-    elif not request.form[&#39;password&#39;]:
-      error = &#39;Please enter your password&#39;
-    elif request.form[&#39;password&#39;] != request.form[&#39;password2&#39;]:
-      error = &#39;The two password that you entered didn\&#39;t match&#39;
-    elif get_user_id(request.form[&#39;username&#39;]) is not None:
-      error = &#39;The username is already taken&#39;
+  if request.method == 'POST':
+    if not request.form['username']:
+      error = 'Please enter your username'
+    elif not request.form['fullname']:
+      error = 'Please enter your fullname'
+    elif not request.form['password']:
+      error = 'Please enter your password'
+    elif request.form['password'] != request.form['password2']:
+      error = 'The two password that you entered didn\'t match'
+    elif get_user_id(request.form['username']) is not None:
+      error = 'The username is already taken'
     else:
       db = connect_db()
-      db.execute(&#39;&#39;&#39;insert into users (
-        username, fullname, password) values (?, ?, ?)&#39;&#39;&#39;,
-        (request.form[&#39;username&#39;], request.form[&#39;fullname&#39;],
-         generate_password_hash(request.form[&#39;password&#39;])))
+      db.execute('''insert into users (
+        username, fullname, password) values (?, ?, ?)''',
+        (request.form['username'], request.form['fullname'],
+         generate_password_hash(request.form['password'])))
       db.commit()
-      user_id = get_user_id(request.form[&#39;username&#39;])
-      db.execute(&#39;insert into followers (user_id, follower_id) values (?, ?)&#39;,
+      user_id = get_user_id(request.form['username'])
+      db.execute('insert into followers (user_id, follower_id) values (?, ?)',
         (user_id, user_id))
       db.commit()
       db.close()
-      flash(&#39;You were successfully registered&#39;)
-      return redirect(url_for(&#39;login&#39;))</code></pre><p>Pada kode fungsi <code>register</code>, kita harus menyimpan data <em>follower</em> pertama, yaitu akun kita sendiri XD. Sehingga pada fungsi <em>timeline</em>, kita bisa menampilkan <em>tweet</em> kita sendiri dan akun yang kita follow. Setelah dilakukan penambahan, <em>query</em> pada fungsi <em>timeline</em> menjadi lebih kompleks dari sebelumnya karena melibatkan <code>INNER JOIN</code> dengan tabel <code>tweets</code>.  </p>
-<h2 id="menambahkan-route-untuk-profil-dan-follow">Menambahkan Route untuk Profil dan Follow</h2>
-<p>Masih pada <code>tweepy.py</code>, ketik kode di bawah ini setelah fungsi <code>logout</code>:  </p>
+      flash('You were successfully registered')
+      return redirect(url_for('login'))
+</code></pre>
+<p>Pada kode fungsi <code>register</code>, kita harus menyimpan data <em>follower</em> pertama, yaitu akun kita sendiri XD. Sehingga pada fungsi <em>timeline</em>, kita bisa menampilkan <em>tweet</em> kita sendiri dan akun yang kita follow. Setelah dilakukan penambahan, <em>query</em> pada fungsi <em>timeline</em> menjadi lebih kompleks dari sebelumnya karena melibatkan <code>INNER JOIN</code> dengan tabel <code>tweets</code>.</p>
+<h2>Menambahkan Route untuk Profil dan Follow</h2>
+<p>Masih pada <code>tweepy.py</code>, ketik kode di bawah ini setelah fungsi <code>logout</code>:</p>
 <pre><code>@app.route('/profile/<span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span>')
 def profile(username):
   if 'user_id' not in session:
@@ -99,9 +102,11 @@ def unfollow(username):
   db.commit()
   db.close()
   flash('You have successfully unfollowed @%s', username)
-  return redirect(url_for('profile', username=username))</code></pre><p>Pada fungsi <em>follow</em> dan <em>unfollow</em> hanya melakukan <em>query database</em> saja, sedangkan pada fungsi <em>profile</em>, kita melakukan <code>render_template</code>. Selanjutnya kita perlu meng-<em>update template</em> <code>timeline</code>.  </p>
-<h2 id="update-template-timeline">Update template timeline</h2>
-<p><em>Update</em> <code>timeline.html</code> di <em>folder</em> <code>templates</code> sehingga seperti kode di bawah ini:  </p>
+  return redirect(url_for('profile', username=username))
+</code></pre>
+<p>Pada fungsi <em>follow</em> dan <em>unfollow</em> hanya melakukan <em>query database</em> saja, sedangkan pada fungsi <em>profile</em>, kita melakukan <code>render_template</code>. Selanjutnya kita perlu meng-<em>update template</em> <code>timeline</code>.</p>
+<h2>Update template timeline</h2>
+<p><em>Update</em> <code>timeline.html</code> di <em>folder</em> <code>templates</code> sehingga seperti kode di bawah ini:</p>
 <pre><code class="language-html">{% extends "layout.html" %}
 {% block title %}
   {% if request.endpoint == 'public_timeline' %}
@@ -150,9 +155,10 @@ def unfollow(username):
     {% endfor %}
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-{% endblock %}</code></pre>
-<p>Kita menambahkan kondisi, apabila <code>request</code> berasal dari <em>route</em> <code>profile</code>, maka <em>template</em> akan menampilkan nama dan <em>username</em> akun, dan tombol <em>follow/unfollow</em>. Setelah itu, <em>generate database</em> dan jalankan web dengan perintah <code>python tweepy.py</code> di <code>console</code> (lihat episode sebelumnya untuk instruksi lengkapnya). Daftarkan dua akun yang berbeda, buat beberapa <em>tweet</em> pada akun tersebut, lalu pergi ke halaman profil akun lain dengan memasukkan url <code>localhost:5000/profil/&lt;username&gt;</code>. Jangan lupa coba tombol <em>follow</em>-nya. Sekarang <em>tweet-tweet</em> akun yang kamu <em>follow</em> akan tampil pada timeline kamu :).  </p>
-<h2 id="selanjutnya">Selanjutnya?</h2>
+{% endblock %}
+</code></pre>
+<p>Kita menambahkan kondisi, apabila <code>request</code> berasal dari <em>route</em> <code>profile</code>, maka <em>template</em> akan menampilkan nama dan <em>username</em> akun, dan tombol <em>follow/unfollow</em>. Setelah itu, <em>generate database</em> dan jalankan web dengan perintah <code>python tweepy.py</code> di <code>console</code> (lihat episode sebelumnya untuk instruksi lengkapnya). Daftarkan dua akun yang berbeda, buat beberapa <em>tweet</em> pada akun tersebut, lalu pergi ke halaman profil akun lain dengan memasukkan url <code>localhost:5000/profil/&lt;username&gt;</code>. Jangan lupa coba tombol <em>follow</em>-nya. Sekarang <em>tweet-tweet</em> akun yang kamu <em>follow</em> akan tampil pada timeline kamu :).</p>
+<h2>Selanjutnya?</h2>
 <p>Pada episode selanjutnya, kita akan menambahkan fitur <em>search</em> sehingga kamu tidak perlu susah-susah mengingat <em>username</em>-nya. Selain itu kita juga akan melakukan <em>finishing</em> tampilan tweepy. Apabila kamu punya pertanyaan seputar tutorial ini, jangan sungkan bertanya melalui kolom komentar. Semoga artikel ini bermanfaat!</p>
 <p><a href="https://github.com/rahmanda/ambercat-tweepy/tree/part-2">Source code</a>.</p>
 </article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/laragon-xampp-rasa-laravel.html">← Laragon - XAMPP Rasa Laravel</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/membuat-tweepy-dengan-flask-3.html">Membuat Tweepy dengan Flask - Episode 3 →</a></div></footer></main></div>

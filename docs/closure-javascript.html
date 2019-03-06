@@ -4,47 +4,52 @@
     <title>Memahami Closure di Javascript</title>
     <meta charset="UTF-8">
     
-<meta name="description" content="Ketika kita membuat suatu variabel, variabel tersebut otomatis memiliki sebuah scope. Scope yang dimiliki oleh variabel bergantung kepada dimana posisi variabel tersebut dibuat.  
+<meta name="description" content="Ketika kita membuat suatu variabel, variabel tersebut otomatis memiliki sebuah scope. Scope yang dimiliki oleh variabel bergantung kepada dimana posisi variabel tersebut dibuat.
 &lt;?php
 $foo = 'bar';
 function printFooValue() {
     echo($foo);
 }
-printFooValue(); /* menghasilkan error 'Undefined va ...">
+printFooValue(); /* menghasilkan error 'Undefined vari ...">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet"> 
     
-<link href="/client.build.0f32e27b134a6ac69c61.css" rel="stylesheet">
+<link href="/client.build.e372e0a1206344591231.css" rel="stylesheet">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-6 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Memahami Closure di Javascript</h1> <!----> <div class="text-sm mb-8 text-grey-darker"><time datetime="2016-12-31">
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Memahami Closure di Javascript</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2016-12-31">
           31 Desember 2016
-        </time> <span class="mx-1">•</span> <span title="4 min read">4 min read</span></div> <div class="text-sm my-6 text-grey-darker"><span>
+        </time> <span class="mx-1">•</span> <span title="4 min read">4 min read</span></div> <div class="text-sm mt-6 text-grey-darker font-sans"><span>
           Translate to:
           <a href="/en/closure-javascript.html" class="mx-1">
             English
-          </a></span> <!----></div> <article><p>Ketika kita membuat suatu variabel, variabel tersebut otomatis memiliki sebuah <em>scope</em>. <em>Scope</em> yang dimiliki oleh variabel bergantung kepada dimana posisi variabel tersebut dibuat.  </p>
+          </a></span> <!----></div> <article class="mt-8"><p>Ketika kita membuat suatu variabel, variabel tersebut otomatis memiliki sebuah <em>scope</em>. <em>Scope</em> yang dimiliki oleh variabel bergantung kepada dimana posisi variabel tersebut dibuat.</p>
 <pre><code>&lt;?php
 $foo = <span class="hljs-string">'bar'</span>;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printFooValue</span>(<span class="hljs-params"></span>) </span>{
     echo($foo);
 }
-printFooValue(); <span class="hljs-comment">/* menghasilkan error 'Undefined variable' */</span></code></pre><p>Pada contoh program PHP di atas, variabel <code>$foo</code> terletak di luar fungsi <code>printFooValue</code>. Apabila kita jalankan, program tersebut akan menghasilkan <em>error</em> &#39;<em>Undefined variable</em>&#39;. Hal ini disebabkan variabel <code>$foo</code> terletak di luar <em>scope</em> fungsi <code>printFooValue</code>. Sehingga dapat kita simpulkan bahwa saat kita membuat suatu fungsi, fungsi tersebut membuat <em>scope</em>-nya sendiri yang terisolasi dari luar.  </p>
-<p>Sifat <code>scope</code> yang seperti itu dapat kita temui juga di bahasa pemograman lain seperti C, Java dan Ruby. Akan tetapi pada bahasa pemograman Javascript, sifat <code>scope</code>-nya agak berbeda.  </p>
+printFooValue(); <span class="hljs-comment">/* menghasilkan error 'Undefined variable' */</span>
+</code></pre>
+<p>Pada contoh program PHP di atas, variabel <code>$foo</code> terletak di luar fungsi <code>printFooValue</code>. Apabila kita jalankan, program tersebut akan menghasilkan <em>error</em> '<em>Undefined variable</em>'. Hal ini disebabkan variabel <code>$foo</code> terletak di luar <em>scope</em> fungsi <code>printFooValue</code>. Sehingga dapat kita simpulkan bahwa saat kita membuat suatu fungsi, fungsi tersebut membuat <em>scope</em>-nya sendiri yang terisolasi dari luar.</p>
+<p>Sifat <code>scope</code> yang seperti itu dapat kita temui juga di bahasa pemograman lain seperti C, Java dan Ruby. Akan tetapi pada bahasa pemograman Javascript, sifat <code>scope</code>-nya agak berbeda.</p>
 <pre><code class="language-js"><span class="hljs-keyword">var</span> foo = <span class="hljs-string">'bar'</span>;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printFooValue</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(foo);
 }
-printFooValue(); <span class="hljs-comment">// menghasilkan output 'bar'</span></code></pre>
-<p>Apabila contoh program di atas dijalankan, program tersebut mengeluarkan <em>output</em> &#39;bar&#39;. Hal ini menunjukkan bahwa fungsi <code>printFooValue</code> dapat mengetahui <em>scope</em> di luar. Sekarang perhatikan contoh berikut:  </p>
+printFooValue(); <span class="hljs-comment">// menghasilkan output 'bar'</span>
+</code></pre>
+<p>Apabila contoh program di atas dijalankan, program tersebut mengeluarkan <em>output</em> 'bar'. Hal ini menunjukkan bahwa fungsi <code>printFooValue</code> dapat mengetahui <em>scope</em> di luar. Sekarang perhatikan contoh berikut:</p>
 <pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printFooValue</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">var</span> bar = <span class="hljs-string">'foo'</span>;
     <span class="hljs-built_in">console</span>.log(bar);
 }
 printFooValue() <span class="hljs-comment">// menghasilkan output 'bar'</span>
-<span class="hljs-built_in">console</span>.log(bar) <span class="hljs-comment">// menghasilkan error 'Undefined variable'</span></code></pre>
-<p>Variabel &#39;bar&#39; yang dideklarasikan di dalam fungsi <code>printFooValue</code> ternyata tidak dikenali di luar fungsinya yang mengakibatkan error &#39;Undefined variable&#39; saat di-<em>print</em>. Sehingga dapat kita simpulkan bahwa saat kita membuat fungsi di Javascript, fungsi tersebut membuat <em>scope</em>-nya sendiri <strong>dan menyimpan <em>scope</em> dari luar</strong>. Sifat <code>scope</code> yang demikian dikenal dengan istilah <strong>lexical scoping</strong>.  </p>
-<h2 id="closure">Closure</h2>
+<span class="hljs-built_in">console</span>.log(bar) <span class="hljs-comment">// menghasilkan error 'Undefined variable'</span>
+</code></pre>
+<p>Variabel 'bar' yang dideklarasikan di dalam fungsi <code>printFooValue</code> ternyata tidak dikenali di luar fungsinya yang mengakibatkan error 'Undefined variable' saat di-<em>print</em>. Sehingga dapat kita simpulkan bahwa saat kita membuat fungsi di Javascript, fungsi tersebut membuat <em>scope</em>-nya sendiri <strong>dan menyimpan <em>scope</em> dari luar</strong>. Sifat <code>scope</code> yang demikian dikenal dengan istilah <strong>lexical scoping</strong>.</p>
+<h2>Closure</h2>
 <pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">multiplyBy</span>(<span class="hljs-params">x</span>) </span>{
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">multipleByX</span>(<span class="hljs-params">y</span>) </span>{
         <span class="hljs-keyword">return</span> x * y;
@@ -54,20 +59,21 @@ printFooValue() <span class="hljs-comment">// menghasilkan output 'bar'</span>
 <span class="hljs-keyword">var</span> multiplyBy2 = multiplyBy(<span class="hljs-number">2</span>);
 <span class="hljs-keyword">var</span> multiplyBy10 = multiplyBy(<span class="hljs-number">10</span>);
 <span class="hljs-built_in">console</span>.log(multiplyBy2(<span class="hljs-number">3</span>)); <span class="hljs-comment">// menghasilkan output 6</span>
-<span class="hljs-built_in">console</span>.log(multiplyBy10(<span class="hljs-number">5</span>)); <span class="hljs-comment">// menghasilkan output 50</span></code></pre>
-<p>Pada bahasa pemograman yang tidak mendukung <em>lexical scoping</em>, variabel lokal akan dihapus setelah fungsi dipanggil. Namun hal ini tidak berlaku di Javascript. Pada contoh di atas, variabel <code>x</code> tetap dapat diakses oleh fungsi <code>multipleByX</code> meskipun fungsi <code>multipleBy</code> telah dipanggil. Hal ini disebabkan saat fungsi <code>multipleByX</code> dikembalikan oleh pemanggilan fungsi <code>multipleBy</code>, fungsi <code>multipleByX</code> masih menyimpan <em>scope</em> dari fungsi <code>multipleBy</code>. Hal ini yang dinamakan <strong>closure</strong>.  </p>
+<span class="hljs-built_in">console</span>.log(multiplyBy10(<span class="hljs-number">5</span>)); <span class="hljs-comment">// menghasilkan output 50</span>
+</code></pre>
+<p>Pada bahasa pemograman yang tidak mendukung <em>lexical scoping</em>, variabel lokal akan dihapus setelah fungsi dipanggil. Namun hal ini tidak berlaku di Javascript. Pada contoh di atas, variabel <code>x</code> tetap dapat diakses oleh fungsi <code>multipleByX</code> meskipun fungsi <code>multipleBy</code> telah dipanggil. Hal ini disebabkan saat fungsi <code>multipleByX</code> dikembalikan oleh pemanggilan fungsi <code>multipleBy</code>, fungsi <code>multipleByX</code> masih menyimpan <em>scope</em> dari fungsi <code>multipleBy</code>. Hal ini yang dinamakan <strong>closure</strong>.</p>
 <blockquote>
-<p><em>Closures are functions that refer to independent (free) variables (variables that are used locally, but defined in an enclosing scope). In other words, these functions &#39;remember&#39; the environment in which they were created.</em> - <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Closures">Mozilla Developer Network</a>  </p>
+<p><em>Closures are functions that refer to independent (free) variables (variables that are used locally, but defined in an enclosing scope). In other words, these functions 'remember' the environment in which they were created.</em> - <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Closures">Mozilla Developer Network</a></p>
 </blockquote>
-<h2 id="konsep-private-method-di-javascript">Konsep Private Method di Javascript</h2>
-<p>Kita sudah tahu bahwa Javascript tidak memiliki konsep OOP. Meskipun demikian, kita masih bisa membuat suatu <em>private method</em> di Javascript dengan memanfaatkan <em>closure</em>. Perhatikan contoh berikut ini:  </p>
+<h2>Konsep Private Method di Javascript</h2>
+<p>Kita sudah tahu bahwa Javascript tidak memiliki konsep OOP. Meskipun demikian, kita masih bisa membuat suatu <em>private method</em> di Javascript dengan memanfaatkan <em>closure</em>. Perhatikan contoh berikut ini:</p>
 <pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Giraffe</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">var</span> eatingObject = <span class="hljs-string">'leaves'</span>;
 
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">eat</span>(<span class="hljs-params"></span>) </span>{
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Giraffe is eating '</span> + place);
     }
-
+    
     <span class="hljs-keyword">return</span> {
         <span class="hljs-attr">eating</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
             eat();
@@ -82,8 +88,9 @@ babyGiraffe.eat(); <span class="hljs-comment">// error 'Undefined property'</spa
 babyGiraffe.eatingObject; <span class="hljs-comment">// error 'Undefined property'</span>
 babyGiraffe.eating(); <span class="hljs-comment">// output 'Giraffe is eating leaves'</span>
 babyGiraffe.changeFood(<span class="hljs-string">'french fries'</span>);
-babyGiraffe.eating(); <span class="hljs-comment">// output 'Giraffe is eating french fries'</span></code></pre>
-<p>Fungsi <code>Giraffe</code> mengembalikan objek yang terdiri dari dua properti, <code>eating</code> dan <code>changeFood</code>. Karena adanya <em>lexical scoping</em>, kedua properti tersebut menyimpan <em>scope</em> dari <code>Giraffe</code>, yaitu variabel <code>eatingObject</code> dan fungsi <code>eat</code>. Sehingga saat <code>babyGiraffe.eating</code> dan <code>babyGiraffe.changeFood</code> dipanggil, variabel dan fungsi tersebut masih dapat diakses. Contoh di atas juga menunjukkan bahwa variabel <code>eatingObject</code> dan fungsi <code>eat</code> hanya bisa diakses via properti yang dikembalikan oleh fungsi <code>Giraffe</code>. Model fungsi di atas sangat sering dipakai untuk mencegah <em>global scope pollution</em>, dan lebih populer dengan istilah <em>module pattern</em>.  </p>
+babyGiraffe.eating(); <span class="hljs-comment">// output 'Giraffe is eating french fries'</span>
+</code></pre>
+<p>Fungsi <code>Giraffe</code> mengembalikan objek yang terdiri dari dua properti, <code>eating</code> dan <code>changeFood</code>. Karena adanya <em>lexical scoping</em>, kedua properti tersebut menyimpan <em>scope</em> dari <code>Giraffe</code>, yaitu variabel <code>eatingObject</code> dan fungsi <code>eat</code>. Sehingga saat <code>babyGiraffe.eating</code> dan <code>babyGiraffe.changeFood</code> dipanggil, variabel dan fungsi tersebut masih dapat diakses. Contoh di atas juga menunjukkan bahwa variabel <code>eatingObject</code> dan fungsi <code>eat</code> hanya bisa diakses via properti yang dikembalikan oleh fungsi <code>Giraffe</code>. Model fungsi di atas sangat sering dipakai untuk mencegah <em>global scope pollution</em>, dan lebih populer dengan istilah <em>module pattern</em>.</p>
 <hr>
 <p>Konsep <em>lexical scoping</em> dan <em>closure</em> merupakan fondasi utama dari pemograman Javascript. Lucunya, saya sendiri baru kenal konsep ini setelah sekian banyak baris kode yang sudah saya buat yang ternyata telah mengaplikasikan <em>closure</em>. Kedepannya saya akan lebih banyak lagi menulis tentang dasar-dasar pemograman Javascript. Semoga artikel ini bermanfaat!</p>
 </article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/membangun-fitur-pencarian-dengan-laravel-scout.html">← Membangun Fitur Pencarian dengan Laravel Scout</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/javascript-this.html">Javascript This →</a></div></footer></main></div>

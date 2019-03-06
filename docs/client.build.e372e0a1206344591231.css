@@ -1539,7 +1539,7 @@ table {
 }
 
 .font-serif {
-  font-family: Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif;
+  font-family: Lora, Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif;
 }
 
 .font-mono {
@@ -4160,9 +4160,11 @@ html {
   max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   padding-bottom: 2rem;
+  font-family: Lora, Constantia, Lucida Bright, Lucidabright, Lucida Serif, Lucida, DejaVu Serif, Bitstream Vera Serif, Liberation Serif, Georgia, serif;
+  font-size: 1rem;
 }
 
 h1 {
@@ -4171,6 +4173,7 @@ h1 {
   font-size: 1.875rem;
   color: #5661b3;
   line-height: 1.25;
+  font-family: Source Sans Pro, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 h2 {
@@ -4179,6 +4182,7 @@ h2 {
   font-size: 1.5rem;
   color: #22292f;
   line-height: 1.25;
+  font-family: Source Sans Pro, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 h3 {
@@ -4187,6 +4191,7 @@ h3 {
   font-size: 1.25rem;
   color: #22292f;
   line-height: 1.25;
+  font-family: Source Sans Pro, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 h4,
@@ -4197,6 +4202,7 @@ h6 {
   font-size: 1.125rem;
   color: #22292f;
   line-height: 1.25;
+  font-family: Source Sans Pro, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 hr {
@@ -4210,16 +4216,30 @@ hr {
 }
 
 blockquote {
-  border-style: solid;
-  border-left-width: 8px;
-  padding-left: 1rem;
-  padding-right: 1.5rem;
-  border-color: #3d4852;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  font-weight: 600;
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+  position: relative;
+}
+
+blockquote p {
+    color: #2f365f;
+    margin-bottom: 0;
+  }
+
+blockquote:before {
+  position: absolute;
+  background-color: #2f365f;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 100%;
 }
 
 p {
@@ -4235,45 +4255,42 @@ p code, ol code, ul code {
   }
 
 pre {
-  background-color: #22292f;
+  background-color: #191e38;
   color: #dae1e7;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1.25rem;
   overflow-y: auto;
   font-size: .75rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+  border-radius: 0;
 }
 
-@media (min-width: 576px) {
-  pre {
-    border-radius: 0;
+pre code {
+    min-width: 100%;
+    float: left;
   }
-}
 
 ol,
 ul {
   color: #3d4852;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 table {
   color: #3d4852;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
 }
 
 table th,
   table td {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
     padding-top: .5rem;
     padding-bottom: .5rem;
   }
@@ -4287,9 +4304,40 @@ table tr:nth-child(even),
     background-color: #f1f5f8;
   }
 
+mark {
+  color: #22292f;
+  background-color: #ffeecb;
+}
+
 @media (min-width: 768px) {
   pre {
     border-radius: .5rem;
+  }
+
+  .post {
+    font-size: 1.125rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: 1.25rem;
+  }
+
+  pre {
+    font-size: .875rem;
   }
 }
 
@@ -4308,6 +4356,13 @@ a:not(.anchorjs-link) {
 
 .rtl {
   direction: rtl;
+}
+
+.highlighted-line {
+  background-color: #2b326b;
+  display: block;
+  margin: 0 -1.575rem;
+  padding: 0 1.575rem;
 }
 
 @media (min-width: 576px) {
@@ -4673,6 +4728,42 @@ a:not(.anchorjs-link) {
 
   .sm\:text-justify {
     text-align: justify;
+  }
+
+  .sm\:text-xs {
+    font-size: .75rem;
+  }
+
+  .sm\:text-sm {
+    font-size: .875rem;
+  }
+
+  .sm\:text-base {
+    font-size: 1rem;
+  }
+
+  .sm\:text-lg {
+    font-size: 1.125rem;
+  }
+
+  .sm\:text-xl {
+    font-size: 1.25rem;
+  }
+
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+  }
+
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+  }
+
+  .sm\:text-4xl {
+    font-size: 2.25rem;
+  }
+
+  .sm\:text-5xl {
+    font-size: 3rem;
   }
 }
 
@@ -5040,7 +5131,43 @@ a:not(.anchorjs-link) {
   .md\:text-justify {
     text-align: justify;
   }
+
+  .md\:text-xs {
+    font-size: .75rem;
+  }
+
+  .md\:text-sm {
+    font-size: .875rem;
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+  }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+  }
 }
 
 
-/*# sourceMappingURL=client.build.0f32e27b134a6ac69c61.css.map*/
+/*# sourceMappingURL=client.build.e372e0a1206344591231.css.map*/

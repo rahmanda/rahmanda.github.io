@@ -7,23 +7,26 @@
 <meta name="description" content="Laravel versi 5.3 telah memiliki fitur pencarian full-text via package Scout. Implementasinya sangat mudah karena Scout sudah terintegrasi dengan Eloquent ORM. Hingga artikel ini ditulis, Scout sudah mendukung search engine Algolia dan Elasticsearch. Tapi tidak menutup kemungkinan ke depannya akan d ...">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet"> 
     
-<link href="/client.build.0f32e27b134a6ac69c61.css" rel="stylesheet">
+<link href="/client.build.e372e0a1206344591231.css" rel="stylesheet">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-6 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Membangun Fitur Pencarian dengan Laravel Scout</h1> <!----> <div class="text-sm mb-8 text-grey-darker"><time datetime="2016-09-11">
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Membangun Fitur Pencarian dengan Laravel Scout</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2016-09-11">
           11 September 2016
-        </time> <span class="mx-1">•</span> <span title="3 min read">3 min read</span></div> <!----> <article><p>Laravel versi 5.3 telah memiliki fitur pencarian <em>full-text</em> via <em>package</em> <a href="https://github.com/laravel/scout">Scout</a>. Implementasinya sangat mudah karena Scout sudah terintegrasi dengan Eloquent ORM. Hingga artikel ini ditulis, Scout sudah mendukung <em>search engine</em> <a href="https://www.algolia.com">Algolia</a> dan <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>. Tapi tidak menutup kemungkinan ke depannya akan ditambahkan lagi <em>search engine</em> yang lain untuk memenuhi kebutuhan penggunanya.  </p>
-<h2 id="cara-pemasangan-scout">Cara Pemasangan Scout</h2>
-<p>Sebelumnya pastikan kamu telah membuat sebuah projek Laravel versi 5.3, lalu buka <em>file</em> <code>composer.json</code> pada editor kamu. Tambahkan <em>dependency</em> untuk Scout seperti ini:  </p>
+        </time> <span class="mx-1">•</span> <span title="3 min read">3 min read</span></div> <!----> <article class="mt-8"><p>Laravel versi 5.3 telah memiliki fitur pencarian <em>full-text</em> via <em>package</em> <a href="https://github.com/laravel/scout">Scout</a>. Implementasinya sangat mudah karena Scout sudah terintegrasi dengan Eloquent ORM. Hingga artikel ini ditulis, Scout sudah mendukung <em>search engine</em> <a href="https://www.algolia.com">Algolia</a> dan <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>. Tapi tidak menutup kemungkinan ke depannya akan ditambahkan lagi <em>search engine</em> yang lain untuk memenuhi kebutuhan penggunanya.</p>
+<h2>Cara Pemasangan Scout</h2>
+<p>Sebelumnya pastikan kamu telah membuat sebuah projek Laravel versi 5.3, lalu buka <em>file</em> <code>composer.json</code> pada editor kamu. Tambahkan <em>dependency</em> untuk Scout seperti ini:</p>
 <pre><code><span class="hljs-string">"require"</span>: {
         <span class="hljs-string">"php"</span>              : <span class="hljs-string">"&gt;=5.6.4"</span>,
         <span class="hljs-string">"laravel/framework"</span>: <span class="hljs-string">"5.3.*"</span>,
         <span class="hljs-string">"laravel/scout"</span>: <span class="hljs-string">"1.1.*"</span>,
-        ...
-}</code></pre><p>Jalankan <code>composer update</code> pada terminal untuk menginstal Scout pada projek Laravel kamu (note: butuh koneksi internet). Setelah proses instalasi selesai, jalankan <code>php artisan vendor:publish</code> untuk menghasilkan <em>file</em> konfigurasi untuk Scout. Selanjutnya, buka <em>file</em> <code>config/app.php</code> lalu tambahkan <code>Laravel\Scout\ScoutServiceProvider::class</code> pada bagian <code>providers</code>.  </p>
-<h2 id="menggunakan-scout-pada-model">Menggunakan Scout pada Model</h2>
-<p>Pada dasarnya, penggunaan Scout terdiri dari dua langkah, yaitu mengimpor kelas trait <code>Laravel\Scout\Searchable</code> dan menggunakan trait tersebut pada <code>model</code> yang telah kamu buat. Contoh penggunaannya dapat dilihat pada kode di bawah ini:  </p>
+		...
+}
+</code></pre>
+<p>Jalankan <code>composer update</code> pada terminal untuk menginstal Scout pada projek Laravel kamu (note: butuh koneksi internet). Setelah proses instalasi selesai, jalankan <code>php artisan vendor:publish</code> untuk menghasilkan <em>file</em> konfigurasi untuk Scout. Selanjutnya, buka <em>file</em> <code>config/app.php</code> lalu tambahkan <code>Laravel\Scout\ScoutServiceProvider::class</code> pada bagian <code>providers</code>.</p>
+<h2>Menggunakan Scout pada Model</h2>
+<p>Pada dasarnya, penggunaan Scout terdiri dari dua langkah, yaitu mengimpor kelas trait <code>Laravel\Scout\Searchable</code> dan menggunakan trait tersebut pada <code>model</code> yang telah kamu buat. Contoh penggunaannya dapat dilihat pada kode di bawah ini:</p>
 <pre><code>&lt;?php
 
 namespace App;
@@ -33,17 +36,21 @@ use Illuminate\Database\Eloquent\Model;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Modelku</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
 </span>{
-    use Searchable;
-}</code></pre><h2 id="melakukan-pencarian">Melakukan Pencarian</h2>
-<p>Untuk melakukan pencarian, kamu bisa menambahkan kode di bawah ini di suatu <em>method</em> di <code>controller</code>:  </p>
-<pre><code>$result = <span class="hljs-tag">&lt;<span class="hljs-name">Nama</span> <span class="hljs-attr">Namespace</span>&gt;</span>\<span class="hljs-tag">&lt;<span class="hljs-name">Nama</span> <span class="hljs-attr">Model</span>&gt;</span>::search('<span class="hljs-tag">&lt;<span class="hljs-name">kueri</span> <span class="hljs-attr">pencarian</span>&gt;</span>')-&gt;get();</code></pre><p>Variabel <code>$result</code> akan menyimpan kumpulan <code>model</code> Eloquent dalam bentuk <code>array</code> dan dapat dimanfaatkan dengan mengirimkan variabel tersebut lewat fungsi <code>view()</code>.  </p>
-<h2 id="integrasi-dengan-elasticsearch">Integrasi dengan Elasticsearch</h2>
-<p>Sampai pada tahap ini Scout kamu belum bisa digunakan karena kamu belum mengatur <em>search engine</em>-nya. Di antara dua pilihan <em>search engine</em> yang di dukung oleh Scout, yang dapat diinstal di lokal dan gratis adalah Elasticsearch. Untuk instalasinya kamu perlu menginstal Java-JRE terlebih dahulu. Setelah itu unduh Elasticsearch-nya <a href="https://www.elastic.co/downloads/elasticsearch">disini</a>. Bagi yang menggunakan OS Debian/Ubuntu, pilih versi <code>deb</code>. Setelah <em>file</em> selesai terunduh, instal dengan menjalankan perintah <code>sudo dpkg -i &lt;nama-file-elasticsearch.deb&gt;</code>. Untuk mengecek apakah Elasticsearch telah terinstal dan berjalan dengan baik, jalankan perintah <code>curl -X GET http://localhost:9200</code>.  </p>
+	use Searchable;
+}
+</code></pre>
+<h2>Melakukan Pencarian</h2>
+<p>Untuk melakukan pencarian, kamu bisa menambahkan kode di bawah ini di suatu <em>method</em> di <code>controller</code>:</p>
+<pre><code>$result = <span class="hljs-tag">&lt;<span class="hljs-name">Nama</span> <span class="hljs-attr">Namespace</span>&gt;</span>\<span class="hljs-tag">&lt;<span class="hljs-name">Nama</span> <span class="hljs-attr">Model</span>&gt;</span>::search('<span class="hljs-tag">&lt;<span class="hljs-name">kueri</span> <span class="hljs-attr">pencarian</span>&gt;</span>')-&gt;get();
+</code></pre>
+<p>Variabel <code>$result</code> akan menyimpan kumpulan <code>model</code> Eloquent dalam bentuk <code>array</code> dan dapat dimanfaatkan dengan mengirimkan variabel tersebut lewat fungsi <code>view()</code>.</p>
+<h2>Integrasi dengan Elasticsearch</h2>
+<p>Sampai pada tahap ini Scout kamu belum bisa digunakan karena kamu belum mengatur <em>search engine</em>-nya. Di antara dua pilihan <em>search engine</em> yang di dukung oleh Scout, yang dapat diinstal di lokal dan gratis adalah Elasticsearch. Untuk instalasinya kamu perlu menginstal Java-JRE terlebih dahulu. Setelah itu unduh Elasticsearch-nya <a href="https://www.elastic.co/downloads/elasticsearch">disini</a>. Bagi yang menggunakan OS Debian/Ubuntu, pilih versi <code>deb</code>. Setelah <em>file</em> selesai terunduh, instal dengan menjalankan perintah <code>sudo dpkg -i &lt;nama-file-elasticsearch.deb&gt;</code>. Untuk mengecek apakah Elasticsearch telah terinstal dan berjalan dengan baik, jalankan perintah <code>curl -X GET http://localhost:9200</code>.</p>
 <blockquote>
-<p>Cara instalasi Elasticsearch pada OS Windows kedepannya akan ditambahkan di artikel ini.  </p>
+<p>Cara instalasi Elasticsearch pada OS Windows kedepannya akan ditambahkan di artikel ini.</p>
 </blockquote>
-<p>Untuk berkomunikasi dengan Elasticsearch dengan php kita perlu menginstal librari <code>elasticsearch-php</code> dengan menjalankan perintah <code>composer install elasticsearch\elasticsearch-php</code>.  </p>
-<p>Setelah semuanya terinstal, buka <em>file</em> <code>config/scout.php</code>, ganti <code>driver</code> dengan nilai &#39;elasticsearch&#39; dan isi <code>host</code> pada konfigurasi bagian Elasticsearch dengan &#39;<a href="http://localhost:9200&#39;">http://localhost:9200&#39;</a>. Hasil konfigurasinya kurang lebih akan seperti di bawah ini:  </p>
+<p>Untuk berkomunikasi dengan Elasticsearch dengan php kita perlu menginstal librari <code>elasticsearch-php</code> dengan menjalankan perintah <code>composer install elasticsearch\elasticsearch-php</code>.</p>
+<p>Setelah semuanya terinstal, buka <em>file</em> <code>config/scout.php</code>, ganti <code>driver</code> dengan nilai 'elasticsearch' dan isi <code>host</code> pada konfigurasi bagian Elasticsearch dengan 'http://localhost:9200'. Hasil konfigurasinya kurang lebih akan seperti di bawah ini:</p>
 <pre><code>&lt;?php
 
 <span class="hljs-keyword">return</span> [
@@ -62,10 +69,10 @@ use Illuminate\Database\Eloquent\Model;
     */</span>
 
     <span class="hljs-string">'driver'</span> =&gt; env(<span class="hljs-string">'SCOUT_DRIVER'</span>, <span class="hljs-string">'elasticsearch'</span>),
-
-    ...
-    ...
-
+	
+	...
+	...
+	
     <span class="hljs-string">'elasticsearch'</span> =&gt; [
         <span class="hljs-string">'index'</span> =&gt; env(<span class="hljs-string">'ELASTICSEARCH_INDEX'</span>, <span class="hljs-string">'laravel'</span>),
 
@@ -76,13 +83,15 @@ use Illuminate\Database\Eloquent\Model;
         ],
     ],
 
-];</code></pre><p>Kamu mungkin akan perlu melakukan <em>indexing</em> apabila <code>model</code> kamu telah memiliki <em>record</em> di <em>database</em>. Caranya adalah dengan menjalankan perintah <code>php artisan scout:import &quot;&lt;Nama Namespace&gt;\&lt;Nama Model&gt;&quot;</code>.  </p>
-<h2 id="testing">Testing</h2>
-<p>Jalankan <code>php artisan tinker</code> di terminal. Pada <code>shell</code> yang muncul, ketik <code>&lt;Nama Namespace&gt;\&lt;Nama Model&gt;::search(&#39;&lt;kata kunci pencarian&gt;&#39;)-&gt;get()</code> lalu tekan <code>&lt;enter&gt;</code>.  </p>
+];
+</code></pre>
+<p>Kamu mungkin akan perlu melakukan <em>indexing</em> apabila <code>model</code> kamu telah memiliki <em>record</em> di <em>database</em>. Caranya adalah dengan menjalankan perintah <code>php artisan scout:import &quot;&lt;Nama Namespace&gt;\&lt;Nama Model&gt;&quot;</code>.</p>
+<h2>Testing</h2>
+<p>Jalankan <code>php artisan tinker</code> di terminal. Pada <code>shell</code> yang muncul, ketik <code>&lt;Nama Namespace&gt;\&lt;Nama Model&gt;::search('&lt;kata kunci pencarian&gt;')-&gt;get()</code> lalu tekan <code>&lt;enter&gt;</code>.</p>
 <blockquote>
-<p>Contoh kasus: Kamu punya <code>model</code> <code>App\Models\Makanan</code>. Pada <em>database</em> telah tersimpan <em>record</em> <code>Makanan</code> dengan nama &#39;Kentang Goreng&#39;, &#39;Kentang Rebus&#39; dan &#39;Kentang Bakar&#39;. Dengan menjalankan perintah <code>App\Models\Makanan::search(&#39;kentang&#39;)-&gt;get()</code> pada <code>shell</code>, kamu akan mendapatkan tiga <em>record</em> tersebut yang relevan dengan kata kunci &#39;kentang&#39;.  </p>
+<p>Contoh kasus: Kamu punya <code>model</code> <code>App\Models\Makanan</code>. Pada <em>database</em> telah tersimpan <em>record</em> <code>Makanan</code> dengan nama 'Kentang Goreng', 'Kentang Rebus' dan 'Kentang Bakar'. Dengan menjalankan perintah <code>App\Models\Makanan::search('kentang')-&gt;get()</code> pada <code>shell</code>, kamu akan mendapatkan tiga <em>record</em> tersebut yang relevan dengan kata kunci 'kentang'.</p>
 </blockquote>
-<h2 id="penutup">Penutup</h2>
+<h2>Penutup</h2>
 <p>Dengan Scout, kita dapat dengan mudah membangun fitur pencarian pada projek Laravel. Untuk lebih jelasnya kamu dapat mempelajari penerapan Scout pada <a href="https://github.com/rahmanda/ambercat-scout"><em>source code</em> ini</a>. Selamat belajar~</p>
 </article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/kok-kamu-pakai-emacs-sih.html">← Kok Kamu Pakai Emacs Sih?</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/closure-javascript.html">Memahami Closure di Javascript →</a></div></footer></main></div>
     

@@ -4,34 +4,37 @@
     <title>Javascript This</title>
     <meta charset="UTF-8">
     
-<meta name="description" content="It is often to use this operator when you want to implement a class or an object under object oriented programming language. Javascript doesn&#39;t have object oriented paradigm, however Javascript supports this keyword. Unlike other common programming language, in Javascript this will behave differ ...">
+<meta name="description" content="It is often to use this operator when you want to implement a class or an object under object oriented programming language. Javascript doesn't have object oriented paradigm, however Javascript supports this keyword. Unlike other common programming language, in Javascript this will behave differentl ...">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet"> 
     
-<link href="/client.build.0f32e27b134a6ac69c61.css" rel="stylesheet">
+<link href="/client.build.e372e0a1206344591231.css" rel="stylesheet">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-6 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Javascript This</h1> <!----> <div class="text-sm mb-8 text-grey-darker"><time datetime="2017-01-07">
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Javascript This</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2017-01-07">
           January 7, 2017
-        </time> <span class="mx-1">•</span> <span title="3 min read">3 min read</span></div> <div class="text-sm my-6 text-grey-darker"><!----> <span><a href="/javascript-this.html">
+        </time> <span class="mx-1">•</span> <span title="3 min read">3 min read</span></div> <div class="text-sm mt-6 text-grey-darker font-sans"><!----> <span><a href="/javascript-this.html">
             Read original post (ID)
           </a> <span class="mx-1">•</span> <a href="/en">
 	    View all posts (EN)
-	  </a></span></div> <article><p>It is often to use <code>this</code> operator when you want to implement a class or an object under object oriented programming language. Javascript doesn&#39;t have object oriented paradigm, however Javascript supports <code>this</code> keyword. Unlike other common programming language, in Javascript <code>this</code> will behave differently.  </p>
-<p>On normal condition, calling <code>this</code> will return <strong>global</strong> object. Look at example below:  </p>
+	  </a></span></div> <article class="mt-8"><p>It is often to use <code>this</code> operator when you want to implement a class or an object under object oriented programming language. Javascript doesn't have object oriented paradigm, however Javascript supports <code>this</code> keyword. Unlike other common programming language, in Javascript <code>this</code> will behave differently.</p>
+<p>On normal condition, calling <code>this</code> will return <strong>global</strong> object. Look at example below:</p>
 <pre><code class="language-js"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span> === <span class="hljs-built_in">window</span>); <span class="hljs-comment">// output 'true'</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callingGlobal</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span> === <span class="hljs-built_in">window</span>);
 }
-callingGlobal(); <span class="hljs-comment">// output 'true' (?)</span></code></pre>
-<p>As we can see above, we can access global object via <code>this</code> operator even though it is inside a function scope. However if we set <code>use strict</code> on the beginning of the function body, <code>this</code> operator will not refer to global object because currently it has a different context than outside of the function.   </p>
+callingGlobal(); <span class="hljs-comment">// output 'true' (?)</span>
+</code></pre>
+<p>As we can see above, we can access global object via <code>this</code> operator even though it is inside a function scope. However if we set <code>use strict</code> on the beginning of the function body, <code>this</code> operator will not refer to global object because currently it has a different context than outside of the function.</p>
 <pre><code class="language-js"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span> == <span class="hljs-built_in">window</span>); <span class="hljs-comment">// output 'true'</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callingGlobal</span>(<span class="hljs-params"></span>) </span>{
 <span class="hljs-meta">    'use strict'</span>;
     <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span> == <span class="hljs-built_in">window</span>);
 }
-callingGlobal(); <span class="hljs-comment">// output undefined</span></code></pre>
-<p>Some of native Javascript&#39;s functions set <code>this</code> to be a certain object just like what we have on <code>addEventListener</code>&#39;s function.  </p>
+callingGlobal(); <span class="hljs-comment">// output undefined</span>
+</code></pre>
+<p>Some of native Javascript's functions set <code>this</code> to be a certain object just like what we have on <code>addEventListener</code>'s function.</p>
 <pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeBodyBackground</span>(<span class="hljs-params">e</span>) </span>{
     <span class="hljs-keyword">var</span> letters = <span class="hljs-string">'0123456789ABCDEF'</span>;
     <span class="hljs-keyword">var</span> color = <span class="hljs-string">'#'</span>;
@@ -41,12 +44,14 @@ callingGlobal(); <span class="hljs-comment">// output undefined</span></code></p
     <span class="hljs-keyword">this</span>.style.backgroundColor = color;
 }
 <span class="hljs-keyword">var</span> $body = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>];
-$body.addEventListener(<span class="hljs-string">'click'</span>, changeBodyBackground, <span class="hljs-literal">false</span>); <span class="hljs-comment">// body's background color change when it is clicked</span></code></pre>
-<p>In example above, <code>this</code> operator is referring to <code>body</code>&#39;s DOM object which has been attached to an event handler. But we can also change <code>this</code> so it refers to an object that we define ourselves. Suppose instead of changing <code>body</code> background color, we want the <code>h1</code> to change its background color when a user clicks <code>body</code> element.</p>
+$body.addEventListener(<span class="hljs-string">'click'</span>, changeBodyBackground, <span class="hljs-literal">false</span>); <span class="hljs-comment">// body's background color change when it is clicked</span>
+</code></pre>
+<p>In example above, <code>this</code> operator is referring to <code>body</code>'s DOM object which has been attached to an event handler. But we can also change <code>this</code> so it refers to an object that we define ourselves. Suppose instead of changing <code>body</code> background color, we want the <code>h1</code> to change its background color when a user clicks <code>body</code> element.</p>
 <pre><code class="language-js"><span class="hljs-comment">// changeBodyBackground</span>
 <span class="hljs-keyword">var</span> $body = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>];
 <span class="hljs-keyword">var</span> $h1 = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'h1'</span>)[<span class="hljs-number">0</span>];
-$body.addEventListener(<span class="hljs-string">'click'</span>, changeBodyBackground.bind($h1), <span class="hljs-literal">false</span>); <span class="hljs-comment">// h1 will change color whenever we click the body</span></code></pre>
+$body.addEventListener(<span class="hljs-string">'click'</span>, changeBodyBackground.bind($h1), <span class="hljs-literal">false</span>); <span class="hljs-comment">// h1 will change color whenever we click the body</span>
+</code></pre>
 <p>By using <code>bind</code>, we can apply the value of <code>this</code> according to the object which we input as parameter. Aside from <code>bind</code>, we can also use <code>call</code> and <code>apply</code> function. The difference is when <code>call</code> or <code>apply</code> is called, the corresponding function will be run.</p>
 <pre><code class="language-js"><span class="hljs-keyword">var</span> someObject = {
     <span class="hljs-attr">arr</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>, <span class="hljs-number">13</span>]
@@ -60,11 +65,12 @@ $body.addEventListener(<span class="hljs-string">'click'</span>, changeBodyBackg
 }
 
 multiplyWith.call(someObject, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">// [40, 60, 100, 160, 260]</span>
-multiplyWith.apply(someObject, [<span class="hljs-number">10</span>, <span class="hljs-number">2</span>]); <span class="hljs-comment">// [40, 60, 100, 160, 260]</span></code></pre>
+multiplyWith.apply(someObject, [<span class="hljs-number">10</span>, <span class="hljs-number">2</span>]); <span class="hljs-comment">// [40, 60, 100, 160, 260]</span>
+</code></pre>
 <blockquote>
-<p>There is a difference between <code>call</code> and <code>apply</code> when inserting function&#39;s parameters. In <code>call</code> case, it accepts parameter explicitly, whereas <code>apply</code> accepts parameter in array form.</p>
+<p>There is a difference between <code>call</code> and <code>apply</code> when inserting function's parameters. In <code>call</code> case, it accepts parameter explicitly, whereas <code>apply</code> accepts parameter in array form.</p>
 </blockquote>
-<p>In <a href="http://ambercat.rahmanda.net/code/2016/12/31/closure-javascript.html">previous articles</a> i had explained about module pattern. By using <code>this</code> inside of a method, we can call object&#39;s methods or properties on the same module just like what the examples is shown below.  </p>
+<p>In <a href="http://ambercat.rahmanda.net/code/2016/12/31/closure-javascript.html">previous articles</a> i had explained about module pattern. By using <code>this</code> inside of a method, we can call object's methods or properties on the same module just like what the examples is shown below.</p>
 <pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Cat</span>(<span class="hljs-params">type</span>) </span>{
     <span class="hljs-keyword">return</span> {
         <span class="hljs-attr">walking</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
@@ -77,9 +83,10 @@ multiplyWith.apply(someObject, [<span class="hljs-number">10</span>, <span class
 }
 
 <span class="hljs-keyword">var</span> siamese = Cat(<span class="hljs-string">'siamese'</span>);
-siamese.walkingWhileEating(); <span class="hljs-comment">// siamese is walking while eating</span></code></pre>
+siamese.walkingWhileEating(); <span class="hljs-comment">// siamese is walking while eating</span>
+</code></pre>
 <hr>
-<p>Dealing with <code>this</code> is indeed tricky, especially when it is used outside module pattern. Please always add <code>use strict</code> on your Javascript&#39;s code for the sake of consistency and to get off from modifying global object.  </p>
+<p>Dealing with <code>this</code> is indeed tricky, especially when it is used outside module pattern. Please always add <code>use strict</code> on your Javascript's code for the sake of consistency and to get off from modifying global object.</p>
 </article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><!----> <!----></footer></main></div>
     
 <script src="/client.build.0c7a0a7b196e97d40a4c.js" type="text/javascript"></script>

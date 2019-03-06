@@ -8,43 +8,47 @@
 Ini bukan judul film koboi yang pernah kamu tonton. Django adalah framework web berbasis Python. Framework ini sudah populer sebelum filmnya muncul di bioskop, dan sekarang menyaingi kehebatan framework Rails yang berbasis Ruby. Karena Django itu hebat, maka sangat patut untuk dikuas ...">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet"> 
     
-<link href="/client.build.0f32e27b134a6ac69c61.css" rel="stylesheet">
+<link href="/client.build.e372e0a1206344591231.css" rel="stylesheet">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-6 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Instalasi Django, Framework Web Python</h1> <!----> <div class="text-sm mb-8 text-grey-darker"><time datetime="2014-10-01">
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Instalasi Django, Framework Web Python</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2014-10-01">
           1 Oktober 2014
-        </time> <span class="mx-1">•</span> <span title="3 min read">3 min read</span></div> <!----> <article><h2 id="apa-itu-django">Apa Itu Django?</h2>
+        </time> <span class="mx-1">•</span> <span title="3 min read">3 min read</span></div> <!----> <article class="mt-8"><h2>Apa Itu Django?</h2>
 <p>Ini bukan judul film koboi yang pernah kamu tonton. Django adalah <em>framework</em> web berbasis <a href="http://www.python.org">Python</a>. <em>Framework</em> ini sudah populer sebelum filmnya muncul di bioskop, dan sekarang menyaingi kehebatan <em>framework</em> <a href="http://www.rubyonrails.org">Rails</a> yang berbasis <a href="http://www.ruby-lang.org">Ruby</a>. Karena <a href="http://djangoproject.com">Django</a> itu hebat, maka sangat patut untuk dikuasai. Untuk mulai menguasai <a href="http://djangoproject.com">Django</a>, kita harus menguasai terlebih dahulu cara menginstal <a href="http://djangoproject.com">Django</a>.</p>
-<h2 id="requirement"><em>Requirement</em></h2>
+<h2><em>Requirement</em></h2>
 <p>Pastikan kamu telah menginstall <a href="http://www.python.org">Python</a> sebelum mengikuti tutorial ini. Versi <a href="http://www.python.org">Python</a> yang direkomendasikan adalah versi 2.7 ke atas.</p>
-<h2 id="instalasi">Instalasi</h2>
-<p><strong>pip</strong><br>Karena pengembangan web menggunakan <a href="http://djangoproject.com">Django</a> banyak berinteraksi dengan terminal, tentunya akan lebih mudah apabila kamu dapat mengunduh <a href="http://djangoproject.com">Django</a> tanpa meninggalkan jendela terminal kamu. Selain itu kamu juga dapat menginstall <em>plugin</em> Python dengan mudah melalui pip. Untuk menginstal pip, berikut langkah-langkahnya :  </p>
+<h2>Instalasi</h2>
+<p><strong>pip</strong><br>
+Karena pengembangan web menggunakan <a href="http://djangoproject.com">Django</a> banyak berinteraksi dengan terminal, tentunya akan lebih mudah apabila kamu dapat mengunduh <a href="http://djangoproject.com">Django</a> tanpa meninggalkan jendela terminal kamu. Selain itu kamu juga dapat menginstall <em>plugin</em> Python dengan mudah melalui pip. Untuk menginstal pip, berikut langkah-langkahnya :</p>
 <ol>
-<li>Unduh <em>script</em> <a href="https://bootstrap.pypa.io/get-pip.py">get-pip.py</a>. Simpan <em>script</em> tersebut di direktori mana saja. Sebagai contoh, saya menyimpan fail <em>script</em>-nya di <code>D:\tutorial_python\</code>.  </li>
-<li>Buka terminal kamu, masuk ke direktori tempat menyimpan <em>script</em> yang tadi.  </li>
-<li>Pada jendela terminal kamu, ketik <code>sudo python get-pip.py</code> untuk pengguna Mac atau Linux. Sedangkan untuk pengguna Windows, buka command prompt dengan mode administrator lalu ketik <code>python get-pip.py</code>.  </li>
+<li>Unduh <em>script</em> <a href="https://bootstrap.pypa.io/get-pip.py">get-pip.py</a>. Simpan <em>script</em> tersebut di direktori mana saja. Sebagai contoh, saya menyimpan fail <em>script</em>-nya di <code>D:\tutorial_python\</code>.</li>
+<li>Buka terminal kamu, masuk ke direktori tempat menyimpan <em>script</em> yang tadi.</li>
+<li>Pada jendela terminal kamu, ketik <code>sudo python get-pip.py</code> untuk pengguna Mac atau Linux. Sedangkan untuk pengguna Windows, buka command prompt dengan mode administrator lalu ketik <code>python get-pip.py</code>.</li>
 <li>Apabila proses install sudah selesai, ketik <code>pip -V</code>. Perintah tersebut akan mengeluarkan output berupa versi pip yang diinstal apabila proses instalasi pip tidak <em>error</em>.</li>
-<li>(Untuk pengguna windows) Apabila perintah <code>pip -V</code> tidak dikenali pada terminal/command prompt kamu, tambahkan <code>C:\PythonXX\Scripts\</code> pada PATH (ganti XX dengan versi Python yang kamu install).  </li>
+<li>(Untuk pengguna windows) Apabila perintah <code>pip -V</code> tidak dikenali pada terminal/command prompt kamu, tambahkan <code>C:\PythonXX\Scripts\</code> pada PATH (ganti XX dengan versi Python yang kamu install).</li>
 </ol>
-<p><strong>virtualenv</strong><br><a href="http://djangoproject.com">Django</a> sangat cepat <em>update</em>-nya. Hampir tiap bulan akan ada rilis versi terbaru. Hal ini bisa saja menimbulkan kodingan kamu menjadi error karena ada beberapa fungsi <a href="http://djangoproject.com">Django</a> yang diubah atau dihapus pada versi terbarunya. Dengan virtualenv, kamu dapat menginstal lebih dari satu versi <a href="http://djangoproject.com">Django</a> pada satu komputer sehingga kamu tidak perlu khawatir aplikasi web kamu error karena <em>update</em>. Berikut langkah-langkah menginstall virtualenv :  </p>
+<p><strong>virtualenv</strong><br>
+<a href="http://djangoproject.com">Django</a> sangat cepat <em>update</em>-nya. Hampir tiap bulan akan ada rilis versi terbaru. Hal ini bisa saja menimbulkan kodingan kamu menjadi error karena ada beberapa fungsi <a href="http://djangoproject.com">Django</a> yang diubah atau dihapus pada versi terbarunya. Dengan virtualenv, kamu dapat menginstal lebih dari satu versi <a href="http://djangoproject.com">Django</a> pada satu komputer sehingga kamu tidak perlu khawatir aplikasi web kamu error karena <em>update</em>. Berikut langkah-langkah menginstall virtualenv :</p>
 <ol>
-<li>Buka lagi terminal kamu, ketik <code>pip install virtualenv</code>.  </li>
-<li>Setelah proses instalasi selesai, ketik <code>pip freeze</code>. Perintah tersebut akan mengeluarkan output berupa daftar <em>plugin</em> yang telah terinstall. Apabila terdapat virtualenv pada output tersebut, maka instalasi virtualenv berhasil.   </li>
-<li>Selanjutnya masuk ke direktori manapun yang kamu kehendaki.  </li>
-<li>Ketik <code>virtualenv django17</code>. Perintah tersebut akan membuat folder <em>virtual environment</em> pada direktori kamu dengan nama django17. Nama dapat diganti sesuai keinginan kamu.   </li>
+<li>Buka lagi terminal kamu, ketik <code>pip install virtualenv</code>.</li>
+<li>Setelah proses instalasi selesai, ketik <code>pip freeze</code>. Perintah tersebut akan mengeluarkan output berupa daftar <em>plugin</em> yang telah terinstall. Apabila terdapat virtualenv pada output tersebut, maka instalasi virtualenv berhasil.</li>
+<li>Selanjutnya masuk ke direktori manapun yang kamu kehendaki.</li>
+<li>Ketik <code>virtualenv django17</code>. Perintah tersebut akan membuat folder <em>virtual environment</em> pada direktori kamu dengan nama django17. Nama dapat diganti sesuai keinginan kamu.</li>
 <li>Setelah proses selesai, masuk ke direktori django17 lalu ketik <code>.\Scripts\activate</code> untuk mengaktifkan virtualenv. Untuk menonaktikannya, ketik <code>.\Scripts\deactivate</code>.</li>
 </ol>
-<p><strong>Django</strong><br>Setelah instalasi virtualenv berhasil dan kamu telah membuat folder virtual yang baru, maka kamu sudah dapat menginstal <a href="http://djangoproject.com">Django</a>. Berikut langkah-langkah menginstal <a href="http://djangoproject.com">Django</a> :  </p>
+<p><strong>Django</strong><br>
+Setelah instalasi virtualenv berhasil dan kamu telah membuat folder virtual yang baru, maka kamu sudah dapat menginstal <a href="http://djangoproject.com">Django</a>. Berikut langkah-langkah menginstal <a href="http://djangoproject.com">Django</a> :</p>
 <ol>
-<li>Pastikan kamu telah berada pada direktori virtual yang sudah diaktifkan.  </li>
-<li>Ketik <code>pip install django==1.7</code> untuk menginstall <a href="http://djangoproject.com">Django</a> dengan versi 1.7. Apabila kamu ingin menginstall versi terbaru dari <a href="http://djangoproject.com">Django</a>, ketik <code>pip install django</code>.  </li>
+<li>Pastikan kamu telah berada pada direktori virtual yang sudah diaktifkan.</li>
+<li>Ketik <code>pip install django==1.7</code> untuk menginstall <a href="http://djangoproject.com">Django</a> dengan versi 1.7. Apabila kamu ingin menginstall versi terbaru dari <a href="http://djangoproject.com">Django</a>, ketik <code>pip install django</code>.</li>
 <li>Setelah proses instalasi selesai, ketik <code>pip freeze</code> untuk mengetahui apakah <a href="http://djangoproject.com">Django</a> sudah berhasil terinstall pada folder virtual.</li>
-<li>Ketik <code>python .\Scripts\django-admin.py startproject myproject</code> untuk membuat projek <a href="http://djangoproject.com">Django</a> baru dengan nama &#39;myproject&#39;.</li>
+<li>Ketik <code>python .\Scripts\django-admin.py startproject myproject</code> untuk membuat projek <a href="http://djangoproject.com">Django</a> baru dengan nama 'myproject'.</li>
 <li>Ketik <code>cd myproject</code> untuk masuk ke dalam direktori projek. Setelah itu ketik <code>python manage.py runserver</code> untuk menjalankan server <a href="http://djangoproject.com">Django</a>.</li>
-<li>Buka <code>http://localhost:8000</code> pada browser kamu. Apabila terlihat halaman <a href="http://djangoproject.com">Django</a>, maka kamu telah berhasil membuat projek baru <a href="http://djangoproject.com">Django</a>.  </li>
+<li>Buka <code>http://localhost:8000</code> pada browser kamu. Apabila terlihat halaman <a href="http://djangoproject.com">Django</a>, maka kamu telah berhasil membuat projek baru <a href="http://djangoproject.com">Django</a>.</li>
 </ol>
-<h2 id="kata-penutup">Kata Penutup</h2>
+<h2>Kata Penutup</h2>
 <p>Bagi kamu yang telah berhasil menginstall <a href="http://djangoproject.com">Django</a>, selamat! Kamu dapat langsung menjelajahi dunia <a href="http://djangoproject.com">Django</a> lebih lanjut. Bagi yang belum berhasil, jangan bersedih. Banyak jalan menuju roma, silakan bertanya melalui kolom komentar yang tersedia.</p>
 </article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><!----> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/unchaining-django-part-1.html">Unchaining Django - Part 1 →</a></div></footer></main></div>
     
