@@ -193,16 +193,16 @@ html {
     }
   }
 
-  .anchorjs-link {
-    @apply text-indigo;
-  }
-
   .highlighted-line {
     background-color: #2b326b;
     display: block;
     margin: 0 -1.575rem;
     padding: 0 1.575rem;
   }
+}
+
+.anchorjs-link {
+  @apply text-indigo;
 }
 
 a:not(.anchorjs-link) {
