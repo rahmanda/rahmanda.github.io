@@ -5,16 +5,15 @@
   "author": "Rahmanda Wibowo <rahmandawibowo@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "optimize-css": "npm run purge-css && npm run minify-css",
-    "purge-css": "CSS=\"docs/$(ls -f docs | grep \"css$\")\" && purgecss --css $CSS --content docs/**/*.html --content docs/*.html --out docs/",
-    "minify-css": "CSS=\"docs/$(ls -f docs | grep \"css$\")\" && cssnano $CSS $CSS"
+    "optimize": "node ./scripts/optimize-css.js"
   },
   "dependencies": {
     "ambercat": "0.x",
     "markdown-it-highlight-lines": "^1.0.2"
   },
   "devDependencies": {
-    "cssnano-cli": "^1.0.5",
-    "purgecss-webpack-plugin": "^1.4.0"
+    "chalk": "^2.4.2",
+    "clean-css": "^4.2.1",
+    "purgecss": "^1.1.0"
   }
 }
