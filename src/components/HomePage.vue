@@ -1,6 +1,6 @@
 <template>
   <div id="homepage" class="text-lg text-grey-darkest">
-    <div class="max-w-md mx-auto px-5 py-12">
+    <div class="max-w-md mx-auto px-5">
       <h1 class="text-5xl text-indigo-dark mt-0 mb-4">Ambercat</h1>
       <p class="text-xl mb-0 font-semibold text-grey-dark">A blog by <a href="https://id.linkedin.com/in/rahmandawibowo">Rahmanda Wibowo</a></p>
     </div>
