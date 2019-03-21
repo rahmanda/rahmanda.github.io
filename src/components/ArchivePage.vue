@@ -1,7 +1,7 @@
 <template>
   <main role="main" class="text-lg text-grey-darkest">
     <div class="max-w-md mx-auto px-5">
-      <h1>{{ data.title }}</h1>
+      <h1 class="text-3xl text-indigo-dark my-8">{{ data.title }}</h1>
       <p v-if="data.description"
          class="text-xl font-semibold text-grey-dark">{{ data.description }}</p>
     </div>
