@@ -4,8 +4,14 @@
   "description": "Rahmanda's personal blog",
   "author": "Rahmanda Wibowo <rahmandawibowo@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "optimize-css": "CSS=\"docs/$(ls -f docs | grep \"css$\")\" && purgecss --css $CSS --content docs/**/*.html --out docs/"
+  },
   "dependencies": {
     "ambercat": "0.x",
     "markdown-it-highlight-lines": "^1.0.2"
+  },
+  "devDependencies": {
+    "purgecss-webpack-plugin": "^1.4.0"
   }
 }

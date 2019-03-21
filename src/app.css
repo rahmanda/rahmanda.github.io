@@ -89,7 +89,7 @@ html {
 }
 
 .post {
-  @apply max-w-md mx-auto px-5 pb-8 font-serif text-base;
+  @apply max-w-md mx-auto px-5 pb-8 text-base;
 }
 
 h1 {
@@ -113,19 +113,10 @@ hr {
 }
 
 blockquote {
-  @apply px-5 py-1 my-8 -mx-5 relative;
+  @apply px-5 py-1 my-8 relative;
   p {
-    @apply text-indigo-darker mb-0;
+    @apply text-grey-darkest mb-0;
   }
-}
-
-blockquote:before {
-    @apply absolute bg-indigo-darker;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 7px;
-    height: 100%;
 }
 
 p {
@@ -140,7 +131,7 @@ p, ol, ul {
 
 pre {
   @apply bg-indigo-darkest text-grey-light p-5 overflow-y-auto text-xs my-8 -mx-5 rounded-none;
-    
+
   code {
     @apply min-w-full float-left;
   }

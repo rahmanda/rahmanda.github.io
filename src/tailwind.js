@@ -168,7 +168,7 @@ module.exports = {
 
   screens: {
     'sm': '576px',
-    'md': '768px',
+    'md': '756px',
     // 'lg': '992px',
     // 'xl': '1200px',
   },
@@ -208,19 +208,6 @@ module.exports = {
       'Droid Sans',
       'Helvetica Neue',
       'sans-serif',
-    ],
-    'serif': [
-      'Lora',
-      'Constantia',
-      'Lucida Bright',
-      'Lucidabright',
-      'Lucida Serif',
-      'Lucida',
-      'DejaVu Serif',
-      'Bitstream Vera Serif',
-      'Liberation Serif',
-      'Georgia',
-      'serif',
     ],
     'mono': [
       'Menlo',
@@ -614,7 +601,7 @@ module.exports = {
   maxWidth: {
     'xs': '20rem',
     'sm': '30rem',
-    'md': '40rem',
+    'md': '42rem',
     'lg': '50rem',
     'xl': '60rem',
     '2xl': '70rem',
