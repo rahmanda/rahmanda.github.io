@@ -2,7 +2,7 @@
 title: Formatting Date and Time with Intl.DateTimeFormat
 ---
 
-Formatting date and time has been a common problem for *web developer* and *mobile developer* because of several reasons:
+Formatting date and time has been a common problem for web developers because of several reasons:
 
 1. Almost all kinds of website need to display date and time.
 2. Most likely your back-end APIs can only provide date and time data in universal format, which is a *timestamp*.
