@@ -76,7 +76,7 @@ console.log(new Intl.DateTimeFormat('en', options).format(datetime));
 ```
 Complete guidelines for `Intl.DateTimeFormat` customization can be read in [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat).
 
-By using `Intl.DateTimeFormat`, we can reduce our Javascript size because we no longer need to make a function ourselves or using external library. Based on [caniuse](https://caniuse.com/#search=Intl), the API has covered more than 90% of global internet user. Therefore, it is suffice to say that `Intl.DateTimeFormat` is safe to use in production at the moment.
+By using `Intl.DateTimeFormat`, we can reduce our Javascript size because we no longer need to make a function ourselves or using external library. Based on [caniuse](https://caniuse.com/#search=Intl), the API has covered more than 90% of global internet user. Therefore, suffices it to say that `Intl.DateTimeFormat` is safe to use in production at the moment.
 
 The downside of `Intl.DateTimeFormat` is that we can't fully control over the shape of the format itself. We can only depend on the formats which have been standardized by ECMA. Take a look at the previous example. The returned value of our full customization is `Monday, June 17, 2019, 3:00:00 PM GMT+7`. If we want to remove the comma separator between the date and time, it is not possible to do it via the options. We need to edit the returned string from the API by hand to remove the comma. It is definitely not an ideal solution because we still have to manually reformat the date and time.
 
