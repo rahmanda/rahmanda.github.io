@@ -1,5 +1,6 @@
 ---
 title: Formatting Date and Time with Intl.DateTimeFormat
+summary: Intl.DateTimeFormat is an easy tool to formatting date and time without adding extra KB to your bundle size
 ---
 
 Formatting date and time has been a common problem for web developers because of several reasons:
