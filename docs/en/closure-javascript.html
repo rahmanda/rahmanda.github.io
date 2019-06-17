@@ -83,13 +83,13 @@ If we run the example, i ...">
 <link href="/client.build.f2ff8eff0ebbde8e2d06.css" rel="stylesheet">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Understanding Closure In Javascript</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2016-12-31">
-          December 31, 2016
-        </time> <span class="mx-1">•</span> <span title="3 min read">3 min read</span></div> <div class="text-sm mt-6 text-grey-darker font-sans"><!----> <span><a href="/closure-javascript.html">
-            Read original post (ID)
-          </a> <span class="mx-1">•</span> <a href="/en">
-	    View all posts (EN)
-	  </a></span></div> <article class="mt-8"><p>Whenever we declare a variable, it is immediately given a scope. The scope which belongs to a variable depends to where it was declared on the code.</p>
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><article class="post"><h1>Understanding Closure In Javascript</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2016-12-31">
+        December 31, 2016
+      </time> <span class="mx-1">•</span> <span title="3 min read">3 min read</span></div> <div class="text-sm mt-6 text-grey-darker font-sans"><!----> <span><a href="/closure-javascript.html">
+          Read original post (ID)
+        </a> <span class="mx-1">•</span> <a href="/en">
+          View all posts (EN)
+        </a></span></div> <section class="mt-8"><p>Whenever we declare a variable, it is immediately given a scope. The scope which belongs to a variable depends to where it was declared on the code.</p>
 <pre><code>&lt;?php
 $foo = <span class="hljs-string">'bar'</span>;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printFooValue</span>(<span class="hljs-params"></span>) </span>{
@@ -158,7 +158,7 @@ babyGiraffe.eating(); <span class="hljs-comment">// output 'Giraffe is eating fr
 <p><code>Giraffe</code> function return an object which contains two properties, <code>eating</code> and <code>changeFood</code>. Because of lexical scoping, these two properties save scope from <code>Giraffe</code> which are <code>eatingObject</code> and <code>eat</code> function. Therefore when <code>babyGiraffe.eating</code> and <code>babyGiraffe.changeFood</code> were called, they can still be accessed. The example above also shows that <code>eatingObject</code> and <code>eat</code> can only be accessed via properties which were returned by <code>Giraffe</code> function. This kind of model is often be used to avoid <strong>global scope pollution</strong>, and is popularly known as <strong>module pattern</strong>.</p>
 <hr>
 <p>Lexical scoping and closure are fundamental foundation of Javascript programming. The funny thing is, i often applied these kind of concept without knowing how it is working. So i think i should write more about Javascript basics on the future.</p>
-</article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><!----> <!----></footer></main></div>
+</section></article> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><!----> <!----></footer></main></div>
     
 <script src="/client.build.153f9bdea64861dc6c99.js" type="text/javascript" async></script>
     <div id="disqus_thread" class="max-w-md mx-auto px-6 py-12"></div>

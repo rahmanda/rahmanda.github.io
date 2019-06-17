@@ -77,9 +77,9 @@ Karena kita ingin menambahkan fitur follow, timeline kita harus bisa menampil ..
 <link href="/client.build.f2ff8eff0ebbde8e2d06.css" rel="stylesheet">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Membuat Tweepy dengan Flask - Episode 2</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2015-11-22">
-          22 November 2015
-        </time> <span class="mx-1">•</span> <span title="4 min read">4 min read</span></div> <!----> <article class="mt-8"><p>Pada tutorial Flask episode kali ini kita akan menambahkan beberapa fungsi baru seperti lihat profil dan <em>follow</em> akun lain. Pertama-tama ada beberapa hal yang harus kita edit dari kode pada episode sebelumnya.</p>
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><article class="post"><h1>Membuat Tweepy dengan Flask - Episode 2</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2015-11-22">
+        22 November 2015
+      </time> <span class="mx-1">•</span> <span title="4 min read">4 min read</span></div> <!----> <section class="mt-8"><p>Pada tutorial Flask episode kali ini kita akan menambahkan beberapa fungsi baru seperti lihat profil dan <em>follow</em> akun lain. Pertama-tama ada beberapa hal yang harus kita edit dari kode pada episode sebelumnya.</p>
 <h2>Edit Kodingan</h2>
 <p>Karena kita ingin menambahkan fitur <em>follow</em>, <em>timeline</em> kita harus bisa menampilkan juga <em>tweet-tweet</em> dari akun yang kita <em>follow</em>. Edit fungsi <em>route</em> <code>timeline</code> dan <code>register</code> pada <code>tweepy.py</code> seperti dibawah ini:</p>
 <pre><code>@app.route('/timeline/')
@@ -224,7 +224,7 @@ def unfollow(username):
 <h2>Selanjutnya?</h2>
 <p>Pada episode selanjutnya, kita akan menambahkan fitur <em>search</em> sehingga kamu tidak perlu susah-susah mengingat <em>username</em>-nya. Selain itu kita juga akan melakukan <em>finishing</em> tampilan tweepy. Apabila kamu punya pertanyaan seputar tutorial ini, jangan sungkan bertanya melalui kolom komentar. Semoga artikel ini bermanfaat!</p>
 <p><a href="https://github.com/rahmanda/ambercat-tweepy/tree/part-2">Source code</a>.</p>
-</article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/laragon-xampp-rasa-laravel.html">← Laragon - XAMPP Rasa Laravel</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/membuat-tweepy-dengan-flask-3.html">Membuat Tweepy dengan Flask - Episode 3 →</a></div></footer></main></div>
+</section></article> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/laragon-xampp-rasa-laravel.html">← Laragon - XAMPP Rasa Laravel</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/membuat-tweepy-dengan-flask-3.html">Membuat Tweepy dengan Flask - Episode 3 →</a></div></footer></main></div>
     
 <script src="/client.build.153f9bdea64861dc6c99.js" type="text/javascript" async></script>
     <div id="disqus_thread" class="max-w-md mx-auto px-6 py-12"></div>

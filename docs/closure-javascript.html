@@ -81,13 +81,13 @@ printFooValue(); /* menghasilkan error 'Undefined vari ...">
 <link href="/client.build.f2ff8eff0ebbde8e2d06.css" rel="stylesheet">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><section class="post"><h1>Memahami Closure di Javascript</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2016-12-31">
-          31 Desember 2016
-        </time> <span class="mx-1">•</span> <span title="4 min read">4 min read</span></div> <div class="text-sm mt-6 text-grey-darker font-sans"><span>
-          Translate to:
-          <a href="/en/closure-javascript.html" class="mx-1">
-            English
-          </a></span> <!----></div> <article class="mt-8"><p>Ketika kita membuat suatu variabel, variabel tersebut otomatis memiliki sebuah <em>scope</em>. <em>Scope</em> yang dimiliki oleh variabel bergantung kepada dimana posisi variabel tersebut dibuat.</p>
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><article class="post"><h1>Memahami Closure di Javascript</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2016-12-31">
+        31 Desember 2016
+      </time> <span class="mx-1">•</span> <span title="4 min read">4 min read</span></div> <div class="text-sm mt-6 text-grey-darker font-sans"><span>
+        Translate to:
+        <a href="/en/closure-javascript.html" class="mx-1">
+          English
+        </a></span> <!----></div> <section class="mt-8"><p>Ketika kita membuat suatu variabel, variabel tersebut otomatis memiliki sebuah <em>scope</em>. <em>Scope</em> yang dimiliki oleh variabel bergantung kepada dimana posisi variabel tersebut dibuat.</p>
 <pre><code>&lt;?php
 $foo = <span class="hljs-string">'bar'</span>;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printFooValue</span>(<span class="hljs-params"></span>) </span>{
@@ -156,7 +156,7 @@ babyGiraffe.eating(); <span class="hljs-comment">// output 'Giraffe is eating fr
 <p>Fungsi <code>Giraffe</code> mengembalikan objek yang terdiri dari dua properti, <code>eating</code> dan <code>changeFood</code>. Karena adanya <em>lexical scoping</em>, kedua properti tersebut menyimpan <em>scope</em> dari <code>Giraffe</code>, yaitu variabel <code>eatingObject</code> dan fungsi <code>eat</code>. Sehingga saat <code>babyGiraffe.eating</code> dan <code>babyGiraffe.changeFood</code> dipanggil, variabel dan fungsi tersebut masih dapat diakses. Contoh di atas juga menunjukkan bahwa variabel <code>eatingObject</code> dan fungsi <code>eat</code> hanya bisa diakses via properti yang dikembalikan oleh fungsi <code>Giraffe</code>. Model fungsi di atas sangat sering dipakai untuk mencegah <em>global scope pollution</em>, dan lebih populer dengan istilah <em>module pattern</em>.</p>
 <hr>
 <p>Konsep <em>lexical scoping</em> dan <em>closure</em> merupakan fondasi utama dari pemograman Javascript. Lucunya, saya sendiri baru kenal konsep ini setelah sekian banyak baris kode yang sudah saya buat yang ternyata telah mengaplikasikan <em>closure</em>. Kedepannya saya akan lebih banyak lagi menulis tentang dasar-dasar pemograman Javascript. Semoga artikel ini bermanfaat!</p>
-</article></section> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/membangun-fitur-pencarian-dengan-laravel-scout.html">← Membangun Fitur Pencarian dengan Laravel Scout</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/javascript-this.html">Javascript This →</a></div></footer></main></div>
+</section></article> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/membangun-fitur-pencarian-dengan-laravel-scout.html">← Membangun Fitur Pencarian dengan Laravel Scout</a></div> <div class="flex-1 px-6 pb-8 text-left md:text-right"><p class="mb-2 text-grey-dark">Newer Post</p> <a href="/javascript-this.html">Javascript This →</a></div></footer></main></div>
     
 <script src="/client.build.153f9bdea64861dc6c99.js" type="text/javascript" async></script>
     <div id="disqus_thread" class="max-w-md mx-auto px-6 py-12"></div>

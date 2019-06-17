@@ -2,7 +2,7 @@
   <main role="main"
         :dir="postData.direction"
         :class="{ 'rtl': postData.direction === 'rtl' }">
-    <section class="post">
+    <article class="post">
       <h1>{{ postData.title }}</h1>
       <div class="text-sm text-grey-darker font-sans">
         <time :datetime="postData.date">
@@ -26,14 +26,14 @@
           <a :href="postData.originalPostPath">
             Read original post (ID)
           </a>
-	  <span class="mx-1">•</span>
-	  <a :href="`/${data.language}`">
-	    View all posts ({{ data.language.toUpperCase() }})
-	  </a>
+          <span class="mx-1">•</span>
+          <a :href="`/${data.language}`">
+            View all posts ({{ data.language.toUpperCase() }})
+          </a>
         </span>
-      </div>     
-      <article class="mt-8" v-html="postContent"/>
-    </section>
+      </div>
+      <section class="mt-8" v-html="postContent"/>
+    </article>
     <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8">
       <div v-if="postData.olderPost"
             class="flex-1 px-6 pb-8 text-left">
