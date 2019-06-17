@@ -3,7 +3,7 @@ title: Edit Format Tanggal dan Waktu dengan Intl.DateTimeFormat
 summary: Intl.DateTimeFormat adalah cara mudah untuk mengedit format tanggal dan waktu tanpa bikin ukuran Javascript jadi gemuk
 ---
 
-Mengedit format tanggal dan waktu sepertinya sudah menjadi makanan sehari-hari anak *web developer* dan *mobile developer* karena beberapa alasan, yaitu:
+Mengedit format tanggal dan waktu sepertinya sudah menjadi makanan sehari-hari anak *web developer* karena beberapa alasan, yaitu:
 
 1. Hampir semua jenis web perlu menampilkan tanggal dan waktu
 2. API hanya menyediakan data dengan format universal, yaitu *timestamp*
