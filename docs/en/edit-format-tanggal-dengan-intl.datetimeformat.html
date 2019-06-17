@@ -89,13 +89,13 @@ There are many ways to format d ...">
 	  </a></span></div> <article class="mt-8"><p>Formatting date and time has been a common problem for web developers because of several reasons:</p>
 <ol>
 <li>Almost all kinds of website need to display date and time.</li>
-<li>Most likely your back-end APIs can only provide date and time data in universal format, which is a <em>timestamp</em>.</li>
+<li>Most likely your back-end APIs can only provide date and time data in universal format, which is a timestamp.</li>
 </ol>
 <p>There are many ways to format date and time depending on software or design requirement. However, normally we don't like to make an in-house module or function for it because it is quite a hassle.</p>
-<p>The only way to format date and time via native Javascript's API is by messing around with <code>Date</code> class. To start formatting, we need to provide a <em>timestamp</em> from API as a parameter to <code>Date</code> and then call its <em>constructor</em> function to instantiate the object.</p>
+<p>The only way to format date and time via native Javascript's API is by messing around with <code>Date</code> class. To start formatting, we need to provide a timestamp from API as a parameter to <code>Date</code> and then call its constructor function to instantiate the object.</p>
 <pre><code class="language-js"><span class="hljs-keyword">const</span> datetime = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2019-06-17T08:00:00Z'</span>); <span class="hljs-comment">// input date in ISO 8601 format</span>
 </code></pre>
-<p>From the <code>datetime</code> variable, we can get date, month, year and time which can be useful for formatting. The thing is, we can't get a name of the day and month automatically so that we need to do <em>mapping</em> ourselves manually.</p>
+<p>From the <code>datetime</code> variable, we can get date, month, year and time which can be useful for formatting. The thing is, we can't get a name of the day and month automatically so that we need to do mapping ourselves manually.</p>
 <pre><code class="language-js"><span class="hljs-comment">// getting date, month, year, hours, minutes and seconds</span>
 <span class="hljs-keyword">const</span> date = datetime.getDate();
 <span class="hljs-keyword">const</span> month = datetime.getMonth(); <span class="hljs-comment">// month start from 0</span>
@@ -116,7 +116,7 @@ There are many ways to format d ...">
 
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${days[day]}</span>, <span class="hljs-subst">${date}</span> <span class="hljs-subst">${months[month]}</span> <span class="hljs-subst">${year}</span>`</span>); <span class="hljs-comment">// Monday, 17 June 2019</span>
 </code></pre>
-<p>If we're only dealing with a single locale, perhaps it is an easy peasy. However if we need to supports multiple locales, it can be a bit complicated because we have to create a lot of different mappings. Now you know why adding <a href="https://momentjs.com">moment.js</a> + <em>internationalization</em> as dependency can quite significantly increase our total Javascript size.</p>
+<p>If we're only dealing with a single locale, perhaps it is an easy peasy. However if we need to supports multiple locales, it can be a bit complicated because we have to create a lot of different mappings. Now you know why adding <a href="https://momentjs.com">moment.js</a> + internationalization as dependency can quite significantly increase our total Javascript size.</p>
 <p>By using ES6, now we can use <code>Intl.DateTimeFormat</code> to format date and time without creating our own function or using external libraries.</p>
 <pre><code class="language-js"><span class="hljs-keyword">const</span> datetime = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2019-06-17T08:00:00Z'</span>);
 
@@ -151,7 +151,7 @@ options = {
 <p>Complete guidelines for <code>Intl.DateTimeFormat</code> customization can be read in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat">Mozilla Developer Network</a>.</p>
 <p>By using <code>Intl.DateTimeFormat</code>, we can reduce our Javascript size because we no longer need to make a function ourselves or using external library. Based on <a href="https://caniuse.com/#search=Intl">caniuse</a>, the API has covered more than 90% of global internet user. Therefore, it is suffice to say that <code>Intl.DateTimeFormat</code> is safe to use in production at the moment.</p>
 <p>The downside of <code>Intl.DateTimeFormat</code> is that we can't fully control over the shape of the format itself. We can only depend on the formats which have been standardized by ECMA. Take a look at the previous example. The returned value of our full customization is <code>Monday, June 17, 2019, 3:00:00 PM GMT+7</code>. If we want to remove the comma separator between the date and time, it is not possible to do it via the options. We need to edit the returned string from the API by hand to remove the comma. It is definitely not an ideal solution because we still have to manually reformat the date and time.</p>
-<p>If you need to support browser such as IE 6-10, Opera Mini and UC Browser, you have to provide polyfill for this API becuase these browsers doesn't support <code>Intl.DateTimeFormat</code>. I recommend using <em>polyfill</em> from <a href="https://polyfill.io/v3/">Polyfill.io</a> because it can smartly detect which browsers that need <em>polyfill</em> and only serve the <em>polyfill</em> when necessary.</p>
+<p>If you need to support browser such as IE 6-10, Opera Mini and UC Browser, you have to provide polyfill for this API becuase these browsers doesn't support <code>Intl.DateTimeFormat</code>. I recommend using polyfill from <a href="https://polyfill.io/v3/">Polyfill.io</a> because it can smartly detect which browsers that need polyfill and only serve it when necessary.</p>
 <pre><code class="language-html"><span class="hljs-comment">&lt;!-- Add script below for polyfill --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
