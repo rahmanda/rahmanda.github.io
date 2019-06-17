@@ -112,6 +112,7 @@
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${days[day]}</span>, <span class="hljs-subst">${date}</span> <span class="hljs-subst">${months[month]}</span> <span class="hljs-subst">${year}</span>`</span>); <span class="hljs-comment">// Senin, 17 Juni 2019</span>
 </code></pre>
 <p>Kalau hanya berurusan dengan satu format saja (Indonesia), hal itu mungkin adalah perkara yang cukup mudah. Tetapi kalau kita butuh dukungan antar bahasa akan sangat menyulitkan karena kita perlu membuat <em>mapping</em> yang banyak sekali. Sekarang kalian jadi tahu <em>kan</em> kenapa <a href="https://momentjs.com">moment.js</a> + <em>internationalization</em> itu ukurannya lumayan besar.</p>
+<hr>
 <p>Melalui versi ES6, kita sudah bisa menggunakan <code>Intl.DateTimeFormat</code> untuk melakukan pengeditan format waktu dan tanggal tanpa perlu membuat fungsi sendiri atau menggunakan <em>library</em> eksternal.</p>
 <pre><code class="language-js"><span class="hljs-keyword">const</span> datetime = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2019-06-17T08:00:00Z'</span>);
 

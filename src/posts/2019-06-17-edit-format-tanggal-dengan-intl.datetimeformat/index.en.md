@@ -42,6 +42,8 @@ console.log(`${days[day]}, ${date} ${months[month]} ${year}`); // Monday, 17 Jun
 
 If we're only dealing with a single locale, perhaps it is an easy peasy. However if we need to supports multiple locales, it can be a bit complicated because we have to create a lot of different mappings. Now you know why adding [moment.js](https://momentjs.com) + internationalization as dependency can quite significantly increase our total Javascript size.
 
+---
+
 By using ES6, now we can use `Intl.DateTimeFormat` to format date and time without creating our own function or using external libraries.
 
 ``` js

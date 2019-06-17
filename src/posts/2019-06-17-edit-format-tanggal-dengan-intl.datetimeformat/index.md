@@ -42,6 +42,8 @@ console.log(`${days[day]}, ${date} ${months[month]} ${year}`); // Senin, 17 Juni
 
 Kalau hanya berurusan dengan satu format saja (Indonesia), hal itu mungkin adalah perkara yang cukup mudah. Tetapi kalau kita butuh dukungan antar bahasa akan sangat menyulitkan karena kita perlu membuat *mapping* yang banyak sekali. Sekarang kalian jadi tahu *kan* kenapa [moment.js](https://momentjs.com) + *internationalization* itu ukurannya lumayan besar.
 
+---
+
 Melalui versi ES6, kita sudah bisa menggunakan `Intl.DateTimeFormat` untuk melakukan pengeditan format waktu dan tanggal tanpa perlu membuat fungsi sendiri atau menggunakan *library* eksternal.
 
 ``` js
