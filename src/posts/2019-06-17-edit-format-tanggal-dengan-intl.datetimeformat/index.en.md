@@ -81,7 +81,7 @@ By using `Intl.DateTimeFormat`, we can reduce our Javascript size because we no 
 
 The downside of `Intl.DateTimeFormat` is that we can't fully control over the shape of the format itself. We can only depend on the formats which have been standardized by ECMA. Take a look at the previous example. The returned value of our full customization is `Monday, June 17, 2019, 3:00:00 PM GMT+7`. If we want to remove the comma separator between the date and time, it is not possible to do it via the options. We need to edit the returned string from the API by hand to remove the comma. It is definitely not an ideal solution because we still have to manually reformat the date and time.
 
-If you need to support browser such as IE 6-10, Opera Mini and UC Browser, you have to provide polyfill for this API becuase these browsers doesn't support `Intl.DateTimeFormat`. I recommend using polyfill from [Polyfill.io](https://polyfill.io/v3/) because it can smartly detect which browsers that need polyfill and only serve it when necessary.
+If you need to support browser such as IE 6-10, Opera Mini and UC Browser, you have to provide polyfill for this API because these browsers doesn't support `Intl.DateTimeFormat`. I recommend using polyfill from [Polyfill.io](https://polyfill.io/v3/) because it can smartly detect which browsers that need polyfill and only serve it when necessary.
 
 ``` html
 <!-- Add script below for polyfill -->
