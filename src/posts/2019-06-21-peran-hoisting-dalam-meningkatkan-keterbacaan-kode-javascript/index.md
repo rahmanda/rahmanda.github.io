@@ -60,7 +60,7 @@ Menurut saya, penulisan kode seperti ini kurang enak untuk dibaca karena beberap
 
 **Sulit untuk mengidentifikasi apa fungsi utamanya dan apa saja fungsi yang diekspor**
 
-Pada contoh kode di atas, kita tidak bisa langsung mengetahui secara cepat apa fungsi utama dan apa saja yang diekspor pada kode tersebut. Padahal itu adalah hal yang paling pertama kali ingin kita ketahui setiap kali membaca sebuah modul Javascript. Karena deklarasi ekspor berada pada bagian paling akhir, seringkali tidak mudah untuk mengidentifikasinya karena kita harus membaca semuanya sampai ke bagian paling bawah. Hal ini akan lebih menyulitkan apabila baris kodenya cukup panjang.
+Pada contoh kode di atas, kita tidak bisa mengetahui secara langsung apa fungsi utama dan apa saja yang diekspor pada kode tersebut. Padahal itu adalah hal yang paling pertama kali ingin kita ketahui setiap kali membaca sebuah modul Javascript. Karena deklarasi ekspor berada pada bagian paling akhir, seringkali tidak mudah untuk mengidentifikasinya karena kita harus membaca semuanya sampai ke bagian paling bawah. Hal ini akan lebih menyulitkan apabila baris kodenya cukup panjang.
 
 **Sulit untuk menelusuri cara kerja program secara keseluruhan**
 
@@ -121,7 +121,7 @@ Kalau enggak bakal pakai *hoisting-first*, setidaknya sekarang kamu sudah menger
 
 ## Ekstra
 
-Karena saya jadi penasaran kenapa kok dulu Javascript dibuatnya menggunakan *hoisting*, saya mencoba mencari hal ini di internet dan akhirnya menemukan jawaban menarik yang datang dari seorang [Brendan Eich](https://en.wikipedia.org/wiki/Brendan_Eich), pencipta dari Javascript itu sendiri. Dia beralasan bahwa penambahan sifat *hoisting* pada Javascript itu didasari oleh keperluan *mutual recursion* dan **menghindari cara baca dari bawah ke atas**. Jadi sebenarnya pendekatan yang saya lakukan itu selaras dengan tujuan awal dari penambahan sifat *hoisting* pada Javascript.
+Karena saya jadi penasaran kenapa kok dulu Javascript dibuatnya menggunakan *hoisting*, saya mencoba mencari hal ini di internet dan akhirnya menemukan jawaban menarik yang datang dari seorang [Brendan Eich](https://en.wikipedia.org/wiki/Brendan_Eich), pencipta dari Javascript itu sendiri. Beliau beralasan bahwa penambahan sifat *hoisting* pada Javascript itu didasari oleh keperluan *mutual recursion* dan **menghindari cara baca dari bawah ke atas**. Jadi sebenarnya pendekatan yang saya lakukan itu selaras dengan tujuan awal dari penambahan sifat *hoisting* pada Javascript.
 
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/DmitrySoshnikov?ref_src=twsrc%5Etfw">@DmitrySoshnikov</a> <a href="https://twitter.com/jashkenas?ref_src=twsrc%5Etfw">@jashkenas</a> yes, function declaration hoisting is for mutual recursion &amp; generally to avoid painful bottom-up ML-like order</p>&mdash; BrendanEich (@BrendanEich) <a href="https://twitter.com/BrendanEich/status/33403701100154880?ref_src=twsrc%5Etfw">February 4, 2011</a></blockquote>
 
