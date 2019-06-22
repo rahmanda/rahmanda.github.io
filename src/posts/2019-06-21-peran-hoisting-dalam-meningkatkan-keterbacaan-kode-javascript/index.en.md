@@ -19,7 +19,7 @@ What is the return value of `add` function call above?
 
 The return value is `4` even though the `add` function is declared after its function call. Because Javascript has a hoisting behaviour, this kind of function declaration will automatically get moved to the very top of a scope during the execution. That is why as long as we declare the functions in the same scope, those function calls will not produce reference error.
 
-This kind of behaviour is uncommon to find in other programming languages. Normally, we expect an error every time there is a call before the function declaration. Many programmers, especially people who have experience in other programming language, find hoisting confusing and decide to always declare functions early in the program. Some of them [even take it further](https://github.com/airbnb/javascript#functions--declarations) to use this kind of coding style to make sure that they won't encounter hoisting behaviour.
+This kind of behaviour is uncommon in other programming languages. Normally, we expect an error every time there is a call before the function declaration. Many programmers, especially people who have experience in other programming language, find hoisting confusing and decide to always declare functions early in the program. Some of them [even take it further](https://github.com/airbnb/javascript#functions--declarations) to use this kind of coding style to make sure that they won't encounter hoisting behaviour.
 
 ``` js
 add(1, 3); // ReferenceError: can't access lexical declaration `add' before initialization
