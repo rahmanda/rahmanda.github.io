@@ -17,13 +17,21 @@ function add(a, b) {
 
 Apakah hasil keluaran dari pemanggilan fungsi `add` di atas?
 
-Ternyata hasil keluarannya adalah `4` meskipun fungsi `add` dideklarasikan setelah pemanggilan fungsinya. Karena terdapat sifat *hoisting* pada Javascript, deklarasi fungsi dengan cara ini akan otomatis dipindahkan ke bagian paling atas pada sebuah *scope*. Oleh karena itu selama berada di dalam *scope* yang sama, pemanggilan fungsi tidak akan memunculkan *reference error*.
+Ternyata hasil keluarannya adalah `4` meskipun fungsi `add` dideklarasikan setelah pemanggilan fungsinya. Karena terdapat sifat *hoisting* pada Javascript, deklarasi fungsi dengan cara ini akan otomatis dipindahkan ke bagian paling atas pada sebuah *scope* pada proses eksekusi kode. Oleh karena itu selama berada di dalam *scope* yang sama, pemanggilan fungsi tidak akan memunculkan *reference error*.
 
----
+Sifat *hoisting* ini tidak lazim ditemukan pada bahasa pemrograman yang lain. Umumnya apabila suatu fungsi belum dideklarasikan secara eksplisit di bagian atas *scope*, maka akan terjadi *error*. Itulah mengapa banyak pemrogram, terutama yang telah memiliki pengetahuan bahasa pemrograman yang lain, merasa tidak nyaman dalam menggunakan *hoisting* dan membiasakan diri untuk selalu mendeklarasikan fungsi pada awal program. Beberapa orang bahkan [mengambil langkah lebih jauh](https://github.com/airbnb/javascript#functions--declarations) untuk menggunakan pola seperti ini untuk mencegah sifat hoisting muncul pada program.
+
+``` js
+add(1, 3); // ReferenceError: can't access lexical declaration `add' before initialization
+
+const add = function addFn(a, b) {
+  return a + b;
+}
+```
+
+Menurut saya, contoh kode di atas hanya mempersulit keadaan karena kodenya menjadi lebih panjang dan kita harus memikirkan penamaan sebanyak dua kali, satu untuk variabel dan satu untuk nama fungsinya. Hal ini juga tidak menyelesaikan kebingungan yang kita hadapi pada *hoisting* karena pola ini juga tidak umum digunakan pada bahasa pemrograman lain.
 
 ## Keterbacaan pada kode *anti-hoisting* vs *hoisting-first*
-
-Sifat *hoisting* ini tidak lazim ditemukan pada bahasa pemrograman yang lain. Umumnya apabila suatu fungsi belum dideklarasikan secara eksplisit di bagian atas *scope*, maka akan terjadi *error*. Itulah mengapa banyak pemrogram, terutama yang telah memiliki pengetahuan bahasa pemrograman yang lain, merasa tidak nyaman dalam menggunakan *hoisting* dan membiasakan diri untuk selalu mendeklarasikan fungsi pada awal program.
 
 Di bawah ini adalah contoh kode sederhana yang tidak memanfaatkan *hoisting* (meskipun sifat *hoisting*-nya sendiri masih bekerja).
 
@@ -66,11 +74,11 @@ Pada contoh kode di atas, kita tidak bisa mengetahui secara langsung apa fungsi 
 
 Karena semua fungsi yang akan digunakan harus dideklarasikan terlebih dahulu di atas, kita tidak dapat dengan mudah untuk mengetahui bagaimana alur programnya bekerja.
 
-Misalkan kita ingin mengetahui cara kerja `readFile` dari fungsi `getAllFiles`. Karena fungsi `getAllFiles` berada di paling bawah, kita harus membaca ulang kode di bagian atasnya. Setelah menemukan letak deklarasi `readFile`, ternyata di dalam fungsinya ada lagi pemanggilan fungsi lain, yaitu `getFilename`. Lalu kita telusuri lagi ke baris-baris sebelumnya sampai tidak ada lagi pemanggilan fungsi selain fungsi eksternal.
+Misalkan kita ingin mengetahui keseluruhan cara kerja dari kode pada contoh. Fungsi utama kita, `getAllFiles` melakukan pemanggilan fungsi `readFile` sehingga kita perlu mencari tahu bagaimana fungsi ini bekerja. Karena fungsi utama `getAllFiles` berada di paling bawah, kita harus mencari kode di bagian atasnya. Setelah menemukan letak deklarasi `readFile`, ternyata di dalam fungsinya ada lagi pemanggilan fungsi lain, yaitu `getFilename`. Lalu kita telusuri lagi ke baris-baris sebelumnya sampai tidak ada lagi pemanggilan fungsi selain fungsi eksternal.
 
 Jadi untuk menelusuri cara kerja kode tersebut secara keseluruhan, kita perlu membaca terbalik dari bawah ke atas. Tentu saja cara baca yang demikian tidaklah nyaman karena kita lebih terbiasa membaca dari atas ke bawah.
 
-Salah satu tujuan awal dari menulis semua deklarasi pada bagian atas adalah agar kita mengetahui apa saja fungsi yang tersedia. Namun pada kenyataannya, kita tetap perlu membaca kembali ke baris dimana fungsi tertentu dideklarasikan pada setiap pemanggilan.
+Salah satu tujuan awal dari menulis semua deklarasi pada bagian atas adalah agar kita mengetahui apa saja fungsi yang tersedia. Namun pada kenyataannya, pada setiap pemanggilan fungsi internal, kita tetap perlu membaca kembali ke baris dimana fungsi itu dideklarasikan untuk memahami cara kerja dari fungsi tersebut.
 
 Sekarang bandingkan dengan kode di bawah ini yang memanfaatkan *hoisting* (atau saya lebih suka menyebutnya metode *hoisting-first*).
 
@@ -109,7 +117,7 @@ Hasil penulisan kode dengan metode *hoisting-first* juga lebih mudah untuk dibac
 
 ## Kekurangan pada *hoisting-first*
 
-Kalau kamu ingin menggunakan *hoisting-first* dan kamu suka pakai eslint pada *text editor*, kamu mungkin perlu mengatur ulang pengaturan eslint kamu. Hal ini disebabkan beberapa preset eslint, terutama [airbnb config](https://www.npmjs.com/package/eslint-config-airbnb), memasang aturan *anti-hoisting*. Oleh karena itu, aturan-aturan terkait dengan *anti-hoisting* perlu dimatikan supaya tidak muncul error pada saat *ngoding* atau melakukan *git commit*.
+Kalau kamu ingin menggunakan *hoisting-first* dan kamu suka pakai eslint pada *text editor*, kamu mungkin perlu mengatur ulang pengaturan eslint kamu. Hal ini disebabkan beberapa preset eslint, terutama [airbnb config](https://www.npmjs.com/package/eslint-config-airbnb), memasang aturan *anti-hoisting*. Oleh karena itu, aturan-aturan terkait dengan *anti-hoisting* perlu dimatikan supaya tidak muncul *error* pada saat *ngoding* atau melakukan *git commit*.
 
 Tetapi dengan dimatikannya aturan *anti-hoisting*, kita menjadi lebih bebas dalam mendeklarasikan suatu fungsi. Oleh karena itu, kesadaran diri perlu lebih ditingkatkan untuk menjaga agar kode tetap bagus dan tidak malah membingungkan.
 

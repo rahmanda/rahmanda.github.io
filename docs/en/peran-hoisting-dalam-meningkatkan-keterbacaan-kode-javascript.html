@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
-    <title>Peran Hoisting dalam Meningkatkan Keterbacaan Kode Javascript</title>
+    <title>Improving Javascript&#39;s Code Readability with Hoisting</title>
     <meta charset="UTF-8">
     
-<meta name="description" content="Pendapat kurang populer terhadap hoisting dan penggunaannya">
+<meta name="description" content="Unpopuler opinion towards hoisting and its usability">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
     <style>
       /* cyrillic-ext */
@@ -75,32 +75,32 @@
 <link href="/client.build.f2ff8eff0ebbde8e2d06.css" rel="stylesheet">
   </head>
   <body>
-    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><article class="post"><h1>Peran Hoisting dalam Meningkatkan Keterbacaan Kode Javascript</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2019-06-21">
-        21 Juni 2019
-      </time> <span class="mx-1">•</span> <span title="6 min read">6 min read</span></div> <div class="text-sm mt-6 text-grey-darker font-sans"><span>
-        Translate to:
-        <a href="/en/peran-hoisting-dalam-meningkatkan-keterbacaan-kode-javascript.html" class="mx-1">
-          English
-        </a></span> <!----></div> <section class="mt-8"><p>Banyak orang yang tidak suka dengan <em>hoisting</em> karena sifatnya yang membingungkan. Bahkan <em>style guide</em> populer seperti <a href="https://github.com/airbnb/javascript#functions">airbnb/javascript</a> merekomendasikan untuk tidak menggunakan <em>hoisting</em> sama sekali. Kenapa ya bisa begitu?</p>
-<p>Supaya tahu apa alasannya, coba perhatikan contoh di bawah ini.</p>
+    <div id="app" data-server-rendered="true"><div class="bg-indigo h-1"></div> <nav class="max-w-md mx-auto py-2 px-5 text-base whitespace-nowrap overflow-y-auto"><a href="/" class="mr-4">Home</a> <a href="/archive.html" class="mr-4">Archive</a> <a href="https://id.linkedin.com/in/rahmandawibowo" class="mr-4">About</a></nav> <main role="main" dir="ltr"><article class="post"><h1>Improving Javascript's Code Readability with Hoisting</h1> <div class="text-sm text-grey-darker font-sans"><time datetime="2019-06-21">
+        June 21, 2019
+      </time> <span class="mx-1">•</span> <span title="6 min read">6 min read</span></div> <div class="text-sm mt-6 text-grey-darker font-sans"><!----> <span><a href="/peran-hoisting-dalam-meningkatkan-keterbacaan-kode-javascript.html">
+          Read original post (ID)
+        </a> <span class="mx-1">•</span> <a href="/en">
+          View all posts (EN)
+        </a></span></div> <section class="mt-8"><p>Many people don't like hoisting because of its confusing nature. Moreover, super populer style guide like <a href="https://github.com/airbnb/javascript#functions">airbnb/javascript</a> recommends not to use hoisting at all. Why does it happen though?</p>
+<p>To know the reason behind it, let's take a look at an example below.</p>
 <pre><code class="language-js">add(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>);
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a, b</span>) </span>{
   <span class="hljs-keyword">return</span> a + b;
 }
 </code></pre>
-<p>Apakah hasil keluaran dari pemanggilan fungsi <code>add</code> di atas?</p>
-<p>Ternyata hasil keluarannya adalah <code>4</code> meskipun fungsi <code>add</code> dideklarasikan setelah pemanggilan fungsinya. Karena terdapat sifat <em>hoisting</em> pada Javascript, deklarasi fungsi dengan cara ini akan otomatis dipindahkan ke bagian paling atas pada sebuah <em>scope</em> pada proses eksekusi kode. Oleh karena itu selama berada di dalam <em>scope</em> yang sama, pemanggilan fungsi tidak akan memunculkan <em>reference error</em>.</p>
-<p>Sifat <em>hoisting</em> ini tidak lazim ditemukan pada bahasa pemrograman yang lain. Umumnya apabila suatu fungsi belum dideklarasikan secara eksplisit di bagian atas <em>scope</em>, maka akan terjadi <em>error</em>. Itulah mengapa banyak pemrogram, terutama yang telah memiliki pengetahuan bahasa pemrograman yang lain, merasa tidak nyaman dalam menggunakan <em>hoisting</em> dan membiasakan diri untuk selalu mendeklarasikan fungsi pada awal program. Beberapa orang bahkan <a href="https://github.com/airbnb/javascript#functions--declarations">mengambil langkah lebih jauh</a> untuk menggunakan pola seperti ini untuk mencegah sifat hoisting muncul pada program.</p>
+<p>What is the return value of <code>add</code> function call above?</p>
+<p>The return value is <code>4</code> even though the <code>add</code> function is declared after its function call. Because Javascript has hoisting behaviour, this kind of function declaration will automatically be moved to the very top of a scope. That is why as long as we  declare the functions in the same scope, those function calls will not produce reference error.</p>
+<p>This kind of behaviour is not common to find in other programming languages. Normally, we expect an error every time there is a call before the function declaration. Many programmers, especially people who have experience in other programming language, find hoisting confusing and decide to always declare functions early in the program. Some of them <a href="https://github.com/airbnb/javascript#functions--declarations">even take it further</a> to use this kind of coding style to make sure that they won't encounter hoisting behaviour.</p>
 <pre><code class="language-js">add(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// ReferenceError: can't access lexical declaration `add' before initialization</span>
 
 <span class="hljs-keyword">const</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addFn</span>(<span class="hljs-params">a, b</span>) </span>{
   <span class="hljs-keyword">return</span> a + b;
 }
 </code></pre>
-<p>Menurut saya, contoh kode di atas hanya mempersulit keadaan karena kodenya menjadi lebih panjang dan kita harus memikirkan penamaan sebanyak dua kali, satu untuk variabel dan satu untuk nama fungsinya. Hal ini juga tidak menyelesaikan kebingungan yang kita hadapi pada <em>hoisting</em> karena pola ini juga tidak umum digunakan pada bahasa pemrograman lain.</p>
-<h2>Keterbacaan pada kode <em>anti-hoisting</em> vs <em>hoisting-first</em></h2>
-<p>Di bawah ini adalah contoh kode sederhana yang tidak memanfaatkan <em>hoisting</em> (meskipun sifat <em>hoisting</em>-nya sendiri masih bekerja).</p>
+<p>In my opinion, above example just complicate things because it is longer and we have to name our function twice. It doesn't clear the confusion issue that we have in hoisting because this pattern is uncommon in other programming languages as well.</p>
+<h2>Readability on anti-hoisting vs hoisting-first code</h2>
+<p>Below example is a simple code which doesn't make use of <em>hoisting</em> (even though the <em>hoisting</em> behaviour is still there).</p>
 <pre><code class="language-js"><span class="hljs-comment">// anti-hoisting.js</span>
 
 <span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">'path'</span>;
@@ -128,15 +128,15 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> getAllFiles;
 </code></pre>
-<p>Menurut saya, penulisan kode seperti ini kurang enak untuk dibaca karena beberapa hal:</p>
-<p><strong>Sulit untuk mengidentifikasi apa fungsi utamanya dan apa saja fungsi yang diekspor</strong></p>
-<p>Pada contoh kode di atas, kita tidak bisa mengetahui secara langsung apa fungsi utama dan apa saja yang diekspor pada kode tersebut. Padahal itu adalah hal yang paling pertama kali ingin kita ketahui setiap kali membaca sebuah modul Javascript. Karena deklarasi ekspor berada pada bagian paling akhir, seringkali tidak mudah untuk mengidentifikasinya karena kita harus membaca semuanya sampai ke bagian paling bawah. Hal ini akan lebih menyulitkan apabila baris kodenya cukup panjang.</p>
-<p><strong>Sulit untuk menelusuri cara kerja program secara keseluruhan</strong></p>
-<p>Karena semua fungsi yang akan digunakan harus dideklarasikan terlebih dahulu di atas, kita tidak dapat dengan mudah untuk mengetahui bagaimana alur programnya bekerja.</p>
-<p>Misalkan kita ingin mengetahui keseluruhan cara kerja dari kode pada contoh. Fungsi utama kita, <code>getAllFiles</code> melakukan pemanggilan fungsi <code>readFile</code> sehingga kita perlu mencari tahu bagaimana fungsi ini bekerja. Karena fungsi utama <code>getAllFiles</code> berada di paling bawah, kita harus mencari kode di bagian atasnya. Setelah menemukan letak deklarasi <code>readFile</code>, ternyata di dalam fungsinya ada lagi pemanggilan fungsi lain, yaitu <code>getFilename</code>. Lalu kita telusuri lagi ke baris-baris sebelumnya sampai tidak ada lagi pemanggilan fungsi selain fungsi eksternal.</p>
-<p>Jadi untuk menelusuri cara kerja kode tersebut secara keseluruhan, kita perlu membaca terbalik dari bawah ke atas. Tentu saja cara baca yang demikian tidaklah nyaman karena kita lebih terbiasa membaca dari atas ke bawah.</p>
-<p>Salah satu tujuan awal dari menulis semua deklarasi pada bagian atas adalah agar kita mengetahui apa saja fungsi yang tersedia. Namun pada kenyataannya, pada setiap pemanggilan fungsi internal, kita tetap perlu membaca kembali ke baris dimana fungsi itu dideklarasikan untuk memahami cara kerja dari fungsi tersebut.</p>
-<p>Sekarang bandingkan dengan kode di bawah ini yang memanfaatkan <em>hoisting</em> (atau saya lebih suka menyebutnya metode <em>hoisting-first</em>).</p>
+<p>In my opinion, this kind of coding style is not readable because of several things:</p>
+<p><strong>Hard to identify the main function and the exported functions</strong></p>
+<p>The first things I always expect to know every time I dig into a Javascript code are the main function and the exported functions. However in our case above, we can't easily identify them because we need to read all of the code to the very bottom. On a very long lines of code, this will be even harder.</p>
+<p><strong>Hard to follow the entire flow of the program</strong></p>
+<p>Because every function needs to be declared early in a program, we can't easily follow how the program works.</p>
+<p>Let say we want to know the entire process of the previous example and we have found our main function declaration, <code>getAllFiles</code> at the bottom of the program. As we read the body of the function, we know that there is a <code>readFile</code> function call. So, we have to move to the earlier code to find where it is being declared. After we find <code>readFile</code> declaration, there is another function call inside of it, which is <code>getFilename</code>. Then we have to look at the previous lines until there is no more function call aside from external functions.</p>
+<p>So, to follow the entire process of the code, we need to read in reverse order from bottom to top. Of course this is not a common way for us to read because we are used to read from top to bottom.</p>
+<p>One of the initial reasons to write all of the declarations on the very top was to know all of the available functions. However in reality, every time there is a function call, we still need to move again to where it is being declared in order to know how the function works.</p>
+<p>Now, compare it with this example which make use of hoisting (or I like to call it <em>hoisting-first</em> method).</p>
 <pre><code class="language-js"><span class="hljs-comment">// hoisting-first.js</span>
 
 <span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">'path'</span>;
@@ -164,19 +164,20 @@
   <span class="hljs-keyword">return</span> path.basename(filePath, path.extname(filePath));
 }
 </code></pre>
-<p>Yang saya lakukan pada kode di atas hanyalah mengatur kembali urutan deklarasi fungsi-fungsi pada contoh kode sebelumnya. Dengan cara penulisan seperti ini, kode lebih mudah diketahui apa fungsi utamanya karena sekarang deklarasi ekspornya berada di atas. Selain itu, kode ini juga lebih mudah untuk ditelusuri karena setiap deklarasi fungsi berada persis di bawah fungsi yang memanggilnya. Jadi kita hanya perlu membaca secara alamiah dari atas ke bawah tanpa perlu melihat kembali deklarasi fungsi di atasnya.</p>
-<p>Hasil penulisan kode dengan metode <em>hoisting-first</em> juga lebih mudah untuk dibaca pada modul yang memiliki banyak fungsi. Meskipun saya juga tidak merekomendasikan untuk menulis banyak kode dalam satu modul atau <em>file</em>, saya hanya ingin menjelaskan bahwa cara penulisan seperti ini mungkin bisa bermanfaat untuk kebutuhan yang tidak dapat dihindari.</p>
-<h2>Kekurangan pada <em>hoisting-first</em></h2>
-<p>Kalau kamu ingin menggunakan <em>hoisting-first</em> dan kamu suka pakai eslint pada <em>text editor</em>, kamu mungkin perlu mengatur ulang pengaturan eslint kamu. Hal ini disebabkan beberapa preset eslint, terutama <a href="https://www.npmjs.com/package/eslint-config-airbnb">airbnb config</a>, memasang aturan <em>anti-hoisting</em>. Oleh karena itu, aturan-aturan terkait dengan <em>anti-hoisting</em> perlu dimatikan supaya tidak muncul <em>error</em> pada saat <em>ngoding</em> atau melakukan <em>git commit</em>.</p>
-<p>Tetapi dengan dimatikannya aturan <em>anti-hoisting</em>, kita menjadi lebih bebas dalam mendeklarasikan suatu fungsi. Oleh karena itu, kesadaran diri perlu lebih ditingkatkan untuk menjaga agar kode tetap bagus dan tidak malah membingungkan.</p>
-<h2>Penutup</h2>
-<p>Karena sifat <em>hoisting</em> itu sudah menjadi bagian dari Javascript itu sendiri, penulisan kode dengan pendekatan <em>hoisting-first</em> itu seharusnya dipahami oleh semua pemrogram Javascript. Saya tidak mencoba untuk berargumen bahwa pendekatan saya adalah pendekatan yang paling benar. Semua yang saya tulis semata-mata hanya untuk memberikan sudut pandang yang berbeda.</p>
-<p>Kalau enggak bakal pakai <em>hoisting-first</em>, setidaknya sekarang kamu sudah mengerti apa itu <em>hoisting</em> (mudah-mudahan).</p>
-<h2>Ekstra</h2>
-<p>Karena saya jadi penasaran kenapa kok dulu Javascript dibuatnya menggunakan <em>hoisting</em>, saya mencoba mencari hal ini di internet dan akhirnya menemukan jawaban menarik yang datang dari seorang <a href="https://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a>, pencipta dari Javascript itu sendiri. Beliau beralasan bahwa penambahan sifat <em>hoisting</em> pada Javascript itu didasari oleh keperluan <em>mutual recursion</em> dan <strong>menghindari cara baca dari bawah ke atas</strong>. Jadi sebenarnya pendekatan yang saya lakukan itu selaras dengan tujuan awal dari penambahan sifat <em>hoisting</em> pada Javascript.</p>
+<p>What I did to the code was reordering the declaration of the functions from the previous code. This way, it is easier to find the main function because now the export declaration is located earlier in the code. In addition to that, it is easier to follow the flow of the program because every function declaration is placed immediately after the function that uses it. So, we only need to read naturally from top to bottom without every look back to the previous declarations.</p>
+<p>The code which is written in hoisting-first method is also easier to read on a module which has a lot of functions. Even though I don't recommend to write a lot of code on a single module or file, I just want to explain that this coding style might be beneficial for certain situation.</p>
+<h2>The downsides of hoisting-first</h2>
+<p>If you want to code in hoisting-first way and you are fond of using eslint on your text-editor, you may want to reconfigure your eslint settings. This is because some of the eslint preset, especially <a href="https://www.npmjs.com/package/eslint-config-airbnb">airbnb config</a>, set up a bunch of <em>anti-hoisting</em> rules. Therefore, these kind of rules need to be turned off so that there is no error when coding or doing a git commit.</p>
+<p>However after the <em>anti-hoisting</em> rules have been turned off, it becomes more free to declare functions. Therefore, we need to restrain ourselves to not turn our code into a mess.</p>
+<h2>Closing words</h2>
+<p>Because the nature of hoisting has been part of the Javascript, writing code with hoisting-first style should be understood for every aspiring Javascript coders. I don't try to argue that my method is the best of the best. All of this write up are solely for giving an insight from different perspective.</p>
+<p>If you aren't convinced of using hoisting-first style after reading this article, it is entirely fine. At least, now you understand a little bit more about hoisting (hopefully).</p>
+<h2>Extra</h2>
+<p>Because I was very curious about why hoisting nature was added on Javascript, I looked for articles about this matter and I found an interesting answer which came from <a href="https://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a>, the creator of the Javascript himself. He stated something like this on twitter:</p>
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/DmitrySoshnikov?ref_src=twsrc%5Etfw">@DmitrySoshnikov</a> <a href="https://twitter.com/jashkenas?ref_src=twsrc%5Etfw">@jashkenas</a> yes, function declaration hoisting is for mutual recursion &amp; generally to avoid painful bottom-up ML-like order</p>&mdash; BrendanEich (@BrendanEich) <a href="https://twitter.com/BrendanEich/status/33403701100154880?ref_src=twsrc%5Etfw">February 4, 2011</a></blockquote>
-<p>Bagaimana menurutmu?</p>
-</section></article> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><div class="flex-1 px-6 pb-8 text-left"><p class="mb-2 text-grey-dark">Older Post</p> <a href="/edit-format-tanggal-dengan-intl.datetimeformat.html">← Edit Format Tanggal dan Waktu dengan Intl.DateTimeFormat</a></div> <!----></footer></main></div>
+<p>Based on his tweet, I can say that my hoisting-first method has been well aligned with the real purpose of the hoisting itself from the very beginning.</p>
+<p>What do you think?</p>
+</section></article> <footer class="flex flex-col md:flex-row max-w-md mx-auto my-8"><!----> <!----></footer></main></div>
     
 <script src="/client.build.153f9bdea64861dc6c99.js" type="text/javascript" async></script>
     <div id="disqus_thread" class="max-w-md mx-auto px-6 py-12"></div>
