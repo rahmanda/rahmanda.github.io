@@ -3,7 +3,7 @@ title: Peran Hoisting dalam Meningkatkan Keterbacaan Kode Javascript
 summary: Pendapat kurang populer terhadap hoisting dan penggunaannya
 ---
 
-Banyak orang yang tidak suka dengan *hoisting* karena sifatnya yang membingungkan. Bahkan *style guide* populer seperti [airbnb/javascript](https://github.com/airbnb/javascript#functions) merekomendasikan untuk tidak menggunakan *hoisting* sama sekali. Kenapa ya bisa begitu?
+Banyak orang yang tidak suka dengan *hoisting* karena sifatnya yang membingungkan. Bahkan *style guide* yang populer seperti [airbnb/javascript](https://github.com/airbnb/javascript#functions) merekomendasikan untuk tidak menggunakan *hoisting* sama sekali. Kenapa ya bisa begitu?
 
 Supaya tahu apa alasannya, coba perhatikan contoh di bawah ini.
 

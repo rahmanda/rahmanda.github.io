@@ -17,9 +17,9 @@ function add(a, b) {
 
 What is the return value of `add` function call above?
 
-The return value is `4` even though the `add` function is declared after its function call. Because Javascript has hoisting behaviour, this kind of function declaration will automatically be moved to the very top of a scope during the execution. That is why as long as we  declare the functions in the same scope, those function calls will not produce reference error.
+The return value is `4` even though the `add` function is declared after its function call. Because Javascript has a hoisting behaviour, this kind of function declaration will automatically get moved to the very top of a scope during the execution. That is why as long as we declare the functions in the same scope, those function calls will not produce reference error.
 
-This kind of behaviour is not common to find in other programming languages. Normally, we expect an error every time there is a call before the function declaration. Many programmers, especially people who have experience in other programming language, find hoisting confusing and decide to always declare functions early in the program. Some of them [even take it further](https://github.com/airbnb/javascript#functions--declarations) to use this kind of coding style to make sure that they won't encounter hoisting behaviour.
+This kind of behaviour is uncommon to find in other programming languages. Normally, we expect an error every time there is a call before the function declaration. Many programmers, especially people who have experience in other programming language, find hoisting confusing and decide to always declare functions early in the program. Some of them [even take it further](https://github.com/airbnb/javascript#functions--declarations) to use this kind of coding style to make sure that they won't encounter hoisting behaviour.
 
 ``` js
 add(1, 3); // ReferenceError: can't access lexical declaration `add' before initialization
@@ -64,7 +64,7 @@ function getAllFiles() {
 export default getAllFiles;
 ```
 
-In my opinion, this kind of coding style is not readable because of several things:
+In my opinion, this coding style is not readable because of several things:
 
 **Hard to identify the main function and the exported functions**
 
@@ -76,7 +76,7 @@ Because every function needs to be declared early in a program, we can't easily 
 
 Let say we want to know the entire process of the previous example and we have found our main function declaration, `getAllFiles` at the bottom of the program. As we read the body of the function, we know that there is a `readFile` function call. So, we have to move to the earlier code to find where it is being declared. After we find `readFile` declaration, there is another function call inside of it, which is `getFilename`. Then we have to look at the previous lines until there is no more function call aside from external functions.
 
-So, to follow the entire process of the code, we need to read in reverse order from bottom to top. Of course this is not a common way for us to read because we are used to read from top to bottom.
+Therefore, to follow the entire process of the code, we need to read in reverse order from bottom to top. Obviously, this is unnatural for us because we are used to read from top to bottom.
 
 One of the initial reasons to write all of the declarations on the very top was to know all of the available functions. However in reality, every time there is a function call, we still need to move again to where it is being declared in order to know how the function works.
 
@@ -129,7 +129,7 @@ If you aren't convinced of using hoisting-first style after reading this article
 
 ## Extra
 
-Because I was very curious about why hoisting nature was added on Javascript, I looked for articles about this matter and I found an interesting answer which came from [Brendan Eich](https://en.wikipedia.org/wiki/Brendan_Eich), the creator of the Javascript himself. He stated something like this on twitter:
+Because I was very curious about why hoisting was added on Javascript, I looked for articles about this matter and I found an interesting answer which came from [Brendan Eich](https://en.wikipedia.org/wiki/Brendan_Eich), the creator of the Javascript himself. He stated something like this on twitter:
 
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/DmitrySoshnikov?ref_src=twsrc%5Etfw">@DmitrySoshnikov</a> <a href="https://twitter.com/jashkenas?ref_src=twsrc%5Etfw">@jashkenas</a> yes, function declaration hoisting is for mutual recursion &amp; generally to avoid painful bottom-up ML-like order</p>&mdash; BrendanEich (@BrendanEich) <a href="https://twitter.com/BrendanEich/status/33403701100154880?ref_src=twsrc%5Etfw">February 4, 2011</a></blockquote>
 
