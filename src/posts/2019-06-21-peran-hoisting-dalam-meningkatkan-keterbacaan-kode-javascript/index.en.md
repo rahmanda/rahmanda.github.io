@@ -3,7 +3,7 @@ title: Improving Javascript's Code Readability with Hoisting
 summary: Unpopular opinion towards hoisting and its usability
 ---
 
-Many people don't like hoisting because of its confusing nature. Moreover, super populer style guide like [airbnb/javascript](https://github.com/airbnb/javascript#functions) recommends not to use hoisting at all. Why does it happen though?
+Many people don't like hoisting because of its confusing nature. Moreover, super popular style guide like [airbnb/javascript](https://github.com/airbnb/javascript#functions) recommends not to use hoisting at all. Why does it happen though?
 
 To know the reason behind it, let's take a look at an example below.
 
