@@ -29,7 +29,7 @@ const add = function addFn(a, b) {
 }
 ```
 
-In my opinion, above example just complicates things even more because it is longer and we have to name our function twice. It doesn't clear the confusion issue that we have in hoisting because this pattern is uncommon in other programming languages as well.
+In my opinion, above example just complicates things even more because it is now longer and we have to name our function twice. It doesn't clear the confusion issue that we have in hoisting because this pattern is uncommon in other programming languages as well.
 
 ## Readability on anti-hoisting vs hoisting-first code
 
