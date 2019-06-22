@@ -29,7 +29,7 @@ const add = function addFn(a, b) {
 }
 ```
 
-Menurut saya, contoh kode di atas hanya mempersulit keadaan karena kodenya menjadi lebih panjang dan kita harus memikirkan penamaan sebanyak dua kali, satu untuk variabel dan satu untuk nama fungsinya. Hal ini juga tidak menyelesaikan kebingungan yang kita hadapi pada *hoisting* karena pola ini juga tidak umum digunakan pada bahasa pemrograman lain.
+Menurut saya, contoh kode di atas hanya mempersulit keadaan karena kodenya menjadi lebih panjang dan kita harus memikirkan penamaan sebanyak dua kali, satu untuk variabel dan satu untuk nama fungsinya. Kode seperti ini juga tidak membuat menjadi lebih mudah dibaca karena pola ini juga tidak umum digunakan pada bahasa pemrograman lain.
 
 ## Keterbacaan pada kode *anti-hoisting* vs *hoisting-first*
 
