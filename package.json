@@ -5,7 +5,8 @@
   "author": "Rahmanda Wibowo <rahmandawibowo@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "optimize": "node ./scripts/optimize-css.js"
+    "optimize": "node ./scripts/optimize-css.js",
+    "build": "npx ambercat build && npm run optimize"
   },
   "dependencies": {
     "ambercat": "0.x",
