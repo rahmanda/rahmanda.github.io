@@ -1,9 +1,19 @@
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  keep_history: true
-  on:
-    branch: master
-  local_dir: docs
-  repo: rahmanda/rahmanda.github.io
+language: node_js
+
+node_js:
+  - "10"
+
+before_install:
+  - npm install
+
+script:
+  - npm run build
+
+after_success:
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis CI"
+  - git checkout -b gh-pages
+  - git add . docs/*
+  - git commit --message "travis-build: $TRAVIS_BUILD_NUMBER"
+  - git remote add origin-pages https://${GITHUB_TOKEN}@github.com/rahmanda/rahmanda.github.io.git > /dev/null 2>&1 
+  - git push --quiet --set-upstream origin-pages gh-pages
