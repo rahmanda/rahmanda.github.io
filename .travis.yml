@@ -10,10 +10,11 @@ script:
   - npm run build
 
 after_success:
+  - cd docs
+  - git init
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
-  - git checkout -b gh-pages
-  - git add docs/*
+  - git add .
   - git commit -m "travis-build $TRAVIS_BUILD_NUMBER"
-  - git remote add origin-pages https://${GITHUB_TOKEN}@github.com/rahmanda/rahmanda.github.io.git > /dev/null 2>&1 
-  - git push --force --quiet --set-upstream origin-pages gh-pages
+  - git remote add origin https://${GITHUB_TOKEN}@github.com/rahmanda/rahmanda.github.io.git > /dev/null 2>&1 
+  - git push --force --quiet --set-upstream origin master
