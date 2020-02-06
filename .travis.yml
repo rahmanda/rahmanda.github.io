@@ -16,4 +16,4 @@ after_success:
   - git add . docs/*
   - git commit --message "travis-build: $TRAVIS_BUILD_NUMBER"
   - git remote add origin-pages https://${GITHUB_TOKEN}@github.com/rahmanda/rahmanda.github.io.git > /dev/null 2>&1 
-  - git push --quiet --set-upstream origin-pages gh-pages
+  - git push --force --quiet --set-upstream origin-pages gh-pages
