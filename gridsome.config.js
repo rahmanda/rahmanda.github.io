@@ -29,7 +29,7 @@ module.exports = {
       use: 'gridsome-plugin-tailwindcss',
       options: {
         purgeConfig: {
-          whitelistPatternsChildren: [/^token/, /^pre/, /^code/, /^a/]
+          whitelistPatternsChildren: [/^token/, /^pre/, /^code/, /^a/, /^blockquote/]
         }
       }
     }
