@@ -2,7 +2,7 @@
   <HomeLayout locale="en">
     <div class="max-w-4xl mx-auto pl-5 pr-5 md:pr-20 pt-20 pb-16 flex items-center flex-col md:flex-row">
       <div class="w-56 flex-none mb-10 md:mb-0 md:mr-10">
-        <img src="/profile-picture.png" class="rounded-md" />
+        <g-image src="~/images/profile-picture.png" class="rounded-md" alt="Profile picture of Rahmanda Wibowo" />
       </div>
       <p class="md:mb-2 text-lg md:text-xl text-center md:text-left font-light text-gray-800 flex-1 md:mr-10">
         My name is Rahmanda Wibowo. I build web interfaces using pragmatic tools and progressive development. Currently I'm working at <a class="text-indigo-600 underline" href="https://www.bukalapak.com">Bukalapak</a> to develop wide range of digital products and marketplace features.

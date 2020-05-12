@@ -3,7 +3,7 @@
     <div class="c-header text-gray-800">
       <nav class="max-w-2xl mx-auto py-3 px-5 text-base whitespace-nowrap overflow-y-auto flex items-center">
         <g-link to="/" class="c-logo flex-none flex items-center">
-          <img :src="headerLogo" alt="logo" class="flex-none">
+          <g-image src="~/images/r-logo-small.png" alt="logo" class="flex-none"/>
         </g-link>
         <div class="flex-1 flex justify-end font-sans-title text-right">
           <g-link class="ml-4" :to="linkToBlog">Blog</g-link>
@@ -24,10 +24,6 @@
 <script>
 export default {
   props: {
-    headerLogo: {
-      type: String,
-      default: '/r-logo-small.png'
-    },
     pageType: {
       type: String,
       default: 'home'
