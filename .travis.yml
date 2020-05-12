@@ -8,17 +8,18 @@ node_js:
   - "10"
 
 before_install:
+  - npm install --global @gridsome/cli
   - npm install
 
 script:
   - npm run build
 
 after_success:
-  - cd docs
+  - cd dist
   - git init
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - git add .
-  - git commit -m "travis-build $TRAVIS_BUILD_NUMBER"
-  - git remote add origin https://${GITHUB_TOKEN}@github.com/rahmanda/rahmanda.github.io.git > /dev/null 2>&1 
+  - git commit -m "$TRAVIS_COMMIT_MESSAGE"
+  - git remote add origin https://${GITHUB_TOKEN}@github.com/rahmanda/rahmanda.github.io.git > /dev/null 2>&1
   - git push --force --quiet --set-upstream origin master
