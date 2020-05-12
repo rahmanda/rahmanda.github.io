@@ -4,6 +4,8 @@ slug: memahami-closure-di-javascript
 published_date: 2016-12-31
 language: id
 type: blog
+translations:
+  en: /blog/en/understanding-closure-in-javascript/
 ---
 
 Ketika kita membuat suatu variabel, variabel tersebut otomatis memiliki sebuah _scope_. _Scope_ yang dimiliki oleh variabel bergantung kepada dimana posisi variabel tersebut dibuat.

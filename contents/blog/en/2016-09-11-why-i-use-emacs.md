@@ -4,6 +4,8 @@ slug: why-i-use-emacs
 published_date: 2016-09-11
 language: en
 type: blog
+translations:
+  id: /blog/id/kok-kamu-pakai-emacs-sih/
 ---
 
 Text editor is an essential tool for programmers. Without a text editor, programmers could not code. Therefore there are so many text editors out there, and it seems that programmers will not stop to find and create another new text editor which is better than what we have today.

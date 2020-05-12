@@ -5,6 +5,8 @@ summary: Pendapat kurang populer terhadap hoisting dan penggunaannya
 published_date: 2019-06-21
 language: id
 type: blog
+translations:
+  en: /blog/en/improving-code-readability-with-hoisting/
 ---
 
 Banyak orang yang tidak suka dengan *hoisting* karena sifatnya yang membingungkan. Bahkan *style guide* yang populer seperti [airbnb/javascript](https://github.com/airbnb/javascript#functions) merekomendasikan untuk tidak menggunakan *hoisting* sama sekali. Kenapa ya bisa begitu?

@@ -1,9 +1,11 @@
 ---
 title: Kok Kamu Pakai Emacs Sih?
-sluug: kok-kamu-pakai-emacs-sih
+slug: kok-kamu-pakai-emacs-sih
 published_date: 2016-09-11
 language: id
 type: blog
+translations:
+  en: /blog/en/why-i-use-emacs/
 ---
 
 Keperluan terhadap _text editor_ bagi seorang programmer adalah mutlak. Tanpa _text editor_, programmer tidak dapat _ngoding_. Oleh karena itu, banyak sekali _text editor_ yang beredar di dunia ini, dan sepertinya para programmer tidak akan berhenti mencari dan menciptakan _text editor_ yang lebih baik dari yang sudah ada saat ini.

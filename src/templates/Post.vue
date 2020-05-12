@@ -1,11 +1,10 @@
 <template>
-  <Layout>
+  <Layout page-type="post">
 		<main role="main"
 					:dir="$page.post.direction"
 					:class="{ 'rtl': $page.post.direction === 'rtl' }">
 			<article class="post">
-				<h1 class="font-sans-title text-xl">{{ $page.post.title }}</h1>
-				<div class="text-sm text-gray-600 font-sans">
+				<div class="mt-12 mb-5 text-sm text-gray-600 font-sans">
 					<time :datetime="$page.post.published_date">
 						{{ $date($page.post.published_date, $page.post.language) }}
 					</time>
@@ -14,25 +13,19 @@
             {{ $timeToRead($page.post.timeToRead, $page.post.language) }}
           </span>
 				</div>
-				<div v-if="false"
-						class="text-sm mt-6 text-grey-darker font-sans">
-					<span v-if="$page.post.translations">
-						Translate to:
-						<a v-for="(translation, key) in $page.post.translations"
-							 :key="key"
-							 :href="translation.path"
-							 class="mx-1">
-							{{ translation.name }}
-						</a>
-					</span>
-					<span v-if="$page.post.originalPostPath">
-						<a :href="$page.post.originalPostPath">
-							Read original post (ID)
-						</a>
-						<span class="mx-1">•</span>
-						<a :href="`/${data.language}`">
-							View all posts ({{ data.language.toUpperCase() }})
-						</a>
+				<h1 class="font-sans-title text-xl">{{ $page.post.title }}</h1>
+				<div v-if="$page.post.translations"
+						class="text-md mt-10 text-gray-600 font-sans">
+					<span>
+            Translate into:
+            <template v-for="(path, key) in $page.post.translations">
+              <a v-if="path"
+                 :key="key"
+                 :href="path"
+                 class="mx-1 underline text-indigo-500">
+                {{ languageNames[key] }}
+              </a>
+            </template>
 					</span>
 				</div>
 				<section class="mt-8" v-html="$page.post.content"/>
@@ -71,6 +64,14 @@ export default {
       title: this.$page.post.title
     }
   },
+  computed: {
+    languageNames() {
+      return {
+        id: 'Bahasa Indonesia',
+        en: 'English'
+      }
+    },
+  },
   mounted() {
     generateAnchors();
   },
@@ -85,6 +86,10 @@ query ($id: ID!) {
     published_date
     timeToRead
     language
+    translations {
+      id
+      en
+    }
   }
 }
 </page-query>

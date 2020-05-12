@@ -4,6 +4,8 @@ slug: understanding-closure-in-javascript
 published_date: 2016-12-31
 language: en
 type: blog
+translations:
+  id: /blog/id/memahami-closure-di-javascript/
 ---
 
 Whenever we declare a variable, it is immediately given a scope. The scope which belongs to a variable depends to where it was declared on the code.
