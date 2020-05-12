@@ -29,7 +29,6 @@ export default function (Vue, { router, head, isClient }) {
       lang = 'en'
     }
     head.htmlAttrs.lang = lang
-    Vue.prototype.$locale = lang
     next();
   });
 }

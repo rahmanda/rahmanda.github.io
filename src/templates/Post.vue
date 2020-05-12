@@ -1,5 +1,5 @@
 <template>
-  <Layout page-type="post">
+  <Layout page-type="post" :locale="$page.post.language">
 		<main role="main"
 					:dir="$page.post.direction"
 					:class="{ 'rtl': $page.post.direction === 'rtl' }">

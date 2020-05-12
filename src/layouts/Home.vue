@@ -33,14 +33,18 @@ export default {
     headerLogo: {
       type: String,
       default: '/r-logo-white-small.png'
+    },
+    locale: {
+      type: String,
+      default: 'en'
     }
   },
   computed: {
     linkToBlog() {
-      if (this.$locale === 'id') {
+      if (this.locale === 'id') {
         return '/blog/'
       }
-      return `/blog/${this.$locale}/`
+      return `/blog/${this.locale}/`
     }
   }
 }

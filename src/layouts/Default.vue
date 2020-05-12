@@ -31,14 +31,18 @@ export default {
     pageType: {
       type: String,
       default: 'home'
+    },
+    locale: {
+      type: String,
+      default: 'en'
     }
   },
   computed: {
     linkToBlog() {
-      if (this.$locale === 'id') {
+      if (this.locale === 'id') {
         return '/blog/'
       }
-      return `/blog/${this.$locale}/`
+      return `/blog/${this.locale}/`
     }
   }
 }

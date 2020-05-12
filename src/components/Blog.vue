@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout :locale="locale">
 		<div class="text-lg">
 			<div class="max-w-2xl mx-auto px-5 py-6">
 				<div v-for="post in posts"
@@ -31,6 +31,10 @@ export default {
       type: Array,
       required: true
     },
+    locale: {
+      type: String,
+      default: 'en'
+    }
   }
 }
 </script>

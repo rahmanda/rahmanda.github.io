@@ -1,5 +1,5 @@
 <template>
-  <Blog :posts="$page.posts.edges"/>
+  <Blog :posts="$page.posts.edges" locale="id"/>
 </template>
 
 <script>

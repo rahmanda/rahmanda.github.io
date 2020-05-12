@@ -1,5 +1,5 @@
 <template>
-  <HomeLayout>
+  <HomeLayout locale="en">
     <div class="max-w-4xl mx-auto pl-5 pr-5 md:pr-20 pt-20 pb-20 flex items-center flex-col md:flex-row">
       <div class="w-56 flex-none mb-10 md:mb-0 md:mr-10">
         <img src="/profile-picture.png" class="rounded-md" />

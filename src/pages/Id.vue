@@ -1,5 +1,5 @@
 <template>
-  <HomeLayout>
+  <HomeLayout locale="id">
     <template slot="hero">
       <p class="text-indigo-200 mb-2 text-xl">Selamat, kamu menemukan...</p>
       <p class="text-5xl md:text-6xl leading-tight tracking-tighter font-bold">Satu lagi Web Developer!</p>
