@@ -17,7 +17,7 @@
       <div class="max-w-4xl text-gray-100 mx-auto px-5 pt-16 pb-20 font-sans-title">
         <slot name="hero">
           <p class="text-indigo-200 mb-2 text-xl">Congrats, you've found...</p>
-          <p class="text-6xl leading-tight tracking-tighter font-bold">Yet another Web Developer!</p>
+          <p class="text-5xl md:text-6xl leading-tight tracking-tighter font-bold">Yet another Web Developer!</p>
         </slot>
       </div>
     </div>
