@@ -1,6 +1,6 @@
 <template>
   <HomeLayout locale="en">
-    <div class="max-w-4xl mx-auto pl-5 pr-5 md:pr-20 pt-20 pb-20 flex items-center flex-col md:flex-row">
+    <div class="max-w-4xl mx-auto pl-5 pr-5 md:pr-20 pt-20 pb-16 flex items-center flex-col md:flex-row">
       <div class="w-56 flex-none mb-10 md:mb-0 md:mr-10">
         <img src="/profile-picture.png" class="rounded-md" />
       </div>
@@ -8,7 +8,7 @@
         My name is Rahmanda Wibowo. I build web interfaces using pragmatic tools and progressive development. Currently I'm working at <a class="text-indigo-600 underline" href="https://www.bukalapak.com">Bukalapak</a> to develop wide range of digital products and marketplace features.
       </p>
     </div>
-    <div class="max-w-4xl mx-auto px-5 py-16">
+    <div class="max-w-4xl mx-auto px-5 py-12">
       <h2 class="text-center text-2xl font-sans-title font-bold text-gray-500 mb-12">Some of My Tinkering List</h2>
       <div class="flex flex-wrap -mx-1 text-gray-800">
         <div class="w-full md:w-1/3 mb-5">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <div class="max-w-4xl mx-auto px-5 py-16">
+    <div class="max-w-4xl mx-auto px-5 py-12">
       <h2 class="text-center text-2xl font-sans-title font-bold text-gray-500 mb-12">Recent Writings</h2>
       <div class="flex flex-wrap -mx-2 text-gray-800">
         <div v-for="post in $page.posts.edges" :key="post.node.id" class="w-full md:w-1/3 mb-5">

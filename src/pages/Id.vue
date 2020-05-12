@@ -4,7 +4,7 @@
       <p class="text-indigo-200 mb-2 text-xl">Selamat, kamu menemukan...</p>
       <p class="text-5xl md:text-6xl leading-tight tracking-tighter font-bold">Satu lagi Web Developer!</p>
     </template>
-    <div class="max-w-4xl mx-auto pl-5 pr-5 md:pr-20 pt-20 pb-20 flex items-center flex-col md:flex-row">
+    <div class="max-w-4xl mx-auto pl-5 pr-5 md:pr-20 pt-20 pb-16 flex items-center flex-col md:flex-row">
       <div class="w-56 flex-none mb-10 md:mb-0 md:mr-10">
         <img src="/profile-picture.png" class="rounded-md" />
       </div>
@@ -12,7 +12,7 @@
         Saya Rahmanda Wibowo. Saya menggunakan metode pengembangan progresif dan peralatan apa saja untuk membuat tampilan website yang menarik. Saat ini saya bekerja di <a class="text-indigo-600 underline" href="https://www.bukalapak.com">Bukalapak</a> untuk mengembangkan berbagai macam produk digital dan marketplace.
       </p>
     </div>
-    <div class="max-w-4xl mx-auto px-5 py-16">
+    <div class="max-w-4xl mx-auto px-5 py-12">
       <h2 class="text-center text-2xl font-sans-title font-bold text-gray-500 mb-12">Beberapa hasil otak-atik saya</h2>
       <div class="flex flex-wrap -mx-1 text-gray-800">
         <div class="w-full md:w-1/3 mb-5">
@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-    <div class="max-w-4xl mx-auto px-5 py-16">
+    <div class="max-w-4xl mx-auto px-5 py-12">
       <h2 class="text-center text-2xl font-sans-title font-bold text-gray-500 mb-12">Tulisan Terbaru</h2>
       <div class="flex flex-wrap -mx-2 text-gray-800">
         <div v-for="post in $page.posts.edges" :key="post.node.id" class="w-full md:w-1/3 mb-5">
