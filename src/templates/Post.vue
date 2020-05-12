@@ -19,12 +19,12 @@
 					<span>
             Translate into:
             <template v-for="(path, key) in $page.post.translations">
-              <a v-if="path"
+              <g-link v-if="path"
                  :key="key"
-                 :href="path"
+                 :to="path"
                  class="mx-1 underline text-indigo-500">
                 {{ languageNames[key] }}
-              </a>
+              </g-link>
             </template>
 					</span>
 				</div>
