@@ -104,6 +104,6 @@
   @apply font-bold;
 }
 
-.anchorjs-link {
+a.anchorjs-link {
   @apply text-indigo-500;
 }
