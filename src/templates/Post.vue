@@ -47,8 +47,6 @@
 </template>
 
 <script>
-import 'prism-themes/themes/prism-vsc-dark-plus.css';
-
 async function generateAnchors() {
   const { default: anchorjs } = await import('anchor-js');
   const anchors = new anchorjs({
