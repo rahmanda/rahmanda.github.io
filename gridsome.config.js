@@ -26,7 +26,12 @@ module.exports = {
       }
     },
     {
-      use: 'gridsome-plugin-tailwindcss'
+      use: 'gridsome-plugin-tailwindcss',
+      options: {
+        purgeConfig: {
+          whitelistPatternsChildren: [/^token/, /^pre/, /^code/]
+        }
+      }
     }
   ],
   transformers: {
