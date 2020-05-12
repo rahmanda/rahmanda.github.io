@@ -1,14 +1,6 @@
-# Default starter for Gridsome
+# www.rahmandawibowo.com
 
-This is the project you get when you run `gridsome create new-project`.
+My personal homepage and blog. Use [gridsome](https://gridsome.org) for static site generator, [tailwindcss](https://tailwindcss.com) for styling and [prismjs](https://gridsome.org/plugins/@gridsome/remark-prismjs) for syntax highlighting (with [vs code theme](https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css)).
 
-### 1. Install Gridsome CLI tool if you don't have
+To run in your local machine, run `yarn` to install dependencies. After that, run `yarn dev` and open http://localhost:8080 in your browser.
 
-`npm install --global @gridsome/cli`
-
-### 2. Create a Gridsome project
-
-1. `gridsome create my-gridsome-site` to install default starter
-2. `cd my-gridsome-site` to open the folder
-3. `gridsome develop` to start a local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
