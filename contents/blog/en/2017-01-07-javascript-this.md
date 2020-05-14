@@ -5,7 +5,7 @@ published_date: 2017-01-07
 language: en
 type: blog
 translations:
-  id: /id/javascript-this/
+  id: /blog/id/javascript-this/
 ---
 
 It is often to use `this` operator when you want to implement a class or an object under object oriented programming language. Javascript doesn't have object oriented paradigm, however Javascript supports `this` keyword. Unlike other common programming language, in Javascript `this` will behave differently.
