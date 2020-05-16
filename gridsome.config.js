@@ -38,6 +38,9 @@ module.exports = {
       options: {
         id: 'UA-73365330-1'
       }
+    },
+    {
+      use: '@gridsome/plugin-sitemap'
     }
   ],
   transformers: {
