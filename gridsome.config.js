@@ -7,7 +7,7 @@
 module.exports = {
   siteName: 'Rahmanda Wibowo',
   siteDescription: 'Front-end web developer with professional experience in online marketplace and digital product industry',
-  siteUrl: 'www.rahmandawibowo.com',
+  siteUrl: 'https://www.rahmandawibowo.com',
   templates: {
     Post: [
       {
