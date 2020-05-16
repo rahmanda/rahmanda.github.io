@@ -32,6 +32,12 @@ module.exports = {
           whitelistPatternsChildren: [/^token/, /^pre/, /^code/, /^a/, /^post/]
         }
       }
+    },
+    {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: 'UA-73365330-1'
+      }
     }
   ],
   transformers: {
