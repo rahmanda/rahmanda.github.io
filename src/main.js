@@ -16,6 +16,10 @@ export default function (Vue, { router, head, isClient }) {
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=PT+Sans&display=swap'
   })
+  head.meta.push({
+    name: 'google-site-verification',
+    content: 'cxX6bHKFtfWlAhhWluGZII6peqca8Hsd2aaobASSxEI'
+  })
 
   // Route hooks
   router.beforeEach(({ path }, _, next) => {
