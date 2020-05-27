@@ -5,7 +5,7 @@
         <g-link to="/" class="c-logo flex-none flex items-center">
           <g-image src="~/images/r-logo-white-small.png" alt="logo" class="flex-none"/>
         </g-link>
-        <div class="flex-1 flex justify-end font-sans-title text-right">
+        <div class="flex-1 flex justify-end font-sans text-right">
           <g-link class="ml-4" :to="linkToBlog">Blog</g-link>
           <a class="ml-4" href="https://linkedin.com/in/rahmandawibowo">LinkedIn</a>
           <div class="rounded border border-gray-900 bg-indigo-900 ml-4">
