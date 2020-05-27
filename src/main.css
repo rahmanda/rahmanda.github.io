@@ -78,7 +78,7 @@
 
 .post ol,
 .post ul {
-	@apply text-gray-900 my-6 ml-5 list-inside;
+	@apply text-gray-900 my-6 ml-5 list-inside p-0;
 }
 
 .post ol {
