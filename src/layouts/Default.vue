@@ -2,7 +2,7 @@
   <div class="layout bg-gray-50">
     <div class="c-header text-gray-800">
       <nav class="max-w-2xl mx-auto py-3 px-5 text-base whitespace-nowrap overflow-y-auto flex items-center">
-        <g-link to="/" class="c-logo flex-none flex items-center">
+        <g-link :to="linkToHomepage" class="c-logo flex-none flex items-center">
           <g-image src="~/images/r-logo-small.png" alt="logo" class="flex-none"/>
         </g-link>
         <div class="flex-1 flex justify-end font-sans-title text-right">
@@ -39,6 +39,12 @@ export default {
         return '/blog/'
       }
       return `/blog/${this.locale}/`
+    },
+    linkToHomepage() {
+      if (this.locale === 'id') {
+        return '/id/'
+      }
+      return '/'
     }
   }
 }
