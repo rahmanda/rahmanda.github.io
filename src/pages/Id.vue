@@ -18,19 +18,25 @@
       <div class="flex flex-wrap -mx-1 text-gray-800">
         <div class="w-full md:w-1/3 mb-5">
           <div class="mx-1">
-            <a class="text-xl font-bold underline mb-2 block" href="https://github.com/rahmanda/ambercat">Ambercat</a>
+            <div class="mb-2">
+              <a class="c-link" href="https://github.com/rahmanda/ambercat">Ambercat</a>
+            </div>
             <p class="text-lg">Librari sederhana untuk membuat static blog berbasiskan Vue.js dan Tailwind CSS</p>
           </div>
         </div>
         <div class="w-full md:w-1/3 mb-5">
           <div class="mx-1">
-            <a class="text-xl font-bold underline mb-2 block" href="https://github.com/rahmanda/tailwindscss">Tailwind SCSS</a>
+            <div class="mb-2">
+              <a class="c-link" href="https://github.com/rahmanda/tailwindscss">Tailwind SCSS</a>
+            </div>
             <p class="text-lg">Versi SCSS dari Tailwind CSS untuk para pengembang yang belum menggunakan bundler modern</p>
           </div>
         </div>
         <div class="w-full md:w-1/3 mb-5">
           <div class="text-lg mx-1">
-            <a class="text-xl font-bold underline mb-2 block" href="https://github.com/rahmanda/prasmananjs">Prasmanan.js</a>
+            <div class="mb-2">
+              <a class="c-link" href="https://github.com/rahmanda/prasmananjs">Prasmanan.js</a>
+            </div>
             <p class="text-lg">Alternatif untuk infinite slider yang cocok untuk platform desktop dan mobile.</p>
           </div>
         </div>
