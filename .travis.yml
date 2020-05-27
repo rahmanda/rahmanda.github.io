@@ -8,8 +8,8 @@ node_js:
   - "10"
 
 before_install:
+  - npm install --global @gridsome/cli
   - yarn
-  - yarn add --global @gridsome/cli
 
 script:
   - yarn build
