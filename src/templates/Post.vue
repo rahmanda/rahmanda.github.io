@@ -104,7 +104,7 @@ export default {
       return this.$page.post.summary || this.$page.post.excerpt
     },
     url() {
-      return `${this.$page.metadata.siteUrl}/${this.$page.post.language}/${this.$page.post.slug}/`;
+      return `${this.$page.metadata.siteUrl}/blog/${this.$page.post.language}/${this.$page.post.slug}/`;
     }
   },
   mounted() {
