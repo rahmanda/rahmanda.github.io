@@ -10,6 +10,8 @@ translations:
 
 There are several ways to create a utility function in a Vue application. However, I think Vue's prototype is the best if you want to provide shared utilities in your app. In this article, I will give several pros and cons for some approaches and explain why I choose prototype for this case.
 
+## Using a simple module
+
 Creating a JS module is probably the easiest way to provide a utility function. Simply write a function inside of a JS file, and then import it to your other JS file that want to use it. Below is a short example of how we can use JS module in a component.
 
 ``` js
@@ -67,6 +69,8 @@ export default {
 
 Now our component is better, but this approach will get cumbersome quickly. Using this code style means that I have to write an import reference and methods every time I want to use the utility function across multiple components.
 
+## Using mixins
+
 Since we need to make our function accessible from component's context object, why don't we use mixins anyway?
 
 ``` js
@@ -109,6 +113,8 @@ One is a reference clarity. When I refactor the code into a mixin, I can't immed
 Two is I give a broad access into the utility. Even if we want it or not, now our utility function can get a full access to the component's context. For example, I can change a state inside of the mixin to update some behaviour. This kinds of practice is bad because it can add unnecessary complexity and potentially leads to many bugs in the future.
 
 ---
+
+## Using prototype
 
 To avoid getting troubles from previous approaches, luckily we can use prototype for creating a utility function. Take a look at this example.
 
@@ -169,7 +175,6 @@ app.$mount('#app');
 ```
 
 ---
-
 
 Now that we have reviewed several approaches of shared utilities. In my experience, shared utilities are the best way to be implemented as a Vue's prototype. By using Vue's prototype, we can reduce duplication while still giving us a limitation to access the component's context.
 
