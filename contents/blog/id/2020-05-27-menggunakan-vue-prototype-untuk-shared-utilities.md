@@ -110,7 +110,7 @@ Ada dua hal yang mengganggu saya saat mengubah kode menjadi sebuah mixin. Apakah
 
 Pertama adalah kejelasan referensi. Saat saya mengubah kode menjadi mixin, saya tidak bisa mengetahui secara langsung apa saja fungsi yang tersedia dalam sebuah mixin dengan hanya melihat kode di komponen. Hal ini terjadi karena saat membuat mixin, saya perlu mengekspor beberapa kode sekaligus dari modul.
 
-Kedua adalah saya memberikan akses yang luas kepada fungsi utility. Meskipun kita gak mau, sekarang fungsi utility kita bisa mengakses komponen secara penuh. Sebagai contoh, saya bisa saja mengubah sebuah state dari dalam mixin untuk mengubah cari kerja dari komponen. Implementasi seperti ini tidak bagus karena bisa menambah kompleksitas yang tidak perlu dan dapat memunculkan bugs di kemudian hari.
+Kedua adalah saya memberikan akses yang luas kepada fungsi utility. Meskipun kita gak mau, sekarang fungsi utility kita bisa mengakses komponen secara penuh. Sebagai contoh, saya bisa saja mengubah sebuah state dari dalam mixin untuk mengubah cara kerja dari komponen. Implementasi seperti ini tidak bagus karena bisa menambah kompleksitas yang tidak perlu dan dapat memunculkan bugs di kemudian hari.
 
 ---
 
