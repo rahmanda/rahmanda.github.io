@@ -4,6 +4,8 @@ slug: using-vue-prototype-for-shared-utilities
 published_date: 2020-05-27
 language: en
 type: blog
+translations:
+  id: /blog/id/menggunakan-vue-prototype-untuk-shared-utilities
 ---
 
 There are several ways to create a utility function in a Vue application. However, I think Vue's prototype is the best if you want to provide shared utilities in your app. In this article, I will give several pros and cons for some approaches and explain why I choose prototype for this case.
@@ -40,7 +42,7 @@ export default {
 
 Above example shows that our function can only be used once with fixed parameter. If I want to use the function again but with a different parameter, I probably need to create another `data` or `computed` with the similar code.
 
-To make it simpler, how about calling the function directly inside the component's template? This way, we don't have to repeatedly create `data` or `computed` for every path. To do that, I need to make our function to be accessible within our component's object context.
+To make it simpler, how about calling the function directly inside the component's template? This way, we don't have to repeatedly create `data` or `computed` for every path or parameter. To do that, I need to make our function to be accessible within our component's object context.
 
 ``` html
 <template>
@@ -108,7 +110,7 @@ Two is I give a broad access into the utility. Even if we want it or not, now ou
 
 ---
 
-To avoid getting troubles from previous approaches, thankfully we can use prototype for creating a utility function. Take a look at this example.
+To avoid getting troubles from previous approaches, luckily we can use prototype for creating a utility function. Take a look at this example.
 
 
 ``` js
