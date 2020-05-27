@@ -59,7 +59,12 @@ async function generateAnchors() {
 export default {
   metaInfo() {
     return {
-      title: this.$page.post.title
+      title: this.$page.post.title,
+      meta: [
+        {
+          name: 'description', content: this.$page.post.summary || this.$page.post.excerpt
+        }
+      ]
     }
   },
   computed: {
@@ -84,6 +89,8 @@ query ($id: ID!) {
     published_date
     timeToRead
     language
+    summary
+    excerpt(length: 160)
     translations {
       id
       en
