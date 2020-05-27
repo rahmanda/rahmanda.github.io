@@ -62,7 +62,28 @@ export default {
       title: `${this.$page.post.title} - Rahmanda Wibowo`,
       meta: [
         {
-          name: 'description', content: this.$page.post.summary || this.$page.post.excerpt
+          name: 'description', content: this.summary
+        },
+        {
+          name: 'twitter:card', content: 'summary'
+        },
+        {
+          name: 'twitter:title', content: this.$page.post.title
+        },
+        {
+          name: 'twitter:creator', content: '@rahmandawibowo'
+        },
+        {
+          name: 'twitter:description', content: this.summary
+        },
+        {
+          property: 'og:title', content: this.$page.post.title
+        },
+        {
+          property: 'og:description', content: this.summary
+        },
+        {
+          property: 'og:url', content: this.url
         }
       ]
     }
@@ -74,6 +95,12 @@ export default {
         en: 'English'
       }
     },
+    summary() {
+      return this.$page.post.summary || this.$page.post.excerpt
+    },
+    url() {
+      return `${this.$page.metadata.siteUrl}/${this.$page.post.language}/${this.$page.post.slug}/`;
+    }
   },
   mounted() {
     generateAnchors()
@@ -88,6 +115,9 @@ export default {
 
 <page-query>
 query ($id: ID!) {
+  metadata {
+    siteUrl
+  }
   post(id: $id) {
     title
 		content
@@ -95,6 +125,7 @@ query ($id: ID!) {
     timeToRead
     language
     summary
+    slug
     excerpt(length: 160)
     translations {
       id
