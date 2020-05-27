@@ -8,9 +8,9 @@ translations:
   en: /en/javascript-this/
 ---
 
-Operator `this` sering kali digunakan apabila kamu mengimplementasikan suatu _class_ atau _object_ pada bahasa pemograman _object oriented_. Javascript tidak memiliki paradigma _object oriented_, namun Javascript mendukung penggunaan operator `this`. Tetapi karena ini Javascript, (tentu saja) cara kerja `this` akan sedikit berbeda dengan bahasa pemograman pada umumnya....
+Operator `this` sering kali digunakan apabila kamu mengimplementasikan suatu class atau object pada bahasa pemograman berorientasi objek. Javascript tidak memiliki paradigma itu, namun Javascript mendukung penggunaan operator `this`. Tetapi karena ini Javascript, (tentu saja) cara kerja `this` akan sedikit berbeda dengan bahasa pemograman pada umumnya....
 
-Pada keadaan normal, pemanggilan operator `this` akan mengembalikan objek __global__. Perhatikan contoh berikut:
+Pada keadaan normal, pemanggilan operator `this` akan mengembalikan objek global. Perhatikan contoh berikut:
 
 ``` js
 console.log(this === window); // output 'true'
@@ -20,7 +20,7 @@ function callingGlobal() {
 callingGlobal(); // output 'true' (?)
 ```
 
-Seperti pada contoh di atas, kita bisa mengakses objek global via operator `this` meskipun di dalam _scope function_. Namun apabila kita mengeset `use strict` di awal deklarasi fungsi, operator `this` tidak lagi mereferensikan objek global karena konteksnya (dipaksa) berada di dalam _scope_ yang berbeda.
+Seperti pada contoh di atas, kita bisa mengakses objek global via operator `this` meskipun di dalam scope function. Namun apabila kita mengeset `use strict` di awal deklarasi fungsi, operator `this` tidak lagi mereferensikan objek global karena konteksnya (dipaksa) berada di dalam scope yang berbeda.
 
 ``` js
 console.log(this == window); // output 'true'
@@ -46,7 +46,7 @@ var $body = document.getElementsByTagName('body')[0];
 $body.addEventListener('click', changeBodyBackground, false); // body berubah warna background apabila di klik
 ```
 
-Pada contoh di atas, operator `this` secara default mereferensikan objek DOM dari elemen `body` yang telah dipasang _event handler_. Namun kita juga bisa mengubah operator `this` agar mereferensikan objek yang kita definisikan sendiri. Misalkan kita ingin agar saat elemen `body` diklik, hanya warna _background_ dari elemen `h1` yang berubah (dengan asumsi hanya ada satu `h1` pada halaman).
+Pada contoh di atas, operator `this` secara default mereferensikan objek DOM dari elemen `body` yang telah dipasang event handler. Namun kita juga bisa mengubah operator `this` agar mereferensikan objek yang kita definisikan sendiri. Misalkan kita ingin agar saat elemen `body` diklik, hanya warna background dari elemen `h1` yang berubah (dengan asumsi hanya ada satu `h1` pada halaman).
 
 ``` js
 // fungsi changeBodyBackground sama dengan contoh sebelumnya
@@ -73,9 +73,9 @@ multiplyWith.call(someObject, 10, 2); // [40, 60, 100, 160, 260]
 multiplyWith.apply(someObject, [10, 2]); // [40, 60, 100, 160, 260]
 ```
 
-> Terdapat perbedaan antara `call` dan `apply` saat memasukkan parameter. Fungsi `call` menerima parameter secara eksplisit, sedangkan `apply` menerima parameter dalam bentuk _array_.
+> Terdapat perbedaan antara `call` dan `apply` saat memasukkan parameter. Fungsi `call` menerima parameter secara eksplisit, sedangkan `apply` menerima parameter dalam bentuk array.
 
-Pada artikel [sebelumnya](/closure-javascript.html) saya sempat menjelaskan tentang _module pattern_. Dengan menggunakan `this` di dalam _method_, kita dapat memanggil _method_ atau properti objek pada modul yang sama seperti yang diperlihatkan oleh contoh berikut.
+Pada artikel [sebelumnya](/closure-javascript.html) saya sempat menjelaskan tentang module pattern. Dengan menggunakan `this` di dalam method, kita dapat memanggil method atau properti objek pada modul yang sama seperti yang diperlihatkan oleh contoh berikut.
 
 ``` js
 function Cat(type) {
@@ -95,5 +95,5 @@ siamese.walkingWhileEating(); // siamese is walking while eating
 
 ---
 
-Berurusan dengan operator `this` memang agak _tricky_, terutama saat dipakai diluar _module pattern_. Pastikan kode javascript kamu selalu diberi `use strict` agar kode kamu konsisten dan terhindar dari memodifikasi objek global.
+Berurusan dengan operator `this` memang agak tricky, terutama saat dipakai diluar module pattern. Pastikan kode javascript kamu selalu diberi `use strict` agar kode kamu konsisten dan terhindar dari memodifikasi objek global.
 
