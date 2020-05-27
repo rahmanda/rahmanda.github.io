@@ -126,10 +126,6 @@
   height: 35px;
 }
 
-.c-header .active {
-  @apply font-bold;
-}
-
 a.anchorjs-link {
   @apply text-indigo-500;
 }

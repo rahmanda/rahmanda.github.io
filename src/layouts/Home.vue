@@ -8,9 +8,19 @@
         <div class="flex-1 flex justify-end font-sans text-right">
           <g-link class="ml-4" :to="linkToBlog">Blog</g-link>
           <a class="ml-4" href="https://linkedin.com/in/rahmandawibowo">LinkedIn</a>
-          <div class="rounded border border-gray-900 bg-indigo-900 ml-4">
-            <g-link to="/en/" active-class="bg-black" class="border-r border-gray-900 px-2">EN</g-link>
-            <g-link to="/id/" active-class="bg-black" class="px-2">ID</g-link>
+          <div class="rounded bg-indigo-800 flex ml-4">
+            <g-link
+              to="/en/"
+              :class="{ 'bg-black rounded': ['/en/', '/en', '/', ''].includes($route.path) }"
+              class="px-2">
+              EN
+            </g-link>
+            <g-link
+              to="/id/"
+              :class="{ 'bg-black rounded': ['/id/', '/id'].includes($route.path) }"
+              class="px-2">
+              ID
+            </g-link>
           </div>
         </div>
       </nav>
