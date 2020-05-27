@@ -37,6 +37,12 @@
 	@apply text-gray-900 mb-6;
 }
 
+.post a {
+  @apply relative no-underline tracking-tight;
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(95%,transparent),color-stop(70%,rgba(101,125,225,.4)));
+  background-image: linear-gradient(180deg,transparent 95%,rgba(101,125,225,.4) 0);
+}
+
 .post p code,
 .post ol code,
 .post ul code {
@@ -58,6 +64,10 @@
 
 .post blockquote > p {
   @apply text-gray-900;
+}
+
+.post blockquote code {
+  @apply text-xl;
 }
 
 .post ol,
