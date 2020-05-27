@@ -32,7 +32,7 @@ export default {
   metaInfo: {
     meta: [
       {
-        name: 'theme-color', content: '#4c51bf'
+        name: 'theme-color', content: '#434190'
       }
     ]
   },
