@@ -145,7 +145,7 @@ app.$mount('#app');
 </template>
 ```
 
-Implementasi ini memberikan kita keuntungan dari mixin tanpa memberikan akses yang berlebihan kepada fungsi utility kita. Karena setiap komponen mewarisi konteks dari objek Vue, fungsi utility juga dapat diakses dari dalam konteks sebuah komponen. Bonusnya adalah, fungsi utility tidak dapat mengakses konteks dari komponen. Dengan cara ini, saya hanya perlu ngoding sekali di `main.js`, lalu fungsi utility-nya bisa dipanggil di semua komponen dalam aplikasi.
+Implementasi ini memberikan kita keuntungan dari mixin tanpa menimbulkan pemberian akses yang berlebihan kepada fungsi utility kita. Karena setiap komponen mewarisi konteks dari objek Vue, fungsi utility juga dapat diakses dari dalam konteks sebuah komponen. Bonusnya adalah, fungsi utility tidak dapat lagi mengakses konteks dari komponen. Dengan cara ini, saya hanya perlu ngoding sekali di `main.js`, lalu fungsi utility-nya bisa dipanggil di semua komponen dalam aplikasi.
 
 Apabila kamu memperhatikan dengan jeli, sekarang kita sudah tidak perlu menulis kode apapun pada tag script. Kalaupun kamu ingin pun, kamu juga bisa memanggil fungsi `this.$imageUrl` di dalam tag script komponen kamu.
 
