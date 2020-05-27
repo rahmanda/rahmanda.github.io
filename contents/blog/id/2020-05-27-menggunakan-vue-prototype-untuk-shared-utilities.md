@@ -8,11 +8,11 @@ translations:
   en: /blog/en/using-vue-prototype-for-shared-utilities/
 ---
 
-Ada beberapa cara untuk membuat utility function dalam suatu aplikasi Vue. Namun saya pikir cara yang paling baik adalah memanfaatkan prototype Vue. Pada artikel ini, saya akan memberikan beberapa kelebihan dan kekurangan dari beberapa pendekatan dan menjelaskan mengapa saya memilih menggunakan prototype untuk kasus ini.
+Ada beberapa cara untuk membuat fungsi utility dalam suatu aplikasi Vue. Namun saya pikir cara yang paling baik adalah memanfaatkan prototype Vue. Pada artikel ini, saya akan memberikan beberapa kelebihan dan kekurangan dari beberapa pendekatan dan menjelaskan mengapa saya memilih menggunakan prototype untuk kasus ini.
 
 ## Menggunakan modul sederhana
 
-Membuat sebuah modul JS merupakan cara yang paling mudah untuk membuat utility function. Sederhananya, tulis sebuah fungsi dalam suatu file JS, lalu impor dia ke dalam file JS yang mau menggunakannya. Berikut adalah contoh bagaimana kita dapat menggunakan modul JS dalam sebuah komponen.
+Membuat sebuah modul JS merupakan cara yang paling mudah untuk membuat fungsi utility. Sederhananya, tulis sebuah fungsi dalam suatu file JS, lalu impor dia ke dalam file JS yang mau menggunakannya. Berikut adalah contoh bagaimana kita dapat menggunakan modul JS dalam sebuah komponen.
 
 ``` js
 // asset-utility.js
@@ -67,7 +67,7 @@ export default {
 </script>
 ```
 
-Nah, sekarang komponen kita sudah lebih baik, tapi pendekatan ini bakal cepat usang. Menggunakan gaya ngoding seperti ini membuat saya harus selalu menulis referensi impor dan methods setiap kali saya ingin menggunakan utility function dalam beberapa komponen yang berbeda.
+Nah, sekarang komponen kita sudah lebih baik, tapi pendekatan ini bakal cepat usang. Menggunakan gaya ngoding seperti ini membuat saya harus selalu menulis referensi impor dan methods setiap kali saya ingin menggunakan fungsi utility dalam beberapa komponen yang berbeda.
 
 ## Menggunakan mixin
 
@@ -110,13 +110,13 @@ Ada dua hal yang mengganggu saya saat mengubah kode menjadi sebuah mixin. Apakah
 
 Pertama adalah kejelasan referensi. Saat saya mengubah kode menjadi mixin, saya tidak bisa mengetahui secara langsung apa saja fungsi yang tersedia dalam sebuah mixin dengan hanya melihat kode di komponen. Hal ini terjadi karena saat membuat mixin, saya perlu mengekspor beberapa kode sekaligus dari modul.
 
-Kedua adalah saya memberikan akses yang luas kepada utility function. Meskipun kita gak mau, sekarang utility function kita bisa mengakses komponen secara penuh. Sebagai contoh, saya bisa saja mengubah sebuah state dari dalam mixin untuk mengubah cari kerja dari komponen. Implementasi seperti ini tidak bagus karena bisa menambah kompleksitas yang tidak perlu dan dapat memunculkan bugs di kemudian hari.
+Kedua adalah saya memberikan akses yang luas kepada fungsi utility. Meskipun kita gak mau, sekarang fungsi utility kita bisa mengakses komponen secara penuh. Sebagai contoh, saya bisa saja mengubah sebuah state dari dalam mixin untuk mengubah cari kerja dari komponen. Implementasi seperti ini tidak bagus karena bisa menambah kompleksitas yang tidak perlu dan dapat memunculkan bugs di kemudian hari.
 
 ---
 
 ## Menggunakan prototype
 
-Untuk mencegah hal yang tidak kita inginkan dari sebuah mixin, kita bisa menggunakan prototype untuk membuat utility function. Coba lihat contoh berikut ini.
+Untuk mencegah hal yang tidak kita inginkan dari sebuah mixin, kita bisa menggunakan prototype untuk membuat fungsi utility. Coba lihat contoh berikut ini.
 
 
 ``` js
@@ -145,7 +145,7 @@ app.$mount('#app');
 </template>
 ```
 
-Implementasi ini memberikan kita keuntungan dari mixin tanpa memberikan akses yang berlebihan kepada utility function kita. Karena setiap komponen mewarisi konteks dari objek Vue, utility function juga dapat diakses dari dalam konteks sebuah komponen. Bonusnya adalah, utility function tidak dapat mengakses konteks dari komponen. Dengan cara ini, saya hanya perlu ngoding sekali di `main.js`, lalu utility function-nya bisa dipanggil di semua komponen dalam aplikasi.
+Implementasi ini memberikan kita keuntungan dari mixin tanpa memberikan akses yang berlebihan kepada fungsi utility kita. Karena setiap komponen mewarisi konteks dari objek Vue, fungsi utility juga dapat diakses dari dalam konteks sebuah komponen. Bonusnya adalah, fungsi utility tidak dapat mengakses konteks dari komponen. Dengan cara ini, saya hanya perlu ngoding sekali di `main.js`, lalu fungsi utility-nya bisa dipanggil di semua komponen dalam aplikasi.
 
 Apabila kamu memperhatikan dengan jeli, sekarang kita sudah tidak perlu menulis kode apapun pada tag script. Kalaupun kamu ingin pun, kamu juga bisa memanggil fungsi `this.$imageUrl` di dalam tag script komponen kamu.
 
