@@ -8,9 +8,11 @@ translations:
   en: /blog/en/using-vue-prototype-for-shared-utilities/
 ---
 
-Ada beberapa cara untuk membuat *utility function* dalam suatu aplikasi Vue. Namun saya pikir cara yang paling baik adalah memanfaatkan prototype Vue. Pada artikel ini, saya akan memberikan beberapa kelebihan dan kekurangan dari beberapa pendekatan dan menjelaskan mengapa saya memilih menggunakan *prototype* untuk kasus ini.
+Ada beberapa cara untuk membuat utility function dalam suatu aplikasi Vue. Namun saya pikir cara yang paling baik adalah memanfaatkan prototype Vue. Pada artikel ini, saya akan memberikan beberapa kelebihan dan kekurangan dari beberapa pendekatan dan menjelaskan mengapa saya memilih menggunakan prototype untuk kasus ini.
 
-Membuat sebuah modul JS merupakan cara yang paling mudah untuk membuat *utility function*. Sederhananya, tulis sebuah fungsi dalam suatu *file* JS, lalu impor dia ke dalam *file* JS yang mau menggunakannya. Berikut adalah contoh bagaimana kita dapat menggunakan modul JS dalam sebuah komponen.
+## Menggunakan modul sederhana
+
+Membuat sebuah modul JS merupakan cara yang paling mudah untuk membuat utility function. Sederhananya, tulis sebuah fungsi dalam suatu file JS, lalu impor dia ke dalam file JS yang mau menggunakannya. Berikut adalah contoh bagaimana kita dapat menggunakan modul JS dalam sebuah komponen.
 
 ``` js
 // asset-utility.js
@@ -42,7 +44,7 @@ export default {
 
 Contoh di atas menunjukkan bahwa fungsi kita hanya dapat digunakan sekali dengan parameter yang tetap. Apabila saya ingin menggunakan fungsi itu lagi tapi dengan parameter yang berbeda, saya mungkin perlu membuat beberapa `data` atau `computed` dengan kode yang serupa.
 
-Untuk membuatnya lebih simpel, bagaimana kalau kita memanggil fungsi tersebut langsung di dalam *template* komponen saja? Dengan begini, kita tidak perlu membuat `data` atau `computed` berkali-kali untuk setiap *path* atau parameter. Untuk itu, saya perlu membuat fungsi tersebut supaya bisa diakses dalam konteks objek komponen kita.
+Untuk membuatnya lebih simpel, bagaimana kalau kita memanggil fungsi tersebut langsung di dalam template komponen saja? Dengan begini, kita tidak perlu membuat `data` atau `computed` berkali-kali untuk setiap path atau parameter. Untuk itu, saya perlu membuat fungsi tersebut supaya bisa diakses dalam konteks objek komponen kita.
 
 ``` html
 <template>
@@ -65,9 +67,11 @@ export default {
 </script>
 ```
 
-Nah, sekarang komponen kita sudah lebih baik, tapi pendekatan ini bakal cepat usang. Menggunakan gaya ngoding seperti ini membuat saya harus selalu menulis referensi impor dan *methods* setiap kali saya ingin menggunakan *utility function* dalam beberapa komponen yang berbeda.
+Nah, sekarang komponen kita sudah lebih baik, tapi pendekatan ini bakal cepat usang. Menggunakan gaya ngoding seperti ini membuat saya harus selalu menulis referensi impor dan methods setiap kali saya ingin menggunakan utility function dalam beberapa komponen yang berbeda.
 
-Karena kita perlu membuat fungsi tersebut dapat diakses dalam konteks objek komponen kita, kenapa tidak pakai *mixins* saja sekalian?
+## Menggunakan mixin
+
+Karena kita perlu membuat fungsi tersebut dapat diakses dalam konteks objek komponen kita, kenapa tidak pakai mixins saja sekalian?
 
 ``` js
 // Ubah kode utility menjadi mixin
@@ -100,17 +104,19 @@ export default {
 </script>
 ```
 
-Dengan menggunakan *mixins*, saya tidak perlu lagi menulis *methods* dalam komponen. Hal ini dapat menghemat beberapa baris kode, tapi saya tetap perlu menulis referensi impor ke *file mixins* dan mendeklarasikannya dalam setiap komponen.
+Dengan menggunakan mixins, saya tidak perlu lagi menulis methods dalam komponen. Hal ini dapat menghemat beberapa baris kode, tapi saya tetap perlu menulis referensi impor ke file mixins dan mendeklarasikannya dalam setiap komponen.
 
-Ada dua hal yang mengganggu saya saat mengubah kode menjadi sebuah *mixin*. Apakah kamu tahu apa saja hal tersebut?
+Ada dua hal yang mengganggu saya saat mengubah kode menjadi sebuah mixin. Apakah kamu tahu apa saja hal tersebut?
 
-Pertama adalah kejelasan referensi. Saat saya mengubah kode menjadi *mixin*, saya tidak bisa mengetahui secara langsung apa saja fungsi yang tersedia dalam sebuah *mixin* dengan hanya melihat kode di komponen. Hal ini terjadi karena saat membuat *mixin*, saya perlu mengekspor beberapa kode sekaligus dari modul.
+Pertama adalah kejelasan referensi. Saat saya mengubah kode menjadi mixin, saya tidak bisa mengetahui secara langsung apa saja fungsi yang tersedia dalam sebuah mixin dengan hanya melihat kode di komponen. Hal ini terjadi karena saat membuat mixin, saya perlu mengekspor beberapa kode sekaligus dari modul.
 
-Kedua adalah saya memberikan akses yang luas kepada *utility function*. Meskipun kita gak mau, sekarang *utility function* kita bisa mengakses komponen secara penuh. Sebagai contoh, saya bisa saja mengubah sebuah *state* dari dalam *mixin* untuk mengubah cari kerja dari komponen. Implementasi seperti ini tidak bagus karena bisa menambah kompleksitas yang tidak perlu dan dapat memunculkan *bugs* di kemudian hari.
+Kedua adalah saya memberikan akses yang luas kepada utility function. Meskipun kita gak mau, sekarang utility function kita bisa mengakses komponen secara penuh. Sebagai contoh, saya bisa saja mengubah sebuah state dari dalam mixin untuk mengubah cari kerja dari komponen. Implementasi seperti ini tidak bagus karena bisa menambah kompleksitas yang tidak perlu dan dapat memunculkan bugs di kemudian hari.
 
 ---
 
-Untuk mencegah hal tersebut, kita bisa menggunakan *prototype* untuk membuat *utility function*. Coba lihat contoh berikut ini.
+## Menggunakan prototype
+
+Untuk mencegah hal yang tidak kita inginkan dari sebuah mixin, kita bisa menggunakan prototype untuk membuat utility function. Coba lihat contoh berikut ini.
 
 
 ``` js
@@ -139,11 +145,11 @@ app.$mount('#app');
 </template>
 ```
 
-Implementasi ini memberikan kita keuntungan dari *mixin* tanpa memberikan akses yang berlebihan kepada *utility function* kita. Karena setiap komponen mewarisi konteks dari objek Vue, *utility function* juga dapat diakses dari dalam konteks sebuah komponen. Bonusnya adalah, *utility function* tidak dapat mengakses konteks dari komponen. Dengan cara ini, saya hanya perlu ngoding sekali di `main.js`, lalu *utility function*-nya bisa dipanggil di semua komponen dalam aplikasi.
+Implementasi ini memberikan kita keuntungan dari mixin tanpa memberikan akses yang berlebihan kepada utility function kita. Karena setiap komponen mewarisi konteks dari objek Vue, utility function juga dapat diakses dari dalam konteks sebuah komponen. Bonusnya adalah, utility function tidak dapat mengakses konteks dari komponen. Dengan cara ini, saya hanya perlu ngoding sekali di `main.js`, lalu utility function-nya bisa dipanggil di semua komponen dalam aplikasi.
 
-Apabila kamu memperhatikan dengan jeli, sekarang kita sudah tidak perlu menulis kode apapun pada *tag script*. Kalaupun kamu ingin pun, kamu juga bisa memanggil fungsi `this.$imageUrl` di dalam *tag script* komponen kamu.
+Apabila kamu memperhatikan dengan jeli, sekarang kita sudah tidak perlu menulis kode apapun pada tag script. Kalaupun kamu ingin pun, kamu juga bisa memanggil fungsi `this.$imageUrl` di dalam tag script komponen kamu.
 
-Kamu juga bisa menulis sebuah *plugin* untuk mengurangi inisialisasi *prototype* dalam *file* `main.js`.
+Kamu juga bisa menulis sebuah plugin untuk mengurangi inisialisasi prototype dalam file `main.js`.
 
 ``` js
 // plugins/asset.js
@@ -168,8 +174,7 @@ const app = new Vue({
 app.$mount('#app');
 ```
 
----
+## Penutup
 
-
-Sekarang kita sudah mengulas beberapa cara untuk membuat *shared utilities*. Menurut pengalaman saya, cara yang paling baik untuk membuat *shared utilities* adalah dengan memanfaatkan *prototype*. Dengan menggunakan *prototype*, kita dapat mengurangi duplikasi sekaligus memberikan limitasi akses terhadap konteks sebuah komponen.
+Sekarang kita sudah mengulas beberapa cara untuk membuat shared utilities. Menurut pengalaman saya, cara yang paling baik untuk membuat shared utilities adalah dengan memanfaatkan prototype. Dengan menggunakan prototype, kita dapat mengurangi duplikasi sekaligus memberikan limitasi akses terhadap konteks sebuah komponen.
 
