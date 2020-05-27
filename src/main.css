@@ -50,8 +50,14 @@
 }
 
 .post pre[class*="language-"] {
-  @apply text-gray-300 p-5 overflow-y-auto my-8 -mx-5 rounded;
- }
+  @apply text-gray-300 p-5 overflow-y-auto my-8 -mx-5 rounded-none;
+}
+
+@screen md {
+  .post pre[class*="language-"] {
+    @apply rounded;
+  }
+}
 
 .post pre > code {
   @apply min-w-full text-base float-left;
