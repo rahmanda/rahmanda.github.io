@@ -59,7 +59,7 @@ async function generateAnchors() {
 export default {
   metaInfo() {
     return {
-      title: this.$page.post.title,
+      title: `${this.$page.post.title} - Rahmanda Wibowo`,
       meta: [
         {
           name: 'description', content: this.$page.post.summary || this.$page.post.excerpt

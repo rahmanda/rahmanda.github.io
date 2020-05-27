@@ -8,7 +8,7 @@
       <div class="w-56 flex-none mb-10 md:mb-0 md:mr-10">
         <g-image src="~/images/profile-picture.png" class="rounded-md" alt="Foto profil Rahmanda Wibowo" />
       </div>
-      <h1 class="hidden" aria-hidden="true">Selamat, kamu menemukan satu lagi Web Developer!</h1>
+      <h1 class="hidden" aria-hidden="true">{{ h1 }}</h1>
       <p class="md:mb-2 text-lg md:text-xl text-center md:text-left font-light text-gray-800 flex-1 md:mr-10">
         Saya Rahmanda Wibowo. Saya menggunakan metode pengembangan progresif dan peralatan apa saja untuk membuat tampilan website yang menarik. Saat ini saya bekerja di <a class="text-indigo-600 underline" href="https://www.bukalapak.com">Bukalapak</a> untuk mengembangkan berbagai macam produk digital dan marketplace.
       </p>
@@ -61,15 +61,22 @@
 import HomeLayout from '~/layouts/Home';
 
 export default {
-  metaInfo: {
-    title: 'Rahmanda Wibowo - cuma sekedar web developer',
-    meta: [
-      {
-        name: 'description', content: 'Front-end web developer dengan pengalaman di dunia online marketplace dan industri produk digital'
-      }
-    ]
+  metaInfo() {
+    return {
+      title: this.h1,
+      meta: [
+        {
+          name: 'description', content: 'Front-end web developer dengan pengalaman di dunia online marketplace dan industri produk digital'
+        }
+      ]
+    };
   },
-  components: { HomeLayout }
+  components: { HomeLayout },
+  data() {
+    return {
+      h1: 'Rahmanda Wibowo - Satu lagi web developer'
+    }
+  }
 }
 </script>
 

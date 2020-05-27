@@ -4,7 +4,7 @@
       <div class="w-56 flex-none mb-10 md:mb-0 md:mr-10">
         <g-image src="~/images/profile-picture.png" class="rounded-md" alt="Profile picture of Rahmanda Wibowo" />
       </div>
-      <h1 class="hidden" aria-hidden="true">Congrats, you've found yet another web developer!</h1>
+      <h1 class="hidden" aria-hidden="true">{{ h1 }}</h1>
       <p class="md:mb-2 text-lg md:text-xl text-center md:text-left font-light text-gray-800 flex-1 md:mr-10">
         My name is Rahmanda Wibowo. I build web interfaces using pragmatic tools and progressive development. Currently I'm working at <a class="text-indigo-600 underline" href="https://www.bukalapak.com">Bukalapak</a> to develop wide range of digital products and marketplace features.
       </p>
@@ -57,10 +57,17 @@
 import HomeLayout from '~/layouts/Home';
 
 export default {
-  metaInfo: {
-    title: 'Rahmanda Wibowo - Yet another web developer'
+  metaInfo() {
+    return {
+      title: this.h1
+    }
   },
-  components: { HomeLayout }
+  components: { HomeLayout },
+  data() {
+    return {
+      h1: 'Rahmanda Wibowo - Yet another web developer'
+    }
+  }
 }
 </script>
 
