@@ -386,7 +386,7 @@ Tweepy
       <div class="about-site-box">
         <h2 class="box-title">Website ini hanya untuk demo tutorial saja.</h2>
         <p>Database akan dibersihkan setiap harinya untuk mengurangi beban memori.</p>
-        <p>Anda dapat mengikuti tutorial pembuatan website ini di <a href="http://ambercat.rahmanda.net">ambercat.rahmanda.net</a></p>
+        <p>Anda dapat mengikuti tutorial pembuatan website ini di <a href="/blog/">www.rahmandawibowo.com/blog/</a></p>
       </div>
     </section>
   </div>

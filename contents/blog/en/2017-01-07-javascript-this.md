@@ -75,7 +75,7 @@ multiplyWith.apply(someObject, [10, 2]); // [40, 60, 100, 160, 260]
 
 > There is a difference between `call` and `apply` when inserting function's parameters. In `call` case, it accepts parameter explicitly, whereas `apply` accepts parameter in array form.
 
-In [previous articles](http://ambercat.rahmanda.net/code/2016/12/31/closure-javascript.html) i had explained about module pattern. By using `this` inside of a method, we can call object's methods or properties on the same module just like what the examples is shown below.
+In my [previous articles](/blog/en/understanding-closure-in-javascript/), i had explained about module pattern. By using `this` inside of a method, we can call object's methods or properties on the same module just like what the examples is shown below.
 
 ``` js
 function Cat(type) {
