@@ -176,5 +176,5 @@ app.$mount('#app');
 
 ---
 
-Now that we have reviewed several approaches of shared utilities. In my experience, shared utilities are the best way to be implemented as a Vue's prototype. By using Vue's prototype, we can reduce duplication while still giving us a limitation to access the component's context.
+Now that we have reviewed several approaches of shared utilities. In my experience, shared utilities are best to be implemented as a Vue's prototype. By using Vue's prototype, we can reduce duplication while still giving us a limitation to access the component's context.
 
