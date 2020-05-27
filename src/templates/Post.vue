@@ -76,8 +76,13 @@ export default {
     },
   },
   mounted() {
-    generateAnchors();
+    generateAnchors()
   },
+  watch: {
+    '$route'() {
+      generateAnchors()
+    }
+  }
 }
 </script>
 
