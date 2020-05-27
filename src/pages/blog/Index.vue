@@ -7,7 +7,12 @@ import Blog from '~/components/Blog.vue'
 
 export default {
   metaInfo: {
-    title: 'Blog'
+    title: 'Blognya Rahmanda Wibowo',
+    meta: [
+      {
+        name: 'description', content: 'Blognya Rahmanda Wibowo yang isinya membahas seputar pemograman web dan teknologi lainnya'
+      }
+    ]
   },
   components: { Blog },
 }

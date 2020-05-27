@@ -62,7 +62,12 @@ import HomeLayout from '~/layouts/Home';
 
 export default {
   metaInfo: {
-    title: 'Rahmanda Wibowo - Yet another web developer'
+    title: 'Rahmanda Wibowo - cuma sekedar web developer',
+    meta: [
+      {
+        name: 'description', content: 'Front-end web developer dengan pengalaman di dunia online marketplace dan industri produk digital'
+      }
+    ]
   },
   components: { HomeLayout }
 }
