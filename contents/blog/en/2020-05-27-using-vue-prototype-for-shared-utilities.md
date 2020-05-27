@@ -44,7 +44,7 @@ export default {
 
 Above example shows that our function can only be used once with fixed parameter. If I want to use the function again but with a different parameter, I probably need to create another `data` or `computed` with the similar code.
 
-To make it simpler, how about calling the function directly inside the component's template? This way, we don't have to repeatedly create `data` or `computed` for every path or parameter. To do that, I need to make our function to be accessible within our component's object context.
+To make it simpler, how about calling the function directly inside the component's template? This way, we don't have to repeatedly create `data` or `computed` for every path or parameter. To do that, I need to make our function accessible within our component's object context.
 
 ``` html
 <template>
