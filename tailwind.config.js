@@ -240,7 +240,7 @@ module.exports = {
         '"Noto Color Emoji"',
       ],
       'sans-title': [
-        'Noto Sans JP',
+        'Noto Sans',
         'system-ui',
         '-apple-system',
         'BlinkMacSystemFont',

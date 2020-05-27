@@ -2,6 +2,7 @@ import DefaultLayout from '~/layouts/Default.vue'
 import datePlugins from '~/plugins/date'
 import timeToRead from '~/plugins/timeToRead'
 import i18n from '~/plugins/i18n'
+import font from './font'
 import 'prism-themes/themes/prism-vsc-dark-plus.css'
 import './main.css'
 
@@ -12,13 +13,13 @@ export default function (Vue, { router, head, isClient }) {
   Vue.use(i18n)
 
   // HEAD manipulation
-	head.link.push({
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=PT+Sans&display=swap'
-  })
   head.meta.push({
     name: 'google-site-verification',
     content: 'cxX6bHKFtfWlAhhWluGZII6peqca8Hsd2aaobASSxEI'
+  })
+  head.style.push({
+    cssText: font,
+    type: 'text/css'
   })
 
   // Route hooks
