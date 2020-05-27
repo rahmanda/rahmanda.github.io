@@ -22,7 +22,7 @@
               <g-link v-if="path"
                  :key="key"
                  :to="path"
-                 class="mx-1 underline text-indigo-500">
+                 class="mx-1 underline text-indigo-700">
                 {{ languageNames[key] }}
               </g-link>
             </template>

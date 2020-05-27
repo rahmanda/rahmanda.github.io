@@ -38,9 +38,7 @@
 }
 
 .post p a {
-  @apply text-lg relative no-underline;
-  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(95%,transparent),color-stop(70%,rgba(101,125,225,.4)));
-  background-image: linear-gradient(180deg,transparent 95%,rgba(101,125,225,.4) 0);
+  @apply text-lg relative underline text-indigo-700;
 }
 
 .post p code,
@@ -77,9 +75,7 @@
 }
 
 .post blockquote a {
-  @apply text-2xl relative no-underline tracking-tight;
-  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(95%,transparent),color-stop(70%,rgba(101,125,225,.4)));
-  background-image: linear-gradient(180deg,transparent 95%,rgba(101,125,225,.4) 0);
+  @apply text-2xl relative underline text-indigo-700;
 }
 
 .post ol,
