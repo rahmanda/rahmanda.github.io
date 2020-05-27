@@ -6,14 +6,20 @@
 import Blog from '~/components/Blog.vue'
 
 export default {
-  metaInfo: {
-    title: 'Blog-nya Rahmanda Wibowo',
-    meta: [
-      {
-        name: 'description', content: 'Blog-nya Rahmanda Wibowo yang membahas seputar pemograman web dan teknologi secara umum'
-      }
-    ]
-
+  metaInfo() {
+    return {
+      title: 'Blog-nya Rahmanda Wibowo',
+      link: [
+        {
+          href: `${this.$page.metadata.siteUrl}/blog/`, rel: 'canonical'
+        }
+      ],
+      meta: [
+        {
+          name: 'description', content: 'Blog-nya Rahmanda Wibowo yang membahas seputar pemograman web dan teknologi secara umum'
+        }
+      ]
+    }
   },
   components: { Blog },
 }
@@ -21,6 +27,9 @@ export default {
 
 <page-query>
 query {
+  metadata {
+    siteUrl
+  }
   posts: allPost(sortBy: "published_date", filter: {language: {eq: "id"}}) {
     edges {
       node {

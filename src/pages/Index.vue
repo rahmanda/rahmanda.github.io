@@ -59,7 +59,12 @@ import HomeLayout from '~/layouts/Home';
 export default {
   metaInfo() {
     return {
-      title: this.h1
+      title: this.h1,
+      link: [
+        {
+          href: this.$page.metadata.siteUrl, rel: 'canonical'
+        }
+      ]
     }
   },
   components: { HomeLayout },
@@ -73,6 +78,9 @@ export default {
 
 <page-query>
 query {
+  metadata {
+    siteUrl
+  }
   posts: allPost(sortBy: "published_date", filter: {language: {eq: "en"}}, limit: 6) {
     edges {
       node {

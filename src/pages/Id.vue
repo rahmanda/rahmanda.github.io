@@ -64,6 +64,11 @@ export default {
   metaInfo() {
     return {
       title: this.h1,
+      link: [
+        {
+          href: `${this.$page.metadata.siteUrl}/id/`, rel: 'canonical'
+        }
+      ],
       meta: [
         {
           name: 'description', content: 'Front-end web developer dengan pengalaman di dunia online marketplace dan industri produk digital'
@@ -82,6 +87,9 @@ export default {
 
 <page-query>
 query {
+  metadata {
+    siteUrl
+  }
   posts: allPost(sortBy: "published_date", filter: {language: {eq: "id"}}, limit: 6) {
     edges {
       node {
