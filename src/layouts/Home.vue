@@ -29,6 +29,13 @@
 
 <script>
 export default {
+  metaInfo: {
+    meta: [
+      {
+        name: 'theme-color', content: '#4c51bf'
+      }
+    ]
+  },
   props: {
     locale: {
       type: String,

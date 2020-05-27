@@ -23,6 +23,13 @@
 
 <script>
 export default {
+  metaInfo: {
+    meta: [
+      {
+        name: 'theme-color', content: '#fffefe'
+      }
+    ]
+  },
   props: {
     pageType: {
       type: String,
