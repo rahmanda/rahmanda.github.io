@@ -8,7 +8,7 @@ translations:
   id: /blog/id/menggunakan-vue-prototype-untuk-shared-utilities
 ---
 
-There are several ways to create a utility function in a Vue application. However, I think Vue's prototype is the best if you want to provide shared utilities in your app. In this article, I will give several pros and cons for some approaches and explain why I choose prototype for this case.
+There are several ways to create a utility function in a Vue application. However, I think Vue's prototype is the way to go if you want to provide shared utilities in your app. In this article, I will give several pros and cons for some approaches and explain why I choose prototype for this case.
 
 ## Using a simple module
 
@@ -44,7 +44,7 @@ export default {
 
 Above example shows that our function can only be used once with fixed parameter. If I want to use the function again but with a different parameter, I probably need to create another `data` or `computed` with the similar code.
 
-To make it simpler, how about calling the function directly inside the component's template? This way, we don't have to repeatedly create `data` or `computed` for every path or parameter. To do that, I need to make our function accessible within our component's object context.
+To make it simpler, how about calling the function directly inside the component's template? This way, we don't have to repeatedly create `data` or `computed` for every path or parameter. To do that, I need to make our function accessible within our component's context object.
 
 ``` html
 <template>
@@ -71,7 +71,7 @@ Now our component is better, but this approach will get cumbersome quickly. Usin
 
 ## Using mixins
 
-Since we need to make our function accessible from component's context object, why don't we use mixins anyway?
+Since we need to make our function accessible from the component's context object, why don't we use mixins anyway?
 
 ``` js
 // refactor our utility into a mixin
@@ -110,7 +110,7 @@ There are two things that bothers me when transforming the code into a mixin. Ca
 
 One is a reference clarity. When I refactor the code into a mixin, I can't immediately know what function is available on the mixin just by looking at the component's code. This happens because to make a mixin, I need to export a bulk of code from the module.
 
-Two is I give a broad access into the utility. Even if we want it or not, now our utility function can get a full access to the component's context. For example, I can change a state inside of the mixin to update some behaviour. This kinds of practice is bad because it can add unnecessary complexity and potentially leads to many bugs in the future.
+Two is I give a broad access into the utility. Even if we want it or not, now our utility function can get a full access to the component's context. For example, I can change a state from inside of the mixin to update some behaviour. This kinds of practice is bad because it can add unnecessary complexity and potentially leads to many bugs in the future.
 
 ---
 
