@@ -85,7 +85,9 @@ export default {
       ],
       meta: [
         {
-          name: 'description', content: 'Front-end web developer dengan pengalaman di dunia online marketplace dan industri produk digital'
+          key: 'description',
+          name: 'description',
+          content: 'Front-end web developer dengan pengalaman di dunia online marketplace dan industri produk digital'
         }
       ]
     };

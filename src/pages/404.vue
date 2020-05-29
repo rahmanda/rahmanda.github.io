@@ -49,7 +49,9 @@ export default {
       ],
       meta: [
         {
-          name: 'description', content: `It looks like you just got lost!. But don't worry though, you are still on the right website (right?).`
+          key: 'description',
+          name: 'description',
+          content: `It looks like you just got lost!. But don't worry though, you are still on the right website (right?).`
         }
       ]
     }

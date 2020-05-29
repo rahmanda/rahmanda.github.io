@@ -25,7 +25,7 @@ export default {
       ],
       meta: [
         {
-          name: 'description', content: this.description
+          key: 'description', name: 'description', content: this.description
         }
       ]
     }

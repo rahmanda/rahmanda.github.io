@@ -59,7 +59,7 @@ export default {
       ],
       meta: [
         {
-          name: 'description', content: this.summary
+          key: 'description', name: 'description', content: this.summary
         },
         {
           name: 'twitter:card', content: 'summary'
