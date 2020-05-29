@@ -1,11 +1,14 @@
 <template>
   <Blog :posts="$page.posts.edges" locale="id">
-    <h1 class="hidden" aria-hidden="true">{{ h1 }}</h1>
+    <BlogHero :h1="h1">
+      {{ description }}
+    </BlogHero>
   </Blog>
 </template>
 
 <script>
 import Blog from '~/components/Blog.vue'
+import BlogHero from '~/components/BlogHero.vue'
 
 export default {
   metaInfo() {
@@ -18,15 +21,19 @@ export default {
       ],
       meta: [
         {
-          name: 'description', content: 'Blog-nya Rahmanda Wibowo membahas seputar pemograman web dan teknologi secara umum'
+          name: 'description', content: this.description
         }
       ]
     }
   },
-  components: { Blog },
+  components: {
+    Blog,
+    BlogHero
+  },
   data() {
     return {
-      h1: 'Blog-nya Rahmanda Wibowo'
+      h1: 'Just a Blog by Rahmanda Wibowo',
+      description: 'Kumpulan artikel seputar pemograman web dan teknologi lainnya'
     }
   }
 }
