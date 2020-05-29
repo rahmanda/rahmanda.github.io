@@ -64,7 +64,7 @@ In programming languages which do not support lexical scoping, local variable wi
 > _Closures are functions that refer to independent (free) variables (variables that are used locally, but defined in an enclosing scope). In other words, these functions 'remember' the environment in which they were created._ - [Mozilla Developer Network](https://developer.mozilla.org/en/docs/Web/JavaScript/Closures)
 
 ## Private Method in Javascript
-We already know that javascript has no OOP concept. But we can still emulate a private method by utilize closure. Look at example below:
+We already know that Javascript has no OOP concept. But we can still emulate a private method by utilize closure. Look at example below:
 
 ``` js
 function Giraffe() {
@@ -95,5 +95,5 @@ babyGiraffe.eating(); // output 'Giraffe is eating french fries'
 
 ---
 
-Lexical scoping and closure are fundamental foundation of Javascript programming. The funny thing is, I often applied these kind of concept without knowing how it is working. So I think I should write more about fundamental Javascript in the future.
+Lexical scoping and closure are fundamental foundation of Javascript programming. The funny thing is, back in the days I actually often applied these kind of concept without knowing how it worked. Thus, I think I should write more about fundamental Javascript in the future.
 
