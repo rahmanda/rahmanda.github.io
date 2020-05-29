@@ -1,6 +1,6 @@
 <template>
   <div class="layout bg-gray-50">
-    <div class="c-header text-gray-300 bg-indigo-800">
+    <header class="text-gray-300 bg-indigo-800">
       <nav class="max-w-4xl mx-auto py-3 px-5 text-base whitespace-nowrap overflow-y-auto flex items-center">
         <g-link to="/" class="c-logo flex-none flex items-center">
           <g-image src="~/images/r-logo-white-small.png" alt="logo" class="flex-none"/>
@@ -30,14 +30,17 @@
           <p class="text-5xl md:text-6xl leading-tight tracking-tighter font-bold">Yet another Web Developer!</p>
         </slot>
       </div>
-    </div>
+    </header>
 
     <slot/>
 
+    <PageFooter class="pt-20 pb-10" />
   </div>
 </template>
 
 <script>
+import PageFooter from '~/components/PageFooter.vue'
+
 export default {
   metaInfo: {
     meta: [
@@ -52,6 +55,7 @@ export default {
       default: 'en'
     }
   },
+  components: { PageFooter },
   computed: {
     linkToBlog() {
       if (this.locale === 'id') {

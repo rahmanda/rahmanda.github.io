@@ -28,10 +28,13 @@
 
     <slot/>
 
+    <PageFooter class="pt-5 pb-10"/>
   </div>
 </template>
 
 <script>
+import PageFooter from '~/components/PageFooter.vue'
+
 export default {
   metaInfo: {
     meta: [
@@ -50,6 +53,7 @@ export default {
       default: 'en'
     }
   },
+  components: { PageFooter },
   computed: {
     linkToBlog() {
       if (this.locale === 'id') {
