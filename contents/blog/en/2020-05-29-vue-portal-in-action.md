@@ -5,6 +5,8 @@ slug: vue-portal-in-action
 published_date: 2020-05-29
 language: en
 type: blog
+translations:
+  id: /blog/id/studi-kasus-penggunaan-vue-portal/
 ---
 
 Have you ever found yourself in a situation where you need to change a component's state from another component which is far away in your component's structure? You probably may end up using event bus or a state management just to stay away from the horrible feeling of creating tons of emitters through many components' layer. Now with the portal concept, you just found another alternative.
@@ -80,7 +82,7 @@ export default {
 ```
 If we want to introduce another modal, we need to create a state and methods to toggle it. However if you think about it, these modals actually only interact with their respective button to maintain its state. To improve our app structure, we should make an abstraction out of them in order to keep all the relevant logic in the same place.
 
-The problem is, we can't move the modal component away to reduce the logic in the `App.vue`. The modal should stay in the same place because we need to apply `z-index` which depends on the depth of a tag (a child tag cannot appear above its parent tag even if the tag has a higher `z-index`). With [vue-portal](https://portal-vue.linusb.org/), we can group them into a single component.
+The problem is, we can't move the modal component away to reduce the logic in the `App.vue`. All modals should live in `App.vue` because we need to apply `z-index` which depends on the depth of a tag (a child tag cannot appear above its parent tag even if the tag has a higher `z-index`). With [vue-portal](https://portal-vue.linusb.org/), we can group modal and button into a single component.
 
 ``` html
 <!-- CreatePostButton.vue -->
@@ -147,7 +149,7 @@ export default {
 
 As a result, now we have a much cleaner code in `App.vue` since all related logic have been moved to their respective components. We can also keep the `z-index` of the modal because it will be displayed on the `portal-target` tag when the button is clicked.
 
-Yes, it is kind of weird to have a full blown modal tags inside of a button tag. However, this is only a representation of the component structure, not an actual DOM. By using vue-portal, the entire modal tags are literally moved to the `portal-target` tag once the condition is satisfied so you don't have to worry about it.
+Indeed, it is kind of weird to have a full blown modal tags inside of a button tag. However, this is only a representation of the component structure, not an actual DOM. By using vue-portal, the entire modal tags are literally moved to the `portal-target` tag once the condition is satisfied so you don't have to worry about it.
 
 ## Case 2: Swap content when the route changes
 
@@ -242,7 +244,7 @@ You may not prefer this approach if there is only one swappable section. However
 
 ## Case 3: Distribute contents from a Promise component
 
-I don't know about you, but I really like using [vue-promised](https://github.com/posva/vue-promised). It helps me to not repeatedly create states for every single API request. However, it is not quite pleasant to use if you have multiple parts that depend on the promise state because the state is only accessible from within the `promised` component (scope slot).
+I don't know about you, but I really like using [vue-promised](https://github.com/posva/vue-promised). It helps me to not repeatedly create states for every single API request. However, it is not quite pleasant to use if there are multiple parts that depend on the promise's state. That is because the state is only accessible from within the `promised` component (scope slot).
 
 ``` html
 <!-- App.vue -->
@@ -309,9 +311,9 @@ Above example works just fine, except one thing. I need to update the breadcrumb
 
 ```
 
-By using a portal, we can distribute contents from within the `promised` component while still keeping the same structure. The `portal-target` slot can be used for placing a default tags which is very handy. Instead of using a plain tags, for other cases you might want to replace them with a shimmering loader which lets users know that something is being processed.
+By using a portal, we can distribute contents from within the `promised` component while still keeping the same structure. The `portal-target` slot can be used for placing some default tags which is very handy. Instead of using a plain tags, for certain cases you might want to replace them with a shimmering loader which lets users know that something is being processed.
 
 ## Conclusion
 
-When I first learned about portal, it caused a paradigm shift in me. This is because I thought we could only manage our app by juggling structure with parent and child components relationship. With portal, we can eliminates that limitation which can expand more possibility to restructure our app without being restricted to the location of components or templates.
+Previously, I thought we could only manage an app by juggling structure with parent and child components relationship. Now with portal, we can eliminates that limitation which can expand more possibility to restructure our app without being restricted to the location of components or templates.
 
