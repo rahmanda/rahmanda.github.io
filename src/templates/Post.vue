@@ -55,7 +55,8 @@ export default {
       link: [
         {
           href: this.url, rel: 'canonical'
-        }
+        },
+        ...this.linkAlternate
       ],
       meta: [
         {
@@ -97,6 +98,21 @@ export default {
     },
     url() {
       return `${this.$page.metadata.siteUrl}/blog/${this.$page.post.language}/${this.$page.post.slug}/`;
+    },
+    linkAlternate() {
+      let links = []
+      if (this.$page.post.translations) {
+        Object.keys(this.$page.post.translations).forEach(lang => {
+          if (this.$page.post.translations[lang]) {
+            links.push({
+              href: `${this.$page.metadata.siteUrl}${this.$page.post.translations[lang]}`,
+              hreflang: lang,
+              rel: 'alternate'
+            })
+          }
+        })
+      }
+      return links
     }
   },
   mounted() {
