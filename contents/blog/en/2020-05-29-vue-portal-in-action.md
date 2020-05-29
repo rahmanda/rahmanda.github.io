@@ -305,7 +305,7 @@ Above example works just fine, except one thing. I need to update the breadcrumb
 
 ```
 
-By using a portal, we can distribute contents from within the `promised` component while still keeping the same structure.
+By using a portal, we can distribute contents from within the `promised` component while still keeping the same structure. The `portal-target` slot can be used for placing a default tags which is very handy. Instead of using a plain tags, for other cases you might want to replace them with a shimmering loader or something which lets users know that something is being processed.
 
 ## Conclusion
 
