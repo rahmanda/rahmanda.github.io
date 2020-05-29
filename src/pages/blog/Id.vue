@@ -57,6 +57,7 @@ query {
         published_date
         language
         timeToRead
+        summary
       }
     }
   }

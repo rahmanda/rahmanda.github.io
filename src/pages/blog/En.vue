@@ -56,6 +56,7 @@ query {
         slug
         published_date
         language
+        summary
         timeToRead
       }
     }
