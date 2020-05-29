@@ -4,7 +4,7 @@
 					:dir="$page.post.direction"
 					:class="{ 'rtl': $page.post.direction === 'rtl' }">
 			<article class="post">
-				<div class="mt-12 mb-5 text-sm text-gray-600 font-sans">
+				<header class="mt-12 mb-5 text-sm text-gray-600 font-sans">
 					<time :datetime="$page.post.published_date">
 						{{ $date($page.post.published_date, $page.post.language) }}
 					</time>
@@ -12,9 +12,9 @@
 					<span :title="$timeToRead($page.post.timeToRead, $page.post.language)">
             {{ $timeToRead($page.post.timeToRead, $page.post.language) }}
           </span>
-				</div>
+				</header>
 				<h1 class="font-sans-title text-xl">{{ $page.post.title }}</h1>
-				<div v-if="$page.post.translations"
+				<aside v-if="$page.post.translations"
 						class="text-md mt-10 text-gray-600 font-sans">
 					<span>
             Translate into:
@@ -27,21 +27,9 @@
               </g-link>
             </template>
 					</span>
-				</div>
-				<section class="mt-8" v-html="$page.post.content"/>
+				</aside>
+				<div class="mt-8" v-html="$page.post.content"/>
 			</article>
-			<footer v-if="false" class="flex flex-col md:flex-row max-w-md mx-auto my-8">
-				<div v-if="$page.post.olderPost"
-							class="flex-1 px-6 pb-8 text-left">
-					<p class="mb-2 text-grey-dark">Older Post</p>
-					<a :href="$page.post.olderPost.data.path">← {{ $page.post.olderPost.data.title }}</a>
-				</div>
-				<div v-if="$page.post.newerPost"
-							class="flex-1 px-6 pb-8 text-left md:text-right">
-					<p class="mb-2 text-grey-dark">Newer Post</p>
-					<a :href="$page.post.newerPost.data.path">{{ $page.post.newerPost.data.title }} →</a>
-				</div>
-			</footer>
 		</main>
   </Layout>
 </template>
