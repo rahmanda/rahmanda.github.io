@@ -1,5 +1,6 @@
 <template>
   <Layout :locale="locale">
+    <slot/>
 		<div class="text-lg">
 			<div class="max-w-2xl mx-auto px-5 py-6">
 				<div v-for="post in posts"

@@ -1,5 +1,7 @@
 <template>
-  <Blog :posts="$page.posts.edges" locale="id"/>
+  <Blog :posts="$page.posts.edges" locale="id">
+    <h1 class="hidden" aria-hidden="true">{{ h1 }}</h1>
+  </Blog>
 </template>
 
 <script>
@@ -8,7 +10,7 @@ import Blog from '~/components/Blog.vue'
 export default {
   metaInfo() {
     return {
-      title: 'Blog-nya Rahmanda Wibowo',
+      title: this.h1,
       link: [
         {
           href: `${this.$page.metadata.siteUrl}/blog/`, rel: 'canonical'
@@ -16,12 +18,17 @@ export default {
       ],
       meta: [
         {
-          name: 'description', content: 'Blog-nya Rahmanda Wibowo yang membahas seputar pemograman web dan teknologi secara umum'
+          name: 'description', content: 'Blog-nya Rahmanda Wibowo membahas seputar pemograman web dan teknologi secara umum'
         }
       ]
     }
   },
   components: { Blog },
+  data() {
+    return {
+      h1: 'Blog-nya Rahmanda Wibowo'
+    }
+  }
 }
 </script>
 
