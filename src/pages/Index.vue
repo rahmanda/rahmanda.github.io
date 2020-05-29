@@ -10,7 +10,7 @@
       </p>
     </article>
     <article class="max-w-4xl mx-auto px-5 py-12">
-      <h2 class="text-center text-2xl font-sans-title font-bold text-gray-500 mb-12">Some of My Tinkering List</h2>
+      <h2 class="text-center text-2xl font-sans-title font-bold text-gray-800 mb-12">Some of My Tinkering List</h2>
       <div class="flex flex-wrap -mx-1 text-gray-800">
         <div class="w-full md:w-1/3 mb-5">
           <div class="mx-1">
@@ -39,7 +39,7 @@
       </div>
     </article>
     <article class="max-w-4xl mx-auto px-5 py-12">
-      <h2 class="text-center text-2xl font-sans-title font-bold text-gray-500 mb-12">Recent Writings</h2>
+      <h2 class="text-center text-2xl font-sans-title font-bold text-gray-800 mb-12">Recent Writings</h2>
       <div class="flex flex-wrap -mx-2 text-gray-800">
         <div v-for="post in $page.posts.edges" :key="post.node.id" class="w-full md:w-1/3 mb-8">
           <div class="mx-2">
