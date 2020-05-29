@@ -9,11 +9,15 @@ type: blog
 
 Have you ever found yourself in a situation where you need to change a component's state from another component which is far away in your component's structure? You probably may end up using event bus or a state management just to stay away from the horrible feeling of creating tons of emitters through many components' layer. Now with the portal concept, you just found another alternative.
 
+## The Concept
+
 The concept is actually quite simple. Instead of using event and global state, you will make use of components for it. Create a component as a portal target, and then you can instantly transport tags or components there from anywhere by wrapping your component with a portal gate which has been pointed to the target. This way, we can get creative when structuring our app without worrying about where the component will be displayed.
+
+---
 
 To give you a better idea about the real usage of this concept, let me show you some portal usages in Vue.
 
-## Modal in button
+## Case 1: Modal in button
 
 Let's say that our app has several buttons. When we click on the button, it will show a modal.
 
@@ -145,7 +149,7 @@ As a result, now we have a much cleaner code in `App.vue` since all related logi
 
 Yes, it is kind of weird to have a full blown modal tags inside of a button tag. However, this is only a representation of the component structure, not an actual DOM. By using vue-portal, the entire modal tags are literally moved to the `portal-target` tag once the condition is satisfied so you don't have to worry about it.
 
-## Swap content when the route changes
+## Case 2: Swap content when the route changes
 
 Suppose our app is using [vue-router](https://router.vuejs.org/) and we have a sidebar to navigate. The sidebar content can change depending on the current path. However, the sidebar container need to be placed outside of the `router-view` for styling purpose.
 
@@ -236,7 +240,7 @@ Because `router-view` already know when to display a page component based on cur
 
 You may not prefer this approach if there is only one swappable section. However, it will be a clear choice if your app has more than one swappable section.
 
-## Distribute contents from a Promise component
+## Case 3: Distribute contents from a Promise component
 
 I don't know about you, but I really like using [vue-promised](https://github.com/posva/vue-promised). It helps me to not repeatedly create states for every single API request. However, it is not quite pleasant to use if you have multiple parts that depend on the promise state because the state is only accessible from within the `promised` component (scope slot).
 
