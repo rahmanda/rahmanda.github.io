@@ -80,7 +80,7 @@ export default {
 };
 </script>
 ```
-Apabila kita ingin membuat modal yang baru, kita perlu membuat sebuah state dan method untuk mengontrol state-nya. Tapi setelah dilihat-lihat, ternyata modal ini hanya berinteraksi dengan button yang berhubungan saja. Untuk memperbaikinya, kita bisa membuat sebuah abstraksi untuk menaruh semua logic yang relevan dalam satu tempat.
+Apabila kita ingin membuat modal yang baru, kita perlu membuat sebuah state dan method untuk mengontrol state-nya. Tapi setelah diperhatikan, ternyata modal ini hanya berinteraksi dengan button yang berhubungan saja. Untuk memperbaikinya, kita bisa membuat sebuah abstraksi untuk menaruh semua logic yang relevan ke dalam satu tempat.
 
 Permasalahannya, kita tidak dapat memindahkan komponen modal keluar untuk mengurangi logic di dalam `App.vue`. Semua modal harus tetap berada di `App.vue` karena kita perlu menerapkankan `z-index` yang bergantung kepada kedalaman dari sebuah tag (tag child tidak bisa tampil di atas parent tag-nya meskipun tag-nya mempunyai nilai `z-index` yang lebih tinggi). Dengan [vue-portal](https://portal-vue.linusb.org/), kita bisa mengelompokkan button dan modal menjadi satu komponen.
 
