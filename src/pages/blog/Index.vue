@@ -21,6 +21,9 @@ export default {
       link: [
         {
           href: `${this.$page.metadata.siteUrl}/blog/`, rel: 'canonical'
+        },
+        {
+          href: `${this.$page.metadata.siteUrl}/blog/en/`, hreflang: 'en', rel: 'alternate'
         }
       ],
       meta: [

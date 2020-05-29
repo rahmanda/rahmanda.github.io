@@ -77,6 +77,9 @@ export default {
       link: [
         {
           href: this.$page.metadata.siteUrl, rel: 'canonical'
+        },
+        {
+          href: `${this.$page.metadata.siteUrl}/id/`, hreflang: 'id', rel: 'alternate'
         }
       ]
     }
