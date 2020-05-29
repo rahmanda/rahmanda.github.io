@@ -95,5 +95,5 @@ babyGiraffe.eating(); // output 'Giraffe is eating french fries'
 
 ---
 
-Lexical scoping and closure are fundamental foundation of Javascript programming. The funny thing is, i often applied these kind of concept without knowing how it is working. So i think i should write more about Javascript basics on the future.
+Lexical scoping and closure are fundamental foundation of Javascript programming. The funny thing is, I often applied these kind of concept without knowing how it is working. So I think I should write more about fundamental Javascript in the future.
 
