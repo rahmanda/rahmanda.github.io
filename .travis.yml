@@ -9,7 +9,7 @@ node_js:
 
 before_install:
   - npm install --global @gridsome/cli
-  - yarn
+  - yarn --frozen-lockfile
 
 script:
   - yarn build
