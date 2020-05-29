@@ -68,6 +68,10 @@ export default {
   metaInfo() {
     return {
       title: this.h1,
+      htmlAttrs: {
+        lang: 'en',
+        dir: 'ltr'
+      },
       link: [
         {
           href: this.$page.metadata.siteUrl, rel: 'canonical'

@@ -37,6 +37,10 @@
 export default {
   metaInfo() {
     return {
+      htmlAttrs: {
+        lang: 'en',
+        dir: 'ltr'
+      },
       title: this.h1,
       link: [
         {

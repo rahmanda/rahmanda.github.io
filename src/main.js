@@ -21,20 +21,4 @@ export default function (Vue, { router, head, isClient }) {
     cssText: font,
     type: 'text/css'
   })
-
-  // Route hooks
-  router.beforeEach(({ path }, _, next) => {
-    let lang = 'en'
-    // Blog root path is targeting for Indonesian
-    // Other root path is for English speakers
-    if (/\/blog\/?$/.test(path)) {
-      lang = 'id'
-    } else if (path.indexOf('/id/') > -1) {
-      lang = 'id'
-    } else if (path.indexOf('/en/') > -1) {
-      lang = 'en'
-    }
-    head.htmlAttrs.lang = lang
-    next();
-  });
 }

@@ -59,6 +59,10 @@ async function generateAnchors() {
 export default {
   metaInfo() {
     return {
+      htmlAttrs: {
+        lang: this.$page.post.language,
+        dir: 'ltr'
+      },
       title: `${this.$page.post.title} - Rahmanda Wibowo`,
       link: [
         {

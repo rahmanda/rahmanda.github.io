@@ -13,6 +13,10 @@ import BlogHero from '~/components/BlogHero.vue'
 export default {
   metaInfo() {
     return {
+      htmlAttrs: {
+        lang: 'id',
+        dir: 'ltr'
+      },
       title: this.h1,
       link: [
         {
