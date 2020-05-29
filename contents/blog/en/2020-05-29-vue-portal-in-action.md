@@ -315,5 +315,5 @@ By using a portal, we can distribute contents from within the `promised` compone
 
 ## Conclusion
 
-Previously, I thought we could only manage an app by juggling structure with parent and child components relationship. Now with portal, we can eliminates that limitation which can expand more possibility to restructure our app without being restricted to the location of components or templates.
+Previously, I thought we could only manage an app by juggling structure with parent and child components relationship. Now with portal, we can eliminate that limitation and expand more possibility to restructure our app without being restricted to the location of components or templates.
 
