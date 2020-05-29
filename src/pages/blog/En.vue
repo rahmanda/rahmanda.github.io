@@ -37,7 +37,7 @@ query {
   metadata {
     siteUrl
   }
-  posts: allPost(sortBy: "published_date", filter: {language: {eq: "en"}}) {
+  posts: allPost(sortBy: "published_date", filter: {language: {eq: "en"}, type: {eq: "blog"}}) {
     edges {
       node {
         id
