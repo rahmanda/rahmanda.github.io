@@ -42,6 +42,12 @@ module.exports = {
     },
     {
       use: '@gridsome/plugin-sitemap'
+    },
+    {
+      use: 'gridsome-plugin-robots',
+      options: {
+        policy: [{ userAgent: '*', allow: '/*.html$' }]
+      }
     }
   ],
   transformers: {
