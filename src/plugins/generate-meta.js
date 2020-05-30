@@ -18,6 +18,9 @@ export function generateMeta(title, description, siteUrl, url) {
       name: 'twitter:title', content: title
     },
     {
+      name: 'twitter:site', content: '@rahmandawibowo'
+    },
+    {
       name: 'twitter:creator', content: '@rahmandawibowo'
     },
     {
@@ -34,6 +37,9 @@ export function generateMeta(title, description, siteUrl, url) {
     },
     {
       property: 'og:url', content: url
+    },
+    {
+      property: 'og:type', content: 'website'
     },
     {
       property: 'og:image', content: image
