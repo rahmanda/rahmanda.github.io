@@ -7,6 +7,8 @@ import 'prism-themes/themes/prism-vsc-dark-plus.css'
 import './main.css'
 
 export default function (Vue, { router, head, isClient }) {
+  Vue.prototype.$isClient = isClient
+
   Vue.component('Layout', DefaultLayout)
   Vue.use(datePlugins)
   Vue.use(timeToRead)

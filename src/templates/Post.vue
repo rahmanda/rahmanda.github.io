@@ -123,7 +123,9 @@ export default {
   },
   watch: {
     '$route'() {
-      generateAnchors()
+      if (this.$isClient) {
+        generateAnchors()
+      }
     }
   }
 }
