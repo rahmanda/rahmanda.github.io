@@ -4,7 +4,7 @@
       <div class="w-56 flex-none mb-10 md:mb-0 md:mr-10">
         <g-image src="~/images/profile-picture.png" class="rounded-md" alt="Profile picture of Rahmanda Wibowo" />
       </div>
-      <h1 class="hidden" aria-hidden="true">{{ h1 }}</h1>
+      <h1 class="hidden" aria-hidden="true">{{ meta.title }}</h1>
       <p class="md:mb-2 text-lg md:text-xl text-center md:text-left font-light text-gray-800 flex-1 md:mr-10">
         My name is Rahmanda Wibowo. I build web interfaces using pragmatic tools and progressive development. Currently I'm working at <a class="text-indigo-600 underline" href="https://www.bukalapak.com">Bukalapak</a> to develop wide range of digital products and marketplace features.
       </p>
@@ -68,29 +68,35 @@ import HomeLayout from '~/layouts/Home';
 
 export default {
   metaInfo() {
-    return {
-      title: this.h1,
-      htmlAttrs: {
-        lang: 'en',
-        dir: 'ltr'
-      },
-      link: [
-        {
-          href: this.$page.metadata.siteUrl, rel: 'canonical'
-        },
-        {
-          href: `${this.$page.metadata.siteUrl}/en/`, hreflang: 'en', rel: 'alternate'
-        },
-        {
-          href: `${this.$page.metadata.siteUrl}/id/`, hreflang: 'id', rel: 'alternate'
-        }
-      ]
-    }
+    return this.meta
   },
   components: { HomeLayout },
-  data() {
-    return {
-      h1: 'Rahmanda Wibowo - Yet another web developer'
+  computed: {
+    meta() {
+      const title = 'Rahmanda Wibowo - Yet another web developer'
+      const description = 'Front-end web developer with professional experience in online marketplace and digital product industry'
+      const siteUrl = this.$page.metadata.siteUrl
+      const url = `${siteUrl}/en/`
+
+      return {
+        title,
+        htmlAttrs: {
+          lang: 'en',
+          dir: 'ltr'
+        },
+        link: [
+          {
+            href: siteUrl, rel: 'canonical'
+          },
+          {
+            href: url, hreflang: 'en', rel: 'alternate'
+          },
+          {
+            href: `${siteUrl}/id/`, hreflang: 'id', rel: 'alternate'
+          }
+        ],
+        meta: this.$generateMeta(title, description, siteUrl, url)
+      }
     }
   }
 }

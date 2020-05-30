@@ -46,50 +46,28 @@ async function generateAnchors() {
 
 export default {
   metaInfo() {
-    return {
-      htmlAttrs: {
-        lang: this.$page.post.language,
-        dir: 'ltr'
-      },
-      title: `${this.$page.post.title} - Rahmanda Wibowo`,
-      link: [
-        {
-          href: this.url, rel: 'canonical'
-        },
-        {
-          href: this.url, hreflang: this.$page.post.language, rel: 'alternate'
-        },
-        ...this.linkAlternate
-      ],
-      meta: [
-        {
-          key: 'description', name: 'description', content: this.summary
-        },
-        {
-          name: 'twitter:card', content: 'summary'
-        },
-        {
-          name: 'twitter:title', content: this.$page.post.title
-        },
-        {
-          name: 'twitter:creator', content: '@rahmandawibowo'
-        },
-        {
-          name: 'twitter:description', content: this.summary
-        },
-        {
-          property: 'og:title', content: this.$page.post.title
-        },
-        {
-          property: 'og:description', content: this.summary
-        },
-        {
-          property: 'og:url', content: this.url
-        }
-      ]
-    }
+    return this.meta
   },
   computed: {
+    meta() {
+      return {
+        htmlAttrs: {
+          lang: this.$page.post.language,
+          dir: 'ltr'
+        },
+        title: `${this.$page.post.title} - Rahmanda Wibowo`,
+        link: [
+          {
+            href: this.url, rel: 'canonical'
+          },
+          {
+            href: this.url, hreflang: this.$page.post.language, rel: 'alternate'
+          },
+          ...this.linkAlternate
+        ],
+        meta: this.$generateMeta(this.$page.post.title, this.summary, this.$page.metadata.siteUrl, this.url),
+      }
+    },
     languageNames() {
       return {
         id: 'Bahasa Indonesia',
