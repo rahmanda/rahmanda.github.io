@@ -8,7 +8,7 @@
     </div>
     <article class="max-w-4xl mx-auto px-5 py-12">
       <h1 class="hidden" aria-hidden="true">
-        {{ h1 }}
+        {{ meta.title }}
       </h1>
       <p class="text-xl mb-8">
         In this situation, people will find these links useful:
@@ -18,7 +18,7 @@
           <g-link class="c-link" to="/">Rahmanda's homepage</g-link>
         </li>
         <li class="block mb-5">
-          <g-link class="c-link" to="/blog/en/">Blog by Rahmanda</g-link>
+          <g-link class="c-link" to="/blog/en/">Just a Blog by Rahmanda</g-link>
         </li>
         <li v-for="post in $page.posts.edges" :key="post.node.id" class="block mb-5">
           <g-link
@@ -36,29 +36,28 @@
 
 export default {
   metaInfo() {
-    return {
-      htmlAttrs: {
-        lang: 'en',
-        dir: 'ltr'
-      },
-      title: this.h1,
-      link: [
-        {
-          href: `${this.$page.metadata.siteUrl}/404/`, rel: 'canonical'
-        }
-      ],
-      meta: [
-        {
-          key: 'description',
-          name: 'description',
-          content: `It looks like you just got lost!. But don't worry though, you are still on the right website (right?).`
-        }
-      ]
-    }
+    return this.meta
   },
-  data() {
-    return {
-      h1: 'It looks like you just got lost!'
+  computed: {
+    meta() {
+      const title = 'It looks like you just got lost!'
+      const description = `It looks like you just got lost!. But don't worry though, you are still on the right website (right?).`
+      const siteUrl = this.$page.metadata.siteUrl
+      const url = `${siteUrl}/404/`
+
+      return {
+        htmlAttrs: {
+          lang: 'en',
+          dir: 'ltr'
+        },
+        title: title,
+        link: [
+          {
+            href: url, rel: 'canonical'
+          }
+        ],
+        meta: this.$generateMeta(title, description, siteUrl, url)
+      }
     }
   }
 }
