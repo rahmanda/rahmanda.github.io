@@ -56,6 +56,9 @@ export default {
         {
           href: this.url, rel: 'canonical'
         },
+        {
+          href: this.url, hreflang: this.$page.post.language, rel: 'alternate'
+        },
         ...this.linkAlternate
       ],
       meta: [

@@ -83,6 +83,9 @@ export default {
           href: `${this.$page.metadata.siteUrl}/id/`, rel: 'canonical'
         },
         {
+          href: `${this.$page.metadata.siteUrl}/id/`, hreflang: 'id', rel: 'alternate'
+        },
+        {
           href: `${this.$page.metadata.siteUrl}/en/`, hreflang: 'en', rel: 'alternate'
         }
       ],
