@@ -1,7 +1,7 @@
 <template>
   <Blog :posts="$page.posts.edges" locale="id">
-    <BlogHero :h1="h1">
-      {{ description }}
+    <BlogHero :h1="meta.title">
+      {{ meta.description }}
     </BlogHero>
   </Blog>
 </template>
@@ -12,38 +12,39 @@ import BlogHero from '~/components/BlogHero.vue'
 
 export default {
   metaInfo() {
-    return {
-      htmlAttrs: {
-        lang: 'id',
-        dir: 'ltr'
-      },
-      title: this.h1,
-      link: [
-        {
-          href: `${this.$page.metadata.siteUrl}/blog/`, rel: 'canonical'
-        },
-        {
-          href: `${this.$page.metadata.siteUrl}/blog/id/`, hreflang: 'id', rel: 'alternate'
-        },
-        {
-          href: `${this.$page.metadata.siteUrl}/blog/en/`, hreflang: 'en', rel: 'alternate'
-        }
-      ],
-      meta: [
-        {
-          key: 'description', name: 'description', content: this.description
-        }
-      ]
-    }
+    return this.meta
   },
   components: {
     Blog,
     BlogHero
   },
-  data() {
-    return {
-      h1: 'Just a Blog by Rahmanda Wibowo',
-      description: 'Kumpulan artikel seputar pemograman web dan teknologi lainnya'
+  computed: {
+    meta() {
+      const title = 'Just a Blog by Rahmanda Wibowo'
+      const description = 'Kumpulan artikel seputar pemograman web dan teknologi lainnya'
+      const siteUrl = this.$page.metadata.siteUrl
+      const url = `${siteUrl}/blog/id/`
+
+      return {
+        htmlAttrs: {
+          lang: 'id',
+          dir: 'ltr'
+        },
+        title,
+        description,
+        link: [
+          {
+            href: `${siteUrl}/blog/`, rel: 'canonical'
+          },
+          {
+            href: url, hreflang: 'id', rel: 'alternate'
+          },
+          {
+            href: `${siteUrl}/blog/en/`, hreflang: 'en', rel: 'alternate'
+          }
+        ],
+        meta: this.$generateMeta(title, description, siteUrl, url)
+      }
     }
   }
 }

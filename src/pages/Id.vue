@@ -8,7 +8,7 @@
       <div class="w-56 flex-none mb-10 md:mb-0 md:mr-10">
         <g-image src="~/images/profile-picture.png" class="rounded-md" alt="Foto profil Rahmanda Wibowo" />
       </div>
-      <h1 class="hidden" aria-hidden="true">{{ h1 }}</h1>
+      <h1 class="hidden" aria-hidden="true">{{ meta.title }}</h1>
       <p class="md:mb-2 text-lg md:text-xl text-center md:text-left font-light text-gray-800 flex-1 md:mr-10">
         Saya Rahmanda Wibowo. Saya menggunakan metode pengembangan progresif dan peralatan apa saja untuk membuat tampilan website yang menarik. Saat ini saya bekerja di <a class="text-indigo-600 underline" href="https://www.bukalapak.com">Bukalapak</a> untuk mengembangkan berbagai macam produk digital dan marketplace.
       </p>
@@ -72,36 +72,35 @@ import HomeLayout from '~/layouts/Home';
 
 export default {
   metaInfo() {
-    return {
-      title: this.h1,
-      htmlAttrs: {
-        lang: 'id',
-        dir: 'ltr'
-      },
-      link: [
-        {
-          href: `${this.$page.metadata.siteUrl}/id/`, rel: 'canonical'
-        },
-        {
-          href: `${this.$page.metadata.siteUrl}/id/`, hreflang: 'id', rel: 'alternate'
-        },
-        {
-          href: `${this.$page.metadata.siteUrl}/en/`, hreflang: 'en', rel: 'alternate'
-        }
-      ],
-      meta: [
-        {
-          key: 'description',
-          name: 'description',
-          content: 'Front-end web developer dengan pengalaman di dunia online marketplace dan industri produk digital'
-        }
-      ]
-    };
+    return this.meta
   },
   components: { HomeLayout },
-  data() {
-    return {
-      h1: 'Rahmanda Wibowo - Satu lagi web developer'
+  computed: {
+    meta() {
+      const title = 'Rahmanda Wibowo - Satu lagi web developer'
+      const description = 'Front-end web developer dengan pengalaman di dunia online marketplace dan industri produk digital'
+      const siteUrl = this.$page.metadata.siteUrl
+      const url = `${siteUrl}/id/`
+
+      return {
+        title,
+        htmlAttrs: {
+          lang: 'id',
+          dir: 'ltr'
+        },
+        link: [
+          {
+            href: url, rel: 'canonical'
+          },
+          {
+            href: url, hreflang: 'id', rel: 'alternate'
+          },
+          {
+            href: `${siteUrl}/en/`, hreflang: 'en', rel: 'alternate'
+          }
+        ],
+        meta: this.$generateMeta(title, description, siteUrl, url)
+      }
     }
   }
 }

@@ -1,7 +1,10 @@
 import DefaultLayout from '~/layouts/Default.vue'
-import datePlugins from '~/plugins/date'
-import timeToRead from '~/plugins/timeToRead'
-import i18n from '~/plugins/i18n'
+
+import datePlugin from '~/plugins/date'
+import i18nPlugin from '~/plugins/i18n'
+import generateMetaPlugin from '~/plugins/generate-meta'
+import timeToReadPlugin from '~/plugins/timeToRead'
+
 import font from './font'
 import 'prism-themes/themes/prism-vsc-dark-plus.css'
 import './main.css'
@@ -10,9 +13,10 @@ export default function (Vue, { router, head, isClient }) {
   Vue.prototype.$isClient = isClient
 
   Vue.component('Layout', DefaultLayout)
-  Vue.use(datePlugins)
-  Vue.use(timeToRead)
-  Vue.use(i18n)
+  Vue.use(datePlugin)
+  Vue.use(generateMetaPlugin)
+  Vue.use(i18nPlugin)
+  Vue.use(timeToReadPlugin)
 
   // HEAD manipulation
   head.meta.push({
