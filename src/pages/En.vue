@@ -15,6 +15,14 @@
         <article class="w-full md:w-1/3 mb-5">
           <div class="mx-1">
             <h3 class="mb-2">
+              <a class="c-link" href="https://nusadata.github.io/web/">Nusadata</a>
+            </h3>
+            <p class="text-lg">Collection of interesting data visualizations and statistics about Indonesia</p>
+          </div>
+        </article>
+        <article class="w-full md:w-1/3 mb-5">
+          <div class="mx-1">
+            <h3 class="mb-2">
               <a class="c-link" href="https://github.com/rahmanda/ambercat">Ambercat</a>
             </h3>
             <p class="text-lg">Stupidly simple static blog generator based on Vue.js and Tailwind CSS</p>
@@ -26,14 +34,6 @@
               <a class="c-link" href="https://github.com/rahmanda/tailwindscss">Tailwind SCSS</a>
             </h3>
             <p class="text-lg">SCSS version of Tailwind CSS for people who don't use modern module bundler</p>
-          </div>
-        </article>
-        <article class="w-full md:w-1/3 mb-5">
-          <div class="mx-1">
-            <h3 class="mb-2">
-              <a class="c-link" href="https://github.com/rahmanda/prasmananjs">Prasmanan.js</a>
-            </h3>
-            <p class="text-lg">Alternative for infinite slider that plays nicely with mobile.</p>
           </div>
         </article>
       </div>
