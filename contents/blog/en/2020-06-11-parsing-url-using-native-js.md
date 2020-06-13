@@ -26,7 +26,7 @@ url = new URL(window.location)
 
 // We cannot supply URL with domain or path only as it will throw error
 url = new URL('example.com') // TypeError: URL constructor: example.com is not a valid URL
-url = new URL('/path') // TypeError: URL constructor: example.com is not a valid URL
+url = new URL('/path') // TypeError: URL constructor: /path is not a valid URL
 ```
 
 We can also initialize `URL` with two parameters. The first parameter is for the path, and the second parameter is for the origin URL.
@@ -70,7 +70,7 @@ Now we have learned about parsing URL. What about search parameters?
 ## URLSearchParams
 
 
-Parsing search or query parameters is also a hassle without using external library. With `URLSearchParams`, now we can easily build a valid search parameters. The initialization is quite similar with `URL`, except that now we have to supply a string of search parameters into the constructor.
+Parsing search or query parameters was also quite a hassle without using external library. With `URLSearchParams`, now we can easily build a valid search parameters. The initialization is quite similar with `URL`, except that now we have to supply a string of search parameters into the constructor.
 
 ``` js
 

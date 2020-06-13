@@ -117,7 +117,7 @@ function getFilename(filePath) {
 }
 ```
 
-What I did was reordering the declaration of the functions from the previous code. This way, it is easier to find the main function because now the export declaration is located earlier in the code. In addition to that, it is easier to follow the flow of the program because every function declaration is placed immediately after the function that uses it. So, we only need to read naturally from top to bottom without every look back to the previous declarations.
+What I did was reordering the declaration of the functions from the previous code. This way, it is easier to find the main function because now the export declaration is located earlier in the code. In addition to that, it is easier to follow the flow of the program because every function declaration is placed immediately after the function that uses it. So, we only need to read naturally from top to bottom without repeatedly looking back to the previous declarations.
 
 The code which is written in hoisting-first method is also easier to read on a module which has a lot of functions. Even though I don't recommend to write a lot of code on a single module or file, I just want to explain that this coding style might be beneficial for certain situation.
 
