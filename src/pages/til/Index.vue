@@ -20,7 +20,7 @@
               <time :datetime="post.node.published_date" class="text-gray-600">
                 {{ $date(post.node.published_date, post.node.language) }}
               </time>
-              <h2 :id="`#${post.node.slug}`" class="tracking-tight" style="margin-top: 1rem;">
+              <h2 :id="post.node.slug" class="tracking-tight" style="margin-top: 1rem;">
                 {{ post.node.title }}
               </h2>
             </header>
