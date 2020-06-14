@@ -1,6 +1,6 @@
 <template>
   <div class="layout bg-gray-50">
-    <div class="c-header text-gray-800">
+    <div class="c-header text-gray-400 bg-gray-900">
       <nav class="max-w-2xl mx-auto py-3 px-5 text-base whitespace-nowrap overflow-y-auto flex items-center">
         <g-link :to="linkToHomepage" class="c-logo flex-none flex items-center">
           <g-image src="~/images/r-logo-small.png" alt="logo" class="flex-none"/>
@@ -9,16 +9,16 @@
           <g-link class="ml-4" :to="linkToBlog">Blog</g-link>
           <g-link class="ml-4" :to="linkToTil">#TIL</g-link>
           <a class="ml-4" href="https://linkedin.com/in/rahmandawibowo">LinkedIn</a>
-          <div v-if="pageType == 'home'" class="rounded text-white bg-indigo-800 flex ml-4">
+          <div v-if="pageType == 'home'" class="rounded flex ml-4">
             <g-link
               :to="localeLinks.en"
-              :class="{ 'bg-black rounded': locale === 'en' }"
+              :class="{ 'bg-indigo-800 rounded': locale === 'en' }"
               class="px-2">
               EN
             </g-link>
             <g-link
               :to="localeLinks.id"
-              :class="{ 'bg-black rounded': locale === 'id' }"
+              :class="{ 'bg-indigo-800 rounded': locale === 'id' }"
               class="px-2">
               ID
             </g-link>

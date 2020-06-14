@@ -23,7 +23,14 @@ module.exports = {
       use: '@gridsome/source-filesystem',
       options: {
         typeName: 'Post',
-        path: './contents/**/*.md',
+        path: './contents/blog/**/*.md',
+      }
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        typeName: 'Til',
+        path: './contents/til/**/*.md',
       }
     },
     {

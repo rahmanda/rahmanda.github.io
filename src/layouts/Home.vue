@@ -7,6 +7,7 @@
         </g-link>
         <div class="flex-1 flex justify-end font-sans text-right">
           <g-link class="ml-4" :to="linkToBlog">Blog</g-link>
+          <g-link class="ml-4" :to="linkToTil">#TIL</g-link>
           <a class="ml-4" href="https://linkedin.com/in/rahmandawibowo">LinkedIn</a>
           <div class="rounded bg-indigo-800 flex ml-4">
             <g-link
@@ -62,6 +63,12 @@ export default {
         return '/blog/'
       }
       return `/blog/${this.locale}/`
+    },
+    linkToTil() {
+      if (this.locale === 'id') {
+        return '/til/'
+      }
+      return `/til/${this.locale}/`
     }
   }
 }
