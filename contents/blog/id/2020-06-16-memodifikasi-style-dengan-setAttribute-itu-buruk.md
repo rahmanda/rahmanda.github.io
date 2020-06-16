@@ -47,7 +47,7 @@ Masalahnya adalah, metode ini tidak scalable kalau kita punya banyak style dalam
 
 ## Style property to the rescue
 
-Apabila saya perlu me-maintain sebuah modifikasi style yang kompleks dengan JS, saya lebih suka menggunakan properti style dari DOM. Berbeda dengan `setAttribute`, properti style tidak akan menghapus modifikasi yang sudah ada setiap kali kita menambahkan style baru. Hal ini dikarenakan dengan properti style, kita perlu menambahkan attribut style satu per satu. Di bawah ini adalah cara kita mengerjakan contoh sebelumnya dengan menggunakan properti style.
+Apabila saya perlu me-maintain sebuah modifikasi style yang kompleks dengan JS, saya lebih suka menggunakan properti style dari DOM. Berbeda dengan `setAttribute`, properti style tidak akan menghapus modifikasi yang sudah ada setiap kali kita menambahkan style baru. Hal ini dikarenakan dengan properti style, kita perlu menambahkan atribut style satu per satu. Di bawah ini adalah cara kita mengerjakan contoh sebelumnya dengan menggunakan properti style.
 
 ``` js
 const containerWidth = window.innerWidth / 2
