@@ -19,7 +19,7 @@
         <article class="w-full md:w-1/3 mb-5">
           <div class="text-lg mx-1">
             <h3 class="mb-2">
-              <a class="c-link" href="https://nusadata.github.io/web/">Nusadata</a>
+              <a class="c-link" href="https://www.nusadata.org">Nusadata</a>
             </h3>
             <p class="text-lg">Kumpulan visualisasi data dan statistik yang menarik seputar Indonesia</p>
           </div>
