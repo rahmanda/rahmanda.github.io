@@ -21,7 +21,7 @@ export default {
   computed: {
     meta() {
       const title = 'Just a Blog by Rahmanda Wibowo'
-      const description = 'Kumpulan artikel seputar pemograman web dan teknologi lainnya'
+      const description = 'Kumpulan artikel seputar pengembangan web dan teknologi lainnya'
       const siteUrl = this.$page.metadata.siteUrl
       const url = `${siteUrl}/blog/id/`
 
