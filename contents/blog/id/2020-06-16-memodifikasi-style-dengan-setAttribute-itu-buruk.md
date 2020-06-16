@@ -1,7 +1,7 @@
 ---
 title: Memodifikasi style dengan setAttribute itu buruk
 
-summary: Kamu mungkin jarang banget butuh memodifikasi style dengan JS. Tapi kalaupun kamu butuh, jangan pakai element.setAttribute.
+summary: Kamu mungkin jarang banget butuh memodifikasi style dengan JS. Tapi kalaupun kamu butuh, jangan pakai setAttribute.
 slug: memodifikasi-style-dengan-setAttribute-itu-buruk
 published_date: 2020-06-16
 language: id
