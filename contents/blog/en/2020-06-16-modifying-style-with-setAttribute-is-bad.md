@@ -1,6 +1,6 @@
 ---
 title: Modifying Styles with setAttribute is Bad
-summary: Most of the time, you probably don't need to modify styles from JS. But when you do, don't use element.setAttribute.
+summary: Most of the time, you probably don't need to modify styles from JS. But when you do, don't use setAttribute.
 slug: modifying-styles-with-setAttribute-is-bad
 published_date: 2020-06-16
 language: en
@@ -13,9 +13,9 @@ Generally speaking, modifying styles from JS should be considered as a last reso
 
 When we want to modify styles from JS, we have two options: using `setAttribute` and style property. In this article, I will explain why I prefer to use the latter.
 
-## Why element.setAttribute is bad?
+## Why setAttribute is bad?
 
-Suppose we want to set a container with a width is equal to 50% of the screen width and height is equal to screen height. Below is how we do it with `setAttribute`.
+Suppose we want to set a container with `width` is equal to 50% of the screen width and `height` is equal to screen height. Below is how we do it with `setAttribute`.
 
 ``` js
 
@@ -28,7 +28,7 @@ document.querySelector('.container').setAttribute('style', `width: ${containerWi
 
 Now the container is rendered properly. Problem solved.
 
-Let's say later on the code, we want to update the height only with value `initial`. Can we do this?
+Let's say later on the code, we want to update the `height` style only with value `initial`. Can we do this?
 
 ``` js
 document.querySelector('.container').setAttribute('style', 'height: initial')
@@ -58,7 +58,7 @@ $container.style.width = `${containerWidth}px`
 $container.style.height = `${containerHeight}px`
 ```
 
-And then, when we need to update one style, we can target that one style only by still keeping the other modifications.
+And then when we need to update one style, we can target that one style only by still keeping the other modifications.
 
 ``` js
 $container.style.height = 'initial'

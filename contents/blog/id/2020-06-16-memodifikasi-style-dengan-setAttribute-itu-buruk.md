@@ -10,11 +10,11 @@ translations:
   en: /blog/en/modifying-styles-with-setAttribute-is-bad/
 ---
 
-Pada umumnya, memodifikasi style menggunakan JS sebaiknya dianggap sebagai solusi yang paling terakhir karena biasanya kita bisa menyelesaikan berbagai kasus styling cukup dengan menggunakan class selector. Namun, akan menjadi cerita yang berbeda kalau kita perlu membuat semacam diagram svg yang responsif, game, efek parallax dsb. Untuk hal-hal demikian, tidak ada cara selain menggunakan JS untuk membuatnya.
+Pada umumnya, memodifikasi style menggunakan JS sebaiknya dianggap sebagai solusi yang paling terakhir karena biasanya kita bisa menyelesaikan berbagai kasus styling cukup dengan menggunakan class selector. Namun akan menjadi lain ceritanya kalau kita perlu membuat semacam diagram svg yang responsif, game, efek parallax dsb. Untuk hal-hal demikian, tidak ada cara selain menggunakan JS untuk membuatnya.
 
 Apabila kita ingin mengubah style lewat JS, kita punya dua opsi: menggunakan `setAttribute` dan properti style. Pada artikel ini, saya akan menjelaskan mengapa saya lebih suka menggunakan opsi kedua.
 
-## Mengapa element.setAttribute itu buruk?
+## Mengapa setAttribute itu buruk?
 
 Anggap saja kita ingin mengeset lebar suatu container dengan `width` sama dengan setengah dari lebar layar, dan `height` sama dengan tinggi layar. Beginilah cara kita mengimplementasikannya dengan menggunakan `setAttribute`.
 
@@ -58,7 +58,7 @@ $container.style.width = `${containerWidth}px`
 $container.style.height = `${containerHeight}px`
 ```
 
-Lalu, saat kita perlu meng-update satu style, kita bisa menargetkan satu style saja dengan tetap mendapatkan style dari modifikasi sebelumnya.
+Lalu saat kita perlu meng-update satu style, kita bisa menargetkan satu style saja dengan tetap mendapatkan style dari modifikasi sebelumnya.
 
 ``` js
 $container.style.height = 'initial'
@@ -83,7 +83,7 @@ applyStyles($container, { width: `${containerWidth}px`, height: `${containerHeig
 
 Pendekatan ini jauh lebih baik dibandingkan menggunakan `setAttribute`.
 
-Satu hal yang perlu dicatat adalah saat kita perlu menambahkan proerti style yang mempunyai lebih dari satu kata seperti `background-color`, kita perlu menulisnya sebagai `backgroundColor`. Hal ini benar-benar sama dengan cara kita menulis style di JSX karena, ya JSX itu pada akhirnya juga dikompilasi menjadi JS.
+Satu hal yang perlu dicatat adalah saat kita perlu menambahkan properti style yang mempunyai lebih dari satu kata seperti `background-color`, kita perlu menulisnya sebagai `backgroundColor`. Hal ini benar-benar sama dengan cara kita menulis style di JSX karena, ya JSX itu pada akhirnya juga dikompilasi menjadi JS.
 
 ``` js
 document.querySelector('.container').style.backgroundColor = '#fefefe'
