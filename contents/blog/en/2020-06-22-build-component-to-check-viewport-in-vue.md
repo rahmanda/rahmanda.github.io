@@ -134,6 +134,7 @@ Instead of manually checking the viewport value from the component, we can also 
 To add the breakpoint functionality, we need to introduce a new state called `breakpoint`, and the state will change according to the `value` state. We will make use of watcher to track the `value` state and trigger a method to change the breakpoint.
 
 ``` html
+<script>
 export default {
   data() {
     return {
@@ -180,11 +181,13 @@ export default {
     })
   }
 }
+</script>
 ```
 
 Finally, the complete code will look like this.
 
 ``` html
+<script>
 export default {
   data() {
     return {
@@ -240,6 +243,7 @@ export default {
     })
   }
 }
+</script>
 ```
 
 And that's pretty much it!
