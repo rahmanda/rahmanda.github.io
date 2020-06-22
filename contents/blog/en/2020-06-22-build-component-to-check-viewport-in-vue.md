@@ -1,6 +1,6 @@
 ---
-title: Build a Component to Check Viewport in Vue
-slug: build-component-to-check-viewport-in-vue
+title: Building a Component to Check Viewport in Vue
+slug: building-component-to-check-viewport-in-vue
 published_date: 2020-06-22
 language: en
 type: blog
