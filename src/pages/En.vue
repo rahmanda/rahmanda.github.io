@@ -12,28 +12,12 @@
     <section class="max-w-4xl mx-auto px-5 py-12">
       <h2 class="text-center text-2xl font-sans-title font-bold text-gray-800 mb-12">Some of My Tinkering List</h2>
       <div class="flex flex-wrap -mx-1 text-gray-800">
-        <article class="w-full md:w-1/3 mb-5">
+        <article v-for="(item, idx) in tinkeringList" :key="idx" class="w-full md:w-1/3 mb-5">
           <div class="mx-1">
             <h3 class="mb-2">
-              <a class="c-link" href="https://www.nusadata.org">Nusadata</a>
+              <a class="c-link" :href="item.url">{{ item.name }}</a>
             </h3>
-            <p class="text-lg">Collection of interesting data visualizations and statistics about Indonesia</p>
-          </div>
-        </article>
-        <article class="w-full md:w-1/3 mb-5">
-          <div class="mx-1">
-            <h3 class="mb-2">
-              <a class="c-link" href="https://github.com/rahmanda/ambercat">Ambercat</a>
-            </h3>
-            <p class="text-lg">Stupidly simple static blog generator based on Vue.js and Tailwind CSS</p>
-          </div>
-        </article>
-        <article class="w-full md:w-1/3 mb-5">
-          <div class="mx-1">
-            <h3 class="mb-2">
-              <a class="c-link" href="https://github.com/rahmanda/tailwindscss">Tailwind SCSS</a>
-            </h3>
-            <p class="text-lg">SCSS version of Tailwind CSS for people who don't use modern module bundler</p>
+            <p class="text-lg">{{ item.description }}</p>
           </div>
         </article>
       </div>
@@ -97,6 +81,25 @@ export default {
         ],
         meta: this.$generateMeta(title, description, siteUrl, url)
       }
+    },
+    tinkeringList() {
+      return [
+        {
+          name: 'Nusadata',
+          url: 'https://www.nusadata.org',
+          description: 'Collection of interesting data visualizations and statistics about Indonesia'
+        },
+        {
+          name: 'Ambercat',
+          url: 'https://github.com/rahmanda/ambercat',
+          description: 'Stupidly simple static blog generator based on Vue.js and Tailwind CSS'
+        },
+        {
+          name: 'Tailwind SCSS',
+          url: 'https://github.com/rahmanda/tailwindscss',
+          description: 'SCSS version of Tailwind CSS for people who don\'t use modern module bundler'
+        }
+      ]
     }
   }
 }

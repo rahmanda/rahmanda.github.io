@@ -16,28 +16,12 @@
     <section class="max-w-4xl mx-auto px-5 py-12">
       <h2 class="text-center text-2xl font-sans-title font-bold text-gray-800 mb-12">Beberapa hasil otak-atik saya</h2>
       <div class="flex flex-wrap -mx-1 text-gray-800">
-        <article class="w-full md:w-1/3 mb-5">
+        <article v-for="(item, idx) in tinkeringList" :key="idx" class="w-full md:w-1/3 mb-5">
           <div class="text-lg mx-1">
             <h3 class="mb-2">
-              <a class="c-link" href="https://www.nusadata.org">Nusadata</a>
+              <a class="c-link" :href="item.url">{{ item.name }}</a>
             </h3>
-            <p class="text-lg">Kumpulan visualisasi data dan statistik yang menarik seputar Indonesia</p>
-          </div>
-        </article>
-        <article class="w-full md:w-1/3 mb-5">
-          <div class="mx-1">
-            <h3 class="mb-2">
-              <a class="c-link" href="https://github.com/rahmanda/ambercat">Ambercat</a>
-            </h3>
-            <p class="text-lg">Librari sederhana untuk membuat static blog berbasiskan Vue.js dan Tailwind CSS</p>
-          </div>
-        </article>
-        <article class="w-full md:w-1/3 mb-5">
-          <div class="mx-1">
-            <h3 class="mb-2">
-              <a class="c-link" href="https://github.com/rahmanda/tailwindscss">Tailwind SCSS</a>
-            </h3>
-            <p class="text-lg">Versi SCSS dari Tailwind CSS untuk para pengembang yang belum menggunakan bundler modern</p>
+            <p class="text-lg">{{ item.description }}</p>
           </div>
         </article>
       </div>
@@ -101,6 +85,25 @@ export default {
         ],
         meta: this.$generateMeta(title, description, siteUrl, url)
       }
+    },
+    tinkeringList() {
+      return [
+        {
+          name: 'Nusadata',
+          url: 'https://www.nusadata.org',
+          description: 'Kumpulan visualisasi data dan statistik yang menarik seputar Indonesia'
+        },
+        {
+          name: 'Ambercat',
+          url: 'https://github.com/rahmanda/ambercat',
+          description: 'Librari sederhana untuk membuat static blog berbasiskan Vue.js dan Tailwind CSS'
+        },
+        {
+          name: 'Tailwind SCSS',
+          url: 'https://github.com/rahmanda/tailwindscss',
+          description: 'Versi SCSS dari Tailwind CSS untuk para pengembang yang belum menggunakan bundler modern'
+        }
+      ]
     }
   }
 }
