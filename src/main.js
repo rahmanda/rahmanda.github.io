@@ -3,6 +3,7 @@ import DefaultLayout from '~/layouts/Default.vue'
 import datePlugin from '~/plugins/date'
 import i18nPlugin from '~/plugins/i18n'
 import generateMetaPlugin from '~/plugins/generate-meta'
+import generateSchemaPlugin from '~/plugins/generate-schema'
 import timeToReadPlugin from '~/plugins/timeToRead'
 
 import font from './font'
@@ -15,6 +16,7 @@ export default function (Vue, { router, head, isClient }) {
   Vue.component('Layout', DefaultLayout)
   Vue.use(datePlugin)
   Vue.use(generateMetaPlugin)
+  Vue.use(generateSchemaPlugin)
   Vue.use(i18nPlugin)
   Vue.use(timeToReadPlugin)
 

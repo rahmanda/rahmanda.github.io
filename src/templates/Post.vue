@@ -66,6 +66,7 @@ export default {
           ...this.linkAlternate
         ],
         meta: this.$generateMeta(this.$page.post.title, this.summary, this.$page.metadata.siteUrl, this.url),
+        script: [this.$generateSchemaPost(this.$page.post.title, this.summary, this.$page.post.published_date, this.$page.post.language, this.$page.metadata.siteUrl, this.url)]
       }
     },
     languageNames() {
