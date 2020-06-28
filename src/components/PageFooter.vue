@@ -15,10 +15,10 @@
           <g-link to="/" class="underline">Home</g-link>
         </li>
         <li class="pr-4">
-          <g-link to="/blog" class="underline">Blog</g-link>
+          <g-link to="/blog/" class="underline">Blog</g-link>
         </li>
         <li class="pr-4">
-          <g-link to="/til" class="underline">#TIL</g-link>
+          <g-link to="/til/" class="underline">#TIL</g-link>
         </li>
         <li class="pr-4">
           <a href="/sitemap.xml" class="underline">Sitemap</a>
