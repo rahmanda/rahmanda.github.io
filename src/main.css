@@ -52,7 +52,7 @@
 }
 
 @screen md {
-  .post pre[class*="language-"] {
+  .post.post-blog pre[class*="language-"] {
     @apply rounded;
   }
 }

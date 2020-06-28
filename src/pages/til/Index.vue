@@ -1,21 +1,21 @@
 <template>
   <Layout locale="id" :locale-links="localeLinks">
-    <div class="bg-gray-900">
+    <div>
       <div class="max-w-2xl mx-auto px-5 pt-6 py-16">
         <h1 class="hidden" aria-hidden="true">{{ meta.title }}</h1>
         <p lang="en" class="text-indigo-700 text-6xl font-sans-title font-bold tracking-tight leading-tight">#TIL</p>
         <p lang="en" class="text-gray-600 text-2xl mb-5">by Rahmanda Wibowo</p>
-        <p class="text-gray-400 text-xl leading-tight">
+        <p class="text-gray-800 text-xl leading-tight">
           {{ meta.description }}
         </p>
       </div>
     </div>
-    <div class="text-lg">
-      <ul class="max-w-2xl mx-auto px-5 -mt-8 pb-6 block">
+    <div>
+      <ul class="max-w-2xl mx-auto px-5 pb-6 block">
         <li v-for="post in $page.posts.edges"
             :key="post.node.id"
-            class="mb-8 block">
-          <article class="post pt-5 bg-gray-50 border border-indigo-500 rounded" style="padding-bottom: 0;">
+            class="mb-10 block">
+          <article class="post pt-5 bg-gray-50 border-gray-300 rounded-lg shadow border">
             <header>
               <time :datetime="post.node.published_date" class="text-gray-600">
                 {{ $date(post.node.published_date, post.node.language) }}
@@ -24,7 +24,7 @@
                 {{ post.node.title }}
               </h2>
             </header>
-            <div v-html="post.node.content"/>
+            <div v-html="post.node.content" class="content"/>
           </article>
         </li>
       </ul>
@@ -122,3 +122,4 @@ query {
   }
 }
 </page-query>
+

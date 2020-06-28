@@ -3,7 +3,7 @@
 		<main role="main"
 					:dir="$page.post.direction"
 					:class="{ 'rtl': $page.post.direction === 'rtl' }">
-			<article class="post">
+			<article class="post post-blog">
 				<header class="mt-12 mb-5 text-sm text-gray-600 font-sans">
 					<time :datetime="$page.post.published_date">
 						{{ $date($page.post.published_date, $page.post.language) }}
