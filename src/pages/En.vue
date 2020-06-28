@@ -56,8 +56,8 @@
           </div>
         </article>
       </div>
-      <div class="text-center">
-        <g-link class="text-lg text-gray-600" to="/blog/en/">Read more →</g-link>
+      <div class="text-center mt-5">
+        <g-link class="text-lg text-gray-600" to="/blog/en/">Read other articles →</g-link>
       </div>
     </section>
   </HomeLayout>

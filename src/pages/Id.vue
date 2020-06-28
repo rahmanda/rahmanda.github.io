@@ -60,8 +60,8 @@
           </div>
         </article>
       </div>
-      <div class="text-center">
-        <g-link class="text-lg text-gray-600" to="/blog/id/">Lihat selengkapnya →</g-link>
+      <div class="text-center mt-5">
+        <g-link class="text-lg text-gray-600" to="/blog/id/">Lihat artikel lainnya →</g-link>
       </div>
     </section>
   </HomeLayout>
