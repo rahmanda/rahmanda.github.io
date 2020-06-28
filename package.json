@@ -12,6 +12,7 @@
     "@gridsome/remark-prismjs": "^0.3.0",
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.6.0",
+    "@microflash/gridsome-plugin-feed": "^1.0.7",
     "anchor-js": "^4.2.2",
     "gridsome": "^0.7.0",
     "gridsome-plugin-robots": "^0.2.1",

@@ -55,6 +55,28 @@ module.exports = {
       options: {
         policy: [{ userAgent: '*', allow: '/*.html$' }]
       }
+    },
+    {
+      use: '@microflash/gridsome-plugin-feed',
+      options: {
+        contentTypes: ['Post'],
+        feedOptions: {
+          title: 'Just a Blog by Rahmanda Wibowo',
+          description: 'Collection of my writings in web development and other technology',
+          id: 'https://www.rahmandawibowo.com/',
+          link: 'https://www.rahmandawibowo.com/',
+          feedLinks: {
+            rss: 'https://www.rahmandawibowo.com/rss.xml',
+          }
+        },
+        nodeToFeedItem: node => ({
+          title: node.title,
+          description: node.summary,
+          date: node.published_date,
+          id: `https://www.rahmandawibowo.com/blog/${node.language}/${node.slug}/`,
+          link: `https://www.rahmandawibowo.com/blog/${node.language}/${node.slug}/`
+        })
+      }
     }
   ],
   transformers: {
