@@ -35,7 +35,7 @@
 
     <slot/>
 
-    <PageFooter class="pt-20 pb-10" />
+    <PageFooter />
   </div>
 </template>
 

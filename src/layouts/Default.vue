@@ -29,7 +29,7 @@
 
     <slot/>
 
-    <PageFooter class="pt-5 pb-10"/>
+    <PageFooter type="small"/>
   </div>
 </template>
 
