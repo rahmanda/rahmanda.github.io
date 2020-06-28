@@ -78,7 +78,7 @@ export default {
   computed: {
     meta() {
       const title = 'Rahmanda Wibowo - Satu lagi web developer'
-      const description = 'Front-end web developer dengan pengalaman di dunia online marketplace dan industri produk digital'
+      const description = 'Saya Rahmanda Wibowo. Saya menggunakan metode pengembangan progresif dan peralatan apa saja untuk membuat tampilan website yang menarik. Saat ini saya bekerja di Bukalapak untuk mengembangkan berbagai macam produk digital dan marketplace.'
       const siteUrl = this.$page.metadata.siteUrl
       const url = `${siteUrl}/id/`
 

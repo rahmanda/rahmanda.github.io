@@ -74,7 +74,7 @@ export default {
   computed: {
     meta() {
       const title = 'Rahmanda Wibowo - Yet another web developer'
-      const description = 'Front-end web developer with professional experience in online marketplace and digital product industry'
+      const description = 'My name is Rahmanda Wibowo. I build web interfaces using pragmatic tools and progressive development. Currently I\'m working at Bukalapak to develop wide range of digital products and marketplace features.'
       const siteUrl = this.$page.metadata.siteUrl
       const url = `${siteUrl}/en/`
 
