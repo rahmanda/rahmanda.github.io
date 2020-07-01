@@ -1,39 +1,39 @@
 ---
-title: Building a Component to Check Viewport in Vue
-slug: building-component-to-check-viewport-in-vue
+title: Membuat Komponen untuk Mengecek Viewport di Vue
+slug: membuat-komponen-untuk-mengecek-viewport-di-vue
 published_date: 2020-06-22
-language: en
+language: id
 type: blog
 translations:
-  id: /blog/id/membuat-komponen-untuk-mengecek-viewport-di-vue
+  en: /blog/en/building-component-to-check-viewport-in-vue
 ---
 
-Sometimes we need to check viewport via JS to complement CSS media queries for building a responsive web design. In this article, I will explain how to implement it as a component to gain the benefit of reusability and declarative usage in a template.
+Kadang-kadang kita perlu mengecek viewport melalui JS untuk melengkapi media query CSS untuk membuat sebuah desain web yang responsif. Pada artikel ini, saya akan menjelaskan bagaimana cara mengimplementasikannya sebagai suatu komponen untuk mendapatkan keuntungan reusabilitas dan penggunaan secara deklaratif pada template.
 
-## Design the API
+## Mendesain API-nya
 
-Let's say that we want to use the viewport value from a slot scope. Below is the rough idea of how we would use it on template.
+Misalkan kita hanya ingin menggunakan nilai viewport dari slot scope. Di bawah ini adalah ide kasar bagaimana kita akan menggunakannya di template.
 
 ``` html
 <template>
   <Viewport>
     <template v-slot:default="{ value }">
       <div v-if="value > 1280">
-        <!-- content to display -->
+        <!-- konten yang tampil -->
       </div>
       <div v-else>
-        <!-- content to fallback -->
+        <!-- konten default -->
       </div>
     </template>
   </Viewport>
 </template>
 ```
 
-In this component, we only use the default slot to provide the viewport value. The `value` prop needs to be updated every time a user resize a screen, thus we will require a resize event listener which will keep track of `value` in the component.
+Pada komponen ini, kita hanya menggunakan slot default untuk menyediakan nilai viewport. Properti `value` perlu diubah setiap kali pengguna melakukan resize pada layar browser. Oleh karena itu, kita akan membutuhkan listener untuk event resize untuk mengupdate nilai viewport di komponen.
 
-## Implementation
+## Implementasi
 
-We will create a state to hold the viewport value and return it as a slot prop. The code will look something like this:
+Kita akan membuat sebuah state untuk menyimpan nilai viewport dan mengembalikannya sebagai slot prop. Kodenya akan terlihat seperti di bawah ini:
 
 ``` html
 <script>
@@ -44,7 +44,7 @@ export default {
     }
   },
   render() {
-    // return the state as slot props
+    // mengembalikan state sebagai slot props
     return this.$scopedSlots.default({
       value: this.value
     })
@@ -53,7 +53,7 @@ export default {
 </script>
 ```
 
-Now we need to set the initial value of the state on mounted lifecycle.
+Sekarang kita perlu mengeset nilai awal dari state pada lifecycle `mounted`.
 
 ``` html
 <script>
@@ -63,7 +63,7 @@ export default {
       value: 0
     }
   },
-  // set the initial value
+  // set nilai awal 'value'
   mounted() {
     this.value = window.innerWidth
   },
@@ -72,7 +72,7 @@ export default {
 </script>
 ```
 
-Because we want the `value` state to change every time a user resize the screen, we need to set up an event listener like below.
+Karena kita ingin state `value` untuk berubah setiap saat pengguna melakukan resize, kita akan mengeset sebuah event listener seperti berikut ini.
 
 ``` html
 <script>
@@ -83,8 +83,8 @@ export default {
     }
   },
   mounted() {
-    // we create a methods for this part so that
-    // we can reuse it inside of the listener
+    // kita membuat sebuah method untuk bagian ini
+    // supaya kita bisa menggunakannya kembali nanti di dalam listener
     this.setValue()
     this.setListener()
   },
@@ -94,8 +94,8 @@ export default {
     },
     setListener() {
       let timeout
-      // because resizing event can be quite an intensive process
-      // we use requestAnimationFrame so that it won't block the browser's rendering cycle
+      // karena event resize bisa menjadi proses yang cukup intensif
+      // kita menggunakan requestAnimationFrame supaya tidak menghalangi proses rendering browser
       window.addEventListener('resize', () => {
         if (timeout) {
           window.cancelAnimationFrame(timeout)
@@ -112,28 +112,28 @@ export default {
 
 ```
 
-And that's it!
+Dan selesai!
 
-## Adding the breakpoint functionality
+## Menambahkan fungsi breakpoint
 
-Instead of manually checking the viewport value from the component, we can also add a breakpoint functionality in the component so that we don't have to add magic numbers or import the breakpoint config from our CSS framework to the template. Thus, the usage will look like this:
+Daripada mengecek secara manual nilai viewport dari komponen, kita juga bisa menambahkan fungsi breakpoint di komponen supaya kita tidak perlu menambahkan nilai-nilai aneh atau mengimpor konfigurasi breakpoint dari framework CSS kita ke template. Penggunaannya akan terlihat seperti di bawah ini:
 
 ``` html
 <template>
   <Viewport>
     <template v-slot:default="{ breakpoint }">
       <div v-if="breakpoint === 'lg'">
-        <!-- content to display on larger screen -->
+        <!-- konten untuk ditampilkan pada layar yang lebih lebar -->
       </div>
       <div v-else>
-        <!-- content to display on smaller screen -->
+        <!-- konten untuk ditampilkan pada layar yang lebih kecil -->
       </div>
     </template>
   </Viewport>
 </template>
 ```
 
-To add the breakpoint functionality, we need to introduce a new state called `breakpoint`, and the state will change according to the `value` state. We will make use of watcher to track the `value` state and trigger a method to change the breakpoint.
+Untuk menambahkan fungsi breakpoint, kita perlu memperkenalkan state baru dengan nama `breakpoint`, lalu state tersebut akan berubah tergantung kepada state `value`. Kita akan memanfaatkan watcher untuk men-track state `value` dan menjalankan sebuah method untuk mengubah state `breakpoint`.
 
 ``` html
 <script>
@@ -141,15 +141,15 @@ export default {
   data() {
     return {
       value: 0,
-      // add a new state
+      // tambah state baru
       breakpoint: ''
     }
   },
-  // add watcher for value
+  // menambahkan watcher untuk state 'value'
   watch: {
     value: {
-      // need to set immediate as true to trigger the handler
-      // immediately after the start of the observation
+      // perlu mengeset immediate sebagai 'true' untuk menjalankan handler
+      // segera setelah observasi state-nya dimulai
       immediate: true,
       handler: 'setBreakpoint'
     }
@@ -157,8 +157,8 @@ export default {
   // ...
   methods: {
     // ...
-    // I use small-to-large screen approach here
-    // but you can change the logic however you like it
+    // Saya menggunakan aturan small-to-large disini
+    // tapi kamu bisa mengubah logic-nya sesuai keperluan
     setBreakpoint(value) {
       let breakpoint = 'xs'
 
@@ -178,7 +178,7 @@ export default {
   render() {
     return this.$scopedSlots.default({
       value: this.value,
-      // return the breakpoint state as slot props
+      // mengembalikan state 'breakpoint' sebagai slot props
       breakpoint: this.breakpoint
     })
   }
@@ -186,7 +186,7 @@ export default {
 </script>
 ```
 
-Finally, the complete code will look like this.
+Akhirnya, versi komplit dari kodenya akan terlihat seperti ini.
 
 ``` html
 <script>
@@ -248,5 +248,4 @@ export default {
 </script>
 ```
 
-And that's pretty much it!
-
+Selesai! Semoga bermanfaat!
