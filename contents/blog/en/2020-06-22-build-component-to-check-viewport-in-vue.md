@@ -1,6 +1,7 @@
 ---
 title: Building a Component to Check Viewport in Vue
 slug: building-component-to-check-viewport-in-vue
+summary: I explain how to implement viewport checking as a component to gain the benefit of reusability and declarative usage in a template
 published_date: 2020-06-22
 language: en
 type: blog

@@ -1,6 +1,7 @@
 ---
 title: Membuat Komponen untuk Mengecek Viewport di Vue
 slug: membuat-komponen-untuk-mengecek-viewport-di-vue
+summary: Saya menjelaskan bagaimana cara mengecek viewport dengan komponen untuk mendapatkan keuntungan reusabilitas dan penggunaan secara deklaratif pada template
 published_date: 2020-06-22
 language: id
 type: blog
