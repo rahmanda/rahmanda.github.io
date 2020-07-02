@@ -1,18 +1,9 @@
 <template>
-  <Til locale="id" :locale-links="localeLinks" :meta="meta" :posts="$page.posts.edges"/>
+  <Til locale="id" :meta="meta" :posts="$page.posts.edges"/>
 </template>
 
 <script>
 import Til from '~/components/Til.vue'
-
-async function generateAnchors() {
-  const { default: anchorjs } = await import('anchor-js');
-  const anchors = new anchorjs({
-    visible: 'always',
-  });
-  const tags = ['h2'];
-  tags.forEach(tag => anchors.add(tag));
-}
 
 export default {
   metaInfo() {
@@ -47,22 +38,6 @@ export default {
           }
         ],
         meta: this.$generateMeta(title, description, siteUrl, url)
-      }
-    },
-    localeLinks() {
-      return {
-        en: '/til/en/',
-        id: '/til/id/'
-      }
-    }
-  },
-  mounted() {
-    generateAnchors()
-  },
-  watch: {
-    '$route'() {
-      if (this.$isClient) {
-        generateAnchors()
       }
     }
   }

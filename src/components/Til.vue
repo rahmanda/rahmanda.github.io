@@ -35,15 +35,20 @@
 <script>
 import Layout from '~/layouts/Til.vue'
 
+async function generateAnchors() {
+  const { default: anchorjs } = await import('anchor-js');
+  const anchors = new anchorjs({
+    visible: 'always',
+  });
+  const tags = ['h2'];
+  tags.forEach(tag => anchors.add(tag));
+}
+
 export default {
   props: {
     locale: {
       type: String,
       default: 'id'
-    },
-    localeLinks: {
-      type: Array,
-      required: true,
     },
     meta: {
       type: Object,
@@ -56,6 +61,24 @@ export default {
   },
   components: {
     Layout
+  },
+  computed: {
+    localeLinks() {
+      return {
+        en: '/til/en/',
+        id: '/til/id/'
+      }
+    }
+  },
+  mounted() {
+    generateAnchors()
+  },
+  watch: {
+    '$route'() {
+      if (this.$isClient) {
+        generateAnchors()
+      }
+    }
   }
 }
 </script>
