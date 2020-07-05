@@ -37,7 +37,7 @@ If you ever found yourself exploring a very deep directory, it is like digging a
 
 You might argue that with a good code editor, we can easily do folders and files navigation with its built-in search feature, and I agree with that. I think majority of programmer today have used that feature intensively in their daily workflow. However, this kind of feature is only helpful if we already know what to search. If we are still learning about the project, I believe we will be 'digging-mine' the project folders. Therefore, keep in mind that every time we want to add a new folder, we make it harder for other people to navigate on our project.
 
-Aside from navigation concern, a deep folder structure is also not convenient to use in our code. We usually split code into modules, and different modules can be stored in different folders depending on our categorization. If we want to import a module which is located in a deeply nested directory, we need to write a longer reference to the module.
+Aside from navigation concern, a deep folder structure is also not convenient to use in our code. We usually split code into several modules, and different modules can be stored in different folders depending on our categorization. If we want to import a module which is located in a deeply nested directory, we need to write a longer reference to the module.
 
 To flatten a folder structure, we can follow the approach at the example below.
 
@@ -82,7 +82,7 @@ helpers/
 - object.js
 ```
 
-Because the `time` helpers are supposedly large, we can split it into two files and add suffix into each filename. This way, we can still retain a flat structure without eliminating the clarity of the filename. Pay attention that even though we have chosen to split the time helpers, it is not necessarily required for the rest of modules to follow this pattern especially if your helpers are small.
+Because the `time` helpers are supposedly large, we can split it into two files and add suffix into each filename. This way, we can still retain a flat structure without eliminating the clarity of the filename. Pay attention that even though we have chosen to split the `time` helpers, it is not necessarily required for the rest of the modules to follow this pattern especially if your helpers are small.
 
 ### Create folders only when necessary
 
@@ -92,7 +92,7 @@ I often find several cases where people put a folder with only one file or even 
  2. Result of using project bootstrapper
  3. Need to reserve some spaces for future use
 
-Don't get me wrong, you can copy other people structure or use whatever bootstrapper you like. However, you need to know that you take full controls to shape your own folder structure. So, if you find some folders that stay empty or just contain one file for quite a long time, you should just remove them. You can add it later when you think you need that folder.
+Don't get me wrong, you can copy other people structure or use whatever bootstrapper you like. However, you need to know that you take full controls over your own folder structure. So, if you find some folders that stay empty or just contain one file for quite a long time, you should just remove them. You can add it later when you think you need that folder.
 
 Reserving spaces is probably the most problematic thing on managing folder structure, especially when we just start creating a project. We tend to create a folder even if we aren't quite sure whether we will use it or not, and probably because we are influenced by other project structure. I think it is much simpler to just stick with our current requirement and not making assumption.
 
