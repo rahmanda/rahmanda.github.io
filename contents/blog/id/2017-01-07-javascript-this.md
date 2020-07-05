@@ -1,5 +1,6 @@
 ---
 title: Javascript This
+summary: Mencoba menjelaskan operator 'this' di Javascript berdasarkan pemahaman saya
 slug: javascript-this
 published_date: 2017-01-07
 language: id

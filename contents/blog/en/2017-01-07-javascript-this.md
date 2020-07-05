@@ -1,5 +1,6 @@
 ---
 title: Javascript This
+summary: Another attempt to explain 'this' operator in Javascript based on my understanding
 slug: javascript-this
 published_date: 2017-01-07
 language: en

@@ -1,5 +1,6 @@
 ---
 title: Understanding Closure In Javascript
+summary: I explain scoping and closure concept in Javascript and how to implement it
 slug: understanding-closure-in-javascript
 published_date: 2016-12-31
 language: en

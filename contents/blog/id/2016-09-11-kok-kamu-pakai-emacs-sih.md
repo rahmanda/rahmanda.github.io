@@ -1,5 +1,6 @@
 ---
 title: Kok Kamu Pakai Emacs Sih?
+summary: Sebuah text editor bisa saja tua, tapi hal itu tidak berarti sudah tidak relevan lagi dengan jaman sekarang. Bagi saya, Emacs adalah text editor favorit saya saat ini dan pada artikel ini, kamu akan mengetahui apa alasannya.
 slug: kok-kamu-pakai-emacs-sih
 published_date: 2016-09-11
 language: id

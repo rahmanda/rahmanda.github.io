@@ -1,5 +1,6 @@
 ---
 title: Memahami Closure di Javascript
+summary: Saya menjelaskan konsep scope dan closure di Javascript dan bagaimana contoh penggunaannya
 slug: memahami-closure-di-javascript
 published_date: 2016-12-31
 language: id

@@ -1,5 +1,6 @@
 ---
 title: Why I Use Emacs
+summary: A text editor can be old, but it doesn't mean that it is irrelevant now. Emacs is my most favorite text editor at the moment and in this article, you will get to know why.
 slug: why-i-use-emacs
 published_date: 2016-09-11
 language: en

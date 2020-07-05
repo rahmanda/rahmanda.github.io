@@ -1,5 +1,6 @@
 ---
 title: Using Vue's Prototype for Shared Utilities
+summary: I explain why using Vue's prototype for shared utilities is great with several examples
 slug: using-vue-prototype-for-shared-utilities
 published_date: 2020-05-27
 language: en
@@ -147,7 +148,7 @@ app.$mount('#app');
 
 This implementation gives us the power of mixin without granting an excessive access. Because every component inherits a context from a Vue object, the utility is accessible from component's context too. However, our utility cannot access the component's context anymore, which is very neat. I just need to write once in `main.js`, and then the utility becomes available across components in my application.
 
-If you look closely to the component's code, now we don't need to write anything on the script tag. However if you wish for it, you can simply call `this.$imageUrl` function on your component's script.
+If you look closely to the component's code, now we don't need to write anything on the script tag. You also can call `this.$imageUrl` function on your component's script without writing any additional code.
 
 You can also write a plugin for it to reduce prototype initialization in `main.js` file.
 
