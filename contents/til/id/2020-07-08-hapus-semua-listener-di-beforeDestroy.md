@@ -8,7 +8,9 @@ translations:
   en: /til/id/#remove-all-listeners-on-beforeDestroy
 ---
 
-Menghapus listeners sudah menjadi pengetahuan umum saat bekerja di bagian front-end, tapi saya masih sering lupa dengan itu. Kali ini, saya tidak menghapus sebuah listener scroll pada sebuah page component yang menyebabkan error saat saya bernavigasi ke page lain. Ini disebabkan karena callback yang dipakai di listener-nya masih mengakses konteks dari component yang, tentu saja, telah dihapus saat berpindah dari page tsb. Solusinya simpel, tinggal menambahkan `removeEventListener` di dalam lifecycle `beforeDestroy`:
+Menghapus listeners sudah menjadi pengetahuan umum saat bekerja di bagian front-end, tapi saya masih sering lupa dengan itu. Kali ini, saya tidak menghapus sebuah listener scroll pada sebuah page component yang menyebabkan error saat saya bernavigasi ke page lain.
+
+Ini disebabkan karena callback yang dipakai di listener-nya masih mengakses konteks dari component yang, tentu saja, telah dihapus saat berpindah dari page tsb. Solusinya simpel, tinggal menambahkan `removeEventListener` di dalam lifecycle `beforeDestroy`:
 
 ``` html
 <script>
