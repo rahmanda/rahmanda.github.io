@@ -20,7 +20,7 @@ When I was working on [this calendar visualization](https://www.nusadata.org/cor
 </template>
 
 <script>
-import d3 from 'd3'
+import * as d3 from 'd3'
 
 export default {
   props: {
