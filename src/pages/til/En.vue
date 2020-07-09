@@ -1,5 +1,5 @@
 <template>
-  <Til locale="en" :meta="meta" :posts="$page.posts.edges"/>
+  <Til locale="en" :meta="meta" :posts="$page.posts.edges" :site-url="$page.metadata.siteUrl"/>
 </template>
 
 <script>

@@ -17,9 +17,12 @@
             class="mb-10 block">
           <article class="post pt-5 bg-gray-50 border-gray-300 rounded-lg shadow border">
             <header>
-              <time :datetime="post.node.published_date" class="text-gray-600">
-                {{ $date(post.node.published_date, post.node.language) }}
-              </time>
+              <div class="flex text-gray-600">
+                <time class="flex-1" :datetime="post.node.published_date">
+                  {{ $date(post.node.published_date, post.node.language) }}
+                </time>
+                <SocialMediaShare class="flex-none" :title="post.node.title" :url="getUrl(post.node.slug, post.node.language)"/>
+              </div>
               <h2 :id="post.node.slug" class="tracking-tight" style="margin-top: 1rem;">
                 {{ post.node.title }}
               </h2>
@@ -33,6 +36,7 @@
 </template>
 
 <script>
+import SocialMediaShare from '~/components/SocialMediaShare.vue'
 import Layout from '~/layouts/Til.vue'
 
 async function generateAnchors() {
@@ -57,10 +61,15 @@ export default {
     posts: {
       type: Array,
       required: true,
+    },
+    siteUrl: {
+      type: String,
+      required: true,
     }
   },
   components: {
-    Layout
+    Layout,
+    SocialMediaShare,
   },
   computed: {
     localeLinks() {
@@ -79,6 +88,11 @@ export default {
         generateAnchors()
       }
     }
-  }
+  },
+  methods: {
+    getUrl(slug, language) {
+      return `${this.siteUrl}/til/${language}/#${slug}`
+    },
+  },
 }
 </script>
