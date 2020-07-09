@@ -113,6 +113,18 @@ searchParams.toString() // page=2&referral=true
 
 > Hati-hati saat memodifikasi kueri array karena fungsi `set` dan `delete` akan melakukan perubahan kueri parameter secara rekursif
 
+Satu hal lagi yang keren dari `URLSearchParams` adalah kita tidak perlu lagi melakukan transformasi sebuah string yang memiliki karakter-karakter spesial dengan `encodeURI` karena `URLSearchParams` akan melakukannya secara otomatis saat kita memasukkan string ke dalam fungsi `set`.
+
+``` js
+let searchParams = new URLSearchParams('page=1&from=homepage')
+
+// misal kita mau menambahkan url ke dalam parameter kueri
+searchParams.set('url', 'https://example.com/content?page=1')
+
+// parameter kueri 'url' akan otomatis ter-encode
+searchParams.toString() // page=1&from=homepage&url=https%3A%2F%2Fexample.com%2Fcontent%3Fpage%3D1
+```
+
 ## Studi Kasus
 
 Agar lebih menarik, saya akan memberikan sebuah studi kasus penggunaan `URL` dan `URLSearchParams`. Anggap saja kita perlu menambahkan nilai dari parameter `page` karena kita menggunakan JS untuk mengubah konten pagination. Implementasinya mungkin akan seperti di bawah ini.

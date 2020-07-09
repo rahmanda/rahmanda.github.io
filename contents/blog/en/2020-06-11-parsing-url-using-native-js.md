@@ -111,6 +111,18 @@ searchParams.toString() // page=2&referral=true
 
 > Be careful when updating an array query because `set` and `delete` function will modify search parameters recursively
 
+Another cool thing about `URLSearchParams` is that we don't need to transform a string with special characters with `encodeURI` anymore because `URLSearchParams` will take care of it automatically when we supply the string to the `set` function.
+
+``` js
+let searchParams = new URLSearchParams('page=1&from=homepage')
+
+// say we want to add a url to query param
+searchParams.set('url', 'https://example.com/content?page=1')
+
+// the 'url' query param will be automatically encoded
+searchParams.toString() // page=1&from=homepage&url=https%3A%2F%2Fexample.com%2Fcontent%3Fpage%3D1
+```
+
 ## Use Case
 
 To make it interesting, let me give a practical example. Let's say that we want to increment the value of `page` search parameters because we are using a JS for updating a paginated content. The implementation would be something like this:
