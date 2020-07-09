@@ -15,8 +15,8 @@
 				</header>
 				<h1 class="font-sans-title text-xl">{{ $page.post.title }}</h1>
 				<aside v-if="$page.post.translations"
-						class="text-md mt-10 text-gray-600 font-sans">
-					<span>
+						class="text-md mt-10 text-gray-600 font-sans flex items-center">
+ 					<span class="flex-1 leading-none">
             Translate into:
             <template v-for="(path, key) in $page.post.translations">
               <g-link v-if="path"
@@ -27,14 +27,21 @@
               </g-link>
             </template>
 					</span>
+          <SocialMediaShare :title="$page.post.title" :url="url" class="flex-none"/>
 				</aside>
 				<div class="mt-8" v-html="$page.post.content"/>
+        <aside class="flex items-center text-gray-600">
+          <span class="flex-none leading-none mr-3">Share this article:</span>
+          <SocialMediaShare :title="$page.post.title" :url="url" class="flex-none"/>
+        </aside>
 			</article>
 		</main>
   </Layout>
 </template>
 
 <script>
+import SocialMediaShare from '~/components/SocialMediaShare.vue'
+
 async function generateAnchors() {
   const { default: anchorjs } = await import('anchor-js');
   const anchors = new anchorjs({
@@ -45,6 +52,9 @@ async function generateAnchors() {
 }
 
 export default {
+  components: {
+    SocialMediaShare
+  },
   metaInfo() {
     return this.meta
   },
