@@ -30,7 +30,7 @@
           <SocialMediaShare :title="$page.post.title" :url="url" class="flex-none"/>
 				</aside>
 				<div class="mt-8" v-html="$page.post.content"/>
-        <aside class="flex items-center text-gray-600 mt-20">
+        <aside class="flex items-center text-gray-600">
           <span class="flex-none leading-none mr-3">Share this article:</span>
           <SocialMediaShare :title="$page.post.title" :url="url" class="flex-none"/>
         </aside>
