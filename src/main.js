@@ -25,6 +25,12 @@ export default function (Vue, { router, head, isClient }) {
     name: 'google-site-verification',
     content: 'cxX6bHKFtfWlAhhWluGZII6peqca8Hsd2aaobASSxEI'
   })
+  head.link.push({
+    rel: 'alternate',
+    type: 'application/rss+xml',
+    title: 'RSS Feed for rahmandawibowo.com',
+    href: 'https://www.rahmandawibowo.com/feed.xml'
+  })
   head.style.push({
     cssText: font,
     type: 'text/css'
