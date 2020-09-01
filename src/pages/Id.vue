@@ -54,7 +54,7 @@
     <section class="max-w-4xl mx-auto px-5 py-12">
       <header class="flex items-center mb-8">
         <h2 class="text-2xl font-sans-title font-bold text-gray-800 flex-1">#TIL</h2>
-        <g-link class="text-lg text-gray-600 flex-none" to="/til/en/">lihat semua #TIL →</g-link>
+        <g-link class="text-lg text-gray-600 flex-none" to="/til/id/">lihat semua #TIL →</g-link>
       </header>
       <p class="text-lg md:text-xl text-gray-800 mb-12">
         Saya juga suka menulis catatan mengenai hal-hal baru yang baru saya temui dalam kegiatan sehari-hari yang berhubungan dengan pekerjaan, teknologi, ataupun hasil pemikiran yang random!
