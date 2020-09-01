@@ -10,7 +10,7 @@
       </p>
     </section>
     <section class="max-w-4xl mx-auto px-5 py-12">
-      <h2 class="text-center text-2xl font-sans-title font-bold text-gray-800 mb-12">Some of My Tinkering List</h2>
+      <h2 class="text-2xl font-sans-title font-bold text-gray-800 mb-12">My Tinkering List</h2>
       <div class="flex flex-wrap -mx-1 text-gray-800">
         <article v-for="(item, idx) in tinkeringList" :key="idx" class="w-full md:w-1/3 mb-5">
           <div class="mx-1">
@@ -23,7 +23,11 @@
       </div>
     </section>
     <section class="max-w-4xl mx-auto px-5 py-12">
-      <h2 class="text-center text-2xl font-sans-title font-bold text-gray-800 mb-12">Recent Writings</h2>
+      <header class="flex items-center mb-8">
+        <h2 class="text-2xl font-sans-title font-bold text-gray-800 flex-1">Latest Articles</h2>
+        <g-link class="text-lg text-gray-600 flex-none" to="/blog/en/">view all articles →</g-link>
+      </header>
+      <p class="text-lg md:text-xl text-gray-800 mb-12">I write in-depth articles about Vue.js, Javascript, software engineering and development in general. You can read all articles here in English and Bahasa Indonesia.</p>
       <div class="flex flex-wrap -mx-2 text-gray-800">
         <article v-for="post in $page.posts.edges" :key="post.node.id" class="w-full md:w-1/3 mb-8">
           <div class="mx-2">
@@ -40,8 +44,28 @@
           </div>
         </article>
       </div>
-      <div class="text-center mt-5">
-        <g-link class="text-lg text-gray-600" to="/blog/en/">Read other articles →</g-link>
+    </section>
+    <section class="max-w-4xl mx-auto px-5 py-12">
+      <header class="flex items-center mb-8">
+        <h2 class="text-2xl font-sans-title font-bold text-gray-800 flex-1">#TIL</h2>
+        <g-link class="text-lg text-gray-600 flex-none" to="/til/en/">view all #TIL →</g-link>
+      </header>
+      <p class="text-lg md:text-xl text-gray-800 mb-12">I take notes about new things that I just learned in my everyday activities. It could be related to work, tech or even random thoughts!</p>
+      <div class="flex flex-wrap -mx-2 text-gray-800">
+        <article v-for="til in $page.tils.edges" :key="til.node.id" class="w-full md:w-1/3 mb-8">
+          <div class="mx-2">
+            <header>
+              <time class="text-sm text-gray-600">{{ $date(til.node.published_date, til.node.language) }}</time>
+            </header>
+            <h3>
+              <g-link
+                :to="`/til/${til.node.language}/#${til.node.slug}`"
+                class="c-link">
+                {{ til.node.title }}
+              </g-link>
+            </h3>
+          </div>
+        </article>
       </div>
     </section>
   </HomeLayout>
@@ -115,6 +139,18 @@ query {
       node {
         id
         title
+        slug
+        published_date
+        language
+      }
+    }
+  }
+  tils: allTil(sortBy: "published_date", filter: {language: {eq: "en"}}, limit: 6) {
+    edges {
+      node {
+        id
+        title
+        content
         slug
         published_date
         language
